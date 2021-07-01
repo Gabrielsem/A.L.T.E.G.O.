@@ -9,8 +9,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **integrante 1** - [Marcelo Ariel Rondán](https://github.com/MarceAriel99)
 * **integrante 2** - [Ariana Magalí Salese D'Assaro](https://github.com/ariana-salese)
 * **integrante 3** - [Nicolás Ezequiel Zulaica Rivera](https://github.com/NicolasEzequielZulaicaRivera)
-* **Integrante 4** - [integrante4](https://github.com/Gabrielsem)
-* **integrante 5** - [integrante5](https://github.com/fdelu)
+* **Integrante 4** - [Gabriel Semorile](https://github.com/Gabrielsem)
+* **integrante 5** - [Felipe De Luca Andrea](https://github.com/fdelu)
 
 Corrector: **{Corrector}**
 
