@@ -1,0 +1,69 @@
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+title **Ataque entre paises**
+
+actor user
+participant jugador as ":Jugador"
+participant atk as "atacante:Pais"
+participant batalla as ":Batalla"
+participant def as "defensor:Pais"
+participant defJ as "otroj:Jugador"
+
+user ++
+user -> jugador ++: atacar(atacante,defensor:Pais,cantFichas:Int)
+
+jugador -> jugador : esMiPais(atacante)
+note left
+	true
+end note
+
+jugador -> jugador : esMiPais(defensor:Pais)
+note left
+	false
+end note
+
+jugador -> atk ++: atacar(defensor:Pais, cantFichas:Int)
+jugador --
+
+atk -> atk : esVecino(defensor)
+note left
+	true
+end note
+
+atk -> atk: puedeUsar(cantFichas)
+note left
+	true
+end note
+
+atk -> batalla **: batallaEntre(defensor,self,cantFichas)
+batalla ++
+atk --
+batalla -> batalla ++: efectuarBatalla()
+batalla --
+atk <- batalla ++: perderFichas(perdidaAtk,self)
+atk -- 
+batalla -> def ++: perderFichas(perdidaDef,self)
+batalla --
+note over user,defJ
+	caso: defensor se queda sin fichas
+end note
+
+def -> defJ ++: desocupar(self)
+defJ--
+
+batalla <- def ++ : seMurioElDef()
+def --
+atk <- batalla ++ : moverEjercitos(defensor)
+batalla --
+
+jugador <- atk ++: invadir(atacante,defensor)
+jugador --> atk -- : nFichas
+
+atk -> def ++: ocupadoPor(jugador, nFichas)
+
+
+
+@enduml
