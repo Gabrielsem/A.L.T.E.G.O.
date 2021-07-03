@@ -1,0 +1,23 @@
+@startuml
+title Inicialización
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+Actor actor
+participant juego as ":Juego"
+participant jug as "Jugador"
+participant pais as ":Pais"
+
+actor ++
+actor -> juego ++: agregarPaises(paises)
+
+actor -> juego: inicializar()
+
+loop para cada pais
+    juego -> jug: ocupar(pais)
+    juego -> pais: ocupadoPor(jugador, 1)
+end loop
+
+@enduml
