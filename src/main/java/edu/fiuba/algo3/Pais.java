@@ -1,2 +1,4 @@
-package edu.fiuba.algo3;public class Pais {
+package edu.fiuba.algo3;
+
+public class Pais {
 }
