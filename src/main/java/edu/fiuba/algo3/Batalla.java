@@ -9,4 +9,8 @@ public class Batalla {
     public void efectuarBatalla() {
         // TODO
     }
+
+    public void murioDefensor() {
+        // TODO
+    }
 }
