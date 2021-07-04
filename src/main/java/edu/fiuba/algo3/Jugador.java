@@ -8,5 +8,6 @@ public class Jugador {
 
     public int invadir(Pais atacante, Pais defensor) {
         // TODO
+        return 0;
     }
 }
