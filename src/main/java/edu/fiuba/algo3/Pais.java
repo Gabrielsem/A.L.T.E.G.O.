@@ -60,7 +60,6 @@ public class Pais {
         this.verificarAlcanzanFichas(cantidadFichas);
 
         Batalla batalla = new Batalla(defensor, this, cantidadFichas);
-        batalla.efectuarBatalla();
     }
 
     public void perderFichas(int cantidadFichas, Batalla batalla) {
