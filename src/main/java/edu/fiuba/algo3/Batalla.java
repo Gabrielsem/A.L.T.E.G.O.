@@ -6,4 +6,7 @@ public class Batalla {
         // TODO
     }
 
+    public void efectuarBatalla() {
+        // TODO
+    }
 }
