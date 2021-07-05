@@ -79,4 +79,8 @@ public class Pais {
         paisConquistado.ocupadoPor(propietario, fichasAMover);
         fichas -= fichasAMover;
     }
+
+    public void agregarFichas(int cantFichas) {
+        //TODO
+    }
 }
