@@ -1,19 +1,19 @@
 package edu.fiuba.algo3;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Pais {
     private final String nombre;
     private final String continente;
-    private final Set<Pais> vecinos = new HashSet<>();
+    private final Set<String> vecinos;
     private int fichas = 0;
     private Jugador propietario = null;
 
-    public Pais(String nombrePais, String nombreContinente) {
+    public Pais(String nombrePais, String nombreContinente, Collection<String> limitrofes) {
         nombre = nombrePais;
         continente = nombreContinente;
+        vecinos = limitrofes.stream().map(String::toLowerCase).collect(Collectors.toSet());
     }
 
     public String nombre() {
@@ -28,15 +28,12 @@ public class Pais {
         return fichas;
     }
 
-    public void agregarVecino(Pais vecino) {
-        vecinos.add(vecino);
-    }
-
     public void ocupadoPor(Jugador jugador, int cantidadFichas) {
         if (propietario != null) {
             propietario.desocupar(this);
         }
 
+        jugador.ocupar(this);
         propietario = jugador;
         fichas = cantidadFichas;
     }
@@ -49,11 +46,11 @@ public class Pais {
     }
 
     public void atacar(Pais defensor, int cantidadFichas) {
-        if (!vecinos.contains(defensor)) {
+        if (!vecinos.contains(defensor.nombre.toLowerCase())) {
             throw new PaisSoloPuedeAtacarVecinos(
                 String.format("El país %s no es vecino de %s", defensor.nombre(), nombre));
         }
-        if (defensor.propietario == propietario) {
+        if (defensor.propietario.equals(propietario)) {
             throw new PaisDelMismoPropietarioNoPuedeSerAtacado(
                 String.format("El país %s no puede atacar a %s", nombre, defensor.nombre()));
         }

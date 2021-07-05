@@ -60,11 +60,11 @@ atk <- batalla ++ : moverEjercitos(defensor)
 batalla --
 
 jugador <- atk ++: invadir(atacante,defensor)
-jugador -> jugador: ocupar(defensor)
 jugador --> atk -- : nFichas
 
 atk -> def ++: ocupadoPor(jugador, nFichas)
-def -> defJ ++: desocupar(self)
+def -> defJ ++: desocupar(defensor)
+def -> jugador: ocupar(defensor)
 
 
 
