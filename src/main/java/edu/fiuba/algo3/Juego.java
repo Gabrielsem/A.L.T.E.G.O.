@@ -1,6 +1,8 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class Juego {
     private int cantJugadores;
@@ -18,6 +20,15 @@ public class Juego {
             this.jugadores.add(new Jugador(numJugador));
         }
 
+        this.mapa.repartirPaises(this.jugadores);
     }
-
+    
+    public void colocarFichasIniciales() {
+        for ( Jugador jugador : this.jugadores) {
+            jugador.agregarFichas(5);
+        }
+        for ( Jugador jugador : this.jugadores) {
+            jugador.agregarFichas(3);
+        }
+    }
 }

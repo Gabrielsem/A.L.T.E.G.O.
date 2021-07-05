@@ -40,7 +40,7 @@ loop para cada jugador
     juego -> jug: <<create>>(numJugador:int)
 end loop
 
-juego -> mapa++: <<create>>(paises:dict)
+juego -> mapa++: <<create>>(continentes:dict)
 
 loop para cada pais
     mapa -> pais: <<create>>(nombre:str, limitrofes:str, continente:str)
@@ -58,7 +58,7 @@ end loop
 mapa--
 pais--
 
-actor -> juego++: colocarEjercitosIniciales()
+actor -> juego++: colocarFichasIniciales()
 
 loop para cada jugador
     juego -> jug++: agregarFichas(5)
