@@ -50,19 +50,21 @@ mapa--
 juego -> mapa++: repartirPaises(jugadores:Jugador)
 juego--
 
-loop para cada jugador
-    mapa -> jug++: asignarPaises(paises:Pais)
-    jug -> pais: ocupar(jugador:Jugador)
+loop para cada pais
+    mapa -> pais++: ocupadoPor(jugador:Juagdor, 1)
+    pais -> jug++: ocupar(pais:Pais)
+    jug--
 end loop
 mapa--
-jug--
+pais--
 
 actor -> juego++: colocarEjercitosIniciales()
 
 loop para cada jugador
     juego -> jug++: agregarFichas(5)
     loop hasta quedarse sin fichas
-        jug -> pais: agregarFichas(nFichas:int)
+        jug -> pais++: agregarFichas(nFichas:int)
+        pais--
     end loop
 end loop
 jug--
@@ -70,7 +72,8 @@ jug--
 loop para cada jugador
     juego -> jug++: agregarFichas(3)
     loop hasta quedarse sin fichas
-        jug -> pais: agregarFichas(nFichas:int)
+        jug -> pais++: agregarFichas(nFichas:int)
+        pais--
     end loop
 end loop
 
