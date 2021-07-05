@@ -5,6 +5,13 @@ import java.util.List;
 
 public class Jugador {
     HashSet<Pais> paisesConquistados = new HashSet<Pais>();
+    int numero;
+
+    public Jugador(){}
+
+    public Jugador(int numeroDeJugador){
+        numero = numeroDeJugador;
+    }
 
     public void desocupar(Pais unPais) {
         paisesConquistados.remove(unPais);
@@ -24,5 +31,19 @@ public class Jugador {
         if( paisesConquistados.contains(defensor) ) throw new PaisDelMismoPropietarioNoPuedeSerAtacado(String.format("El jugador no puede atacar a el pais %s porque ya es suyo",defensor.nombre()));
 
         atacante.atacar(defensor,cantFichas);
+    }
+
+    public int agregarFichas( int cantFichas ){
+        Pais receptorDeFichas;
+        while(cantFichas>0){
+            receptorDeFichas=new Pais("input","input",null);//input
+            if( paisesConquistados.contains(receptorDeFichas) ){
+                receptorDeFichas.agregarFichas(1);
+                cantFichas--;
+            }else{
+                //muestra algo o no hace nada ?
+            }
+        }
+        return 0;
     }
 }
