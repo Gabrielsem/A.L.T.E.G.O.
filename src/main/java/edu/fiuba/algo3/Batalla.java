@@ -2,31 +2,31 @@ package edu.fiuba.algo3;
 import java.util.Arrays;
 
 public class Batalla {
-    private Pais defensor;
-    private Pais atacante;
-    private int cantFichasAtaque;
+    private final Pais defensor;
+    private final Pais atacante;
+    private final int cantFichasAtaque;
 
-    public Batalla(Pais defensor, Pais atacante, int cantFichasAtaque) {
-        defensor = defensor;
-        atacante = atacante;
-        cantFichasAtaque = cantFichasAtaque;
+    public Batalla(Pais def, Pais atk, int FichasAtaque) {
+        defensor = def;
+        atacante = atk;
+        cantFichasAtaque = FichasAtaque;
         efectuarBatalla();
     }
 
     private int[] lanzarDados(int cantidad){
         int min = 1;
         int max = 6;
-        int[] dados = new int[cantidad];
+        int[] dados = new int[3];
         for (int i = 0; i < cantidad; i++) {
             dados[i] = (int)(Math.random() * ((max - min) + 1)) + min;
         }
         Arrays.sort(dados);
         // doy vuelta el array para que quede ordenado ascendente
         int aux;
-        for (int i = 0; i < cantidad / 2; i++) {
+        for (int i = 0; i < 3 / 2; i++) {
             aux = dados[i];
-            dados[i] = dados[cantidad - i - 1];
-            dados[cantidad - i - 1] = aux;
+            dados[i] = dados[3 - i - 1];
+            dados[3 - i - 1] = aux;
         }
         return dados;
     }

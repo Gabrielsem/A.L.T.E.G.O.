@@ -8,16 +8,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
+
 public class BatallaTest {
+
     Pais atacante;
     Pais defensor;
-    int cantFichasAtaque;
 
     @BeforeEach
     public void setUp(){
         atacante = mock(Pais.class);
         defensor = mock(Pais.class);
     }
+
 
     @Test
     public void algunoDeLosPaisesPierdeFichasEnUnaBatalla(){
@@ -34,6 +37,7 @@ public class BatallaTest {
         when(atacante.cantidadFichas()).thenReturn(4);
         when(defensor.cantidadFichas()).thenReturn(0);
         Batalla batalla = new Batalla(defensor, atacante, 3);
+        batalla.murioDefensor();
 
         verify(atacante, times(1)).moverEjercitos(defensor);
     }
