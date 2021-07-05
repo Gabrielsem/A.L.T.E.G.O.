@@ -1,5 +1,5 @@
 @startuml
-title Inicialización
+/'title Inicialización
 skinparam responseMessageBelowArrow true
 skinparam monochrome true
 skinparam style strictuml
@@ -19,5 +19,60 @@ loop para cada pais
     juego -> jug: ocupar(pais)
     juego -> pais: ocupadoPor(jugador, 1)
 end loop
+'/
+
+title Inicialización
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+Actor actor
+participant juego as ":Juego"
+participant mapa as ":Mapa"
+participant jug as "Jugador"
+participant pais as ":Pais"
+
+actor ++
+actor -> juego++: inicializar()
+
+loop para cada jugador
+    juego -> jug: <<create>>(numJugador:int)
+end loop
+
+juego -> mapa++: <<create>>(paises:dict)
+
+loop para cada pais
+    mapa -> pais: <<create>>(nombre:str, limitrofes:str, continente:str)
+end loop
+mapa--
+
+juego -> mapa++: repartirPaises(jugadores:Jugador)
+juego--
+
+loop para cada jugador
+    mapa -> jug++: asignarPaises(paises:Pais)
+    jug -> pais: ocupar(jugador:Jugador)
+end loop
+mapa--
+jug--
+
+actor -> juego++: colocarEjercitosIniciales()
+
+loop para cada jugador
+    juego -> jug++: agregarFichas(5)
+    loop hasta quedarse sin fichas
+        jug -> pais: agregarFichas(nFichas:int)
+    end loop
+end loop
+jug--
+
+loop para cada jugador
+    juego -> jug++: agregarFichas(3)
+    loop hasta quedarse sin fichas
+        jug -> pais: agregarFichas(nFichas:int)
+    end loop
+end loop
+
 
 @enduml
