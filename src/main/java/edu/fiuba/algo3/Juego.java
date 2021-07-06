@@ -5,6 +5,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Juego {
+
     private int cantJugadores;
     private  ArrayList<Jugador> jugadores;
     private Mapa mapa;

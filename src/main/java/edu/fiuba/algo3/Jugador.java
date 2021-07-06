@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Jugador {
+    //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
     HashSet<Pais> paisesConquistados = new HashSet<Pais>();
     int numero;
 
@@ -32,7 +33,7 @@ public class Jugador {
 
         atacante.atacar(defensor,cantFichas);
     }
-
+    /*
     public int agregarFichas( int cantFichas ){
         Pais receptorDeFichas;
         while(cantFichas>0){
@@ -45,5 +46,39 @@ public class Jugador {
             }
         }
         return 0;
+    } No habría que crear un país, hay que acceder a los que tiene conquistados el jugador
+    La idea de "agregarFichas" como lo pensamos, es que se le permita el jugador agregar las fichas
+    que quiera en los paises que ya tiene conquistados.
+     */
+
+    public void agregarFichas(int cantFichas){
+        /* Algo así tendŕia que ser creemos
+        while(cantFichas > 0) {
+            String paisElegido = pedir pais
+            int cantFichasElegidas = pedir cant de fichas
+            if(paisesConquistados.containsKey(paisElegido)){
+                if(cantFichasElegidas <= cantFichas){
+                    paisesConquistados.get(paisElegido).agregarFichas(cantFichasElegidas);
+                    cantFichas = cantFichas - cantFichasElegidas;
+                }
+                else{
+                    error
+                }
+            }
+            else{
+                error
+            }
+        }
+        */
+        // Hardcodeadísimo para probar
+        for (Pais pais : paisesConquistados) {
+            pais.agregarFichas(1);
+            cantFichas = cantFichas - 1;
+            if (cantFichas == 0) break;
+        }
+    }
+
+    public int obtenerCantidadPaises(){
+        return paisesConquistados.size();
     }
 }

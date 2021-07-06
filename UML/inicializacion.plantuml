@@ -43,7 +43,7 @@ end loop
 juego -> mapa++: <<create>>(continentes:dict)
 
 loop para cada pais
-    mapa -> pais: <<create>>(nombre:str, limitrofes:str, continente:str)
+    mapa -> pais: <<create>>(nombre:str, continente:str, limitrofes:str)
 end loop
 mapa--
 

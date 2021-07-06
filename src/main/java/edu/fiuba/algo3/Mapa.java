@@ -1,18 +1,19 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.HashMap;
+
+import static java.util.Collections.shuffle;
 
 public class Mapa {
-    private Dictionary<String, Pais> paises;
+    private HashMap<String, Pais> paises;
 
     public Mapa() {
         this.paises = this.crearPaises();
     }
 
-    private Dictionary crearPaises() {
-        paises = new Hashtable();
+    private HashMap crearPaises() {
+        paises = new HashMap();
 
         ArrayList limitrofesSahara = new ArrayList<String>();
         ArrayList limitrofesZaire = new ArrayList<String>();
@@ -39,15 +40,16 @@ public class Mapa {
     }
 
     public void repartirPaises(ArrayList<Jugador> jugadores) {
-        this.paises.get("Argentina").ocupadoPor(jugadores.get(0), 1);
-        this.paises.get("Brasil").ocupadoPor(jugadores.get(1), 1);
-        this.paises.get("Colombia").ocupadoPor(jugadores.get(0), 1);
-        this.paises.get("Sahara").ocupadoPor(jugadores.get(0), 1);
-        this.paises.get("Zaire").ocupadoPor(jugadores.get(1), 1);
+
+        ArrayList<String> nombresDePaises = new ArrayList<>(paises.keySet());
+        shuffle(nombresDePaises); // Mezcla la lista de nombres de paises
+
+        int contadorJugador = 0;
+
+        while (nombresDePaises.size() > 0){
+            //Saca el primer nombre (es random por mezclar) y se lo manda a uno de los jugadores, en orden
+            this.paises.get(nombresDePaises.remove(0)).ocupadoPor(jugadores.get(contadorJugador%jugadores.size()),1);
+            contadorJugador++;
+        }
     }
-
-
 }
-
-
-
