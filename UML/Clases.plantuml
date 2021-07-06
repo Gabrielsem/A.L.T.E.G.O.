@@ -1,0 +1,47 @@
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+hide empty members
+
+title **__TEG__**
+
+class Juego{
+	
+}
+class Mapa{
+	
+}
+class Pais{
+	- cantidadFichas :Int
+	- continente :String
+	- vecinos :Pais[]
+}
+class Jugador{
+	
+}
+Class Equipo{
+	-color:String
+}
+Interface Objetivo<<Interface>>{
+	+ gano(jugador:Jugador):Bool
+}
+class Tarjeta{
+	
+}
+class Dados
+
+Juego *- "1" Mapa
+Mapa *- "50" Pais
+
+Juego *-- "2,6" Jugador
+
+Jugador "1"--"*" Pais
+
+Jugador -> Equipo
+
+Jugador -right-> Objetivo
+Jugador o- Tarjeta
+Juego o-- Tarjeta
+
+@enduml

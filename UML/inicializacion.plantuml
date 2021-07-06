@@ -1,0 +1,81 @@
+@startuml
+/'title Inicialización
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+Actor actor
+participant juego as ":Juego"
+participant jug as "Jugador"
+participant pais as ":Pais"
+
+actor ++
+actor -> juego ++: agregarPaises(paises)
+
+actor -> juego: inicializar()
+
+loop para cada pais
+    juego -> jug: ocupar(pais)
+    juego -> pais: ocupadoPor(jugador, 1)
+end loop
+'/
+
+title Inicialización
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+Actor actor
+participant juego as ":Juego"
+participant mapa as ":Mapa"
+participant jug as "Jugador"
+participant pais as ":Pais"
+
+actor ++
+actor -> juego++: inicializar()
+
+loop para cada jugador
+    juego -> jug: <<create>>(numJugador:int)
+end loop
+
+juego -> mapa++: <<create>>(continentes:dict)
+
+loop para cada pais
+    mapa -> pais: <<create>>(nombre:str, continente:str, limitrofes:str)
+end loop
+mapa--
+
+juego -> mapa++: repartirPaises(jugadores:Jugador)
+juego--
+
+loop para cada pais
+    mapa -> pais++: ocupadoPor(jugador:Juagdor, 1)
+    pais -> jug++: ocupar(pais:Pais)
+    jug--
+end loop
+mapa--
+pais--
+
+actor -> juego++: colocarFichasIniciales()
+
+loop para cada jugador
+    juego -> jug++: agregarFichas(5)
+    loop hasta quedarse sin fichas
+        jug -> pais++: agregarFichas(nFichas:int)
+        pais--
+    end loop
+end loop
+jug--
+
+loop para cada jugador
+    juego -> jug++: agregarFichas(3)
+    loop hasta quedarse sin fichas
+        jug -> pais++: agregarFichas(nFichas:int)
+        pais--
+    end loop
+end loop
+
+
+@enduml

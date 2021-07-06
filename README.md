@@ -1,21 +1,22 @@
-![tp2](https://github.com/NicolasEzequielZulaicaRivera/A3_TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/NicolasEzequielZulaicaRivera/A3_TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/NicolasEzequielZulaicaRivera/A3_TP2)
+![tp2](https://github.com/grupoAlgo3/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/grupoAlgo3/algo3_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/grupoAlgo3/algo3_tp2)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: A.L.T.E.G.O.
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
 ## Grupo {N}
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Marcelo Ariel Rondán** - [MarceAriel99](https://github.com/MarceAriel99)
+* **Ariana Magalí Salese D'Assaro** - [ariana-salese](https://github.com/ariana-salese)
+* **Nicolás Ezequiel Zulaica Rivera** - [NicolasEzequielZulaicaRivera](https://github.com/NicolasEzequielZulaicaRivera)
+* **Gabriel Marcos Semorile** - [Gabrielsem](https://github.com/Gabrielsem)
+* **Felipe de Luca Andrea** - [fdelu](https://github.com/fdelu)
 
 Corrector: **{Corrector}**
 
 ## Aplicación
 
-La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/NicolasEzequielZulaicaRivera/A3_TP2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
+La versión más reciente de la aplicación puede encontrarse en la pestaña [releases](https://github.com/grupoAlgo3/algo3_tp2/releases/latest) y ejecutarse en Linux, Windows o Mac de esta forma:
 
 ```bash
 $ java -jar <archivo.jar>
