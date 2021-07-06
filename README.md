@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 11
 
 * **Marcelo Ariel Rondán** - [MarceAriel99](https://github.com/MarceAriel99)
 * **Ariana Magalí Salese D'Assaro** - [ariana-salese](https://github.com/ariana-salese)
@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Gabriel Marcos Semorile** - [Gabrielsem](https://github.com/Gabrielsem)
 * **Felipe de Luca Andrea** - [fdelu](https://github.com/fdelu)
 
-Corrector: **{Corrector}**
+Corrector: **Joaquín Fontela**
 
 ## Aplicación
 
