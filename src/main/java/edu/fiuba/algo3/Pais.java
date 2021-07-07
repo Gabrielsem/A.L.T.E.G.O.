@@ -68,6 +68,10 @@ public class Pais {
         }
     }
 
+    public void agregarFichas(int cantidadFichas) {
+        fichas += cantidadFichas;
+    }
+
     public void moverEjercitos(Pais paisConquistado) {
         if (propietario == null) {
             throw new PaisNoTienePropietario(String.format("El pais %s no tiene propietario", nombre));
@@ -78,9 +82,5 @@ public class Pais {
 
         paisConquistado.ocupadoPor(propietario, fichasAMover);
         fichas -= fichasAMover;
-    }
-
-    public void agregarFichas(int cantFichas) {
-        //TODO
     }
 }

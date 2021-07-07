@@ -33,11 +33,21 @@ public class PaisTests {
     }
 
     @Test
-    public void paisAsignaFichasCorrectamente() {
+    public void paisAsignaFichasCorrectamenteAlOcuparse() {
         Jugador jug = new Jugador();
         pais.ocupadoPor(jug, 3);
 
         assertEquals(pais.cantidadFichas(), 3);
+    }
+
+    @Test
+    public void paisAgregaFichasCorrectamente() {
+        Jugador jug = new Jugador();
+        pais.ocupadoPor(jug, 1);
+
+        pais.agregarFichas(37);
+
+        assertEquals(pais.cantidadFichas(), 38);
     }
 
     @Test
