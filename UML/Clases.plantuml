@@ -7,7 +7,8 @@ hide empty members
 title **__TEG__**
 
 class Juego{
-	
+	+ inicializar()
+    + colocarFichasIniciales()
 }
 class Mapa{
 	
@@ -18,30 +19,34 @@ class Pais{
 	- vecinos :Pais[]
 }
 class Jugador{
-	
-}
-Class Equipo{
-	-color:String
+    + atacar(atacante:Pais,defensor:Pais,cantFichas:Int)
+    + agregarFichas(cantFichas:Int)
+    + ocupar(pais:Pais)
+    + desocupar(pais:Pais)
 }
 Interface Objetivo<<Interface>>{
 	+ gano(jugador:Jugador):Bool
 }
 class Tarjeta{
-	
-}
-class Dados
 
-Juego *- "1" Mapa
+}
+
+class Batalla{
+
+}
+
+Pais .> Batalla
+Batalla  "1" o- "2" Pais
+
+Juego *- Mapa
 Mapa *- "50" Pais
 
 Juego *-- "2,6" Jugador
 
 Jugador "1"--"*" Pais
 
-Jugador -> Equipo
-
-Jugador -right-> Objetivo
-Jugador o- Tarjeta
-Juego o-- Tarjeta
+Jugador -left> Objetivo
+Jugador o- "*" Tarjeta
+Juego o-- "50" Tarjeta
 
 @enduml
