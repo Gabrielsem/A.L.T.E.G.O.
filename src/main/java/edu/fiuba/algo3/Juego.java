@@ -1,5 +1,8 @@
 package edu.fiuba.algo3;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -10,10 +13,10 @@ public class Juego {
     private  ArrayList<Jugador> jugadores;
     private Mapa mapa;
 
-    public Juego(int cantJugadores) {
+    public Juego(int cantJugadores) throws IOException, ParseException {
         this.cantJugadores = cantJugadores;
         this.jugadores = new ArrayList<>();
-        this.mapa = new Mapa();
+        this.mapa = new Mapa("src/paises.json");
     }
 
     public void inicializar() {

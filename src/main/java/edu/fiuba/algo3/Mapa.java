@@ -1,5 +1,11 @@
 package edu.fiuba.algo3;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,33 +14,32 @@ import static java.util.Collections.shuffle;
 public class Mapa {
     private HashMap<String, Pais> paises;
 
-    public Mapa() {
-        this.paises = this.crearPaises();
+    public Mapa(String rutaArchivo) throws IOException, ParseException {
+        this.paises = this.crearPaises(rutaArchivo);
     }
 
-    private HashMap crearPaises() {
-        paises = new HashMap();
+    private HashMap<String, Pais> crearPaises(String rutaArchivo) throws IOException, ParseException {
+        this.paises = new HashMap<>();
 
-        ArrayList limitrofesSahara = new ArrayList<String>();
-        ArrayList limitrofesZaire = new ArrayList<String>();
-        ArrayList limitrofesBrasil = new ArrayList<String>();
-        ArrayList limitrofesArgentina = new ArrayList<String>();
-        ArrayList limitrofesColombia = new ArrayList<String>();
+        JSONParser jsonParser = new JSONParser();
+        FileReader lector = new FileReader(rutaArchivo);
+        JSONArray arregloJsonPaises = (JSONArray) jsonParser.parse(lector);
 
-        limitrofesSahara.add("Brasil");
-        limitrofesSahara.add("Zaire");
-        limitrofesZaire.add("Sahara");
-        limitrofesBrasil.add("Argentina");
-        limitrofesBrasil.add("Colombia");
-        limitrofesBrasil.add("Sahara");
-        limitrofesArgentina.add("Brasil");
-        limitrofesColombia.add("Colombia");
+        for (int i = 0; i < arregloJsonPaises.size(); i++) {
+            JSONObject paisJsonObj = (JSONObject) arregloJsonPaises.get(i);
 
-        paises.put("Brasil", new Pais("Brasil", "America del sur", limitrofesBrasil));
-        paises.put("Argentina", new Pais("Argentina", "America del sur", limitrofesArgentina));
-        paises.put("Colombia", new Pais("Colombia", "America del sur", limitrofesColombia));
-        paises.put("Sahara", new Pais("Sahara", "Africa", limitrofesSahara));
-        paises.put("Zaire", new Pais("Zaire", "Africa", limitrofesZaire));
+            String nombrePais = (String) paisJsonObj.get("nombre");
+            String nombreContinente = (String) paisJsonObj.get("continente");
+            JSONArray arregloJsonLimitrofes = (JSONArray) paisJsonObj.get("limitrofes");
+
+            ArrayList<String> limitrofes = new ArrayList<>();
+
+            for (int j = 0; j < limitrofes.size(); j++) {
+                limitrofes.add((String) arregloJsonLimitrofes.get(j));
+            }
+
+            this.paises.put(nombrePais, new Pais(nombrePais, nombreContinente, limitrofes));
+        }
 
         return paises;
     }
