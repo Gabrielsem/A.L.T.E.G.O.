@@ -28,7 +28,8 @@ Interface Objetivo<<Interface>>{
 	+ gano(jugador:Jugador):Bool
 }
 class Tarjeta{
-
+    - tipo : String
+    - nombrePais : String
 }
 
 class Batalla{

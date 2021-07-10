@@ -1,0 +1,40 @@
+@startuml
+title Secuencia de obtención de Tarjeta
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+actor Actor
+participant jueg as ":Juego"
+participant jug as ":Jugador"
+participant pais as ":Pais"
+
+Actor -> jueg ++: rondaAtaques()
+
+loop Para cada jugador
+    jueg -> jug ++: turnoAtaque()
+    note right: cant = len(paises)
+    loop Para cada ataque
+        jug -> pais: atacar(defensor, 5)
+        jug <-] : ocupar(defensor)
+    end loop
+
+    jug -> jueg ++: pedirTarjeta()
+    note right: if len(paises) > cant
+    jueg --> jug --: unaTarjeta
+    deactivate jug
+
+    jueg -> jug: turnoReagrupacion()
+end loop
+
+Actor -> jueg: rondaColocacion()
+loop Para cada jugdor
+    note over jug
+        1) Loopear tus tarjetas, si podes canjear una
+        de un pais que tenes lo haces
+        2) Fijarte si podes canjear 3 tarjetas
+        3) Agregar fichas
+    end note
+end loop
+@enduml
