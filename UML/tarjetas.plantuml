@@ -26,15 +26,21 @@ loop Para cada jugador
     deactivate jug
 
     jueg -> jug: turnoReagrupacion()
+    note over jug
+        Mover fichas entre paises vecinos
+    end note
 end loop
 
 Actor -> jueg: rondaColocacion()
 loop Para cada jugdor
+    jueg -> jug: turnoColocacion()
     note over jug
         1) Loopear tus tarjetas, si podes canjear una
         de un pais que tenes lo haces
         2) Fijarte si podes canjear 3 tarjetas
-        3) Agregar fichas
+        3) Agregar fichas nuevas, checkeando tu cantidad
+        de paises y si tenes algun continente entero + 
+        las del posible canje
     end note
 end loop
 @enduml
