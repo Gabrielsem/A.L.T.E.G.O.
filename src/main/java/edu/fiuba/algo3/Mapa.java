@@ -34,7 +34,7 @@ public class Mapa {
 
             ArrayList<String> limitrofes = new ArrayList<>();
 
-            for (int j = 0; j < limitrofes.size(); j++) {
+            for (int j = 0; j < arregloJsonLimitrofes.size(); j++) {
                 limitrofes.add((String) arregloJsonLimitrofes.get(j));
             }
 
