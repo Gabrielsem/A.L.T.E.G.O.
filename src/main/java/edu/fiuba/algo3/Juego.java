@@ -4,6 +4,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
@@ -34,5 +35,27 @@ public class Juego {
         for ( Jugador jugador : this.jugadores) {
             jugador.agregarFichas(3);
         }
+    }
+
+    public void rondaAtaques(){
+        //TODO - Marce & Gabo
+    }
+
+    public Tarjeta pedirTarjeta(){
+        //TODO - Marce & Gabo
+        return null;
+    }
+
+    public void rondaColocacion(){
+        //TODO - Z
+    }
+
+    public void devolverTarjetas( Collection<Tarjeta> tarjetas ){
+        //TODO - Z
+    }
+
+    public int fichasSegunContinentes( Collection<Pais> paises ){
+        //TODO - Z
+        return 0;
     }
 }
