@@ -1,0 +1,51 @@
+@startuml
+title **__Secuencia de Turno de Colocacion__**
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam style strictuml
+hide footbox
+
+actor Actor
+participant jueg as ":Juego"
+participant jug as ":Jugador"
+participant trj as ":Tarjeta"
+participant Tarjeta
+
+Actor ++
+Actor -> jueg ++: rondaColocacion()
+loop Para cada jugdor
+    jueg -> jug ++: turnoColocacion()
+    jug ->jug ++: canjearTarjetas()
+    loop tarjetas where tarjeta.pais in paises
+
+        jug -> trj ++ : Activar()
+        note over trj: Tarjeta deberia checkear que\n solo puede activarse 1 vez \n (cada vez que es entregada)
+        trj --
+    end loop
+
+        jug -> Tarjeta ++: grupoCanjeable(tarjetas)
+        jug <-- Tarjeta --: tarjetasCanjeables
+        alt If tarjetasCanjeables not null
+        jug -> jug : tarjetas.remove(tarjetasCanjeables)
+        jueg <- jug ++: devolverTarjetas(tarjetasCanjeables)
+        jueg --
+        jug -> jug ++: realizarCanje()
+        jug --
+        note left: Recibe fichas segun N de canje
+        end alt
+        jug --
+
+        jug -> jug ++: fichasPorConquista()
+        jug -> jug : fichas += max(paises.len /2,3)
+        jueg <- jug ++: fichasSegunContinentes(paises)
+        jueg --> jug --: fichas += fichasSegunContinentes
+        jug --
+
+    jug -> jug ++: agregarFichas( fichas )
+    jug --
+    note right: pregunta al usuario en que pais\n quiere poner cada ficha
+
+    jug --
+end loop
+jueg --
+@enduml

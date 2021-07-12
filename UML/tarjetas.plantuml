@@ -10,14 +10,17 @@ participant jueg as ":Juego"
 participant jug as ":Jugador"
 participant pais as ":Pais"
 
+Actor ++
 Actor -> jueg ++: rondaAtaques()
 
 loop Para cada jugador
     jueg -> jug ++: turnoAtaque()
     note right: cant = len(paises)
     loop Para cada ataque
-        jug -> pais: atacar(defensor, 5)
-        jug <-] : ocupar(defensor)
+        jug -> pais ++: atacar(defensor, 5)
+        pais --
+        jug <-] ++: ocupar(defensor)
+        jug --
     end loop
 
     jug -> jueg ++: pedirTarjeta()
@@ -25,22 +28,10 @@ loop Para cada jugador
     jueg --> jug --: unaTarjeta
     deactivate jug
 
-    jueg -> jug: turnoReagrupacion()
+    jueg -> jug ++: turnoReagrupacion()
     note over jug
         Mover fichas entre paises vecinos
     end note
 end loop
 
-Actor -> jueg: rondaColocacion()
-loop Para cada jugdor
-    jueg -> jug: turnoColocacion()
-    note over jug
-        1) Loopear tus tarjetas, si podes canjear una
-        de un pais que tenes lo haces
-        2) Fijarte si podes canjear 3 tarjetas
-        3) Agregar fichas nuevas, checkeando tu cantidad
-        de paises y si tenes algun continente entero + 
-        las del posible canje
-    end note
-end loop
 @enduml
