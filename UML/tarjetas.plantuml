@@ -1,5 +1,8 @@
 @startuml
-title Secuencia de obtención de Tarjeta
+title
+**__Ronda de Ataques__**
+Secuencia de obtención de Tarjeta
+end title
 skinparam responseMessageBelowArrow true
 skinparam monochrome true
 skinparam style strictuml
