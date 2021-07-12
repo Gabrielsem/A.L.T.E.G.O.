@@ -17,9 +17,9 @@ loop Para cada jugador
     jueg -> jug ++: turnoAtaque()
     note right: cant = len(paises)
     loop Para cada ataque
-        jug -> pais ++: atacar(defensor, 5)
-        pais --
+        jug -> pais ++: atacar(defensor, cantFichas)
         jug <-] ++: ocupar(defensor)
+        pais --
         jug --
     end loop
 
@@ -29,9 +29,10 @@ loop Para cada jugador
     deactivate jug
 
     jueg -> jug ++: turnoReagrupacion()
-    note over jug
-        Mover fichas entre paises vecinos
-    end note
+    loop Para cada reagrupación
+        jug -> pais ++: reagruparA(destinatario, cantFichas)
+    end loop
+
 end loop
 
 @enduml
