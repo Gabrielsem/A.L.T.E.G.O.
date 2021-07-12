@@ -49,6 +49,11 @@ public class Jugador {
     } No habría que crear un país, hay que acceder a los que tiene conquistados el jugador
     La idea de "agregarFichas" como lo pensamos, es que se le permita el jugador agregar las fichas
     que quiera en los paises que ya tiene conquistados.
+
+    Nico Z - Me lo imagine asi :
+        El jugador clickea un pais en el mapa, si es suyo le agrega una ficha.
+        Repetir hasta no tener fichas.
+    En la parte donde "crea" un pais, se supone que lo recibe como el input ( Hay que ver como seria con la UI )
      */
 
     public void agregarFichas(int cantFichas){
@@ -70,6 +75,10 @@ public class Jugador {
             }
         }
         */
+        /* Z - Parece parecido a lo que plantee salvo que
+            recibe el nombre del pais en vez del objeto
+            pide la cant de fichas
+        */
         // Hardcodeadísimo para probar
         for (Pais pais : paisesConquistados) {
             pais.agregarFichas(1);
@@ -80,5 +89,32 @@ public class Jugador {
 
     public int obtenerCantidadPaises(){
         return paisesConquistados.size();
+    }
+
+    public void turnoAtaque(){
+        //TODO - Marce & Gabo
+    }
+
+    public void turnoReagrupacion(){
+        //TODO - Marce & Gabo
+    }
+
+    public void turnoColocacion(){
+        //TODO - Z
+    }
+
+    public int canjearTarjetas(){
+        //TODO - Z
+        return 0;
+    }
+
+    public int realizarCanje(){
+        //TODO - Z
+        return 0;
+    }
+
+    public int fichasPorConquista(){
+        //TODO - Z
+        return 0;
     }
 }
