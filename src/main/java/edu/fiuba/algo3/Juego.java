@@ -22,7 +22,7 @@ public class Juego {
 
     public void inicializar() {
         for ( int numJugador = 0 ; numJugador <= this.cantJugadores; numJugador = numJugador + 1) {
-            this.jugadores.add(new Jugador(numJugador));
+            this.jugadores.add(new Jugador(numJugador, this));
         }
 
         this.mapa.repartirPaises(this.jugadores);
@@ -44,10 +44,10 @@ public class Juego {
     }
 
     public Pais obtenerPais(String nombrePais){
-        mapa.obtenerPais(nombrePais);
+        return mapa.obtenerPais(nombrePais);
     }
     public Tarjeta pedirTarjeta(){
-        //TODO - Marce & Gabo
+        //Ari hacé lo tuyo (devolver una tarjeta de una pool de objetos Tarjeta)
         return null;
     }
 
