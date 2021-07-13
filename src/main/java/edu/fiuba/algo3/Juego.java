@@ -27,7 +27,7 @@ public class Juego {
 
         this.mapa.repartirPaises(this.jugadores);
     }
-    
+
     public void colocarFichasIniciales() {
         for ( Jugador jugador : this.jugadores) {
             jugador.agregarFichas(5);
@@ -38,9 +38,14 @@ public class Juego {
     }
 
     public void rondaAtaques(){
-        //TODO - Marce & Gabo
+        for ( Jugador jugador : this.jugadores) {
+            jugador.turnoAtaque();
+        }
     }
 
+    public Pais obtenerPais(String nombrePais){
+        mapa.obtenerPais(nombrePais);
+    }
     public Tarjeta pedirTarjeta(){
         //TODO - Marce & Gabo
         return null;

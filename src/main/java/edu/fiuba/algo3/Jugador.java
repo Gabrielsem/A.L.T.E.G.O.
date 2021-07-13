@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
@@ -91,8 +92,29 @@ public class Jugador {
         return paisesConquistados.size();
     }
 
+
+
     public void turnoAtaque(){
-        //TODO - Marce & Gabo
+        int cantInicialPaises = paisesConquistados.size();
+        Scanner entrada = new Scanner(System.in);
+        String atacante = "default";
+        String defensor = "default";
+        int cantFichas = 0;
+
+        while (true )  {
+            System.out.println("introduzca cantidad de fichas para atacar: ");
+            cantFichas = entrada.nextInt();
+            if(cantFichas == 0) break;
+            System.out.println("introduzca atacante: ");
+            atacante = entrada.nextLine();
+            System.out.println("introduzca defensor: ");
+            defensor = entrada.nextLine();
+            //falta buscar los paises en el mapa
+            Pais paisAtacante =  paisesConquistados.buscar ;
+            Pais paisDefensor =  paisesConquistados.buscar ;
+            paisAtacante.atacar(paisDefensor, cantFichas);
+        }
+        //TODO
     }
 
     public void turnoReagrupacion(){
