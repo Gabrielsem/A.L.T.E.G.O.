@@ -13,20 +13,19 @@ public class Mapa {
     private HashMap<String, Pais> paises;
 
     public Mapa(String rutaArchivo) throws FileNotFoundException {
-        this.paises = this.crearPaises(rutaArchivo);
+        this.crearPaises(rutaArchivo);
     }
 
-    private HashMap<String, Pais> crearPaises(String rutaArchivo) throws FileNotFoundException {
+    private void crearPaises(String rutaArchivo) throws FileNotFoundException {
         this.paises = new HashMap<>();
 
         FileReader lector = new FileReader(rutaArchivo);
-
-
+        
         JsonElement elementoJson = JsonParser.parseReader(lector);
-        JsonArray arregloJsonPaises = elementoJson.getAsJsonArray();
+        JsonArray paisesJsonArreglo = elementoJson.getAsJsonArray();
 
-        for (int i = 0; i < arregloJsonPaises.size(); i++) {
-            JsonObject paisJsonObj = arregloJsonPaises.get(i).getAsJsonObject();
+        for (int i = 0; i < paisesJsonArreglo.size(); i++) {
+            JsonObject paisJsonObj = paisesJsonArreglo.get(i).getAsJsonObject();
 
             String nombrePais = paisJsonObj.get("Pais").getAsString();
             String nombreContinente = paisJsonObj.get("Continente").getAsString();
@@ -45,7 +44,6 @@ public class Mapa {
             this.paises.put(nombrePais, new Pais(nombrePais, nombreContinente, limitrofes));
         }
 
-        return paises;
     }
 
     public void repartirPaises(ArrayList<Jugador> jugadores) {
