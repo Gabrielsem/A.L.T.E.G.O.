@@ -20,6 +20,8 @@ public class JugadorTest {
         jugador = new Jugador();
         atacante = mock(Pais.class);
         defensor = mock(Pais.class);
+        when(atacante.nombre()).thenReturn("SoyAtacante");
+        when(defensor.nombre()).thenReturn("SoyDefensor");
     }
 
     @Test

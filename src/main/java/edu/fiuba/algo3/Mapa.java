@@ -57,4 +57,10 @@ public class Mapa {
             contadorJugador++;
         }
     }
+
+    public Pais obtenerPais(String nombrePais){
+        if(!paises.containsKey(nombrePais)) throw new PaisNoExiste(String.format("El Pais: %s no existe", nombrePais));
+        return paises.get(nombrePais);
+    }
+    //TODO
 }

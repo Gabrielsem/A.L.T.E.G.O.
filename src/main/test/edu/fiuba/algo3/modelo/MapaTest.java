@@ -26,9 +26,9 @@ public class MapaTest {
     public void paisesRepartidosEquitativamente() throws IOException, ParseException {
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(new Jugador(1));
-        jugadores.add(new Jugador(2));
-        jugadores.add(new Jugador(3));
+        jugadores.add(new Jugador(1, null));
+        jugadores.add(new Jugador(2, null));
+        jugadores.add(new Jugador(3, null));
 
         mapa.repartirPaises(jugadores);
 

@@ -1,26 +1,31 @@
 package edu.fiuba.algo3;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
-    HashSet<Pais> paisesConquistados = new HashSet<Pais>();
+    HashMap<String, Pais> paisesConquistados = new HashMap<String, Pais>();
+    HashSet<Tarjeta> tarjetas = new HashSet<Tarjeta>();
     int numero;
+    Juego juego;
     int canjesRealizados = 0;
 
     public Jugador(){}
 
-    public Jugador(int numeroDeJugador){
+    public Jugador(int numeroDeJugador, Juego claseJuego){
         numero = numeroDeJugador;
+        juego = claseJuego;
     }
 
     public void desocupar(Pais unPais) {
-        paisesConquistados.remove(unPais);
+        paisesConquistados.remove(unPais.nombre());
     }
 
     public void ocupar(Pais unPais){
-        paisesConquistados.add(unPais);
+        paisesConquistados.put(unPais.nombre(),unPais);
     }
 
     public int invadir(Pais atacante, Pais defensor) {
@@ -29,9 +34,8 @@ public class Jugador {
     }
 
     public void atacar(Pais atacante, Pais defensor, int cantFichas){
-        if( !paisesConquistados.contains(atacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",atacante.nombre()));
-        if( paisesConquistados.contains(defensor) ) throw new PaisDelMismoPropietarioNoPuedeSerAtacado(String.format("El jugador no puede atacar a el pais %s porque ya es suyo",defensor.nombre()));
-
+        if( !paisesConquistados.containsValue(atacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",atacante.nombre()));
+        if( paisesConquistados.containsValue(defensor) ) throw new PaisDelMismoPropietarioNoPuedeSerAtacado(String.format("El jugador no puede atacar a el pais %s porque ya es suyo",defensor.nombre()));
         atacante.atacar(defensor,cantFichas);
     }
     /*
@@ -81,8 +85,8 @@ public class Jugador {
             pide la cant de fichas
         */
         // Hardcodeadísimo para probar
-        for (Pais pais : paisesConquistados) {
-            pais.agregarFichas(1);
+        for (String nombrePais : paisesConquistados.keySet()) {
+            paisesConquistados.get(nombrePais).agregarFichas(1);
             cantFichas = cantFichas - 1;
             if (cantFichas == 0) break;
         }
@@ -92,8 +96,33 @@ public class Jugador {
         return paisesConquistados.size();
     }
 
+
+
     public void turnoAtaque(){
-        //TODO - Marce & Gabo
+        int cantInicialPaises = paisesConquistados.size();
+        Scanner entrada = new Scanner(System.in);
+        String nombreAtacante;
+        String nombreDefensor;
+        int cantFichas;
+
+        while (true)  {
+            System.out.println("introduzca cantidad de fichas para atacar: ");
+            cantFichas = entrada.nextInt();
+            if(cantFichas == 0) break;
+            System.out.println("introduzca atacante: ");
+            nombreAtacante = entrada.nextLine();
+            System.out.println("introduzca defensor: ");
+            nombreDefensor = entrada.nextLine();
+
+            if( !paisesConquistados.containsKey(nombreAtacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",nombreAtacante));
+            Pais atacante = paisesConquistados.get(nombreAtacante);
+            Pais defensor = juego.obtenerPais(nombreDefensor);
+            atacante.atacar(defensor, cantFichas);
+        }
+
+        if(paisesConquistados.size() > cantInicialPaises) {
+            tarjetas.add(juego.pedirTarjeta());
+        }
     }
 
     public void turnoReagrupacion(){

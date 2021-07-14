@@ -22,12 +22,12 @@ public class Juego {
 
     public void inicializar() {
         for ( int numJugador = 0 ; numJugador <= this.cantJugadores; numJugador = numJugador + 1) {
-            this.jugadores.add(new Jugador(numJugador));
+            this.jugadores.add(new Jugador(numJugador, this));
         }
 
         this.mapa.repartirPaises(this.jugadores);
     }
-    
+
     public void colocarFichasIniciales() {
         for ( Jugador jugador : this.jugadores) {
             jugador.agregarFichas(5);
@@ -38,11 +38,16 @@ public class Juego {
     }
 
     public void rondaAtaques(){
-        //TODO - Marce & Gabo
+        for ( Jugador jugador : this.jugadores) {
+            jugador.turnoAtaque();
+        }
     }
 
+    public Pais obtenerPais(String nombrePais){
+        return mapa.obtenerPais(nombrePais);
+    }
     public Tarjeta pedirTarjeta(){
-        //TODO - Marce & Gabo
+        //Ari hacé lo tuyo (devolver una tarjeta de una pool de objetos Tarjeta)
         return null;
     }
 
