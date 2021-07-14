@@ -6,8 +6,8 @@ import static java.lang.Math.max;
 
 public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
-    HashMap<String, Pais> paisesConquistados = new HashMap<String, Pais>();
-    HashSet<Tarjeta> tarjetas = new HashSet<Tarjeta>();
+    HashMap<String, Pais> paisesConquistados = new HashMap<>();
+    HashSet<Tarjeta> tarjetas = new HashSet<>();
     int numero;
     Juego juego;
     int canjesRealizados = 0;
@@ -140,9 +140,8 @@ public class Jugador {
 
     public int canjearTarjetas(){
         for( Tarjeta tarjeta : tarjetas ){
-            // TODO -Z
-            // Activar activables
-            // Ver si es responsabilidad de tarjeta o jugador
+            // TODO -Z- Task: Activar activables - When: Cuando Tarjeta este ~implementado
+            // if( tarjeta.pais in paisesConquistados ) tarjeta.activar();
         }
 
         HashSet<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
@@ -168,7 +167,7 @@ public class Jugador {
 
         fichas += max( paisesConquistados.size()/2 ,3);
 
-        fichas += juego.fichasSegunContinentes(paisesConquistados);
+        fichas += juego.fichasSegunContinentes(paisesConquistados.keySet());
 
         return fichas;
     }

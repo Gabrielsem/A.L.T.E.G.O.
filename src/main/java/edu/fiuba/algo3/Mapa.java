@@ -4,13 +4,21 @@ import com.google.gson.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 import static java.util.Collections.shuffle;
 
 public class Mapa {
     private HashMap<String, Pais> paises;
+
+    Map<String, Integer> valorDeContinente = Map.of(
+            "Asia", 7,
+            "Europa", 5,
+            "America del Norte",5,
+            "America del Sur",3,
+            "Africa",3,
+            "Oceania",2
+    );
 
     public Mapa(String rutaArchivo) throws FileNotFoundException {
         this.paises = this.crearPaises(rutaArchivo);
@@ -66,5 +74,21 @@ public class Mapa {
         if(!paises.containsKey(nombrePais)) throw new PaisNoExiste(String.format("El Pais: %s no existe", nombrePais));
         return paises.get(nombrePais);
     }
-    //TODO
+
+    public int fichasSegunContinentes(Set<String> paisesConquistados) {
+
+        HashMap<String, Pais> paisesNoConquistados = new HashMap<>(paises) ;
+        paisesNoConquistados.keySet().removeAll(paisesConquistados);
+
+        HashSet<String> continentesNoConquistados = new HashSet<>();
+        for( Pais pais : paisesNoConquistados.values() ) continentesNoConquistados.add( pais.continente() );
+
+        HashMap<String,Integer> continentesConquistados = new HashMap<>(valorDeContinente);
+        continentesConquistados.keySet().removeAll(continentesNoConquistados);
+
+        int fichas = 0;
+        for( int valor : continentesConquistados.values() ) fichas += valor;
+
+        return fichas;
+    }
 }

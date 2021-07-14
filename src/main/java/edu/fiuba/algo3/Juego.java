@@ -12,7 +12,7 @@ public class Juego {
     public Juego(int cantJugadores) throws FileNotFoundException {
         this.cantJugadores = cantJugadores;
         this.jugadores = new ArrayList<>();
-        this.mapa = new Mapa("src/paises.json");
+        this.mapa = new Mapa("archivos/paises.json");
     }
 
     public void inicializar() {
@@ -56,8 +56,7 @@ public class Juego {
         //TODO - Ari
     }
 
-    public int fichasSegunContinentes(HashMap<String, Pais> paises ) {
-        //TODO - Z
-        return 0;
+    public int fichasSegunContinentes(Set<String> paises ) {
+        return mapa.fichasSegunContinentes(paises);
     }
 }
