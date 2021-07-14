@@ -129,11 +129,30 @@ public class Jugador {
     }
 
     public void turnoColocacion(){
-        //TODO - Z
+        int fichas = 0;
+
+        fichas += canjearTarjetas();
+
+        fichas += fichasPorConquista();
+
+        agregarFichas( fichas );
     }
 
     public int canjearTarjetas(){
-        //TODO - Z
+        for( Tarjeta tarjeta : tarjetas ){
+            // TODO -Z
+            // Activar activables
+            // Ver si es responsabilidad de tarjeta o jugador
+        }
+
+        HashSet<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
+
+        if( Objects.nonNull(grupoCanjeable) ){
+            tarjetas.removeAll( grupoCanjeable );
+            juego.devolverTarjetas( grupoCanjeable );
+            return realizarCanje();
+        }
+
         return 0;
     }
 

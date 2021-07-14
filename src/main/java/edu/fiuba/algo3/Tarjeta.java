@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 public class Tarjeta {
 
@@ -17,7 +18,7 @@ public class Tarjeta {
 
     // Recibe una colleccion de tarjetas y devuelve un grupo de 3 tarjetas canjeable si hay, null si no hay
     // Un grupo canjeable son 3 iguales o 3 diferentes
-    static public Collection<Tarjeta> grupoCanjeable( Collection<Tarjeta> tarjetas ){
+    static public HashSet<Tarjeta> grupoCanjeable( HashSet<Tarjeta> tarjetas ){
         //TODO
         return null;
     }

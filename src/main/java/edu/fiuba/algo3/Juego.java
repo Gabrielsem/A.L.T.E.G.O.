@@ -47,11 +47,13 @@ public class Juego {
     }
 
     public void rondaColocacion() {
-        //TODO - Z
+        for ( Jugador jugador : jugadores) {
+            jugador.turnoColocacion();
+        }
     }
 
     public void devolverTarjetas( Collection<Tarjeta> tarjetas ) {
-        //TODO - Z
+        //TODO - Ari
     }
 
     public int fichasSegunContinentes(HashMap<String, Pais> paises ) {
