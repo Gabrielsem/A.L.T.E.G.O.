@@ -1,5 +1,5 @@
 module edu.fiuba.algo3 {
     requires javafx.controls;
-    requires json.simple;
+    requires com.google.gson;
     exports edu.fiuba.algo3;
 }
