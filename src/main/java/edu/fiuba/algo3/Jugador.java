@@ -7,6 +7,7 @@ public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
     HashSet<Pais> paisesConquistados = new HashSet<Pais>();
     int numero;
+    int canjesRealizados = 0;
 
     public Jugador(){}
 
@@ -109,8 +110,10 @@ public class Jugador {
     }
 
     public int realizarCanje(){
-        //TODO - Z
-        return 0;
+        canjesRealizados ++;
+        if( canjesRealizados == 1 ) return 4;
+        if( canjesRealizados == 2 ) return 7;
+        return (canjesRealizados-1)*5;
     }
 
     public int fichasPorConquista(){

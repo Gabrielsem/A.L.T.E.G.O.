@@ -66,4 +66,15 @@ public class JugadorTest {
 
         assertThrows(JugadorNoTienePais.class, () -> jugador.atacar(atacante,defensor,1));
     }
+
+    @Test
+    public void FichasObtenidasAlRealizarCanjesDeTarjetas(){
+
+        assertEquals(jugador.realizarCanje(),4);
+        assertEquals(jugador.realizarCanje(),7);
+
+        for( int i=10; i<= 25; i+=5 ){
+            assertEquals(jugador.realizarCanje(),i);
+        }
+    }
 }
