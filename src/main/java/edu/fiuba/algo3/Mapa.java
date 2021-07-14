@@ -1,11 +1,9 @@
 package edu.fiuba.algo3;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.google.gson.*;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,28 +12,34 @@ import static java.util.Collections.shuffle;
 public class Mapa {
     private HashMap<String, Pais> paises;
 
-    public Mapa(String rutaArchivo) throws IOException, ParseException {
+    public Mapa(String rutaArchivo) throws FileNotFoundException {
         this.paises = this.crearPaises(rutaArchivo);
     }
 
-    private HashMap<String, Pais> crearPaises(String rutaArchivo) throws IOException, ParseException {
+    private HashMap<String, Pais> crearPaises(String rutaArchivo) throws FileNotFoundException {
         this.paises = new HashMap<>();
 
-        JSONParser jsonParser = new JSONParser();
         FileReader lector = new FileReader(rutaArchivo);
-        JSONArray arregloJsonPaises = (JSONArray) jsonParser.parse(lector);
+
+
+        JsonElement elementoJson = JsonParser.parseReader(lector);
+        JsonArray arregloJsonPaises = elementoJson.getAsJsonArray();
 
         for (int i = 0; i < arregloJsonPaises.size(); i++) {
-            JSONObject paisJsonObj = (JSONObject) arregloJsonPaises.get(i);
+            JsonObject paisJsonObj = arregloJsonPaises.get(i).getAsJsonObject();
 
-            String nombrePais = (String) paisJsonObj.get("nombre");
-            String nombreContinente = (String) paisJsonObj.get("continente");
-            JSONArray arregloJsonLimitrofes = (JSONArray) paisJsonObj.get("limitrofes");
+            String nombrePais = paisJsonObj.get("Pais").getAsString();
+            String nombreContinente = paisJsonObj.get("Continente").getAsString();
+            JsonArray arregloJsonLimitrofes = paisJsonObj.get("Limita con").getAsJsonArray();
 
             ArrayList<String> limitrofes = new ArrayList<>();
+            //System.out.println("----------------------------------------");
+            //System.out.println("Nombre pais: " + nombrePais + "Nombre continente: " + nombreContinente);
+            //System.out.println("Limitrofes: ");
 
             for (int j = 0; j < arregloJsonLimitrofes.size(); j++) {
-                limitrofes.add((String) arregloJsonLimitrofes.get(j));
+                limitrofes.add(arregloJsonLimitrofes.get(j).getAsString());
+                //System.out.println("- " + arregloJsonLimitrofes.get(j).getAsString());
             }
 
             this.paises.put(nombrePais, new Pais(nombrePais, nombreContinente, limitrofes));

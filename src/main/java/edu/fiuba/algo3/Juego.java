@@ -1,8 +1,6 @@
 package edu.fiuba.algo3;
 
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Juego {
@@ -11,7 +9,7 @@ public class Juego {
     private  ArrayList<Jugador> jugadores;
     private Mapa mapa;
 
-    public Juego(int cantJugadores) throws IOException, ParseException {
+    public Juego(int cantJugadores) throws FileNotFoundException {
         this.cantJugadores = cantJugadores;
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa("src/paises.json");
@@ -34,7 +32,7 @@ public class Juego {
         }
     }
 
-    public void rondaAtaques(){
+    public void rondaAtaques() {
         for ( Jugador jugador : this.jugadores) {
             jugador.turnoAtaque();
         }
@@ -43,22 +41,20 @@ public class Juego {
     public Pais obtenerPais(String nombrePais){
         return mapa.obtenerPais(nombrePais);
     }
-    public Tarjeta pedirTarjeta(){
+    public Tarjeta pedirTarjeta() {
         //Ari hacé lo tuyo (devolver una tarjeta de una pool de objetos Tarjeta)
         return null;
     }
 
-    public void rondaColocacion(){
-        for ( Jugador jugador : jugadores) {
-            jugador.turnoColocacion();
-        }
+    public void rondaColocacion() {
+        //TODO - Z
     }
 
-    public void devolverTarjetas( Collection<Tarjeta> tarjetas ){
-        //TODO - Ari
+    public void devolverTarjetas( Collection<Tarjeta> tarjetas ) {
+        //TODO - Z
     }
 
-    public int fichasSegunContinentes(HashMap<String, Pais> paises ){
+    public int fichasSegunContinentes(HashMap<String, Pais> paises ) {
         //TODO - Z
         return 0;
     }
