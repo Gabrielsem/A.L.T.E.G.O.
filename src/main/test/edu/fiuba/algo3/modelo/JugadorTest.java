@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -78,5 +81,86 @@ public class JugadorTest {
         for( int i=10; i<= 25; i+=5 ){
             assertEquals(jugador.realizarCanje(),i);
         }
+    }
+
+    @Test
+    public void FichasPorConquistaDeMenosQue8Paises(){
+
+        Juego juego = mock(Juego.class);
+        when(juego.fichasSegunContinentes( any() )).thenReturn(0);
+
+        jugador = new Jugador(0,juego);
+
+        for(int i=1; i<8; i++){
+
+            Pais unPais = new Pais("nombre"+i,"cont", new ArrayList<>() );
+            jugador.ocupar(unPais);
+            assertEquals( jugador.fichasPorConquista(), 3 );
+        }
+
+    }
+
+    @Test
+    public void FichasPorConquistaDeMenosQue8PaisesYContinentes(){
+
+        Juego juego = mock(Juego.class);
+        when(juego.fichasSegunContinentes( any() )).thenReturn(5);
+
+        jugador = new Jugador(0,juego);
+
+        for(int i=1; i<6; i++){
+
+            Pais unPais = new Pais("nombre"+i,"cont", new ArrayList<>() );
+            jugador.ocupar(unPais);
+        }
+        assertEquals( jugador.fichasPorConquista(), 3+5 );
+
+        when(juego.fichasSegunContinentes( any() )).thenReturn(10);
+        assertEquals( jugador.fichasPorConquista(), 3+10 );
+
+    }
+
+    @Test
+    public void FichasPorConquistaDeMasQue8Paises(){
+
+        Juego juego = mock(Juego.class);
+        when(juego.fichasSegunContinentes( any() )).thenReturn(0);
+
+        jugador = new Jugador(0,juego);
+
+        for(int i=1; i<=7; i++){
+            Pais unPais = new Pais("nombre"+i,"cont", new ArrayList<>() );
+            jugador.ocupar(unPais);
+        }
+
+        for(int i=8; i<30; i++){
+
+            Pais unPais = new Pais("nombre"+i,"cont", Arrays.asList("Argentina", "Uruguay"));
+            jugador.ocupar(unPais);
+            assertEquals( jugador.fichasPorConquista(), i/2 );
+        }
+
+    }
+
+    @Test
+    public void FichasPorConquistaDeMasQue8PaisesYContinentes(){
+
+        Juego juego = mock(Juego.class);
+        when(juego.fichasSegunContinentes( any() )).thenReturn(6);
+
+        jugador = new Jugador(0,juego);
+
+        for(int i=1; i<=10; i++){
+
+            Pais unPais = new Pais("nombre"+i,"cont", Arrays.asList("Argentina", "Uruguay"));
+            jugador.ocupar(unPais);
+
+        }
+
+        assertEquals( jugador.fichasPorConquista(), 5+6 );
+
+        when(juego.fichasSegunContinentes( any() )).thenReturn(8);
+        assertEquals( jugador.fichasPorConquista(), 5+8 );
+
     }
 }

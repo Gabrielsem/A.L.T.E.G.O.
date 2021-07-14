@@ -1,9 +1,8 @@
 package edu.fiuba.algo3;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static java.lang.Math.max;
 
 public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
@@ -146,7 +145,12 @@ public class Jugador {
     }
 
     public int fichasPorConquista(){
-        //TODO - Z
-        return 0;
+        int fichas = 0;
+
+        fichas += max( paisesConquistados.size()/2 ,3);
+
+        fichas += juego.fichasSegunContinentes(paisesConquistados);
+
+        return fichas;
     }
 }

@@ -3,10 +3,7 @@ package edu.fiuba.algo3;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.*;
 
 public class Juego {
 
@@ -59,7 +56,7 @@ public class Juego {
         //TODO - Z
     }
 
-    public int fichasSegunContinentes( Collection<Pais> paises ){
+    public int fichasSegunContinentes(HashMap<String, Pais> paises ){
         //TODO - Z
         return 0;
     }
