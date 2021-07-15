@@ -127,7 +127,29 @@ public class Jugador {
     }
 
     public void turnoReagrupacion(){
-        //TODO - Marce & Gabo
+
+        Scanner entrada = new Scanner(System.in);
+        String nombreOrigen;
+        String nombreDestino;
+        int cantFichas;
+
+        while (true) {
+            System.out.println("introduzca cantidad de fichas a mover: ");
+            cantFichas = entrada.nextInt();
+            if(cantFichas == 0) break;
+            System.out.println("introduzca el origen: ");
+            nombreOrigen = entrada.nextLine();
+            System.out.println("introduzca el destino: ");
+            nombreDestino = entrada.nextLine();
+
+            if( !paisesConquistados.containsKey(nombreOrigen) ) throw new JugadorNoTienePais(String.format("El jugador no mover fichas desde el pais %s porque no es suyo",nombreOrigen));
+            if( !paisesConquistados.containsKey(nombreDestino) ) throw new JugadorNoTienePais(String.format("El jugador no puede mover fichas al pais %s porque no es suyo",nombreDestino));
+
+            Pais Origen = paisesConquistados.get(nombreOrigen);
+            Pais Destino = paisesConquistados.get(nombreDestino);
+
+            Origen.reagruparA(Destino, cantFichas);
+        }
     }
 
     public void turnoColocacion(){

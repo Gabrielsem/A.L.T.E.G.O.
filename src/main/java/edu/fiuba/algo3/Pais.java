@@ -83,4 +83,16 @@ public class Pais {
         paisConquistado.ocupadoPor(propietario, fichasAMover);
         fichas -= fichasAMover;
     }
+
+    public void reagruparA(Pais paisDestino, int cantFichas){
+        if( !this.esVecino(paisDestino.nombre())) throw new PaisNoPuedeReagruparAPaisNoVecino(String.format("El pais %s no es vecino de %s", paisDestino.nombre(), nombre));
+        verificarAlcanzanFichas(cantFichas);
+
+        fichas -= cantFichas;
+        paisDestino.agregarFichas(cantFichas);
+    }
+
+    public boolean esVecino(String nombrePais){
+        return vecinos.contains(nombrePais);
+    }
 }
