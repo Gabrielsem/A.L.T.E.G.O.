@@ -36,7 +36,7 @@ public class Tarjeta {
     static private ArrayList<Tarjeta> obtenerTarjetasIguales(ArrayList<Tarjeta> tarjetas) {
         ArrayList<Tarjeta> tarjetasIguales = new ArrayList<>();
 
-        for(int i = 0; i < tarjetas.size(); i++) {
+        for (int i = 0; i < tarjetas.size(); i++) {
             Tarjeta tarjetaActual = tarjetas.get(i);
             tarjetasIguales.add(tarjetaActual);
             for (int j = 0; j < tarjetas.size(); j++) {
@@ -47,17 +47,17 @@ public class Tarjeta {
             }
             tarjetasIguales = new ArrayList<>();
         }
-
         return null;
     }
 
+    // Recibe una colleccion de tarjetas y devuelve un grupo de 3 tarjetas canjeable si hay, null si no hay
+    // Un grupo canjeable son 3 iguales o 3 diferentes
     //Falta refactorizacion
     //Falta consirar caso todas distintas
-    static public ArrayList<Tarjeta> grupoCanjeable( ArrayList<Tarjeta> tarjetas ) {
+    static public ArrayList<Tarjeta> grupoCanjeable(ArrayList<Tarjeta> tarjetas ) {
 
         ArrayList<Tarjeta> tarjetasIguales = obtenerTarjetasIguales(tarjetas);
         return tarjetasIguales;
-
     }
 
 }

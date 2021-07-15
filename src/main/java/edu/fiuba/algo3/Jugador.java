@@ -7,8 +7,9 @@ import static java.lang.Math.max;
 public class Jugador {
     //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
     // no deberia ser privado todo esto?
-    HashMap<String, Pais> paisesConquistados = new HashMap<String, Pais>();
-    HashSet<Tarjeta> tarjetas = new HashSet<Tarjeta>();
+
+    HashMap<String, Pais> paisesConquistados = new HashMap<>();
+    ArrayList<Tarjeta> tarjetas = new ArrayList<>();
     int numero;
     Juego juego;
     int canjesRealizados = 0;
@@ -130,11 +131,29 @@ public class Jugador {
     }
 
     public void turnoColocacion(){
-        //TODO - Z
+        int fichas = 0;
+
+        fichas += canjearTarjetas();
+
+        fichas += fichasPorConquista();
+
+        agregarFichas( fichas );
     }
 
     public int canjearTarjetas(){
-        //TODO - Z
+        for( Tarjeta tarjeta : tarjetas ){
+            // TODO -Z- Task: Activar activables - When: Cuando Tarjeta este ~implementado
+            // if( tarjeta.pais in paisesConquistados ) tarjeta.activar();
+        }
+
+        ArrayList<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
+
+        if( Objects.nonNull(grupoCanjeable) ){
+            tarjetas.removeAll( grupoCanjeable );
+            juego.devolverTarjetas( grupoCanjeable );
+            return realizarCanje();
+        }
+
         return 0;
     }
 
@@ -150,7 +169,7 @@ public class Jugador {
 
         fichas += max( paisesConquistados.size()/2 ,3);
 
-        fichas += juego.fichasSegunContinentes(paisesConquistados);
+        fichas += juego.fichasSegunContinentes(paisesConquistados.keySet());
 
         return fichas;
     }

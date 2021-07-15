@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Juego {
 
-    private int cantJugadores;
+    final private int cantJugadores;
     private  ArrayList<Jugador> jugadores;
     private Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
@@ -76,15 +76,16 @@ public class Juego {
     }
 
     public void rondaColocacion() {
-        //TODO - Z
+        for ( Jugador jugador : jugadores) {
+            jugador.turnoColocacion();
+        }
     }
 
     public void devolverTarjetas( Collection<Tarjeta> tarjetas ) {
-        //TODO - Z
+        //TODO - Ari
     }
 
-    public int fichasSegunContinentes(HashMap<String, Pais> paises ) {
-        //TODO - Z
-        return 0;
+    public int fichasSegunContinentes(Set<String> paises ) {
+        return mapa.fichasSegunContinentes(paises);
     }
 }
