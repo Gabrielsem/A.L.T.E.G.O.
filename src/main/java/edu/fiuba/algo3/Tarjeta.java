@@ -60,4 +60,7 @@ public class Tarjeta {
         return tarjetasIguales;
     }
 
+    public String pais(){
+        return pais.nombre();
+    };
 }

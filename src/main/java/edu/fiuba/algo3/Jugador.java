@@ -141,10 +141,9 @@ public class Jugador {
     }
 
     public int canjearTarjetas(){
-        for( Tarjeta tarjeta : tarjetas ){
-            // TODO -Z- Task: Activar activables - When: Cuando Tarjeta este ~implementado
-            // if( tarjeta.pais in paisesConquistados ) tarjeta.activar();
-        }
+        for( Tarjeta tarjeta : tarjetas )
+            if( paisesConquistados.keySet().contains( tarjeta.pais() ) )
+                tarjeta.activar();
 
         ArrayList<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
 
