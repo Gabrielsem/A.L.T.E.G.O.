@@ -3,10 +3,14 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,6 +21,8 @@ public class JugadorTest {
     Jugador jugador;
     Pais atacante;
     Pais defensor;
+    private static final InputStream DEFAULT_STDIN = System.in;
+
 
     @BeforeEach
     public void setUp(){
@@ -26,7 +32,10 @@ public class JugadorTest {
         when(atacante.nombre()).thenReturn("SoyAtacante");
         when(defensor.nombre()).thenReturn("SoyDefensor");
     }
-
+    @AfterEach
+    public void rollbackChangesToStdin() { // regresa el estado del System.in al default
+        System.setIn(DEFAULT_STDIN);
+    }
     @Test
     public void JugadorNoPuedeAtacarConUnPaisQueNoTiene(){
 
@@ -163,4 +172,36 @@ public class JugadorTest {
         assertEquals( jugador.fichasPorConquista(), 5+8 );
 
     }
+
+    @Test
+    public void jugadorNoAtacaYNoGanaTarjeta(){
+        Juego juego = mock(Juego.class);
+        Jugador jug = new Jugador(1, juego);
+
+        System.setIn(new ByteArrayInputStream("0".getBytes()));
+        jug.turnoAtaque();
+
+        verify(juego,times(0)).pedirTarjeta();
+    }
+    /*
+    @Test
+    public void jugadorAtacaYNoGanaTarjeta(){
+        Juego juego = mock(Juego.class);
+        Jugador jug = new Jugador(1, juego);
+        Pais arg = mock(Pais.class);
+        Pais chile = mock(Pais.class);
+        when(arg.nombre()).thenReturn("Argentina");
+        when(chile.nombre()).thenReturn("Chile");
+        when(juego.obtenerPais("Chile")).thenReturn(chile);
+
+        jug.ocupar(arg);
+
+
+
+        System.setIn(new ByteArrayInputStream("1\nArgentina\nChile\n1".getBytes()));
+        jug.turnoAtaque();
+        verify(arg,times(1)).atacar(chile, 1);
+        verify(juego,times(0)).pedirTarjeta();
+    }
+     */
 }

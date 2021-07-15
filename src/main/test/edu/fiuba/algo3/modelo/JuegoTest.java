@@ -24,4 +24,5 @@ public class JuegoTest {
     public void fichasPorContinenteVacio() {
         assertEquals(0,juego.fichasSegunContinentes(new HashSet<>() ));
     }// Delegado a mapa. Implementacion y testeo
+
 }
