@@ -54,7 +54,7 @@ public class Mapa {
             int cantidad = continenteJson.get("Cantidad").getAsInt();
 
             valorDeContinente.put(nombreContinente, cantidad);
-            System.out.printf("%s : %d%n", nombreContinente, cantidad);
+            //System.out.printf("%s : %d%n", nombreContinente, cantidad);
         }
     }
 
