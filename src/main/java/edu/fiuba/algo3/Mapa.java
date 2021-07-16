@@ -9,39 +9,33 @@ import java.util.*;
 import static java.util.Collections.shuffle;
 
 public class Mapa {
-    private HashMap<String, Pais> paises;
-
-    Map<String, Integer> valorDeContinente = Map.of(
-            "Asia", 7,
-            "Europa", 5,
-            "America del Norte",5,
-            "America del Sur",3,
-            "Africa",3,
-            "Oceania",2
-    );
+    final private HashMap<String, Pais> paises;
+    final private HashMap<String, Integer> valorDeContinente;
 
     public Mapa(String rutaArchivo) throws FileNotFoundException {
-        this.crearPaises(rutaArchivo);
+        paises = new HashMap<>();
+        valorDeContinente = new HashMap<>();
+        this.leerArchivo(rutaArchivo);
     }
 
-    private void crearPaises(String rutaArchivo) throws FileNotFoundException {
-        this.paises = new HashMap<>();
-
+    private void leerArchivo(String rutaArchivo) throws FileNotFoundException {
         FileReader lector = new FileReader(rutaArchivo);
-        
-        JsonElement elementoJson = JsonParser.parseReader(lector);
-        JsonArray paisesJsonArreglo = elementoJson.getAsJsonArray();
 
-        for (int i = 0; i < paisesJsonArreglo.size(); i++) {
-            JsonObject paisJsonObj = paisesJsonArreglo.get(i).getAsJsonObject();
+        JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
+        cargarFichasPorContinente(objetoJson.get("fichasPorContinente").getAsJsonArray());
+        cargarPaises(objetoJson.get("paises").getAsJsonArray());
+    }
+
+    private void cargarPaises(JsonArray paisesJson) {
+        for (int i = 0; i < paisesJson.size(); i++) {
+            JsonObject paisJsonObj = paisesJson.get(i).getAsJsonObject();
 
             String nombrePais = paisJsonObj.get("Pais").getAsString();
             String nombreContinente = paisJsonObj.get("Continente").getAsString();
             JsonArray arregloJsonLimitrofes = paisJsonObj.get("Limita con").getAsJsonArray();
-
             ArrayList<String> limitrofes = new ArrayList<>();
             //System.out.println("----------------------------------------");
-            //System.out.println("Nombre pais: " + nombrePais + "Nombre continente: " + nombreContinente);
+            //System.out.println("Nombre pais: " + nombrePais + " Nombre continente: " + nombreContinente);
             //System.out.println("Limitrofes: ");
 
             for (int j = 0; j < arregloJsonLimitrofes.size(); j++) {
@@ -51,7 +45,17 @@ public class Mapa {
 
             this.paises.put(nombrePais, new Pais(nombrePais, nombreContinente, limitrofes));
         }
+    }
 
+    private void cargarFichasPorContinente(JsonArray fichasPorContinenteJson) {
+        for (int i = 0; i < fichasPorContinenteJson.size(); i++) {
+            JsonObject continenteJson = fichasPorContinenteJson.get(i).getAsJsonObject();
+            String nombreContinente = continenteJson.get("Continente").getAsString();
+            int cantidad = continenteJson.get("Cantidad").getAsInt();
+
+            valorDeContinente.put(nombreContinente, cantidad);
+            System.out.printf("%s : %d%n", nombreContinente, cantidad);
+        }
     }
 
     public void repartirPaises(ArrayList<Jugador> jugadores) {
@@ -86,7 +90,6 @@ public class Mapa {
 
         int fichas = 0;
         for( int valor : continentesConquistados.values() ) fichas += valor;
-
         return fichas;
     }
 }
