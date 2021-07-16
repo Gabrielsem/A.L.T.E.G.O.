@@ -31,7 +31,7 @@ public class Jugador {
 
     public int invadir(Pais atacante, Pais defensor) {
         // pedir un dato al jugador y devolverlo
-        return 0;
+        return 3;
     }
 
     public void atacar(Pais atacante, Pais defensor, int cantFichas){
@@ -86,10 +86,12 @@ public class Jugador {
             pide la cant de fichas
         */
         // Hardcodeadísimo para probar
-        for (String nombrePais : paisesConquistados.keySet()) {
-            paisesConquistados.get(nombrePais).agregarFichas(1);
-            cantFichas = cantFichas - 1;
-            if (cantFichas == 0) break;
+        while (cantFichas > 0) {
+            for (String nombrePais : paisesConquistados.keySet()) {
+                paisesConquistados.get(nombrePais).agregarFichas(1);
+                cantFichas = cantFichas - 1;
+                if (cantFichas == 0) break;
+            }
         }
     }
 
@@ -107,7 +109,6 @@ public class Jugador {
         int cantFichas;
 
         while (true)  {
-            System.out.println("introduzca cantidad de fichas para atacar: ");
             cantFichas = entrada.nextInt();
             if(cantFichas == 0) break;
             System.out.println("introduzca atacante: ");
@@ -121,7 +122,7 @@ public class Jugador {
             atacante.atacar(defensor, cantFichas);
         }
 
-        if(paisesConquistados.size() > cantInicialPaises) {
+        if (paisesConquistados.size() > cantInicialPaises) {
             tarjetas.add(juego.pedirTarjeta());
         }
     }
@@ -158,7 +159,6 @@ public class Jugador {
         fichas += canjearTarjetas();
 
         fichas += fichasPorConquista();
-
         agregarFichas( fichas );
     }
 
