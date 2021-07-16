@@ -1,4 +1,4 @@
-![tp2](https://github.com/NicolasEzequielZulaicaRivera/A3_TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/NicolasEzequielZulaicaRivera/A3_TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/grupoAlgo3/algo3_tp2)
+![tp2](https://github.com/NicolasEzequielZulaicaRivera/A3_TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/NicolasEzequielZulaicaRivera/A3_TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/NicolasEzequielZulaicaRivera/A3_TP2)
 
 # TP2 Algoritmos 3: A.L.T.E.G.O.
 
