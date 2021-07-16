@@ -22,7 +22,7 @@ public class MapaTest {
 
     Mapa mapa;
     static String[] continentes = {"Asia", "Europa", "America del Norte", "America del Sur","Africa","Oceania"};
-    static Map<String, HashSet> paisesPorContinente;
+    static Map<String, HashSet<String>> paisesPorContinente;
     static String rutaArchivo = "archivos/paises.json";
 
     @BeforeAll
@@ -33,7 +33,7 @@ public class MapaTest {
 
         JsonArray arregloJsonPaises;
         try {
-            arregloJsonPaises = JsonParser.parseReader(new FileReader(rutaArchivo)).getAsJsonArray();
+            arregloJsonPaises = JsonParser.parseReader(new FileReader(rutaArchivo)).getAsJsonObject().get("paises").getAsJsonArray();
         } catch (FileNotFoundException e) { throw new RuntimeException("Error al cargar paisesPorContinente"); }
 
         for( JsonElement pais : arregloJsonPaises ){
@@ -46,7 +46,6 @@ public class MapaTest {
     @BeforeEach
     public void setUp() throws FileNotFoundException {
         mapa = new Mapa("archivos/paises.json");
-
     }
 
     @Test
