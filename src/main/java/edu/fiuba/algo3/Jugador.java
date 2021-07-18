@@ -109,13 +109,12 @@ public class Jugador {
         int cantFichas;
 
         while (true)  {
-            cantFichas = entrada.nextInt();
+            cantFichas = Integer.parseInt(entrada.nextLine());
             if(cantFichas == 0) break;
             System.out.println("introduzca atacante: ");
             nombreAtacante = entrada.nextLine();
             System.out.println("introduzca defensor: ");
             nombreDefensor = entrada.nextLine();
-            System.out.println(nombreAtacante);
             if( !paisesConquistados.containsKey(nombreAtacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",nombreAtacante));
             Pais atacante = paisesConquistados.get(nombreAtacante);
             Pais defensor = juego.obtenerPais(nombreDefensor);

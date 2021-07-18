@@ -183,7 +183,7 @@ public class JugadorTest {
 
         verify(juego,times(0)).pedirTarjeta();
     }
-    /*
+
     @Test
     public void jugadorAtacaYNoGanaTarjeta(){
         Juego juego = mock(Juego.class);
@@ -196,12 +196,10 @@ public class JugadorTest {
 
         jug.ocupar(arg);
 
-
-
-        System.setIn(new ByteArrayInputStream("1\nArgentina\nChile\n1".getBytes()));
+        System.setIn(new ByteArrayInputStream("1\nArgentina\nChile\n0".getBytes()));
         jug.turnoAtaque();
+
         verify(arg,times(1)).atacar(chile, 1);
         verify(juego,times(0)).pedirTarjeta();
     }
-     */
 }
