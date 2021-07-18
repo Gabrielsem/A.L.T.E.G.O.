@@ -2,10 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.fiuba.algo3.Jugador;
-import edu.fiuba.algo3.Mapa;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

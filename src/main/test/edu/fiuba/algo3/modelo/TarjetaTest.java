@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Pais;
-import edu.fiuba.algo3.Simbolo;
-import edu.fiuba.algo3.Tarjeta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,9 +23,14 @@ public class TarjetaTest {
     public void setUp() {
         simbolo = mock(Simbolo.class);
         simboloBrasil = mock(Simbolo.class);
+
         brasil = mock(Pais.class);
+        when(brasil.nombre()).thenReturn("Brasil");
         colombia = mock(Pais.class);
+        when(colombia.nombre()).thenReturn("Colombia");
         argentina = mock(Pais.class);
+        when(argentina.nombre()).thenReturn("Argentina");
+
         tarjetaArgentina = new Tarjeta(argentina, simbolo);
         tarjetaBrasil = new Tarjeta(brasil, simbolo);
         tarjetaColombia = new Tarjeta(colombia, simbolo);
@@ -103,5 +105,12 @@ public class TarjetaTest {
     @Test
     public void obtenerGrupoCanjeableConTresTarjetasConDistintoSimboloLasDevuelve() {
 
+    }
+
+    @Test
+    public void pedirPaisTarjeta() {
+        assertEquals("Argentina",tarjetaArgentina.pais());
+        assertEquals("Brasil",tarjetaBrasil.pais());
+        assertEquals("Colombia",tarjetaColombia.pais());
     }
 }

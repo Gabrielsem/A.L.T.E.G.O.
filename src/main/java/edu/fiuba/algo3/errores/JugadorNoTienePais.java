@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.errores;
 
 public class JugadorNoTienePais extends RuntimeException {
     public JugadorNoTienePais(String mensaje) {

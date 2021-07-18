@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.*;
+import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
+import edu.fiuba.algo3.errores.PaisNoTieneFichasSuficientes;
+import edu.fiuba.algo3.errores.PaisNoTienePropietario;
+import edu.fiuba.algo3.errores.PaisSoloPuedeAtacarVecinos;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 

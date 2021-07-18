@@ -1,4 +1,6 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.errores.*;
 
 import java.util.*;
 import java.util.stream.Collectors;

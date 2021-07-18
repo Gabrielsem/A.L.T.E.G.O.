@@ -1,15 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.*;
+import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.AdditionalAnswers.delegatesTo;

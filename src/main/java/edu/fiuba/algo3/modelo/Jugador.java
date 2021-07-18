@@ -1,4 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.errores.JugadorNoTienePais;
+import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 
 import java.util.*;
 
