@@ -201,4 +201,28 @@ public class JugadorTest {
         verify(arg,times(1)).atacar(chile, 1);
         verify(juego,times(0)).pedirTarjeta();
     }
+
+    @Test
+    public void jugadorAtacaYGanaTarjeta(){
+        Juego juego = mock(Juego.class);
+        Jugador jug = new Jugador(1, juego);
+        Pais arg = mock(Pais.class);
+        Pais chile = mock(Pais.class);
+        when(arg.nombre()).thenReturn("Argentina");
+        when(chile.nombre()).thenReturn("Chile");
+        when(juego.obtenerPais("Chile")).thenReturn(chile);
+
+        doAnswer(invocation ->{
+            jug.ocupar(chile);
+            return null;
+        }).when(arg).atacar(chile,1);
+
+        jug.ocupar(arg);
+
+        System.setIn(new ByteArrayInputStream("1\nArgentina\nChile\n0".getBytes()));
+        jug.turnoAtaque();
+
+        verify(arg,times(1)).atacar(chile, 1);
+        verify(juego,times(1)).pedirTarjeta();
+    }
 }
