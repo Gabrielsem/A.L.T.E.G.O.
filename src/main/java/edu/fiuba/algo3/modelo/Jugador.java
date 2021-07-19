@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
+import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 
 import java.util.*;
 
@@ -42,67 +43,29 @@ public class Jugador {
         if( paisesConquistados.containsValue(defensor) ) throw new PaisDelMismoPropietarioNoPuedeSerAtacado(String.format("El jugador no puede atacar a el pais %s porque ya es suyo",defensor.nombre()));
         atacante.atacar(defensor,cantFichas);
     }
-    /*
-    public int agregarFichas( int cantFichas ){
-        Pais receptorDeFichas;
-        while(cantFichas>0){
-            receptorDeFichas=new Pais("input","input",null);//input
-            if( paisesConquistados.contains(receptorDeFichas) ){
-                receptorDeFichas.agregarFichas(1);
-                cantFichas--;
-            }else{
-                //muestra algo o no hace nada ?
-            }
-        }
-        return 0;
-    } No habría que crear un país, hay que acceder a los que tiene conquistados el jugador
-    La idea de "agregarFichas" como lo pensamos, es que se le permita el jugador agregar las fichas
-    que quiera en los paises que ya tiene conquistados.
-
-    Nico Z - Me lo imagine asi :
-        El jugador clickea un pais en el mapa, si es suyo le agrega una ficha.
-        Repetir hasta no tener fichas.
-    En la parte donde "crea" un pais, se supone que lo recibe como el input ( Hay que ver como seria con la UI )
-     */
 
     public void agregarFichas(int cantFichas){
-        /* Algo así tendŕia que ser creemos
+        Scanner entrada = new Scanner(System.in);
+        String paisReceptor;
+        int cantFichasElegidas;
+
         while(cantFichas > 0) {
-            String paisElegido = pedir pais
-            int cantFichasElegidas = pedir cant de fichas
-            if(paisesConquistados.containsKey(paisElegido)){
-                if(cantFichasElegidas <= cantFichas){
-                    paisesConquistados.get(paisElegido).agregarFichas(cantFichasElegidas);
-                    cantFichas = cantFichas - cantFichasElegidas;
-                }
-                else{
-                    error
-                }
-            }
-            else{
-                error
-            }
-        }
-        */
-        /* Z - Parece parecido a lo que plantee salvo que
-            recibe el nombre del pais en vez del objeto
-            pide la cant de fichas
-        */
-        // Hardcodeadísimo para probar
-        while (cantFichas > 0) {
-            for (String nombrePais : paisesConquistados.keySet()) {
-                paisesConquistados.get(nombrePais).agregarFichas(1);
-                cantFichas = cantFichas - 1;
-                if (cantFichas == 0) break;
-            }
+            System.out.println("introduzca el pais que recibe las fichas: ");
+            paisReceptor = entrada.nextLine();
+            System.out.println(String.format("introduzca la cantidad de fichas para agregar a %s: ", paisReceptor));
+            cantFichasElegidas = Integer.parseInt(entrada.nextLine());
+            if(!paisesConquistados.containsKey(paisReceptor)) throw new JugadorNoTienePais(String.format("El jugador no puede agregar fichas al pais %s porque no es suyo",paisReceptor));
+            //Por ahí habría que hacer otro error para cuando la cantidad es inválida, (x ej menor a 0)
+            if(cantFichasElegidas > cantFichas || cantFichasElegidas < 0) throw new JugadorNoTieneFichasSuficientes(String.format("El jugador no puede agregar %d fichas al pais %s porque no tiene suficientes",cantFichasElegidas,paisReceptor));
+
+            paisesConquistados.get(paisReceptor).agregarFichas(cantFichasElegidas);
+            cantFichas = cantFichas - cantFichasElegidas;
         }
     }
 
     public int obtenerCantidadPaises(){
         return paisesConquistados.size();
     }
-
-
 
     public void turnoAtaque(){
         int cantInicialPaises = paisesConquistados.size();

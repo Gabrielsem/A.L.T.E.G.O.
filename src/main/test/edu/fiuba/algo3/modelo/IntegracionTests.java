@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,6 +19,7 @@ public class IntegracionTests {
     Juego juego;
     Mapa mapa;
     Jugador j1, j2;
+    private static final InputStream DEFAULT_STDIN = System.in;
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
@@ -27,6 +31,10 @@ public class IntegracionTests {
 
         j1 = new Jugador(1, juego);
         j2 = new Jugador(2, juego);
+    }
+    @AfterEach
+    public void rollbackChangesToStdin() { // regresa el estado del System.in al default
+        System.setIn(DEFAULT_STDIN);
     }
 
     // Devuelve un diccionario de países con todos los países con los nombres dados
@@ -51,7 +59,9 @@ public class IntegracionTests {
         Pais alemania = mapa.obtenerPais("Alemania");
         alemania.ocupadoPor(j2, 1);
 
+        System.setIn(new ByteArrayInputStream("Francia\n2\nAustralia\n1\nIsrael\n1".getBytes()));
         j1.turnoColocacion();
+        System.setIn(new ByteArrayInputStream("Alemania\n3".getBytes()));
         j2.turnoColocacion();
 
         // Deberían haber puesto 4 fichas el jugador 1 y 3 (el mínimo) el jugador 2,
@@ -69,7 +79,9 @@ public class IntegracionTests {
         Pais alemania = mapa.obtenerPais("Alemania");
         alemania.ocupadoPor(j2, 1);
 
+        System.setIn(new ByteArrayInputStream("Tartaria\n2\nIndia\n1\nChina\n3\nArabia\n4".getBytes()));
         j1.turnoColocacion();
+        System.setIn(new ByteArrayInputStream("Alemania\n3".getBytes()));
         j2.turnoColocacion();
 
         // Deberían haber puesto, ya que no tienen tarjetas:
