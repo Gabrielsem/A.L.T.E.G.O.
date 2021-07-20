@@ -40,7 +40,7 @@ public class Pais {
         fichas = cantidadFichas;
     }
 
-    public void verificarAlcanzanFichas(int cantidad) {
+    private void verificarAlcanzanFichas(int cantidad) {
         if (cantidad > fichas - 1) {
             throw new PaisNoTieneFichasSuficientes(
                     String.format("El país %s solo tiene %d fichas disponibles", nombre, fichas - 1));
