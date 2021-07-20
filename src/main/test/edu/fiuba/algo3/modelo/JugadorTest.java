@@ -225,4 +225,51 @@ public class JugadorTest {
         verify(arg,times(1)).atacar(chile, 1);
         verify(juego,times(1)).pedirTarjeta();
     }
+
+    @Test
+    public void jugadorReagrupa2Fichas(){
+        Juego juego = mock(Juego.class);
+        Jugador jug = new Jugador(1, juego);
+        Pais arg = mock(Pais.class);
+        Pais chile = mock(Pais.class);
+        when(arg.nombre()).thenReturn("Argentina");
+        when(chile.nombre()).thenReturn("Chile");
+        when(juego.obtenerPais("Chile")).thenReturn(chile);
+        jug.ocupar(arg);
+        jug.ocupar(chile);
+
+        System.setIn(new ByteArrayInputStream("2\nArgentina\nChile\n0".getBytes()));
+        jug.turnoReagrupacion();
+        verify(arg, times(1)).reagruparA(chile, 2);
+    }
+
+    @Test
+    public void jugadorNoPuedeReagruparAUnPaisAjeno(){
+        Juego juego = mock(Juego.class);
+        Jugador jugador = new Jugador(1, juego);
+        Pais arg = mock(Pais.class);
+        Pais chile = mock(Pais.class);
+        when(arg.nombre()).thenReturn("Argentina");
+        when(chile.nombre()).thenReturn("Chile");
+        when(juego.obtenerPais("Chile")).thenReturn(chile);
+        jugador.ocupar(arg);
+
+        System.setIn(new ByteArrayInputStream("2\nArgentina\nChile\n0".getBytes()));
+        assertThrows(JugadorNoTienePais.class, jugador::turnoReagrupacion);
+    }
+
+    @Test
+    public void jugadorNoPuedeReagruparDesdeUnPaisAjeno(){
+        Juego juego = mock(Juego.class);
+        Jugador jugador = new Jugador(1, juego);
+        Pais arg = mock(Pais.class);
+        Pais chile = mock(Pais.class);
+        when(arg.nombre()).thenReturn("Argentina");
+        when(chile.nombre()).thenReturn("Chile");
+        when(juego.obtenerPais("Chile")).thenReturn(chile);
+        jugador.ocupar(chile);
+
+        System.setIn(new ByteArrayInputStream("2\nArgentina\nChile\n0".getBytes()));
+        assertThrows(JugadorNoTienePais.class, jugador::turnoReagrupacion);
+    }
 }

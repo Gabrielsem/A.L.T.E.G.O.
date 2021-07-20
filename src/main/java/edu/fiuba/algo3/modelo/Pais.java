@@ -41,7 +41,7 @@ public class Pais {
     }
 
     public void verificarAlcanzanFichas(int cantidad) {
-        if (cantidad >= fichas - 1) {
+        if (cantidad > fichas - 1) {
             throw new PaisNoTieneFichasSuficientes(
                     String.format("El país %s solo tiene %d fichas disponibles", nombre, fichas - 1));
         }
@@ -95,6 +95,6 @@ public class Pais {
     }
 
     public boolean esVecino(String nombrePais){
-        return vecinos.contains(nombrePais);
+        return vecinos.contains(nombrePais.toLowerCase());
     }
 }

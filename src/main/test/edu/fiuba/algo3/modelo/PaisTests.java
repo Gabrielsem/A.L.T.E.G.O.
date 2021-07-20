@@ -1,17 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
-import edu.fiuba.algo3.errores.PaisNoTieneFichasSuficientes;
-import edu.fiuba.algo3.errores.PaisNoTienePropietario;
-import edu.fiuba.algo3.errores.PaisSoloPuedeAtacarVecinos;
+import edu.fiuba.algo3.errores.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class PaisTests {
@@ -189,5 +185,36 @@ public class PaisTests {
         pais.perderFichas(5, batalla);
 
         verify(batalla, times(1)).murioDefensor();
+    }
+
+    @Test
+    public void paisReagrupa2FichasAVecino(){
+        Pais destino = new Pais("Argentina", "América", Arrays.asList("Brasil", "Uruguay"));
+
+        assertTrue(pais.esVecino("Argentina"));
+
+        pais.agregarFichas(3);
+        pais.reagruparA(destino, 2);
+
+
+
+        assertEquals(destino.cantidadFichas(), 2);
+        assertEquals(pais.cantidadFichas(), 1);
+    }
+
+    @Test
+    public void paisNoPuedeReagruparSinFichasSuficientes(){
+        Pais destino = new Pais("Argentina", "América", Arrays.asList("Brasil", "Uruguay"));
+        pais.agregarFichas(2);
+
+        assertThrows(PaisNoTieneFichasSuficientes.class, () -> pais.reagruparA(destino, 2));
+    }
+
+    @Test
+    public void paisNoPuedeReagruparAPaisNoVecino(){
+        Pais destino = new Pais("Marruecos", "Juan", Arrays.asList("Cancun", "Uruguay"));
+        pais.agregarFichas(6);
+
+        assertThrows(PaisNoPuedeReagruparAPaisNoVecino.class, () -> pais.reagruparA(destino, 2));
     }
 }

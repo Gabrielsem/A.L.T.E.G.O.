@@ -75,6 +75,7 @@ public class Jugador {
         int cantFichas;
 
         while (true)  {
+            System.out.println("introduzca cantidad de fichas para atacar: ");
             cantFichas = Integer.parseInt(entrada.nextLine());
             if(cantFichas == 0) break;
             System.out.println("introduzca atacante: ");
@@ -101,7 +102,7 @@ public class Jugador {
 
         while (true) {
             System.out.println("introduzca cantidad de fichas a mover: ");
-            cantFichas = entrada.nextInt();
+            cantFichas = Integer.parseInt(entrada.nextLine());
             if(cantFichas == 0) break;
             System.out.println("introduzca el origen: ");
             nombreOrigen = entrada.nextLine();
