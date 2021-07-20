@@ -34,6 +34,9 @@ loop Para cada jugador
     jueg -> jug ++: turnoReagrupacion()
     loop Para cada reagrupación
         jug -> pais ++: reagruparA(destinatario, cantFichas)
+        pais -> pais: esVecino(nombreDestinatario)
+        pais -> pais: verificarAlcanzanFichas(cantFichas)
+        pais -> "destinatario: Pais": agregarFichas(cantFichas)
     end loop
 
 end loop
