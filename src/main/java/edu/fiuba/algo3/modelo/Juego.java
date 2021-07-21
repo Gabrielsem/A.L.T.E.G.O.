@@ -63,7 +63,6 @@ public class Juego {
         }
     }
 
-    //Ari: no se si este getter hace falta, para que lo usan?
     public Pais obtenerPais(String nombrePais){
         return mapa.obtenerPais(nombrePais);
     }
@@ -81,8 +80,12 @@ public class Juego {
         }
     }
 
-    public void devolverTarjetas( Collection<Tarjeta> tarjetas ) {
-        //TODO - Ari
+    public void devolverTarjetas(ArrayList<Tarjeta> tarjetas ) {
+
+        for (Tarjeta tarjeta : tarjetas ) {
+            tarjeta.desactivar();
+            tarjetas.add(tarjeta);
+        }
     }
 
     public int fichasSegunContinentes(Set<String> paises ) {
