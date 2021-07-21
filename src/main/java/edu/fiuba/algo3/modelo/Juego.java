@@ -84,7 +84,7 @@ public class Juego {
 
         for (Tarjeta tarjeta : tarjetas ) {
             tarjeta.desactivar();
-            tarjetas.add(tarjeta);
+            this.tarjetas.add(tarjeta);
         }
     }
 
