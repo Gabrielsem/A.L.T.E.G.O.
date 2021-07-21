@@ -16,13 +16,15 @@ public class TarjetaTest {
     Tarjeta tarjetaArgentina;
     Tarjeta tarjetaBrasil;
     Tarjeta tarjetaColombia;
-    Simbolo simbolo;
+    Simbolo simboloArgentina;
     Simbolo simboloBrasil;
+    Simbolo simboloColombia;
 
     @BeforeEach
     public void setUp() {
-        simbolo = mock(Simbolo.class);
+        simboloArgentina = mock(Simbolo.class);
         simboloBrasil = mock(Simbolo.class);
+        simboloColombia = mock(Simbolo.class);
 
         brasil = mock(Pais.class);
         when(brasil.nombre()).thenReturn("Brasil");
@@ -31,27 +33,13 @@ public class TarjetaTest {
         argentina = mock(Pais.class);
         when(argentina.nombre()).thenReturn("Argentina");
 
-        tarjetaArgentina = new Tarjeta(argentina, simbolo);
-        tarjetaBrasil = new Tarjeta(brasil, simbolo);
-        tarjetaColombia = new Tarjeta(colombia, simbolo);
-    }
-
-    @Test
-    public void tarjetasConIgualSimboloTienenIgualSimbolo() {
-        when(simbolo.esIgualA(simbolo)).thenReturn(true);
-        when(simboloBrasil.esIgualA(simbolo)).thenReturn(true);
-
-        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-
-        tarjetas.add(tarjetaBrasil);
-        tarjetas.add(tarjetaColombia);
-
-        assertTrue(tarjetaArgentina.tienenTodasMismoSimbolo(tarjetas));
+        tarjetaArgentina = new Tarjeta(argentina, simboloArgentina);
+        tarjetaBrasil = new Tarjeta(brasil, simboloBrasil);
+        tarjetaColombia = new Tarjeta(colombia, simboloColombia);
     }
 
     @Test
     public void activarTarjetaSinActivarAgregaDosFichasASuPais() {
-
         tarjetaColombia.activar();
         verify(colombia, times(1)).agregarFichas(2);
     }
@@ -73,8 +61,9 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableSinCanjeDevuelveNull() {
-        when(simbolo.esIgualA(simbolo)).thenReturn(false);
-        when(simboloBrasil.esIgualA(simbolo)).thenReturn(true);
+        when(simboloArgentina.obtenerNombre()).thenReturn("Barco");
+        when(simboloColombia.obtenerNombre()).thenReturn("Barco");
+        when(simboloBrasil.obtenerNombre()).thenReturn("Globo");
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 
@@ -87,9 +76,9 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableConTresTarjetasConMismoSimboloLasDevuelve() {
-        when(simbolo.esIgualA(simbolo)).thenReturn(true);
-        when(simboloBrasil.esIgualA(simbolo)).thenReturn(true);
-        when(simbolo.esIgualA(simboloBrasil)).thenReturn(true);
+        when(simboloBrasil.obtenerNombre()).thenReturn("Barco");
+        when(simboloArgentina.obtenerNombre()).thenReturn("Barco");
+        when(simboloColombia.obtenerNombre()).thenReturn("Barco");
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 
@@ -104,7 +93,19 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableConTresTarjetasConDistintoSimboloLasDevuelve() {
+        when(simboloColombia.obtenerNombre()).thenReturn("Globo");
+        when(simboloBrasil.obtenerNombre()).thenReturn("Barco");
+        when(simboloArgentina.obtenerNombre()).thenReturn("Cañon");
 
+        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+
+        tarjetas.add(tarjetaBrasil);
+        tarjetas.add(tarjetaColombia);
+        tarjetas.add(tarjetaArgentina);
+
+        ArrayList<Tarjeta> canje = Tarjeta.grupoCanjeable(tarjetas);
+
+        assertTrue(canje.size() == 3 && canje.contains(tarjetaColombia) && canje.contains(tarjetaBrasil) && canje.contains(tarjetaArgentina));
     }
 
     @Test

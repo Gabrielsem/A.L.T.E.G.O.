@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Tarjeta {
 
@@ -21,43 +22,50 @@ public class Tarjeta {
         }
     }
 
+    public Simbolo obtenerSimbolo() { return this.simbolo; }
+
     public void desactivar() { this.activable = true; }
 
-    public boolean tienenTodasMismoSimbolo(ArrayList<Tarjeta> tarjetas) {
+    static private ArrayList<Tarjeta> obtenerTresTarjetasIguales(HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo) {
 
-        for (Tarjeta tarjeta : tarjetas) if (!tarjeta.tieneSimbolo(this.simbolo)) return false;
-
-        return true;
-    }
-
-    public boolean tieneSimbolo(Simbolo simbolo) { return this.simbolo.esIgualA(simbolo); }
-
-    //Falta refactorizacion
-    static private ArrayList<Tarjeta> obtenerTarjetasIguales(ArrayList<Tarjeta> tarjetas) {
-        ArrayList<Tarjeta> tarjetasIguales = new ArrayList<>();
-
-        for (int i = 0; i < tarjetas.size(); i++) {
-            Tarjeta tarjetaActual = tarjetas.get(i);
-            tarjetasIguales.add(tarjetaActual);
-            for (int j = 0; j < tarjetas.size(); j++) {
-                if (i == j) continue;
-                Tarjeta tarjetaAComparar = tarjetas.get(j);
-                if (tarjetaActual.tienenTodasMismoSimbolo(tarjetasIguales)) tarjetasIguales.add(tarjetaAComparar);
-                if (tarjetasIguales.size() == 3) return tarjetasIguales;
-            }
-            tarjetasIguales = new ArrayList<>();
+        for (HashMap.Entry<String, ArrayList<Tarjeta>> entry : tarjetasPorSimbolo.entrySet()) {
+            ArrayList<Tarjeta> tarjetasActuales = entry.getValue();
+            if (tarjetasActuales.size() == 3) { return tarjetasActuales; }
         }
+
         return null;
     }
 
-    // Recibe una colleccion de tarjetas y devuelve un grupo de 3 tarjetas canjeable si hay, null si no hay
-    // Un grupo canjeable son 3 iguales o 3 diferentes
-    //Falta refactorizacion
-    //Falta consirar caso todas distintas
-    static public ArrayList<Tarjeta> grupoCanjeable(ArrayList<Tarjeta> tarjetas ) {
+    static private ArrayList<Tarjeta> obetnerTresTarjetasDistintas(HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo) {
 
-        ArrayList<Tarjeta> tarjetasIguales = obtenerTarjetasIguales(tarjetas);
-        return tarjetasIguales;
+        if (tarjetasPorSimbolo.size() < 3) return null;
+
+        ArrayList<Tarjeta> tresTarjetasDistintas = new ArrayList<>();
+
+        for (HashMap.Entry<String, ArrayList<Tarjeta>> entry : tarjetasPorSimbolo.entrySet()) {
+            tresTarjetasDistintas.add(entry.getValue().get(0));
+        }
+
+        return tresTarjetasDistintas;
+    }
+
+    static public ArrayList<Tarjeta> grupoCanjeable(ArrayList<Tarjeta> tarjetas ) {
+        HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo = new HashMap<>();
+
+        for ( Tarjeta tarjeta : tarjetas) {
+            String simboloActual = tarjeta.obtenerSimbolo().obtenerNombre();
+            ArrayList<Tarjeta> tarjetasActuales = tarjetasPorSimbolo.get(simboloActual);
+
+            if (tarjetasActuales == null) { tarjetasActuales = new ArrayList<>(); }
+
+            tarjetasActuales.add(tarjeta);
+            tarjetasPorSimbolo.put(simboloActual, tarjetasActuales);
+        }
+
+        ArrayList<Tarjeta> grupoCanjeable = Tarjeta.obtenerTresTarjetasIguales(tarjetasPorSimbolo);
+        if (grupoCanjeable != null) return grupoCanjeable;
+
+        return Tarjeta.obetnerTresTarjetasDistintas(tarjetasPorSimbolo);
     }
 
     public String pais(){

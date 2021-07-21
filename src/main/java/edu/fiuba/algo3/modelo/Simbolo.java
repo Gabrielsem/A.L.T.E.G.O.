@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Simbolo {
-    private String nombre;
+    final private String nombre;
 
     public Simbolo(String nombre) {
         this.nombre = nombre;
