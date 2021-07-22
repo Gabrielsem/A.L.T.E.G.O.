@@ -29,7 +29,9 @@ loop Para cada jugador
     jug -> jueg ++: pedirTarjeta()
     note right: if len(paises) > cant
     jueg --> jug --: unaTarjeta
+    jug -> jug: recibirTarjeta(unaTarjeta)
     deactivate jug
+
 
     jueg -> jug ++: turnoReagrupacion()
     loop Para cada reagrupación
