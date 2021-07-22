@@ -35,9 +35,13 @@ public class Mapa {
             String nombreContinente = paisJsonObj.get("Continente").getAsString();
             JsonArray arregloJsonLimitrofes = paisJsonObj.get("Limita con").getAsJsonArray();
             ArrayList<String> limitrofes = new ArrayList<>();
+            //System.out.println("----------------------------------------");
+            //System.out.println("Nombre pais: " + nombrePais + " Nombre continente: " + nombreContinente);
+            //System.out.println("Limitrofes: ");
 
             for (int j = 0; j < arregloJsonLimitrofes.size(); j++) {
                 limitrofes.add(arregloJsonLimitrofes.get(j).getAsString());
+                //System.out.println("- " + arregloJsonLimitrofes.get(j).getAsString());
             }
 
             this.paises.put(nombrePais, new Pais(nombrePais, nombreContinente, limitrofes));
