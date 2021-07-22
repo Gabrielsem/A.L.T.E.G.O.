@@ -11,8 +11,10 @@ class Juego{
     + colocarFichasIniciales()
 }
 class Mapa{
-	
+    + repartirPaises(jugadores : ArrayList<Jugador>)
+    + fichasSegunContinentes(paisesConquistados : Set<String>) : int 	
 }
+
 class Pais{
 	- cantidadFichas :Int
 	- continente :String
@@ -23,17 +25,29 @@ class Jugador{
     + agregarFichas(cantFichas:Int)
     + ocupar(pais:Pais)
     + desocupar(pais:Pais)
+    + turnoAtaque()
+    + turnoColocacion()
 }
+
 Interface Objetivo<<Interface>>{
-	+ gano(jugador:Jugador):Bool
+	+ gano(jugador:Jugador): bool
 }
+
 class Tarjeta{
     - tipo : String
     - nombrePais : String
+    {static} + cantidadFichasCanje(canjesRealizados : int) : int
+    {static} + grupoCanjeable(tarjetas : ArrayList<Tarjeta>) : ArrayList<Tarjeta>
+    + activar()
+    + desactivar()
 }
 
-class Batalla{
+class Batalla {
 
+}
+
+class Simbolo {
+    + esIgualA(otroSimbolo : Simbolo) : bool
 }
 
 Pais .> Batalla
@@ -47,7 +61,11 @@ Juego *-- "2,6" Jugador
 Jugador "1"--"*" Pais
 
 Jugador -left> Objetivo
-Jugador o- "*" Tarjeta
-Juego o-- "50" Tarjeta
+Tarjeta "0..5" --o "1" Jugador
+Juego "1" *-l "50" Tarjeta: "\t"
+
+Tarjeta -l> Simbolo
+
+Mapa .l> Jugador
 
 @enduml
