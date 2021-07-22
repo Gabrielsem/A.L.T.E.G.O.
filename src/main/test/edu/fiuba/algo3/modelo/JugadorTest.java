@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -271,5 +272,60 @@ public class JugadorTest {
 
         System.setIn(new ByteArrayInputStream("2\nArgentina\nChile\n0".getBytes()));
         assertThrows(JugadorNoTienePais.class, jugador::turnoReagrupacion);
+    }
+
+    @Test
+    public void jugadorRecibeFichasAlCanjearTarjetas() throws FileNotFoundException {
+
+        jugador = new Jugador(1, new Juego(1) );
+
+        Tarjeta t1 = new Tarjeta(new Pais("N1","C",new ArrayList<>()),
+                new Simbolo("S1") );
+        Tarjeta t2 = new Tarjeta(new Pais("N2","C",new ArrayList<>()),
+                new Simbolo("S2") );
+        Tarjeta t3 = new Tarjeta(new Pais("N3","C",new ArrayList<>()),
+                new Simbolo("S3") );
+
+        assertEquals(0,jugador.canjearTarjetas());
+        jugador.recibirTarjeta(t1);jugador.recibirTarjeta(t2);jugador.recibirTarjeta(t3);
+        assertEquals(4,jugador.canjearTarjetas());
+
+        assertEquals(0,jugador.canjearTarjetas());
+        jugador.recibirTarjeta(t1);jugador.recibirTarjeta(t2);jugador.recibirTarjeta(t3);
+        assertEquals(7,jugador.canjearTarjetas());
+
+        assertEquals(0,jugador.canjearTarjetas());
+        jugador.recibirTarjeta(t1);jugador.recibirTarjeta(t2);jugador.recibirTarjeta(t3);
+        assertEquals(10,jugador.canjearTarjetas());
+    }
+
+    public void jugadorActivaTarjetasDePaisesPropios() {
+        Pais p1 = new Pais("P1","C",new ArrayList<>());
+        Tarjeta t1 = new Tarjeta(p1,new Simbolo("S"));
+        Pais p2 = new Pais("P2","C",new ArrayList<>());
+        Tarjeta t2 = new Tarjeta(p2,new Simbolo("S"));
+
+        p1.ocupadoPor(jugador,0);
+        jugador.recibirTarjeta(t1);
+        p2.ocupadoPor(jugador,0);
+        jugador.recibirTarjeta(t2);
+
+        jugador.canjearTarjetas();
+        assertEquals(2,p1.cantidadFichas());
+        assertEquals(2,p2.cantidadFichas());
+    }
+
+    public void jugadorNoActivaTarjetasDePaisesAjenos() {
+        Pais p1 = new Pais("P1","C",new ArrayList<>());
+        Tarjeta t1 = new Tarjeta(p1,new Simbolo("S"));
+        Pais p2 = new Pais("P2","C",new ArrayList<>());
+        Tarjeta t2 = new Tarjeta(p2,new Simbolo("S"));
+
+        jugador.recibirTarjeta(t1);
+        jugador.recibirTarjeta(t2);
+
+        jugador.canjearTarjetas();
+        assertEquals(0,p1.cantidadFichas());
+        assertEquals(0,p2.cantidadFichas());
     }
 }

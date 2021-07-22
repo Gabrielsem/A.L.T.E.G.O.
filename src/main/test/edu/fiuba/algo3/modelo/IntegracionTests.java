@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -119,5 +120,29 @@ public class IntegracionTests {
 
         assertEquals(7, j1.obtenerCantidadPaises());
         assertEquals(3, j2.obtenerCantidadPaises());
+    }
+
+    @Test
+    public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
+
+        Juego juego = new Juego(1);
+        Jugador jugador = new Jugador(1,juego);
+
+        Pais p1 = new Pais("P1","C",new ArrayList<>());
+        Tarjeta t1 = new Tarjeta(p1,new Simbolo("S"));
+
+        Pais p2 = new Pais("P2","C",new ArrayList<>());
+        Tarjeta t2 = new Tarjeta(p2,new Simbolo("S"));
+
+        p1.ocupadoPor(jugador,1);
+        jugador.recibirTarjeta(t1);
+        jugador.recibirTarjeta(t2);
+
+        System.setIn(new ByteArrayInputStream("P1\n3".getBytes()));
+        jugador.turnoColocacion();
+
+        assertEquals(1+2+3,p1.cantidadFichas());// 1 original + 2 por tarjeta + 3 minimo
+        assertEquals(0,p2.cantidadFichas());
+
     }
 }

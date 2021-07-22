@@ -52,7 +52,7 @@ public class Jugador {
         while(cantFichas > 0) {
             System.out.println("introduzca el pais que recibe las fichas: ");
             paisReceptor = entrada.nextLine();
-            System.out.println(String.format("introduzca la cantidad de fichas para agregar a %s: ", paisReceptor));
+            System.out.printf("introduzca la cantidad de fichas para agregar a %s: %n", paisReceptor);
             cantFichasElegidas = Integer.parseInt(entrada.nextLine());
             if(!paisesConquistados.containsKey(paisReceptor)) throw new JugadorNoTienePais(String.format("El jugador no puede agregar fichas al pais %s porque no es suyo",paisReceptor));
             //Por ahí habría que hacer otro error para cuando la cantidad es inválida, (x ej menor a 0)
@@ -65,6 +65,10 @@ public class Jugador {
 
     public int obtenerCantidadPaises(){
         return paisesConquistados.size();
+    }
+
+    public void recibirTarjeta( Tarjeta unaTarjeta ) {
+        tarjetas.add( unaTarjeta );
     }
 
     public void turnoAtaque(){
@@ -89,7 +93,7 @@ public class Jugador {
         }
 
         if (paisesConquistados.size() > cantInicialPaises) {
-            tarjetas.add(juego.pedirTarjeta());
+            recibirTarjeta( juego.pedirTarjeta() );
         }
     }
 
@@ -130,7 +134,7 @@ public class Jugador {
 
     public int canjearTarjetas(){
         for( Tarjeta tarjeta : tarjetas )
-            if( paisesConquistados.keySet().contains( tarjeta.pais() ) )
+            if( paisesConquistados.containsKey( tarjeta.pais() ) )
                 tarjeta.activar();
 
         ArrayList<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
