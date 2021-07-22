@@ -114,4 +114,15 @@ public class TarjetaTest {
         assertEquals("Brasil",tarjetaBrasil.pais());
         assertEquals("Colombia",tarjetaColombia.pais());
     }
+
+    @Test
+    public void FichasObtenidasAlRealizarCanjesDeTarjetas(){
+
+        assertEquals(Tarjeta.cantidadFichasCanje(0),4);
+        assertEquals(Tarjeta.cantidadFichasCanje(1),7);
+
+        for (int i = 2; i <= 10; i++) {
+            assertEquals(i * 5, Tarjeta.cantidadFichasCanje(i));
+        }
+    }
 }

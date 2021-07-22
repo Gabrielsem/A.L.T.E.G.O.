@@ -82,17 +82,6 @@ public class JugadorTest {
     }
 
     @Test
-    public void FichasObtenidasAlRealizarCanjesDeTarjetas(){
-
-        assertEquals(jugador.realizarCanje(),4);
-        assertEquals(jugador.realizarCanje(),7);
-
-        for( int i=10; i<= 25; i+=5 ){
-            assertEquals(jugador.realizarCanje(),i);
-        }
-    }
-
-    @Test
     public void FichasPorConquistaDeMenosQue8Paises(){
 
         Juego juego = mock(Juego.class);
@@ -299,6 +288,7 @@ public class JugadorTest {
         assertEquals(10,jugador.canjearTarjetas());
     }
 
+    @Test
     public void jugadorActivaTarjetasDePaisesPropios() {
         Pais p1 = new Pais("P1","C",new ArrayList<>());
         Tarjeta t1 = new Tarjeta(p1,new Simbolo("S"));
@@ -315,6 +305,7 @@ public class JugadorTest {
         assertEquals(2,p2.cantidadFichas());
     }
 
+    @Test
     public void jugadorNoActivaTarjetasDePaisesAjenos() {
         Pais p1 = new Pais("P1","C",new ArrayList<>());
         Tarjeta t1 = new Tarjeta(p1,new Simbolo("S"));

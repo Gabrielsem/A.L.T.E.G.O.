@@ -22,6 +22,12 @@ public class Tarjeta {
         }
     }
 
+    static public int cantidadFichasCanje(int cantidadCanjes){
+        if( cantidadCanjes == 0 ) return 4;
+        if( cantidadCanjes == 1 ) return 7;
+        return cantidadCanjes * 5;
+    }
+
     public Simbolo obtenerSimbolo() { return this.simbolo; }
 
     public void desactivar() { this.activable = true; }

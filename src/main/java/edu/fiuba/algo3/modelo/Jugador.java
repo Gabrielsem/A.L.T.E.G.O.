@@ -142,17 +142,11 @@ public class Jugador {
         if( Objects.nonNull(grupoCanjeable) ){
             tarjetas.removeAll( grupoCanjeable );
             juego.devolverTarjetas( grupoCanjeable );
-            return realizarCanje();
+            canjesRealizados++;
+            return Tarjeta.cantidadFichasCanje(canjesRealizados - 1);
         }
 
         return 0;
-    }
-
-    public int realizarCanje(){
-        canjesRealizados ++;
-        if( canjesRealizados == 1 ) return 4;
-        if( canjesRealizados == 2 ) return 7;
-        return (canjesRealizados-1)*5;
     }
 
     public int fichasPorConquista(){
