@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * JavaFX App
@@ -29,10 +30,9 @@ public class App extends Application {
 
         stage.setTitle("TEG "+version);
         scene = new Scene(loadFXML("menu"));
-
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
-        //menuPrincipal(stage);
 
     }
 
@@ -40,64 +40,8 @@ public class App extends Application {
         launch();
     }
 
-    private void menuPrincipal( Stage stage ) {
-
-        StackPane layout = new StackPane();
-
-        VBox contenedor = new VBox();
-        contenedor.setSpacing(10);
-        contenedor.setAlignment(Pos.TOP_CENTER);
-
-        Label titulo = new Label("Menu Principal");
-        contenedor.getChildren().add(titulo);
-
-        Button botonJugar = new Button("Jugar");
-        botonJugar.setOnAction( e->{
-            System.out.println("Jugar");
-            seleccionarJugadores(stage);
-        } );
-        contenedor.getChildren().add(botonJugar);
-
-        Button botonReglas = new Button("Reglas");
-        botonReglas.setOnAction( e-> System.out.println("Reglas"));
-        contenedor.getChildren().add(botonReglas);
-
-        layout.getChildren().add(contenedor);
-
-        var scene = new Scene(layout, 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    private void seleccionarJugadores( Stage stage ) {
-
-        StackPane layout = new StackPane();
-
-        VBox contenedor = new VBox();
-        contenedor.setSpacing(10);
-        contenedor.setAlignment(Pos.TOP_CENTER);
-
-        Label titulo = new Label("Seleccionar cantidad de Jugadores");
-        contenedor.getChildren().add(titulo);
-
-        HBox opciones = new HBox();
-        opciones.setSpacing(10);
-        opciones.setAlignment(Pos.TOP_CENTER);
-
-        for( int i=2; i<=6; i++ ) {
-            Button boton = new Button(""+i);
-            BotonIniciarJuego handler = new BotonIniciarJuego(i);
-            boton.setOnAction(handler);
-            opciones.getChildren().add(boton);
-        }
-
-        contenedor.getChildren().add(opciones);
-
-        layout.getChildren().add(contenedor);
-
-        var scene = new Scene(layout, 640, 480);
-        stage.setScene(scene);
-        stage.show();
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
