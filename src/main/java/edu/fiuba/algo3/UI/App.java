@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.UI;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * JavaFX App
@@ -19,12 +22,17 @@ public class App extends Application {
     String version = "0.3";
     int cantJugadores = 2;
 
+    private static Scene scene;
+
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
 
         stage.setTitle("TEG "+version);
+        scene = new Scene(loadFXML("menu"));
 
-        menuPrincipal(stage);
+        stage.setScene(scene);
+        stage.show();
+        //menuPrincipal(stage);
 
     }
 
@@ -51,9 +59,7 @@ public class App extends Application {
         contenedor.getChildren().add(botonJugar);
 
         Button botonReglas = new Button("Reglas");
-        botonReglas.setOnAction( e->{
-            System.out.println("Reglas");
-        } );
+        botonReglas.setOnAction( e-> System.out.println("Reglas"));
         contenedor.getChildren().add(botonReglas);
 
         layout.getChildren().add(contenedor);
@@ -94,4 +100,8 @@ public class App extends Application {
         stage.show();
     }
 
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
 }

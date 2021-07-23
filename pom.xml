@@ -11,14 +11,19 @@
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
         <mockito-mockito-core-version>3.3.0</mockito-mockito-core-version>
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
-        <javafx-version>15.0.1</javafx-version>
+        <javafx.version>16</javafx.version>
         <main-class>edu.fiuba.algo3.Main</main-class>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx-version}</version>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -45,19 +50,19 @@
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-graphics</artifactId>
-                    <version>${javafx-version}</version>
+                    <version>${javafx.version}</version>
                     <classifier>linux</classifier>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-graphics</artifactId>
-                    <version>${javafx-version}</version>
+                    <version>${javafx.version}</version>
                     <classifier>mac</classifier>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-graphics</artifactId>
-                    <version>${javafx-version}</version>
+                    <version>${javafx.version}</version>
                     <classifier>win</classifier>
                 </dependency>
             </dependencies>
@@ -107,6 +112,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-version}</version>
                 <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
                     <argLine>${argLine} -XX:MaxPermSize=256m</argLine>
                 </configuration>
             </plugin>
