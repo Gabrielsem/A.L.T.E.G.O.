@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.UI;
 
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -48,4 +49,9 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+    static Scene getScene(){
+        return scene;
+    }
+
 }

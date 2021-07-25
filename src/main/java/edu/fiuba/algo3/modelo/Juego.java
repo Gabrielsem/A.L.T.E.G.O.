@@ -4,17 +4,20 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.scene.Scene;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-public class Juego {
+public class Juego extends Observable {
 
     final private int cantJugadores;
     private  ArrayList<Jugador> jugadores;
     private Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
+    private boolean finalizado;
+    private int ronda;
 
     public Juego(int cantJugadores) throws FileNotFoundException {
         this.cantJugadores = cantJugadores;
@@ -90,5 +93,20 @@ public class Juego {
 
     public int fichasSegunContinentes(Set<String> paises ) {
         return mapa.fichasSegunContinentes(paises);
+    }
+
+    public void addObservers(Scene scene) {
+
+        mapa.addObservers( scene );
+    }
+
+    public void jugar(){
+
+        inicializar();
+
+        while (!finalizado){
+            rondaAtaques();
+            rondaColocacion();
+        }
     }
 }

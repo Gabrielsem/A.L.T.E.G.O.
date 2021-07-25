@@ -5,7 +5,7 @@ import edu.fiuba.algo3.errores.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Pais {
+public class Pais extends Observable {
     private final String nombre;
     private final String continente;
     private final Set<String> vecinos;
@@ -38,6 +38,8 @@ public class Pais {
         jugador.ocupar(this);
         propietario = jugador;
         fichas = cantidadFichas;
+
+        notifyObservers();
     }
 
     private void verificarAlcanzanFichas(int cantidad) {
@@ -62,7 +64,7 @@ public class Pais {
     }
 
     public void perderFichas(int cantidadFichas, Batalla batalla) {
-        fichas -= cantidadFichas;
+        agregarFichas(-cantidadFichas);
 
         // Si sucede esto, el país fue conquistado
         if (fichas <= 0) {
@@ -72,6 +74,7 @@ public class Pais {
 
     public void agregarFichas(int cantidadFichas) {
         fichas += cantidadFichas;
+        notifyObservers();
     }
 
     public void moverEjercitos(Pais paisConquistado) {
@@ -83,14 +86,14 @@ public class Pais {
         this.verificarAlcanzanFichas(fichasAMover);
 
         paisConquistado.ocupadoPor(propietario, fichasAMover);
-        fichas -= fichasAMover;
+        agregarFichas(-fichasAMover);
     }
 
     public void reagruparA(Pais paisDestino, int cantFichas){
         if( !this.esVecino(paisDestino.nombre())) throw new PaisNoPuedeReagruparAPaisNoVecino(String.format("El pais %s no es vecino de %s", paisDestino.nombre(), nombre));
         verificarAlcanzanFichas(cantFichas);
 
-        fichas -= cantFichas;
+        agregarFichas(-cantFichas);
         paisDestino.agregarFichas(cantFichas);
     }
 

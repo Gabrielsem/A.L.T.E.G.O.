@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.UI;
 
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 import com.google.gson.*;
+import edu.fiuba.algo3.UI.VistaPais;
 import edu.fiuba.algo3.errores.PaisNoExiste;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -92,5 +95,15 @@ public class Mapa {
         int fichas = 0;
         for( int valor : continentesConquistados.values() ) fichas += valor;
         return fichas;
+    }
+
+    public void addObservers(Scene scene) {
+        for( String pais : paises.keySet() ) {
+
+            Node nodo = scene.lookup("#"+pais);
+            VistaPais vistaPais = new VistaPais( nodo );
+            paises.get(pais).addObserver(vistaPais);
+
+        }
     }
 }
