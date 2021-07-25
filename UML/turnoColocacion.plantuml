@@ -29,11 +29,11 @@ loop Para cada jugdor
         jug -> jug : tarjetas.remove(tarjetasCanjeables)
         jueg <- jug ++: devolverTarjetas(tarjetasCanjeables)
         jueg --
-        jug -> jug ++: realizarCanje()
+        jug -> Tarjeta ++: cantidadFichasCanje(cantidadCanjes)
+        return cantidadFichas
         jug --
-        note left: Recibe fichas segun N de canje
         end alt
-        jug --
+
 
         jug -> jug ++: fichasPorConquista()
         jug -> jug : fichas += max(paises.len /2,3)
