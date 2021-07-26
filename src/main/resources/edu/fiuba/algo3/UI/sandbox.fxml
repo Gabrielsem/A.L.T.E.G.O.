@@ -21,10 +21,319 @@
         <children>
             <fx:define>
             </fx:define>
-            <!-- Unhandled type 'SvgTitleElement' -->
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Brasil"
+                    styleClass = "pais" id="Lineas_negras"
+            >
+                <children>
+                    <SVGPath
+                            content="M1066.18,655.12"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-1"/>
+                        </styleClass>
+                        <transforms>
+                            <Translate
+                                    x="-193.36"
+                                    y="-158.38"
+                            >
+                            </Translate>
+                        </transforms>
+                    </SVGPath>
+                    <SVGPath
+                            content="M1169.34,178.79"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+                        <transforms>
+                            <Translate
+                                    x="-193.36"
+                                    y="-158.38"
+                            >
+                            </Translate>
+                        </transforms>
+                    </SVGPath>
+                    <Polyline
+                            points="1358.96,598.78,1358.96,624.83,1380.19,624.83,1380.19,628.28,1355.72,628.28,1355.72,598.78,1358.96,598.78"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1336.25,498.59,1339.34,498.59,1339.34,535.01,1336.25,535.01,1336.25,498.59"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polygon
+                            points="1445.93,533.75,1448.83,533.75,1448.83,577.09,1445.93,577.27,1445.93,533.75"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <Polyline
+                            points="1493.85,524.83,1491,524.83,1491,567,1493.85,567,1493.85,524.83"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1539.96,639.29,1594.02,639.29,1594.02,635.73,1539.96,635.73,1539.96,639.29"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1439.36,440.61,1435.72,440.61,1435.72,395.7,1439.36,395.7,1439.36,440.61"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Rectangle
+                            x="1397.1"
+                            y="163.28"
+                            width="58.16"
+                            height="2.74"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Rectangle>
+                    <Polyline
+                            points="1378.78,97.97,1378.78,94.98,1421.46,94.98,1421.46,98.3,1378.78,98.3"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Rectangle
+                            x="1386.19"
+                            y="62.28"
+                            width="207.83"
+                            height="2.72"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Rectangle>
+                    <Polyline
+                            points="1167.59,489.5,1171.11,489.5,1171.11,536.94,1167.59,536.94,1167.59,489.5"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1119.47,540.33,1116.66,540.33,1116.66,445.93,1119.47,445.93,1119.47,540.33"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1120.24,436.65,1116.83,445.51,1119.51,445.51,1122.11,438.54,1120.24,436.65"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1099.62,543.1,1102.53,543.1,1102.53,442.37,1099.62,442.37,1099.62,543.1"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="1086.32,417.98,1089.65,417.98,1101.89,441.58,1099.7,441.58,1086.32,417.98"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="714.75,575.65,714.75,573.43,913.34,573.43,913.34,576.32,714.75,576.32"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polyline
+                            points="871.34,496.74,871.34,493.85,926.1,493.85,926.1,496.74,871.98,496.74,926.1,496.74,926.1,548.24,923.55,548.24,923.55,496.74"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polygon
+                            points="842.36,410.24,842.36,345.26,845.68,345.26,845.68,411.39,842.36,410.24"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <Rectangle
+                            x="904.91"
+                            y="299.81"
+                            width="79.02"
+                            height="2.81"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Rectangle>
+                    <Polyline
+                            points="746.49,302.24,837.12,302.24,837.12,298.72,748.4,298.72,748.4,302.24"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Rectangle
+                            x="713.0"
+                            y="157.26"
+                            width="3.91"
+                            height="57.87"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Rectangle>
+                    <Polyline
+                            points="915.24,160.11,716.91,160.11,716.91,157.26,915.24,157.26,915.24,160.11"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polyline>
+                    <Polygon
+                            points="584.49,221.68,587.55,221.68,587.55,258.07,677.55,258.07,677.55,260.88,584.49,260.88,584.49,221.68"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <Rectangle
+                            x="486.7"
+                            y="79.09"
+                            width="2.68"
+                            height="84.51"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Rectangle>
+                    <Polygon
+                            points="483.12,290.07,553.34,290.07,553.34,179.94,550.78,179.94,550.78,287.3,483.12,287.3,483.12,290.07"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <SVGPath
+                            content="M193.86,796.74v-3.06H703.3v3.06S193.86,794.45,193.86,796.74Z"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+                        <transforms>
+                            <Translate
+                                    x="-193.36"
+                                    y="-158.38"
+                            >
+                            </Translate>
+                        </transforms>
+                    </SVGPath>
+                    <Polygon
+                            points="109.27,172.28,109.27,61.62,0.5,61.62,0.5,64.66,105.68,64.66,105.68,172.28,109.27,172.28"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <Polygon
+                            points="1219.21,601.68,1240.28,601.68,1240.28,636.58,1237.76,636.58,1237.76,603.81,1219.21,603.81,1219.21,601.68"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                    <Polygon
+                            points="1228.66,748.09,1231.72,748.09,1231.72,826.53,1004.23,826.53,1004.23,689.68,1008.32,689.68,1008.32,822.71,1228.4,822.71,1228.66,748.09"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-2"/>
+                        </styleClass>
+
+                    </Polygon>
+                </children>
+            </Group>
+            <Group
+                    opacity="1.0"
+                    styleClass = "pais" id="Brasil"
             >
                 <children>
                     <SVGPath
@@ -32,21 +341,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="637.86"
+                            centerY="525.97"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Colombia"
+                    styleClass = "pais" id="Colombia"
             >
                 <children>
                     <SVGPath
@@ -54,21 +374,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="522.83"
+                            centerY="482.28"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Peru"
+                    styleClass = "pais" id="Peru"
             >
                 <children>
                     <SVGPath
@@ -76,21 +407,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="532.04"
+                            centerY="544.17"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Uruguay"
+                    styleClass = "pais" id="Uruguay"
             >
                 <children>
                     <SVGPath
@@ -98,21 +440,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="637.86"
+                            centerY="613.64"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Argentina"
+                    styleClass = "pais" id="Argentina"
             >
                 <children>
                     <SVGPath
@@ -120,21 +473,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="562.51"
+                            centerY="650.05"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Chile"
+                    styleClass = "pais" id="Chile"
             >
                 <children>
                     <SVGPath
@@ -142,21 +506,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="513.84"
+                            centerY="658.55"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Mexico"
+                    styleClass = "pais" id="Mexico"
             >
                 <children>
                     <SVGPath
@@ -164,21 +539,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="396.06"
+                            centerY="405.11"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Canada"
+                    styleClass = "pais" id="Canada"
             >
                 <children>
                     <SVGPath
@@ -186,21 +572,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-3"/>
+                            <String fx:value="cls-6"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="288.29"
+                            centerY="112.63"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="California"
+                    styleClass = "pais" id="California"
             >
                 <children>
                     <SVGPath
@@ -208,21 +605,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="297.07"
+                            centerY="344.1"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Oregon"
+                    styleClass = "pais" id="Oregon"
             >
                 <children>
                     <SVGPath
@@ -230,21 +638,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="196.93"
+                            centerY="325.9"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Nueva_York"
+                    styleClass = "pais" id="Nueva_York"
             >
                 <children>
                     <SVGPath
@@ -252,21 +671,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="351.64"
+                            centerY="278.76"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Terranova"
+                    styleClass = "pais" id="Terranova"
             >
                 <children>
                     <SVGPath
@@ -274,21 +704,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="408.66"
+                            centerY="242.97"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Labrador"
+                    styleClass = "pais" id="Labrador"
             >
                 <children>
                     <SVGPath
@@ -296,21 +737,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="448.15"
+                            centerY="177.47"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Alaska"
+                    styleClass = "pais" id="Alaska"
             >
                 <children>
                     <SVGPath
@@ -318,21 +770,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="104.23"
+                            centerY="267.62"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Yukon"
+                    styleClass = "pais" id="Yukon"
             >
                 <children>
                     <SVGPath
@@ -340,21 +803,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="188.01"
+                            centerY="203.13"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Groenlandia"
+                    styleClass = "pais" id="Groenlandia"
             >
                 <children>
                     <SVGPath
@@ -362,21 +836,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="570.96"
+                            centerY="82.78"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Australia"
+                    styleClass = "pais" id="Australia"
             >
                 <children>
                     <SVGPath
@@ -384,21 +869,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1469.26"
+                            centerY="631.91"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Java"
+                    styleClass = "pais" id="Java"
             >
                 <children>
                     <SVGPath
@@ -406,21 +902,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1495.61"
+                            centerY="482.28"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Borneo"
+                    styleClass = "pais" id="Borneo"
             >
                 <children>
                     <SVGPath
@@ -428,21 +935,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1423.44"
+                            centerY="491.33"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Sumatra"
+                    styleClass = "pais" id="Sumatra"
             >
                 <children>
                     <SVGPath
@@ -450,21 +968,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1330.64"
+                            centerY="553.21"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Madagascar"
+                    styleClass = "pais" id="Madagascar"
             >
                 <children>
                     <SVGPath
@@ -472,21 +1001,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1241.71"
+                            centerY="676.76"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Sudafrica"
+                    styleClass = "pais" id="Sudafrica"
             >
                 <children>
                     <SVGPath
@@ -494,21 +1034,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1113.87"
+                            centerY="710.61"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Egipto"
+                    styleClass = "pais" id="Egipto"
             >
                 <children>
                     <SVGPath
@@ -516,21 +1067,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1150.84"
+                            centerY="568.33"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Etiopia"
+                    styleClass = "pais" id="Etiopia"
             >
                 <children>
                     <SVGPath
@@ -538,21 +1100,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1108.9"
+                            centerY="620.2"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Sahara"
+                    styleClass = "pais" id="Sahara"
             >
                 <children>
                     <SVGPath
@@ -560,21 +1133,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="971.04"
+                            centerY="592.4"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Zaire"
+                    styleClass = "pais" id="Zaire"
             >
                 <children>
                     <SVGPath
@@ -582,21 +1166,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-4"/>
+                            <String fx:value="cls-7"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1032.39"
+                            centerY="665.48"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Italia"
+                    styleClass = "pais" id="Italia"
             >
                 <children>
                     <SVGPath
@@ -604,21 +1199,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1014.19"
+                            centerY="469.64"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="España"
+                    styleClass = "pais" id="España"
             >
                 <children>
                     <SVGPath
@@ -626,21 +1232,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="841.09"
+                            centerY="464.08"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Francia"
+                    styleClass = "pais" id="Francia"
             >
                 <children>
                     <SVGPath
@@ -648,21 +1265,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="930.68"
+                            centerY="386.18"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Islandia"
+                    styleClass = "pais" id="Islandia"
             >
                 <children>
                     <SVGPath
@@ -670,21 +1298,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="709.71"
+                            centerY="270.89"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Gran_Bretaña"
+                    styleClass = "pais" id="Gran_Bretaña"
             >
                 <children>
                     <SVGPath
@@ -692,21 +1331,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="868.78"
+                            centerY="304.11"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Suecia"
+                    styleClass = "pais" id="Suecia"
             >
                 <children>
                     <SVGPath
@@ -714,21 +1364,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="962.63"
+                            centerY="145.25"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Polonia"
+                    styleClass = "pais" id="Polonia"
             >
                 <children>
                     <SVGPath
@@ -736,21 +1397,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1095.67"
+                            centerY="337.42"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Alemania"
+                    styleClass = "pais" id="Alemania"
             >
                 <children>
                     <SVGPath
@@ -758,21 +1430,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1020.39"
+                            centerY="349.55"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Rusia"
+                    styleClass = "pais" id="Rusia"
             >
                 <children>
                     <SVGPath
@@ -780,21 +1463,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-1"/>
+                            <String fx:value="cls-3"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1095.67"
+                            centerY="203.13"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Arabia"
+                    styleClass = "pais" id="Arabia"
             >
                 <children>
                     <SVGPath
@@ -802,21 +1496,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1248.49"
+                            centerY="466.58"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Israel"
+                    styleClass = "pais" id="Israel"
             >
                 <children>
                     <SVGPath
@@ -824,45 +1529,65 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
-                </children>
-            </Group>
-            <Group
-                    opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Turquia"
-            >
-                <children>
-
-
-                    <SVGPath
-                            content="M1320.79,600.62l0,.07a47.62,47.62,0,0,1-24-35.38,9.52,9.52,0,0,1,0-3.45,7.86,7.86,0,0,1,1.67-3c4.07-5,10.41-7,15.34-10.85,5.93-4.65,7.68-12.29,12.54-17.84,5.22-5.95,11.81-7.14,18.92-9.9,7.65-3,15.12-6.78,21.12-12.49,4.47-4.26,7.52-9.65,12.3-13.6a34.87,34.87,0,0,1,44.85,0c7.92,6.83,13.15,16.63,21,23.7s16.3,12.91,24.55,19.23c4.29,3.29,8.51,6.67,12.48,10.33,3.1,2.86,9.25,7.52,10.3,11.56-.45-1.73-45.84,15-49.91,16.87,1.87-.87-10.48-10.12-11.7-10.68-6.15-2.79-13-3.75-19.66-4.58-11.42-1.42-23.63-2.72-33.9,2.47-7.1,3.59-12.41,9.89-18.94,14.44C1345.76,585.92,1329.26,588.63,1320.79,600.62Z"
+                    <Circle
+                            radius="18.2"
+                            centerX="1169.04"
+                            centerY="445.93"
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-3"/>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
+                </children>
+            </Group>
+            <Group
+                    opacity="1.0"
+                    styleClass = "pais" id="Turquia"
+            >
+                <children>
+                    <SVGPath
+                            content="M1320,598.92l-.06.07a47.58,47.58,0,0,1-23.1-36,9.24,9.24,0,0,1,.13-3.44,7.89,7.89,0,0,1,1.74-3c4.19-4.87,10.57-6.72,15.6-10.47,6-4.51,8-12.11,13-17.54,5.37-5.82,12-6.85,19.15-9.44,7.73-2.79,15.29-6.41,21.42-12,4.58-4.15,7.75-9.47,12.63-13.3a34.88,34.88,0,0,1,44.83,1.11c7.76,7,12.75,16.94,20.46,24.2s16,13.3,24.08,19.82c4.21,3.39,8.35,6.87,12.23,10.62,3,2.94,9.06,7.75,10,11.81-.41-1.75-46.19,13.87-50.31,15.67,1.9-.83-10.23-10.38-11.43-11-6.09-2.94-12.92-4.07-19.55-5.06-11.38-1.7-23.55-3.29-33.94,1.65-7.19,3.42-12.65,9.59-19.29,14C1345.28,584.83,1328.72,587.14,1320,598.92Z"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-6"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1208.23"
+                            centerY="367.98"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="India"
+                    styleClass = "pais" id="India"
             >
                 <children>
                     <SVGPath
@@ -870,21 +1595,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1370.39"
+                            centerY="418.8"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Malasia"
+                    styleClass = "pais" id="Malasia"
             >
                 <children>
                     <SVGPath
@@ -892,21 +1628,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1466.1"
+                            centerY="373.05"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Gobi"
+                    styleClass = "pais" id="Gobi"
             >
                 <children>
                     <SVGPath
@@ -914,21 +1661,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1307.0"
+                            centerY="270.89"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Siberia"
+                    styleClass = "pais" id="Siberia"
             >
                 <children>
                     <SVGPath
@@ -936,21 +1694,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1281.09"
+                            centerY="132.94"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Taymir"
+                    styleClass = "pais" id="Taymir"
             >
                 <children>
                     <SVGPath
@@ -958,21 +1727,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1254.75"
+                            centerY="74.22"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Tartaria"
+                    styleClass = "pais" id="Tartaria"
             >
                 <children>
                     <SVGPath
@@ -980,21 +1760,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1193.64"
+                            centerY="66.47"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Aral"
+                    styleClass = "pais" id="Aral"
             >
                 <children>
                     <SVGPath
@@ -1002,21 +1793,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1148.35"
+                            centerY="119.19"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Japon"
+                    styleClass = "pais" id="Japon"
             >
                 <children>
                     <SVGPath
@@ -1024,11 +1826,11 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
@@ -1036,12 +1838,12 @@
                     </SVGPath>
                     <Circle
                             radius="18.2"
-                            centerX="1430.15"
+                            centerX="1477.68"
                             centerY="132.94"
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-6"/>
+                            <String fx:value="cls-4"/>
                         </styleClass>
 
                     </Circle>
@@ -1049,7 +1851,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Kamtchatka"
+                    styleClass = "pais" id="Kamtchatka"
             >
                 <children>
                     <SVGPath
@@ -1057,21 +1859,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-5"/>
+                            <String fx:value="cls-8"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1352.19"
+                            centerY="78.16"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="China"
+                    styleClass = "pais" id="China"
             >
                 <children>
                     <SVGPath
@@ -1079,34 +1892,32 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
-
                     <Circle
                             radius="18.2"
-                            centerX="1352.14"
+                            centerX="1397.49"
                             centerY="289.09"
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-6"/>
+                            <String fx:value="cls-4"/>
                         </styleClass>
 
                     </Circle>
-                    <!-- Unhandled type 'SvgTextElement' -->
                 </children>
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Mongolia"
+                    styleClass = "pais" id="Mongolia"
             >
                 <children>
                     <SVGPath
@@ -1114,11 +1925,11 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
@@ -1126,12 +1937,12 @@
                     </SVGPath>
                     <Circle
                             radius="18.2"
-                            centerX="1225.98"
+                            centerX="1271.33"
                             centerY="206.95"
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-8"/>
+                            <String fx:value="cls-9"/>
                         </styleClass>
 
                     </Circle>
@@ -1139,7 +1950,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                   styleClass="pais" onMouseClicked="#tocarPais" id="Iran"
+                    styleClass = "pais" id="Iran"
             >
                 <children>
                     <SVGPath
@@ -1147,11 +1958,11 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
-                             <Translate
-                                    x="-238.71"
+                            <Translate
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
@@ -1162,16 +1973,27 @@
                             opacity="1"
                     >
                         <styleClass>
-                            <String fx:value="cls-2"/>
+                            <String fx:value="cls-5"/>
                         </styleClass>
                         <transforms>
                             <Translate
-                                    x="-238.71"
+                                    x="-193.36"
                                     y="-158.38"
                             >
                             </Translate>
                         </transforms>
                     </SVGPath>
+                    <Circle
+                            radius="18.2"
+                            centerX="1232.03"
+                            centerY="300.11"
+                            opacity="1"
+                    >
+                        <styleClass>
+                            <String fx:value="cls-4"/>
+                        </styleClass>
+
+                    </Circle>
                 </children>
             </Group>
         </children>
