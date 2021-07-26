@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,8 +25,8 @@ public class App extends Application {
 
     String version = "0.3";
     int cantJugadores = 2;
-
     private static Scene scene;
+    static public Map<String,VistaPais> controladoresVista = new HashMap<>();
 
     @Override
     public void start(Stage stage) throws IOException {

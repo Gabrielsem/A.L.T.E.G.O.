@@ -39,8 +39,7 @@ public class Pais extends Observable {
         propietario = jugador;
         fichas = cantidadFichas;
 
-        setChanged();
-        notifyObservers();
+        setChanged();notifyObservers();
     }
 
     private void verificarAlcanzanFichas(int cantidad) {
@@ -75,7 +74,7 @@ public class Pais extends Observable {
 
     public void agregarFichas(int cantidadFichas) {
         fichas += cantidadFichas;
-        notifyObservers();
+        setChanged();notifyObservers();
     }
 
     public void moverEjercitos(Pais paisConquistado) {

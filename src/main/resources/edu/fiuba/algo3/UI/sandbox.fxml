@@ -2002,6 +2002,7 @@
     
     <HBox>
         <Button text="start" onAction="#start" />
-        <Button text="atcar" onAction="#atacar" />
+        <Button text="darFichas" onAction="#darFichas" />
     </HBox>
+    <Label fx:id="Estado" text="Waiting..." />
 </VBox>

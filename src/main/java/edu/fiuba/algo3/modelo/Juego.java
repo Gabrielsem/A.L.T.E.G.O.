@@ -120,4 +120,9 @@ public class Juego extends Observable {
             rondaColocacion();
         }
     }
+
+    //Esto es horrible - x suerte fdelu va a refactorizar - 🤔 tmb se podria resolver con un metodo tipo add controlers 🤔
+    public void agregarFichas(String nombrePais, int cantFichas) {
+        mapa.obtenerPais(nombrePais).agregarFichas(cantFichas);
+    }
 }

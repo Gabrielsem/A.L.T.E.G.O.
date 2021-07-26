@@ -14,6 +14,7 @@ import java.util.*;
 
 public class VistaPais implements Observer {
 
+    private String nombre;
     private Group vista;
     private Circle ficha;
     private Label texto;
@@ -32,8 +33,6 @@ public class VistaPais implements Observer {
     public VistaPais(Node unaVista ){
         vista =  (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
-
-        String nombrePais = vista.getId();
 
         for( Node child : vista.getChildren() )
             if( child instanceof Circle ) {

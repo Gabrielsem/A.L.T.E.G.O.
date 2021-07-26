@@ -3,8 +3,7 @@ module edu.fiuba.algo3 {
     requires com.google.gson;
     requires javafx.fxml;
 
-
-    exports edu.fiuba.algo3;
+    opens edu.fiuba.algo3.UI to javafx.fxml;
     exports edu.fiuba.algo3.errores;
     exports edu.fiuba.algo3.modelo;
     exports edu.fiuba.algo3.UI;
