@@ -3,10 +3,12 @@ package edu.fiuba.algo3.modelo;
 import com.google.gson.*;
 import edu.fiuba.algo3.UI.VistaPais;
 import edu.fiuba.algo3.errores.PaisNoExiste;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
+import javafx.scene.shape.Shape;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -107,7 +109,7 @@ public class Mapa {
             if( Objects.nonNull( nodo ) ){
                 VistaPais vistaPais = new VistaPais( nodo );
                 paises.get(pais).addObserver(vistaPais);
-                ((SVGPath)nodo).setFill(Color.web("#FFFFFF"));
+
             }else{
                 System.out.print("| Failed to get "+pais);
             }

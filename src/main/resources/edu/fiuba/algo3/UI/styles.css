@@ -1,3 +1,15 @@
 .button {
-    -fx-text-fill: black;
+    -fx-text-fill: #235623;
+}
+
+.pais > SVGPath{
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 15;
+    -fx-strokeType: INSIDE;
+}
+
+.pais:hover > SVGPath {
+    -fx-opacity : 0.5;
+    -fx-strokeWidth: 40;
+    -fx-strokeType: CENTER;
 }

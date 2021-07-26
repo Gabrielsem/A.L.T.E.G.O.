@@ -51,7 +51,7 @@ public class Juego extends Observable {
     }
 
     public void inicializar() {
-        for ( int numJugador = 0 ; numJugador <= this.cantJugadores; numJugador++ ) {
+        for ( int numJugador = 0 ; numJugador < this.cantJugadores; numJugador++ ) {
             this.jugadores.add(new Jugador(numJugador, this));
         }
 

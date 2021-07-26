@@ -33,7 +33,7 @@
       "Limita con": ["Alemania", "España", "Italia"]
     },
     {
-      "Pais": "Gran Bretaña",
+      "Pais": "Gran_Bretaña",
       "Continente": "Europa",
       "Limita con": ["Islandia", "Alemania", "España"]
     },
@@ -60,7 +60,7 @@
     {
       "Pais": "Oregon",
       "Continente": "America del Norte",
-      "Limita con": ["Alaska", "Yukon", "Canada", "Nueva York", "California"]
+      "Limita con": ["Alaska", "Yukon", "Canada", "Nueva_York", "California"]
     },
     {
       "Pais": "Etiopia",
@@ -93,14 +93,14 @@
       "Limita con": ["Egipto", "Polonia", "Rusia", "Iran", "Israel", "Arabia"]
     },
     {
-      "Pais": "Nueva York",
+      "Pais": "Nueva_York",
       "Continente": "America del Norte",
       "Limita con": ["Groenlandia", "Canada", "Oregon", "California", "Terranova"]
     },
     {
       "Pais": "Terranova",
       "Continente": "America del Norte",
-      "Limita con": ["Labrador", "Canada", "Nueva York"]
+      "Limita con": ["Labrador", "Canada", "Nueva_York"]
     },
     {
       "Pais": "Iran",
@@ -135,7 +135,7 @@
     {
       "Pais": "California",
       "Continente": "America del Norte",
-      "Limita con": ["Oregon", "Nueva York", "Mexico"]
+      "Limita con": ["Oregon", "Nueva_York", "Mexico"]
     },
     {
       "Pais": "Taymir",
@@ -155,7 +155,7 @@
     {
       "Pais": "Canada",
       "Continente": "America del Norte",
-      "Limita con": ["Yukon", "Oregon", "Nueva York", "Terranova"]
+      "Limita con": ["Yukon", "Oregon", "Nueva_York", "Terranova"]
     },
     {
       "Pais": "Sahara",
@@ -175,7 +175,7 @@
     {
       "Pais": "Groenlandia",
       "Continente": "America del Norte",
-      "Limita con": ["Labrador", "Nueva York", "Islandia"]
+      "Limita con": ["Labrador", "Nueva_York", "Islandia"]
     },
     {
       "Pais": "Japon",
@@ -210,7 +210,7 @@
     {
       "Pais": "España",
       "Continente": "Europa",
-      "Limita con": ["Sahara", "Francia", "Gran Bretaña"]
+      "Limita con": ["Sahara", "Francia", "Gran_Bretaña"]
     },
     {
       "Pais": "Colombia",
@@ -255,7 +255,7 @@
     {
       "Pais": "Alemania",
       "Continente": "Europa",
-      "Limita con": ["Polonia", "Italia", "Gran Bretaña", "Francia"]
+      "Limita con": ["Polonia", "Italia", "Gran_Bretaña", "Francia"]
     },
     {
       "Pais": "China",
@@ -270,7 +270,7 @@
     {
       "Pais": "Islandia",
       "Continente": "Europa",
-      "Limita con": ["Groenlandia","Suecia","Gran Bretaña"]
+      "Limita con": ["Groenlandia","Suecia","Gran_Bretaña"]
     },
     {
       "Pais": "Malasia",
