@@ -10,10 +10,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.shape.Shape;
 
 import java.nio.channels.ClosedByInterruptException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class VistaPais implements Observer {
 
@@ -23,6 +20,14 @@ public class VistaPais implements Observer {
     private Shape pais;
 
     static private String[] colores = {"#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
+    static private Map<String, String> colorDeContinente = Map.of(
+            "Asia", "#555",
+            "Europa", "#777",
+            "America del Norte","#999",
+            "America del Sur","#666",
+            "Africa","#444",
+            "Oceania","#888"
+    );
 
     public VistaPais(Node unaVista ){
         vista =  (Group) unaVista;
@@ -39,8 +44,8 @@ public class VistaPais implements Observer {
         if( Objects.isNull(ficha) ) return;
 
         texto = new Label("2");
-        texto.setLayoutX( ficha.centerXProperty().get()-ficha.getRadius()/2 );
-        texto.setLayoutY( ficha.centerYProperty().get()-ficha.getRadius()/2 );
+        texto.setLayoutX( ficha.centerXProperty().get()-ficha.getRadius()/3 );
+        texto.setLayoutY( ficha.centerYProperty().get()-ficha.getRadius()*0.7 );
         vista.getChildren().add(texto);
     }
 
@@ -49,11 +54,13 @@ public class VistaPais implements Observer {
         Pais pais = (Pais) o;
 
         Shape img = (Shape)vista.getChildren().get(0);
-        String color = colores[pais.getNumeroPropietario()];
-        img.setFill( Color.web( color ) );
-        if( Objects.nonNull(ficha) )
-            ficha.setFill( Color.web( color ) );
+        img.setFill( Color.web( colorDeContinente.get( pais.continente() ) ) );
 
+        if( Objects.nonNull(ficha) )
+            ficha.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
+
+        if( Objects.nonNull(texto) )
+            texto.setText(String.valueOf(pais.cantidadFichas()));
 
     }
 }

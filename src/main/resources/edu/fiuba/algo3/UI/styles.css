@@ -4,21 +4,25 @@
 
 .pais > SVGPath{
     -fx-stroke: #000 ;
-    -fx-strokeWidth: 15;
+    -fx-stroke-width: 2;
     -fx-strokeType: INSIDE;
 }
 
 .pais:hover > SVGPath {
     -fx-opacity : 0.5;
-    -fx-strokeWidth: 40;
+    -fx-stroke-width: 3;
     -fx-strokeType: CENTER;
 }
 
 .pais > Label {
     -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 3;
 }
 
 .ficha {
     -fx-stroke: #000 ;
-    -fx-strokeWidth: 15;
+    -fx-stroke-width: 4;
+    -fx-alignment: center;
 }
