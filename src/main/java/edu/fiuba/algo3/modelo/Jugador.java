@@ -158,4 +158,8 @@ public class Jugador {
 
         return fichas;
     }
+
+    public int getNumero() {
+        return numero;
+    }
 }

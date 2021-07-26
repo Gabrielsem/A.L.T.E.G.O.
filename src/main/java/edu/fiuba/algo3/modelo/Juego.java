@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import java.io.FileNotFoundException;
@@ -24,6 +25,12 @@ public class Juego extends Observable {
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa("archivos/paises.json");
         this.crearTarjetas();
+    }
+    public Juego(int cantJugadores, String archivoPaises) throws FileNotFoundException {
+        this.cantJugadores = cantJugadores;
+        this.jugadores = new ArrayList<>();
+        this.mapa = new Mapa(archivoPaises);
+       // this.crearTarjetas(); // FIXME - Tarjetas esta harcodeado para que sea un archivo especifico
     }
 
     private void crearTarjetas() throws FileNotFoundException {
@@ -96,6 +103,10 @@ public class Juego extends Observable {
     }
 
     public void addObservers(Scene scene) {
+
+        Node nodo = scene.lookup("#China");
+        if( Objects.isNull( nodo ) )
+            System.out.println("Broken At - Juego");
 
         mapa.addObservers( scene );
     }

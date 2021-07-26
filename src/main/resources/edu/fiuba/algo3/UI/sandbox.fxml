@@ -9,10 +9,13 @@
 
 <?import javafx.scene.transform.Translate?>
 <?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="edu.fiuba.algo3.UI.sandbox"
-      prefHeight="400.0" prefWidth="600.0">
+      prefHeight="600.0" prefWidth="600.0">
     <Group id='_root' xmlns:fx="http://javafx.com/fxml" xmlns:fxsvg="http://efxclipse.org/fxml-svg">
         <children>
             <Group
@@ -55,7 +58,7 @@
                                     content="m 39.037923,260.80402 -0.26727,-20.31248 15.234362,-13.36348 17.639789,-1.60361 4.009043,7.21627 10.423509,10.95805 -5.61266,17.63979 -29.132376,8.01809 z"
                                     opacity="1"
                                     strokeWidth="0.264583"
-                                    styleClass="pais" onMouseClicked="#tocarPais" fx:id="Francia"
+                                    styleClass="pais" onMouseClicked="#tocarPais" fx:id="Francia" id="Francia"
                             >
                                 <fill>
                                     <Color>
@@ -392,4 +395,8 @@
             </Group>
         </children>
     </Group>
+    <HBox>
+        <Button text="start" onAction="#start" />
+        <Button text="atcar" onAction="#atacar" />
+    </HBox>
 </VBox>

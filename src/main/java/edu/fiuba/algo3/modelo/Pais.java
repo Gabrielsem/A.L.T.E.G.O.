@@ -39,6 +39,7 @@ public class Pais extends Observable {
         propietario = jugador;
         fichas = cantidadFichas;
 
+        setChanged();
         notifyObservers();
     }
 
@@ -99,5 +100,9 @@ public class Pais extends Observable {
 
     public boolean esVecino(String nombrePais){
         return vecinos.contains(nombrePais.toLowerCase());
+    }
+
+    public int getNumeroPropietario() {
+        return propietario.getNumero();
     }
 }
