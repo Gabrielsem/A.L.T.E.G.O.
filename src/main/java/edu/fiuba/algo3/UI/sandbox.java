@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.UI;
 
+import edu.fiuba.algo3.controladores.paisControler;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -48,7 +49,7 @@ public class sandbox {
         juego.inicializar();
         Estado.setText("New");
 
-        tocarAction = (Event mouseEvent)->{
+        paisControler.estrategia = (Event mouseEvent)->{
             String nombrePais = (String) ( (Node) mouseEvent.getSource() ).getId();
             System.out.println("Tocaste el Pais: "+nombrePais);
             return 0;
@@ -60,7 +61,7 @@ public class sandbox {
     // Ergo, le pongo que es de tipo Event ( Que parece funcionar para lo que requerimos )
     @FXML
     public void tocarPais(Event mouseEvent) {
-        tocarAction.apply(mouseEvent);
+        //tocarAction.apply(mouseEvent);
     }
 
 
@@ -72,7 +73,7 @@ public class sandbox {
     public void darFichas(ActionEvent actionEvent) {
         Estado.setText("Dar Fichas");
 
-        tocarAction = (Event mouseEvent)->{
+        paisControler.estrategia = (Event mouseEvent)->{
             String nombrePais = (String) ( (Node) mouseEvent.getSource() ).getId();
 
             juego.agregarFichas(nombrePais,1);

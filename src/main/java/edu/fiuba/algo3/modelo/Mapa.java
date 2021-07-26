@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import com.google.gson.*;
 import edu.fiuba.algo3.UI.VistaPais;
+import edu.fiuba.algo3.controladores.paisControler;
 import edu.fiuba.algo3.errores.PaisNoExiste;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -101,17 +102,22 @@ public class Mapa {
         return paises.values();
     }
 
+    //cambiar nombre, esta haciendo mas cosas
     public void addObservers(Scene scene) {
 
-        for( String pais : paises.keySet() ) {
+        for( String nombrePais : paises.keySet() ) {
 
-            Node nodo = scene.lookup("#"+pais);
+            Node nodo = scene.lookup("#"+nombrePais);
             if( Objects.nonNull( nodo ) ){
+                Pais pais = paises.get(nombrePais);
                 VistaPais vistaPais = new VistaPais( nodo );
-                paises.get(pais).addObserver(vistaPais);
+                paisControler controlador = new paisControler( pais, vistaPais );
+
+                pais.addObserver(vistaPais);
+                vistaPais.addControler( controlador );
 
             }else{
-                System.out.print("| Failed to get "+pais);
+                System.out.print("| Failed to get "+nombrePais);
             }
 
         }
