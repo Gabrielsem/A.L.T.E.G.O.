@@ -13,6 +13,8 @@
         <Label text="Menu Principal" />
         <Button fx:id="botonJugar" text="Jugar" onAction="#pedirJugadores"/>
 
+        <Button text="SandBox" onAction="#sandbox"/>
+
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

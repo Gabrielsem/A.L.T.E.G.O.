@@ -11,4 +11,9 @@ public class Menu {
     public void pedirJugadores(ActionEvent actionEvent) throws IOException {
         App.setRoot("pedirJugadores");
     }
+
+    //FIXME - Esto no va en la version final -
+    public void sandbox(ActionEvent actionEvent) throws IOException {
+        App.setRoot("sandbox");
+    }
 }
