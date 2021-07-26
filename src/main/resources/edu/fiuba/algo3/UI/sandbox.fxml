@@ -23,7 +23,7 @@
             </fx:define>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Lineas_negras"
+                    id="Lineas_negras"
             >
                 <children>
                     <SVGPath
@@ -333,7 +333,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Brasil"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Brasil"
             >
                 <children>
                     <SVGPath
@@ -366,7 +366,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Colombia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Colombia"
             >
                 <children>
                     <SVGPath
@@ -399,7 +399,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Peru"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Peru"
             >
                 <children>
                     <SVGPath
@@ -432,7 +432,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Uruguay"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Uruguay"
             >
                 <children>
                     <SVGPath
@@ -465,7 +465,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Argentina"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Argentina"
             >
                 <children>
                     <SVGPath
@@ -498,7 +498,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Chile"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Chile"
             >
                 <children>
                     <SVGPath
@@ -531,7 +531,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Mexico"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Mexico"
             >
                 <children>
                     <SVGPath
@@ -564,7 +564,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Canada"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Canada"
             >
                 <children>
                     <SVGPath
@@ -597,7 +597,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="California"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="California"
             >
                 <children>
                     <SVGPath
@@ -630,7 +630,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Oregon"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Oregon"
             >
                 <children>
                     <SVGPath
@@ -663,7 +663,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Nueva_York"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Nueva_York"
             >
                 <children>
                     <SVGPath
@@ -696,7 +696,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Terranova"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Terranova"
             >
                 <children>
                     <SVGPath
@@ -729,7 +729,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Labrador"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Labrador"
             >
                 <children>
                     <SVGPath
@@ -762,7 +762,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Alaska"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Alaska"
             >
                 <children>
                     <SVGPath
@@ -795,7 +795,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Yukon"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Yukon"
             >
                 <children>
                     <SVGPath
@@ -828,7 +828,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Groenlandia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Groenlandia"
             >
                 <children>
                     <SVGPath
@@ -861,7 +861,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Australia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Australia"
             >
                 <children>
                     <SVGPath
@@ -894,7 +894,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Java"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Java"
             >
                 <children>
                     <SVGPath
@@ -927,7 +927,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Borneo"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Borneo"
             >
                 <children>
                     <SVGPath
@@ -960,7 +960,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Sumatra"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Sumatra"
             >
                 <children>
                     <SVGPath
@@ -993,7 +993,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Madagascar"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Madagascar"
             >
                 <children>
                     <SVGPath
@@ -1026,7 +1026,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Sudafrica"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Sudafrica"
             >
                 <children>
                     <SVGPath
@@ -1059,7 +1059,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Egipto"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Egipto"
             >
                 <children>
                     <SVGPath
@@ -1092,7 +1092,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Etiopia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Etiopia"
             >
                 <children>
                     <SVGPath
@@ -1125,7 +1125,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Sahara"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Sahara"
             >
                 <children>
                     <SVGPath
@@ -1158,7 +1158,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Zaire"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Zaire"
             >
                 <children>
                     <SVGPath
@@ -1191,7 +1191,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Italia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Italia"
             >
                 <children>
                     <SVGPath
@@ -1224,7 +1224,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="España"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="España"
             >
                 <children>
                     <SVGPath
@@ -1257,7 +1257,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Francia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Francia"
             >
                 <children>
                     <SVGPath
@@ -1290,7 +1290,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Islandia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Islandia"
             >
                 <children>
                     <SVGPath
@@ -1323,7 +1323,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Gran_Bretaña"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Gran_Bretaña"
             >
                 <children>
                     <SVGPath
@@ -1356,7 +1356,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Suecia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Suecia"
             >
                 <children>
                     <SVGPath
@@ -1389,7 +1389,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Polonia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Polonia"
             >
                 <children>
                     <SVGPath
@@ -1422,7 +1422,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Alemania"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Alemania"
             >
                 <children>
                     <SVGPath
@@ -1455,7 +1455,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Rusia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Rusia"
             >
                 <children>
                     <SVGPath
@@ -1488,7 +1488,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Arabia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Arabia"
             >
                 <children>
                     <SVGPath
@@ -1521,7 +1521,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Israel"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Israel"
             >
                 <children>
                     <SVGPath
@@ -1554,7 +1554,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Turquia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Turquia"
             >
                 <children>
                     <SVGPath
@@ -1587,7 +1587,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="India"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="India"
             >
                 <children>
                     <SVGPath
@@ -1620,7 +1620,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Malasia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Malasia"
             >
                 <children>
                     <SVGPath
@@ -1653,7 +1653,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Gobi"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Gobi"
             >
                 <children>
                     <SVGPath
@@ -1686,7 +1686,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Siberia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Siberia"
             >
                 <children>
                     <SVGPath
@@ -1719,7 +1719,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Taymir"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Taymir"
             >
                 <children>
                     <SVGPath
@@ -1752,7 +1752,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Tartaria"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Tartaria"
             >
                 <children>
                     <SVGPath
@@ -1785,7 +1785,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Aral"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Aral"
             >
                 <children>
                     <SVGPath
@@ -1818,7 +1818,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Japon"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Japon"
             >
                 <children>
                     <SVGPath
@@ -1851,7 +1851,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Kamtchatka"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Kamtchatka"
             >
                 <children>
                     <SVGPath
@@ -1884,7 +1884,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="China"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="China"
             >
                 <children>
                     <SVGPath
@@ -1917,7 +1917,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Mongolia"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Mongolia"
             >
                 <children>
                     <SVGPath
@@ -1950,7 +1950,7 @@
             </Group>
             <Group
                     opacity="1.0"
-                    styleClass = "pais" id="Iran"
+                    styleClass="pais" onMouseClicked="#tocarPais" id="Iran"
             >
                 <children>
                     <SVGPath

@@ -23,6 +23,18 @@
 
 .ficha {
     -fx-stroke: #000 ;
-    -fx-stroke-width: 4;
+    -fx-stroke-width: 2;
     -fx-alignment: center;
+}
+
+#Lineas_negras > SVGPath {
+    -fx-fill: #000 ;
+}
+#Lineas_negras > Polyline {
+    -fx-fill: #000 ;
+    -fx-stroke-width: 0;
+}
+
+#Lineas_negras > Rectangle {
+    -fx-fill: #000 ;
 }
