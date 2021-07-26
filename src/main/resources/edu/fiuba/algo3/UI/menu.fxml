@@ -11,9 +11,11 @@
             prefHeight="1000.0" prefWidth="1500.0">
     <children>
         <Label text="Menu Principal" />
-        <Button fx:id="botonJugar" text="Jugar" onAction="#pedirJugadores"/>
 
         <Button text="SandBox - 2P" onAction="#sandbox" userData="2" />
+        <Button fx:id="botonJugar" text="Jugar" onAction="#pedirJugadores"/>
+
+
 
     </children>
     <padding>

@@ -13,3 +13,12 @@
     -fx-strokeWidth: 40;
     -fx-strokeType: CENTER;
 }
+
+.pais > Label {
+    -fx-text-fill: white;
+}
+
+.ficha {
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 15;
+}
