@@ -9,7 +9,6 @@ import java.util.*;
 import static java.lang.Math.max;
 
 public class Jugador {
-    //Esto estaría bueno que sea un diccionario con clave -> nombrePais, valor -> Pais para poder buscarlo
     // no deberia ser privado todo esto?
 
     HashMap<String, Pais> paisesConquistados = new HashMap<>();

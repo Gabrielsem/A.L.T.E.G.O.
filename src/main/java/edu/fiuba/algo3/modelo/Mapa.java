@@ -95,6 +95,10 @@ public class Mapa {
         return fichas;
     }
 
+    public Collection<Pais> obtenerPaises() {
+        return paises.values();
+    }
+
     public void addObservers(Scene scene) {
 
         for( String pais : paises.keySet() ) {
