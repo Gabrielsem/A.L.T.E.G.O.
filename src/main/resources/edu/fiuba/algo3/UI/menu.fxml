@@ -8,12 +8,12 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.fiuba.algo3.UI.Menu"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="1000.0" prefWidth="1500.0">
     <children>
         <Label text="Menu Principal" />
         <Button fx:id="botonJugar" text="Jugar" onAction="#pedirJugadores"/>
 
-        <Button text="SandBox" onAction="#sandbox"/>
+        <Button text="SandBox - 2P" onAction="#sandbox" userData="2" />
 
     </children>
     <padding>

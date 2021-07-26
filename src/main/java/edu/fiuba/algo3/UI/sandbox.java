@@ -10,26 +10,30 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class sandbox {
 
-    private Juego juego;
+    static private Juego juego;
     private Scene scene;
+    static private int cantJug;
 
     public sandbox() throws FileNotFoundException {
 
         scene = App.getScene();
-        juego = new Juego(2,"archivos/paises_reducido.json");
+        juego = new Juego(cantJug,"archivos/paises.json");
         System.out.println("Load Sandbox");
     }
 
+    public static void startNew(int cantJugadores) throws IOException {
+        cantJug = cantJugadores;
+        App.setRoot("sandbox");
+    }
+
     public void start() {
-        Node nodo = scene.lookup("#Francia");
-        if( Objects.isNull( nodo ) )
-            System.out.println("Broken At - Sandbox");
 
         juego.addObservers(scene);
         juego.inicializar();
