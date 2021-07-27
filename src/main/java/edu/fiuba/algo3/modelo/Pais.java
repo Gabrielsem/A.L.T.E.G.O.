@@ -106,7 +106,7 @@ public class Pais extends Observable {
     }
 
     public int getNumeroPropietario() {
-        return propietario.getNumero();
+        return propietario.numero();
     }
 
     public void notificar() {
