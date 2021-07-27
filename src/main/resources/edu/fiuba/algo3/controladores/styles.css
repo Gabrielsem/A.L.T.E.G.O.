@@ -30,3 +30,17 @@
 #Lineas_negras {
     -fx-fill: #000 ;
 }
+
+#_root {
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 3;
+
+}
+
+.Options {
+    -fx-spacing: 10;
+    -fx-padding: 5;
+    -fx-font-size: 12
+
+    pt;
+}

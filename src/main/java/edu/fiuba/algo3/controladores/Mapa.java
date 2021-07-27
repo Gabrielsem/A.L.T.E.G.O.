@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -30,7 +31,7 @@ public class Mapa {
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
 
-        ajustarEscala(0.5);
+        ajustarEscala(0.6);
 
         this.fase = new FaseInicial(juego, scene);
         this.fase.iniciar();
@@ -57,10 +58,17 @@ public class Mapa {
     public void ajustarEscala( double escala ) {
 
         Group mapa = (Group) scene.lookup("#_root");
+        Bounds bounds = mapa.getLayoutBounds();
 
-        //FIXME - Re harcodeado
-        mapa.setTranslateX( -400 );
-        mapa.setTranslateY( -150 );
+        double translacionX = -bounds.getWidth()*(1-escala)/2;
+        double translacionY = -bounds.getHeight()*(1-escala)/2;
+
+        //FIXME - constantes - a ver
+        double shiftX = -10;
+        double shiftY = 10;
+
+        mapa.setTranslateX( translacionX+shiftX );
+        mapa.setTranslateY( translacionY+shiftY );
 
         mapa.setScaleX(escala);
         mapa.setScaleY(escala);
