@@ -13,6 +13,8 @@ public class Menu {
 
     public Menu(Scene scene) throws IOException {
         this.scene = scene;
+
+        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());

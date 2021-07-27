@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
@@ -14,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
+//FIXME - Tenemos 2 clases mapa
 public class Mapa {
 
     Juego juego;
@@ -27,6 +29,9 @@ public class Mapa {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaMapa.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
+
+        ajustarEscala(0.5);
+
         this.fase = new FaseInicial(juego, scene);
         this.fase.iniciar();
     }
@@ -47,5 +52,19 @@ public class Mapa {
     @FXML
     public void tocoSiguiente(ActionEvent actionEvent) {
         fase = fase.tocoSiguiente();
+    }
+
+    public void ajustarEscala( double escala ) {
+
+        Group mapa = (Group) scene.lookup("#_root");
+
+        //FIXME - Re harcodeado
+        mapa.setTranslateX( -400 );
+        mapa.setTranslateY( -150 );
+
+        mapa.setScaleX(escala);
+        mapa.setScaleY(escala);
+
+
     }
 }
