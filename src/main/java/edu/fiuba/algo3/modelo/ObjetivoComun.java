@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Collection;
+import java.util.ArrayList;
+
 
 public class ObjetivoComun {
 
@@ -13,12 +14,12 @@ public class ObjetivoComun {
     }
 
     public boolean gano(Jugador jugador) {
-        Collection<Pais> paisesDelMapa = mapa.obtenerPaises();
+        ArrayList<Pais> paisesDelMapa = mapa.obtenerPaises();
 
         int cantidadPaisesDeJugador = 0;
 
         for(Pais pais: paisesDelMapa) {
-            if(pais.getNumeroPropietario() == jugador.getNumero()) cantidadPaisesDeJugador ++;
+            if(pais.getNumeroPropietario() == jugador.numero()) cantidadPaisesDeJugador ++;
         }
 
         return cantidadPaisesDeJugador >= cantidadAConquistar;

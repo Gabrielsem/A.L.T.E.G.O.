@@ -164,11 +164,6 @@ public class Jugador {
         return fichas;
     }
 
-
-    public int getNumero() { //FIXME: mismo metodo que abajo
-        return numero;
-    }
-
     public int numero() {
         return numero;
     }

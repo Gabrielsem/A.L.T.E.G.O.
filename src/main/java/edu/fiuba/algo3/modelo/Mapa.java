@@ -90,8 +90,10 @@ public class Mapa {
         return fichas;
     }
 
-    public Collection<Pais> obtenerPaises() {
-        return paises.values();
+    public ArrayList<Pais> obtenerPaises() {
+
+        return new ArrayList<>(paises.values());
+
     }
 
     public int cantidadFichas(String nombrePais) {

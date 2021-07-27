@@ -1,0 +1,16 @@
+{
+  "objetivoComun" : [
+    {
+      "cantidadAConquistar" : 30
+    }
+  ],
+
+  "objetivoOcupacion" : [
+    {
+      "Continentes" : ["Oceania", "Asia"],
+      "CantidadPorContinente" : [2, "*"]
+
+    }
+  ],
+  "objetivoDestruccion" : []
+}
