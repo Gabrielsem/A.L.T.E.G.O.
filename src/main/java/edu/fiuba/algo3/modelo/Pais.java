@@ -18,6 +18,10 @@ public class Pais extends Observable {
         vecinos = limitrofes.stream().map(String::toLowerCase).collect(Collectors.toSet());
     }
 
+    public Jugador getPropietario() {
+        return propietario;
+    }
+
     public String nombre() {
         return nombre;
     }
@@ -103,5 +107,9 @@ public class Pais extends Observable {
 
     public int getNumeroPropietario() {
         return propietario.getNumero();
+    }
+
+    public void notificar() {
+        setChanged();notifyObservers();
     }
 }

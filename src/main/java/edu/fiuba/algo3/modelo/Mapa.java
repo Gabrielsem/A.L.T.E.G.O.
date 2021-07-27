@@ -1,15 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import com.google.gson.*;
-import edu.fiuba.algo3.UI.VistaPais;
-import edu.fiuba.algo3.controladores.paisControler;
 import edu.fiuba.algo3.errores.PaisNoExiste;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
-import javafx.scene.shape.Shape;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -102,24 +94,19 @@ public class Mapa {
         return paises.values();
     }
 
-    //cambiar nombre, esta haciendo mas cosas
-    public void addObservers(Scene scene) {
+    public int cantidadFichas(String nombrePais) {
+        return paises.get(nombrePais).cantidadFichas();
+    }
 
-        for( String nombrePais : paises.keySet() ) {
+    public void addObservers(HashMap<String, Observer> observers) {
+        for (String nombre : observers.keySet()) {
+            paises.get(nombre).addObserver(observers.get(nombre));
+        }
+    }
 
-            Node nodo = scene.lookup("#"+nombrePais);
-            if( Objects.nonNull( nodo ) ){
-                Pais pais = paises.get(nombrePais);
-                VistaPais vistaPais = new VistaPais( nodo );
-                paisControler controlador = new paisControler( pais, vistaPais );
-
-                pais.addObserver(vistaPais);
-                vistaPais.addControler( controlador );
-
-            }else{
-                System.out.print("| Failed to get "+nombrePais);
-            }
-
+    public void notificarObservers() {
+        for (Pais pais : paises.values()) {
+            pais.notificar();
         }
     }
 }

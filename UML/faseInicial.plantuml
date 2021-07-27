@@ -1,0 +1,100 @@
+@startuml Fases
+skinparam monochrome true
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+Actor usuario
+participant ui as "juegoUI:JuegoUI"
+participant faseInicial as "faseInicial:FaseInicial"
+participant gestor1 as "gestor1:GestorColocacion"
+participant gestor2 as "gestor2:GestorColocacion"
+
+create ui
+usuario -> ui ++: new JuegoUI(scene, juego, jugadores)
+ui -> ui: cargarEscena(scene)
+
+create faseInicial
+ui -> faseInicial ++: new FaseInicial(jugadores, scene)
+
+create gestor2
+faseInicial -> gestor2: new GestorColocaacion(jugadores, scene, 3, new FaseAtaque())
+
+create gestor1
+faseInicial -> gestor1: new GestorColocacion(jugadores, scene, 5, gestor2)
+deactivate faseInicial
+
+ui -> faseInicial ++: iniciar()
+faseInicial -> gestor1 ++: iniciar()
+
+gestor1 -> gestor1: agregarFichasExtra()
+gestor1 -> gestor1: actualizarBotonEInstruccion()
+deactivate gestor1
+deactivate faseInicial
+deactivate ui
+
+loop para cada ficha a agregar del primer jugador
+    [-> ui ++: tocarPais(nombrePais)
+    ui -> faseInicial ++: tocarPais(nombrePais)
+    faseInicial -> gestor1 ++: tocarPais(nombrePais)
+    gestor1 -> gestor1: agregarFicha()
+    deactivate ui
+    deactivate faseInicial
+    deactivate gestor1
+end loop
+
+[-> ui ++: tocarSiguiente()
+ui -> faseInicial ++: tocarSiguiente()
+faseInicial -> gestor1 ++: tocarSiguiente()
+return gestor1
+return gestor1
+return
+
+loop para el resto de jugadores
+    loop para cada ficha a agregar
+        [-> ui ++: tocarPais(nombrePais)
+        ui -> gestor1 ++: tocarPais(nombrePais)
+        gestor1 -> gestor1: agregarFicha()
+        deactivate ui
+        deactivate gestor1
+    end loop
+
+    [-> ui ++: tocarSiguiente()
+    ui -> gestor1 ++: tocarSiguiente()
+    return gestor1
+    return
+end loop
+
+[-> ui ++: tocarSiguiente()
+ui -> gestor1 ++: tocarSiguiente()
+gestor1 -> gestor2 ++: iniciar()
+return
+return gestor2
+return
+
+note over usuario, gestor2
+    Comienzo gestor 2
+end note
+
+loop para todos los jugadores
+    loop para cada ficha a agregar
+        [-> ui ++: tocarPais(nombrePais)
+        ui -> gestor2 ++: tocarPais(nombrePais)
+        gestor2 -> gestor2: agregarFicha()
+        deactivate ui
+        deactivate gestor2
+    end loop
+
+    [-> ui ++: tocarSiguiente()
+    ui -> gestor2 ++: tocarSiguiente()
+    return gestor2
+    return
+end loop
+
+[-> ui ++: tocarSiguiente()
+ui -> gestor2 ++: tocarSiguiente()
+return faseAtaque
+return
+
+
+
+@enduml

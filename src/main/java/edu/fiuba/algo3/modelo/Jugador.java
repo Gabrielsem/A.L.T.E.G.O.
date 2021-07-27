@@ -3,25 +3,30 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
+import edu.fiuba.algo3.errores.PaisNoEsDeEsteJugador;
 
 import java.util.*;
 
 import static java.lang.Math.max;
 
 public class Jugador {
-    // no deberia ser privado todo esto?
 
     HashMap<String, Pais> paisesConquistados = new HashMap<>();
     ArrayList<Tarjeta> tarjetas = new ArrayList<>();
     int numero;
     Juego juego;
     int canjesRealizados = 0;
+    int fichasDisponibles = 0;
 
     public Jugador(){}
 
     public Jugador(int numeroDeJugador, Juego claseJuego){
         numero = numeroDeJugador;
         juego = claseJuego;
+    }
+
+    public boolean tienePais(String nombrePais) {
+        return paisesConquistados.containsKey(nombrePais);
     }
 
     public void desocupar(Pais unPais) {
@@ -43,23 +48,23 @@ public class Jugador {
         atacante.atacar(defensor,cantFichas);
     }
 
-    public void agregarFichas(int cantFichas){
-        Scanner entrada = new Scanner(System.in);
-        String paisReceptor;
-        int cantFichasElegidas;
+    public void darFichas(int cantidadFichas) {
+        fichasDisponibles += cantidadFichas;
+    }
 
-        while(cantFichas > 0) {
-            System.out.println("introduzca el pais que recibe las fichas: ");
-            paisReceptor = entrada.nextLine();
-            System.out.printf("introduzca la cantidad de fichas para agregar a %s: %n", paisReceptor);
-            cantFichasElegidas = Integer.parseInt(entrada.nextLine());
-            if(!paisesConquistados.containsKey(paisReceptor)) throw new JugadorNoTienePais(String.format("El jugador no puede agregar fichas al pais %s porque no es suyo",paisReceptor));
-            //Por ahí habría que hacer otro error para cuando la cantidad es inválida, (x ej menor a 0)
-            if(cantFichasElegidas > cantFichas || cantFichasElegidas < 0) throw new JugadorNoTieneFichasSuficientes(String.format("El jugador no puede agregar %d fichas al pais %s porque no tiene suficientes",cantFichasElegidas,paisReceptor));
+    public boolean tieneFichas() {
+        return fichasDisponibles != 0;
+    }
 
-            paisesConquistados.get(paisReceptor).agregarFichas(cantFichasElegidas);
-            cantFichas = cantFichas - cantFichasElegidas;
+    public void ponerFichas(String nombrePais, int cantFichas){
+        if (!paisesConquistados.containsKey(nombrePais)) {
+            throw new PaisNoEsDeEsteJugador(String.format("El país %s no es del jugador %d", nombrePais, numero));
         }
+        if (fichasDisponibles <= 0) {
+            throw new JugadorNoTieneFichasSuficientes(String.format("El jugador %d no tiene mas fichas", numero));
+        }
+        paisesConquistados.get(nombrePais).agregarFichas(cantFichas);
+        fichasDisponibles--;
     }
 
     public int obtenerCantidadPaises(){
@@ -121,7 +126,7 @@ public class Jugador {
             Origen.reagruparA(Destino, cantFichas);
         }
     }
-
+/*
     public void turnoColocacion(){
         int fichas = 0;
 
@@ -130,6 +135,7 @@ public class Jugador {
         fichas += fichasPorConquista();
         agregarFichas( fichas );
     }
+*/ //TODO: Borrar ese metodo?
 
     public int canjearTarjetas(){
         for( Tarjeta tarjeta : tarjetas )
@@ -158,7 +164,16 @@ public class Jugador {
         return fichas;
     }
 
-    public int getNumero() {
+
+    public int getNumero() { //FIXME: mismo metodo que abajo
         return numero;
+    }
+
+    public int numero() {
+        return numero;
+    }
+
+    public int cantidadFichas() {
+        return fichasDisponibles;
     }
 }

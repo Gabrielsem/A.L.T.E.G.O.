@@ -1,8 +1,7 @@
-package edu.fiuba.algo3.UI;
+package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controladores.paisControler;
+
 import edu.fiuba.algo3.modelo.Pais;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -10,10 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.shape.Shape;
 
-import java.nio.channels.ClosedByInterruptException;
 import java.util.*;
 
 public class VistaPais implements Observer {
@@ -23,10 +20,9 @@ public class VistaPais implements Observer {
     private Circle ficha;
     private Label texto;
     private Shape pais;
-    private paisControler controlador;
 
-    static private String[] colores = {"#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
-    static private Map<String, String> colorDeContinente = Map.of(
+    static private final String[] colores = {"#FFFFFF", "#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
+    static private final Map<String, String> colorDeContinente = Map.of(
             "Asia", "#555",
             "Europa", "#777",
             "America del Norte","#999",
@@ -68,9 +64,6 @@ public class VistaPais implements Observer {
 
     }
 
-    public void addControler(paisControler controlador) {
-        this.controlador = controlador;
-    }
 
     public void addClickHandler(EventHandler eventHandler){
         vista.addEventHandler( MouseEvent.MOUSE_CLICKED, eventHandler);

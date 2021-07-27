@@ -13,24 +13,46 @@ import java.util.*;
 
 public class Juego extends Observable {
 
-    final private int cantJugadores;
-    private  ArrayList<Jugador> jugadores;
-    private Mapa mapa;
+    private final ArrayList<Jugador> jugadores;
+    int turnoActual;
+    private final Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
     private boolean finalizado;
-    private int ronda;
 
-    public Juego(int cantJugadores) throws FileNotFoundException {
-        this.cantJugadores = cantJugadores;
-        this.jugadores = new ArrayList<>();
-        this.mapa = new Mapa("archivos/paises.json");
-        this.crearTarjetas();
-    }
     public Juego(int cantJugadores, String archivoPaises) throws FileNotFoundException {
-        this.cantJugadores = cantJugadores;
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa(archivoPaises);
-       // this.crearTarjetas(); // FIXME - Tarjetas esta harcodeado para que sea un archivo especifico
+        //this.crearTarjetas(); FIXME
+
+        for ( int numJugador = 0 ; numJugador < cantJugadores; numJugador++ ) {
+            this.jugadores.add(new Jugador(numJugador + 1, this));
+        }
+
+        turnoActual = 0;
+        this.mapa.repartirPaises(this.jugadores);
+    }
+
+    public void addJugador(Jugador jug) {
+        jugadores.add(jug);
+    }
+
+    public boolean turnosCompletados() {
+        return turnoActual == jugadores.size();
+    }
+
+    public Jugador siguienteTurno() {
+        if (turnosCompletados()) {
+            return null;
+        }
+        return jugadores.get(turnoActual++);
+    }
+
+    public void reiniciarTurnos() {
+        turnoActual = 0;
+    }
+
+    public int cantidadFichas(String nombrePais) {
+        return mapa.cantidadFichas(nombrePais);
     }
 
     private void crearTarjetas() throws FileNotFoundException {
@@ -50,23 +72,6 @@ public class Juego extends Observable {
 
     }
 
-    public void inicializar() {
-        for ( int numJugador = 0 ; numJugador < this.cantJugadores; numJugador++ ) {
-            this.jugadores.add(new Jugador(numJugador, this));
-        }
-
-        this.mapa.repartirPaises(this.jugadores);
-    }
-
-    public void colocarFichasIniciales() {
-        for ( Jugador jugador : this.jugadores) {
-            jugador.agregarFichas(5);
-        }
-        for ( Jugador jugador : this.jugadores) {
-            jugador.agregarFichas(3);
-        }
-    }
-
     public void rondaAtaques() {
         for ( Jugador jugador : this.jugadores) {
             jugador.turnoAtaque();
@@ -84,10 +89,11 @@ public class Juego extends Observable {
         return this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
     }
 
-    public void rondaColocacion() {
-        for ( Jugador jugador : jugadores) {
-            jugador.turnoColocacion();
+    public Jugador propietarioDe(String nombrePais) {
+        for (Jugador j : jugadores) {
+            if (j.tienePais(nombrePais)) return j;
         }
+        return null;
     }
 
     public void devolverTarjetas(ArrayList<Tarjeta> tarjetas ) {
@@ -102,27 +108,17 @@ public class Juego extends Observable {
         return mapa.fichasSegunContinentes(paises);
     }
 
-    public void addObservers(Scene scene) {
-
-        Node nodo = scene.lookup("#China");
-        if( Objects.isNull( nodo ) )
-            System.out.println("Broken At - Juego");
-
-        mapa.addObservers( scene );
-    }
-
-    public void jugar(){
-
-        inicializar();
-
-        while (!finalizado){
-            rondaAtaques();
-            rondaColocacion();
-        }
+    public ArrayList<Jugador> getJugadores() {
+        return new ArrayList<>(jugadores);
     }
 
     //Esto es horrible - x suerte fdelu va a refactorizar - 🤔 tmb se podria resolver con un metodo tipo add controlers 🤔
     public void agregarFichas(String nombrePais, int cantFichas) {
         mapa.obtenerPais(nombrePais).agregarFichas(cantFichas);
+    }
+
+    public void addPaisObservers(HashMap<String, Observer> observers) {
+        mapa.addObservers(observers);
+        mapa.notificarObservers();
     }
 }
