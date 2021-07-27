@@ -100,6 +100,7 @@ public class Mapa {
 
     public void addObservers(HashMap<String, Observer> observers) {
         for (String nombre : observers.keySet()) {
+            //System.out.println("Agrega observer a: " + nombre);
             paises.get(nombre).addObserver(observers.get(nombre));
         }
     }
