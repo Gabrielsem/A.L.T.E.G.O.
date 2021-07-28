@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 import java.util.Arrays;
+import java.util.HashSet;
+
+import static java.lang.Math.min;
+
 
 public class Batalla {
     private final Pais defensor;
@@ -17,7 +21,7 @@ public class Batalla {
         int min = 1;
         int max = 6;
         int[] dados = new int[3];
-        cantidad--;
+        cantidad = min(cantidad,3);
         for (int i = 0; i < cantidad; i++) {
             dados[i] = (int)(Math.random() * ((max - min) + 1)) + min;
         }
@@ -33,16 +37,20 @@ public class Batalla {
     }
 
     private void efectuarBatalla() {
-        /* FIXME
+
+
         int[] dadosAtacante = lanzarDados(cantFichasAtaque);
         int[] dadosDefensor = lanzarDados(defensor.cantidadFichas());
+        int cantidad = min(3,min(cantFichasAtaque,defensor.cantidadFichas()) );
 
-        for(int i = 0; i < 3;i++){
+        int perdidaAtacante = 0;
+        int perdidaDefensor = 0;
+
+        for(int i = 0; i < cantidad ;i++){
             if(dadosAtacante[i] > dadosDefensor[i]){ perdidaDefensor ++; }
             else{ perdidaAtacante ++; }
-        }*/
-        int perdidaAtacante = 1;
-        int perdidaDefensor = 1;
+        }
+
         atacante.perderFichas(perdidaAtacante);
         defensor.perderFichas(perdidaDefensor);
     }

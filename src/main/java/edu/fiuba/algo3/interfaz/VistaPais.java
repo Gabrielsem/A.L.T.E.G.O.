@@ -51,12 +51,11 @@ public class VistaPais implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("HELP");
         Pais pais = (Pais) o;
 
         Shape img = (Shape)vista.getChildren().get(0);
 
-        //FIXME - HAY UN BUG RARO
+        //FIXME - HAY UN BUG RARO - debe ser por notificar cambios de manera sucesiva
         this.pais.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );//TODO - Si ponemos color x continente esto no va
 
         if( Objects.nonNull(ficha) )
