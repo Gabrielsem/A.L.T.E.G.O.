@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 
-public class ObjetivoDestruccion {
+public class ObjetivoDestruccion implements Objetivo{
     private final Mapa mapa;
     private final Jugador jugadorADerrotar;
 

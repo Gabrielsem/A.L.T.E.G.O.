@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.controladores.Menu;
+import edu.fiuba.algo3.interfaz.ControladorPantallaInicial;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -25,7 +25,7 @@ public class App extends Application {
         stage.show();
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
 
-        new Menu(scene);
+        new ControladorPantallaInicial(scene);
     }
 
     public static void main(String[] args) {

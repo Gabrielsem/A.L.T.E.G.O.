@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.VistaPais;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,13 +12,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Observer;
 
-public class PedirJugadores {
+public class ControladorPantallaPedirJugadores {
 
     Scene scene;
 
-    public PedirJugadores(Scene scene) throws IOException {
+    public ControladorPantallaPedirJugadores(Scene scene) throws IOException {
         this.scene = scene;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("pedirJugadores.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
     }
@@ -28,9 +28,9 @@ public class PedirJugadores {
         System.out.println("Comenzar Juego");
 
         int cantJ = 3; // TODO -
-        Juego juego = new Juego(cantJ, "archivos/paises.json");
+        Juego juego = new Juego(cantJ, "archivos/paises.json", "objetivos.json");
 
-        new Mapa(scene, juego);
+        new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
     }
 

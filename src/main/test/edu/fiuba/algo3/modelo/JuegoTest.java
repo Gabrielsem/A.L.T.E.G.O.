@@ -7,23 +7,23 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class JuegoTest {
 
     Juego juego;
-/*
+
     @BeforeEach
     public void setUp() throws FileNotFoundException {
 
-        juego = new Juego(2);
+        juego = new Juego(2, "archivos/paises.json", "objetivos.json");
     }
 
     @Test
     public void fichasPorContinenteVacio() {
         assertEquals(0,juego.fichasSegunContinentes(new HashSet<>() ));
-    }// Delegado a mapa. Implementacion y testeo
+    }
 
     @Test
     public void devolverTarjetasLasDesactiva() {
@@ -43,5 +43,62 @@ public class JuegoTest {
         verify(tarjetaColombia, times(1)).desactivar();
         verify(tarjetaBrasil, times(1)).desactivar();
     }
-*/ //TODO: arreglar estos tests
+
+    @Test
+    public void turnoSiguienteDevuelveElOtroJugadorSiHay2Jugadores() throws FileNotFoundException {
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json");
+        assertNotEquals(juego.siguienteTurno(), juego.siguienteTurno());
+    }
+
+    @Test
+    public void turnoCompletadoTrasRecorrer6Jugadores() throws FileNotFoundException {
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
+        int i = 0;
+        while(!juego6jug.turnosCompletados()) {
+            i++;
+            Jugador jug = juego6jug.siguienteTurno();
+        }
+
+        assertEquals(6, i);
+    }
+
+    @Test
+    public void turnoSiguienteEnJuegoDe6PasaPorTodosLosJugadores() throws FileNotFoundException {
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
+        HashSet<Jugador> jugadores = new HashSet<>();
+
+        while(!juego6jug.turnosCompletados()) {
+            jugadores.add(juego6jug.siguienteTurno());
+        }
+
+        assertEquals(6, jugadores.size());
+    }
+
+    @Test
+    public void trasPasarPorLosJugadoresDevuelveNull() {
+        while(!juego.turnosCompletados()) {
+            Jugador jug = juego.siguienteTurno();
+        }
+
+        assertNull(juego.siguienteTurno());
+    }
+
+    @Test
+    public void trasReiniciarTurnosVuelveADevolverJugadoresEmpezandoPorElSegundo() throws FileNotFoundException {
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
+        ArrayList<Jugador> jugadores1 = new ArrayList<>();
+        ArrayList<Jugador> jugadores2 = new ArrayList<>();
+
+        while(!juego6jug.turnosCompletados()) {
+            jugadores1.add(juego6jug.siguienteTurno());
+        }
+        juego6jug.reiniciarTurnos();
+        while(!juego6jug.turnosCompletados()) {
+            jugadores2.add(juego6jug.siguienteTurno());
+        }
+
+        Jugador primero = jugadores1.remove(0);
+        jugadores1.add(primero);
+        assertEquals(jugadores1, jugadores2);
+    }
 }

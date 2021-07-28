@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3.interfaz;
 
 
-import edu.fiuba.algo3.controladores.fases.Fase;
-import edu.fiuba.algo3.controladores.fases.FaseInicial;
+import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.fases.Fase;
+import edu.fiuba.algo3.interfaz.fases.FaseInicial;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,18 +17,17 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-//FIXME - Tenemos 2 clases mapa
-public class Mapa {
+public class ControladorPantallaJuego {
 
     Juego juego;
     Scene scene;
     Fase fase;
 
-    public Mapa(Scene scene, Juego juego) throws IOException {
+    public ControladorPantallaJuego(Scene scene, Juego juego) throws IOException {
         this.scene = scene;
         this.juego = juego;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaMapa.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
 
