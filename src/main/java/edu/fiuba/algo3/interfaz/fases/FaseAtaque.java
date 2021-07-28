@@ -32,7 +32,7 @@ public class FaseAtaque implements Fase {
         juego.reiniciarTurnos();
         jugadorActual = juego.siguienteTurno();
 
-        setGestor( new GestorAtacante(this,juego,scene,jugadorActual) );
+        setGestor( new GestorAtacante(this,scene,jugadorActual) );
     }
 
     public void tocoPais(Node nodoPais) {

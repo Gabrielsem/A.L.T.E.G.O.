@@ -47,5 +47,5 @@ public class Batalla {
 
     public void murioDefensor() {
         atacante.moverEjercitos(defensor);
-    }
+    }//FIXME - Ya no mas, lo checkea la fase
 }

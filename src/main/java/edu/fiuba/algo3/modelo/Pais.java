@@ -11,7 +11,6 @@ public class Pais extends Observable {
     private final Set<String> vecinos;
     private int fichas = 0;
     private Jugador propietario = null;
-    Pais paisInvadido;
 
     public Pais(String nombrePais, String nombreContinente, Collection<String> limitrofes) {
         nombre = nombrePais;
@@ -44,7 +43,7 @@ public class Pais extends Observable {
         propietario = jugador;
         fichas = cantidadFichas;
 
-        setChanged();notifyObservers();
+        notificar();
     }
 
     private void verificarAlcanzanFichas(int cantidad) {
@@ -79,29 +78,14 @@ public class Pais extends Observable {
 
     public void agregarFichas(int cantidadFichas) {
         fichas += cantidadFichas;
-        setChanged();notifyObservers();
+        notificar();
     }
 
-    public boolean ataqueExitoso() {
-        return paisInvadido != null;
-    }//FIXME probar estas cosas
 
     public void moverEjercitos(Pais paisConquistado) {
         if (propietario == null) {
             throw new PaisNoTienePropietario(String.format("El pais %s no tiene propietario", nombre));
         }
-        paisInvadido = paisConquistado;
-    }
-
-    public void invadirPaisConquistado(int cantFichas) {
-        if (!ataqueExitoso()) {
-            throw new RuntimeException("No se invadio ningún país");//FIXME crear excepcion custom
-        }
-        this.verificarAlcanzanFichas(cantFichas);
-
-        paisInvadido.ocupadoPor(propietario, cantFichas);
-        agregarFichas(-cantFichas);
-        paisInvadido = null;
     }
 
     public void reagruparA(Pais paisDestino, int cantFichas){
@@ -127,4 +111,6 @@ public class Pais extends Observable {
     public Collection<String> getVecinos() {
         return vecinos;
     }
+
+    public boolean invadible() { return fichas<= 0; }
 }
