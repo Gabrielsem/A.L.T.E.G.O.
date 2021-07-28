@@ -42,7 +42,6 @@ public class GestorDefensor implements Fase{
     public void iniciar() {
         instruccion.setText(String.format("Jugador %d, toca el país que quieras atacar", jugadorActual.numero()));
         setSeleccionables( jugadorActual.paisesAtacables(atacante.getVecinos()) );
-        System.out.println(seleccionables);
     }
 
     @Override
@@ -54,8 +53,6 @@ public class GestorDefensor implements Fase{
     public void tocoPais(Node nodoPais) {
         Pais pais = (Pais) nodoPais.getUserData();
 
-        System.out.println(pais.nombre());
-        System.out.println(seleccionables);
         if( seleccionables.contains( pais.nombre() ) )
             fase.setGestor(new GestorFichasAtaque(fase, scene, jugadorActual,atacante, pais));
     }
