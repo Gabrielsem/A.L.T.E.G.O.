@@ -102,11 +102,12 @@ public class JuegoTest {
         assertEquals(jugadores1, jugadores2);
     }
 
-    /* FIXME: hay que hacer bien estos test
+    //FIXME: hay que hacer bien estos test
+    /*
     @Test
     public void objetivosAsignadosCorrectamente() throws FileNotFoundException {
 
-        Juego juego = new Juego(3, "archivos/paises.json", "objetivos.json");
+        Juego juego = new Juego(6, "archivos/paises.json", "objetivos.json");
         ArrayList<Jugador> jugadores;
 
         jugadores = juego.getJugadores();
@@ -118,4 +119,5 @@ public class JuegoTest {
         assert (true);
     }
     */
+
 }

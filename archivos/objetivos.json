@@ -7,31 +7,56 @@
 
   "objetivoOcupacion" : [
     {
-      "Continentes" : ["Oceania", "Asia"],
-      "CantidadPorContinente" : [2, "*"]
+      "Continentes" : ["Africa", "America del Norte", "Europa"],
+      "CantidadPorContinente" : ["*", 5, 4]
     },
     {
-      "Continentes" : ["Europa", "Asia"],
-      "CantidadPorContinente" : [3, 2]
+      "Continentes" : ["America del Sur", "Europa"],
+      "CantidadPorContinente" : ["*", 7]
     },
     {
-      "Continentes" : ["Europa", "Asia"],
-      "CantidadPorContinente" : ["*", "*"]
+      "Continentes" : ["Asia", "America del Sur"],
+      "CantidadPorContinente" : ["*", 2]
     },
     {
-      "Continentes" : ["Europa", "Oceania"],
-      "CantidadPorContinente" : ["*", 3]
+      "Continentes" : ["Europa", "Asia", "America del Sur"],
+      "CantidadPorContinente" : ["*", 4, 2]
+    },
+    {
+      "Continentes" : ["America del Norte", "Oceania", "Asia"],
+      "CantidadPorContinente" : ["*", 2, 4]
+    },
+    {
+      "Continentes" : ["Oceania", "Africa", "America del Sur", "Europa", "America del Norte", "Asia"],
+      "CantidadPorContinente" : [2, 2, 2, 3, 4, 3]
+    },
+    {
+      "Continentes" : ["Oceania", "America del Norte", "Europa"],
+      "CantidadPorContinente" : ["*", "*", 2]
+    },
+    {
+      "Continentes" : ["America del Sur", "Africa", "America del Norte"],
+      "CantidadPorContinente" : ["*", "*", 5]
     }
   ],
   "objetivoDestruccion" : [
     {
-      "JugadorADerrotar" : 2
-    },
-    {
       "JugadorADerrotar" : 1
     },
     {
+      "JugadorADerrotar" : 2
+    },
+    {
       "JugadorADerrotar" : 3
+    },
+    {
+      "JugadorADerrotar" : 4
+    },
+    {
+      "JugadorADerrotar" : 5
+    },
+    {
+      "JugadorADerrotar" : 6
     }
   ]
 }
