@@ -134,4 +134,8 @@ public class Jugador {
         listaPaises.removeAll(paisesConquistados.keySet());
         return listaPaises;
     } //TODO: probar esto
+
+    public Collection<String> paisesConquistados() {
+        return  paisesConquistados.keySet();
+    }
 }
