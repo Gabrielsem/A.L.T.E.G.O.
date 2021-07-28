@@ -189,7 +189,13 @@ public class ObjetivosTest {
         Jugador jug1 = new Jugador(1, juego);
         Jugador jug2 = new Jugador(2, juego);
 
-        ObjetivoDestruccion objetivo = new ObjetivoDestruccion(jug2, mapa);
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(jug1);
+        jugadores.add(jug2);
+
+        ObjetivoDestruccion objetivo = new ObjetivoDestruccion(2, mapa);
+        objetivo.verificarJugadorADerrotar(jug1, jugadores);
+
         ArrayList<Pais> paisesDelMapa = mapa.obtenerPaises();
 
         for(Pais pais: paisesDelMapa) {
@@ -208,7 +214,13 @@ public class ObjetivosTest {
         Jugador jug1 = new Jugador(1, juego);
         Jugador jug2 = new Jugador(2, juego);
 
-        ObjetivoDestruccion objetivo = new ObjetivoDestruccion(jug2, mapa);
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(jug1);
+        jugadores.add(jug2);
+
+        ObjetivoDestruccion objetivo = new ObjetivoDestruccion(2, mapa);
+        objetivo.verificarJugadorADerrotar(jug1, jugadores);
+
         ArrayList<Pais> paisesDelMapa = mapa.obtenerPaises();
 
         for(Pais pais: paisesDelMapa) {

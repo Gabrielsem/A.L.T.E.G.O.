@@ -120,19 +120,8 @@ public class Juego extends Observable {
             JsonObject objetivoDestruccionJson = objetivosDestruccionJson.get(i).getAsJsonObject();
 
             int numJugador = objetivoDestruccionJson.get("JugadorADerrotar").getAsInt();
-            /*
-            try {
 
-            }catch{
-
-            }
-            // hay que evitar que le toque destruirse a si mismo y ver a quien le pasamos si el jugador no existe
-            // hay que actualizar el jugador a destruir una vez ya asignado el objetivo a otro jugador
-
-
-            this.objetivosIndividuales.add(new ObjetivoDestruccion());
-            */
-
+            this.objetivosIndividuales.add(new ObjetivoDestruccion(numJugador, mapa));
         }
     }
 
