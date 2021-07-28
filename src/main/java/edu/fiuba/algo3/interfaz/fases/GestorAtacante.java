@@ -15,7 +15,6 @@ import java.util.Objects;
 public class GestorAtacante implements Fase {
 
     FaseAtaque fase;
-    Juego juego;// FIXME - Sobra ?
     Jugador jugadorActual;
     Scene scene;
 
@@ -24,10 +23,9 @@ public class GestorAtacante implements Fase {
     Label instruccion;
 
 
-    public GestorAtacante(FaseAtaque faseAtaque, Juego juego, Scene scene, Jugador jugadorActual){
+    public GestorAtacante(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual){
 
         fase = faseAtaque;
-        this.juego = juego;
         this.jugadorActual = jugadorActual;
         this.scene= scene;
         instruccion = (Label) scene.lookup("#instruccion");
@@ -54,6 +52,6 @@ public class GestorAtacante implements Fase {
     public void tocoPais(Node nodoPais) {
         Pais pais = (Pais) nodoPais.getUserData();
         if( seleccionables.contains( pais.nombre() ) )
-            fase.setGestor( new GestorDefensor( fase,juego, scene, jugadorActual, pais ) );
+            fase.setGestor( new GestorDefensor( fase, scene, jugadorActual, pais ) );
     }
 }

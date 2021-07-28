@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+state FaseInicial{
+}
+state FaseAtaque {
+
+    [*] --> GestorAtacante
+
+    GestorAtacante -> GestorDefensor
+
+    GestorDefensor --> GestorFichasAtaque
+
+    GestorFichasAtaque -> GestorAtacante
+
+    GestorFichasAtaque -l> GestorInvasion
+
+    GestorInvasion -u> GestorAtacante
+
+
+}
+state FaseReagrupacion {
+}
+state FaseColocacion {
+}
+
+
+[*] --> FaseInicial
+FaseInicial --> FaseAtaque
+
+FaseAtaque ->FaseReagrupacion
+FaseReagrupacion -> FaseAtaque
+
+FaseReagrupacion --> FaseColocacion
+FaseColocacion -> FaseAtaque
+
+
+FaseAtaque --> [*]
+@enduml

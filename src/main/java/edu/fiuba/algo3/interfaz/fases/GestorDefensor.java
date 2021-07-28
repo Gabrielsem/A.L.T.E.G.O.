@@ -14,7 +14,6 @@ public class GestorDefensor implements Fase{
 
 
     FaseAtaque fase;
-    Juego juego;// FIXME - Sobra ?
     Scene scene;
     Jugador jugadorActual;
     Pais atacante;
@@ -23,10 +22,9 @@ public class GestorDefensor implements Fase{
 
     Label instruccion;
 
-    public GestorDefensor(FaseAtaque faseAtaque, Juego juego, Scene scene, Jugador jugadorActual, Pais atacante) {
+    public GestorDefensor(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais atacante) {
 
         this.fase = faseAtaque;
-        this.juego = juego;
         this.jugadorActual = jugadorActual;
         this.scene= scene;
         this.atacante = atacante;
@@ -59,6 +57,6 @@ public class GestorDefensor implements Fase{
         System.out.println(pais.nombre());
         System.out.println(seleccionables);
         if( seleccionables.contains( pais.nombre() ) )
-            fase.setGestor(new GestorFichasAtaque(fase,juego, scene, jugadorActual,atacante, pais));
+            fase.setGestor(new GestorFichasAtaque(fase, scene, jugadorActual,atacante, pais));
     }
 }

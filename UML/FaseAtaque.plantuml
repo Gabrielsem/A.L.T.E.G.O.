@@ -1,0 +1,33 @@
+@startuml Fases
+skinparam monochrome true
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+
+participant FA as ":FaseAtaque"
+participant GFA as ":GestorFichasAtaque"
+participant atk as "atacante:Pais"
+participant def as "defensor:Pais"
+
+FA ++
+
+[-> GFA ++: \t\t\t atacarCon(nFichas)
+
+GFA -> atk ++: atacar(defensor,nFichas)
+
+GFA -> def ++: invadible()
+GFA <-- def --: defensor.fichas <= 0
+
+alt defensor.invadible
+
+GFA -> GestorInvasion **
+
+else
+
+GFA -> GestorAtacante **
+
+
+end alt
+
+
+@enduml
