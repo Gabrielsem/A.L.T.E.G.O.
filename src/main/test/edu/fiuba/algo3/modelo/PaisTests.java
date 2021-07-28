@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 public class PaisTests {
 
     Pais pais;
-/*
+
     @BeforeEach
     public void setUp(){
         Collection<String> limitrofes = Arrays.asList("Argentina", "Uruguay");
@@ -115,7 +115,7 @@ public class PaisTests {
 
         assertThrows(PaisNoTienePropietario.class, () -> atacante.moverEjercitos(defensor));
     }
-
+/*
     @Test
     public void paisPideInvadirASuPropietarioAlMoverEjercitos() {
         Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
@@ -151,7 +151,7 @@ public class PaisTests {
         atacante.moverEjercitos(defensor);
 
         assertEquals(atacante.cantidadFichas(), 7);
-    }
+    }*/
 
     @Test
     public void paisPierdeFichasCorrectamente() {
@@ -159,31 +159,31 @@ public class PaisTests {
         Jugador jugador = new Jugador();
 
         pais.ocupadoPor(jugador, 5);
-        pais.perderFichas(3, batalla);
+        pais.perderFichas(3);
 
         assertEquals(pais.cantidadFichas(), 2);
     }
 
     @Test
-    public void paisNoDerrotadoNoAvisaABatalla() {
+    public void paisNoDerrotadoNoEsInvadible() {
         Batalla batalla = mock(Batalla.class);
         Jugador jugador = new Jugador();
 
         pais.ocupadoPor(jugador, 5);
-        pais.perderFichas(3, batalla);
+        pais.perderFichas(3);
 
-        verify(batalla, times(0)).murioDefensor();
+        assertFalse( pais.invadible() );
     }
 
     @Test
-    public void paisDerrotadoAvisaABatalla() {
+    public void paisDerrotadoEsInvadible() {
         Batalla batalla = mock(Batalla.class);
         Jugador jugador = new Jugador();
 
         pais.ocupadoPor(jugador, 5);
-        pais.perderFichas(5, batalla);
+        pais.perderFichas(5);
 
-        verify(batalla, times(1)).murioDefensor();
+        assertTrue( pais.invadible() );
     }
 
     @Test
@@ -216,5 +216,4 @@ public class PaisTests {
 
         assertThrows(PaisNoPuedeReagruparAPaisNoVecino.class, () -> pais.reagruparA(destino, 2));
     }
-*/ //FIXME
 }

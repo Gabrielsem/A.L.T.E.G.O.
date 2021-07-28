@@ -25,17 +25,7 @@ public class BatallaTest {
         when(defensor.cantidadFichas()).thenReturn(3);
         Batalla batalla = new Batalla(defensor, atacante, 3);
 
-        verify(defensor, times(1)).perderFichas(anyInt(), eq(batalla));
-        verify(atacante, times(1)).perderFichas(anyInt(), eq(batalla));
-    }
-
-    @Test
-    public void alMorirDefensorAtacanteMueveEjercitos(){
-        when(atacante.cantidadFichas()).thenReturn(4);
-        when(defensor.cantidadFichas()).thenReturn(0);
-        Batalla batalla = new Batalla(defensor, atacante, 3);
-        batalla.murioDefensor();
-
-        verify(atacante, times(1)).moverEjercitos(defensor);
+        verify(defensor, times(1)).perderFichas(anyInt());
+        verify(atacante, times(1)).perderFichas(anyInt());
     }
 }

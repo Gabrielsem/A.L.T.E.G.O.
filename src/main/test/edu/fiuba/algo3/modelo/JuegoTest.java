@@ -101,4 +101,23 @@ public class JuegoTest {
         jugadores1.add(primero);
         assertEquals(jugadores1, jugadores2);
     }
+
+    //FIXME: hay que hacer bien estos test
+    /*
+    @Test
+    public void objetivosAsignadosCorrectamente() throws FileNotFoundException {
+
+        Juego juego = new Juego(6, "archivos/paises.json", "objetivos.json");
+        ArrayList<Jugador> jugadores;
+
+        jugadores = juego.getJugadores();
+
+        for(Jugador jug : jugadores){
+            System.out.println(String.format("Objetivos del jugador: %d\n", jug.numero()) + jug.descripcionObjetivos());
+        }
+
+        assert (true);
+    }
+    */
+
 }

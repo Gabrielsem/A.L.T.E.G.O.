@@ -33,19 +33,17 @@ public class Batalla {
     }
 
     private void efectuarBatalla() {
+        /* FIXME
         int[] dadosAtacante = lanzarDados(cantFichasAtaque);
         int[] dadosDefensor = lanzarDados(defensor.cantidadFichas());
-        int perdidaAtacante = 0;
-        int perdidaDefensor = 0;
+
         for(int i = 0; i < 3;i++){
             if(dadosAtacante[i] > dadosDefensor[i]){ perdidaDefensor ++; }
             else{ perdidaAtacante ++; }
-        }
-        atacante.perderFichas(perdidaAtacante, this);
-        defensor.perderFichas(perdidaDefensor, this);
-    }
-
-    public void murioDefensor() {
-        atacante.moverEjercitos(defensor);
+        }*/
+        int perdidaAtacante = 1;
+        int perdidaDefensor = 1;
+        atacante.perderFichas(perdidaAtacante);
+        defensor.perderFichas(perdidaDefensor);
     }
 }

@@ -28,4 +28,15 @@ public class ObjetivoOcupacion implements Objetivo{
         }
         return true;
     }
+
+    public String descripcion(){
+        String mensaje = "Ocupar: \n";
+
+        for(String continente : cantidadesPorContinente.keySet()){
+            if(cantidadesPorContinente.get(continente) >= mapa.cantidadDePaises(continente)) mensaje = mensaje + continente + "\n";
+            else mensaje = mensaje + String.format("%d paises de %s \n", cantidadesPorContinente.get(continente), continente);
+        }
+
+        return  mensaje;
+    }
 }
