@@ -105,7 +105,7 @@ public class IntegracionTests {
         assertEquals(4, alemania.cantidadFichas()); // 1 que tenía + 3 nuevas
     }
 
-    @Test
+/*    @Test
     public void rondaDosJugadoresJugador1Conquista2PaisesDelJugador2() {
         // Le doy 5 países al jugador 1, sin completar continente, con muchísimas fichas
         String[] nombresPaisesJ1 = {"Francia", "Tartaria", "Australia", "Kamtchatka", "Israel"};
@@ -134,7 +134,7 @@ public class IntegracionTests {
         assertEquals(7, j1.obtenerCantidadPaises());
         assertEquals(3, j2.obtenerCantidadPaises());
     }
-
+*/
     @Test
     public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
 
