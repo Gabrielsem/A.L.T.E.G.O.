@@ -19,6 +19,8 @@ public class Jugador {
     private int fichasDisponibles = 0;
     static final private int minFichas = 3;
     private boolean debeRecibirTarjeta = false;
+    private Objetivo objetivoComun;
+    private Objetivo objetivoSecreto;
 
     public Jugador(){}
 
@@ -120,6 +122,19 @@ public class Jugador {
         fichas += juego.fichasSegunContinentes(paisesConquistados.keySet());
 
         return fichas;
+    }
+
+    public void asignarObjetivos(Objetivo unObjetivoComun, Objetivo unObjetivoSecreto){
+        this.objetivoComun = unObjetivoComun;
+        this.objetivoSecreto = unObjetivoSecreto;
+    }
+
+    public boolean gane() {
+        return (this.objetivoComun.gano(this) || this.objetivoSecreto.gano(this));
+    }
+
+    public String descripcionObjetivos() {
+        return this.objetivoComun.descripcion() + "\n" + this.objetivoSecreto.descripcion();
     }
 
     public int numero() {
