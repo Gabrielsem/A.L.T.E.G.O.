@@ -2,7 +2,6 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.VistaPais;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
