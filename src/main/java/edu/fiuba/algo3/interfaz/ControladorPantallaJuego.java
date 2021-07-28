@@ -5,23 +5,32 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseInicial;
 import edu.fiuba.algo3.modelo.Juego;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ControladorPantallaJuego {
 
-    Juego juego;
-    Scene scene;
-    Fase fase;
+    private Juego juego;
+    private Scene scene;
+    private Fase fase;
+    private enum EjeCambioEscala {
+        HORIZONTAL, VERTICAL, NINGUNO;
+    }
 
     public ControladorPantallaJuego(Scene scene, Juego juego) throws IOException {
         this.scene = scene;
@@ -30,11 +39,23 @@ public class ControladorPantallaJuego {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
-
-        ajustarEscala(0.6);
-
         this.fase = new FaseInicial(juego, scene);
         this.fase.iniciar();
+
+        inicializarAjusteEscala();
+    }
+
+    private void inicializarAjusteEscala() {
+        ChangeListener<Number> alturaListener = (observable, oldValue, newValue) -> {
+            ajustarEscala(EjeCambioEscala.VERTICAL, newValue);
+        };
+        ChangeListener<Number> anchoListener= (observable, oldValue, newValue) -> {
+            ajustarEscala(EjeCambioEscala.HORIZONTAL, newValue);
+        };
+        GridPane grilla = (GridPane) scene.lookup("#grilla");
+        grilla.heightProperty().addListener(alturaListener);
+        grilla.widthProperty().addListener(anchoListener);
+        ajustarEscala(EjeCambioEscala.NINGUNO, 0);
     }
 
     @FXML
@@ -46,7 +67,7 @@ public class ControladorPantallaJuego {
             fase.tocoPais(node.getId());
         } else {
             System.out.printf("País %s (%d fichas del Jugador %d)%n",
-            node.getId(), juego.cantidadFichas(node.getId()), juego.propietarioDe(node.getId()).numero());
+            node.getId(), juego.cantidadFichas(node.getId()), juego.propietarioDe(node.getId()).numero());;
         }
     }
 
@@ -55,24 +76,32 @@ public class ControladorPantallaJuego {
         fase = fase.tocoSiguiente();
     }
 
-    public void ajustarEscala( double escala ) {
+    private void ajustarEscala(EjeCambioEscala cambio, Number nuevoValor) {
 
         Group mapa = (Group) scene.lookup("#_root");
-        Bounds bounds = mapa.getLayoutBounds();
+        Bounds boundsMapa = mapa.getLayoutBounds();
+        GridPane grilla = (GridPane) scene.lookup("#grilla");
+        ColumnConstraints col1 = grilla.getColumnConstraints().get(0);
+        RowConstraints fila2 = grilla.getRowConstraints().get(1);
 
-        double translacionX = -bounds.getWidth()*(1-escala)/2;
-        double translacionY = -bounds.getHeight()*(1-escala)/2;
+        double x = cambio == EjeCambioEscala.HORIZONTAL ? nuevoValor.doubleValue() : grilla.getWidth();
+        double y = cambio == EjeCambioEscala.VERTICAL ? nuevoValor.doubleValue() : grilla.getHeight();
+        x = x * col1.getPercentWidth() / 100;
+        y = y * fila2.getPercentHeight() / 100;
 
-        //FIXME - constantes - a ver
-        double shiftX = -10;
-        double shiftY = 10;
+        double relacionAspectoMapa = boundsMapa.getHeight()/boundsMapa.getWidth();
+        double relacionAspectoGrilla = y/x;
 
-        mapa.setTranslateX( translacionX+shiftX );
-        mapa.setTranslateY( translacionY+shiftY );
+        double factor = 0;
+        Insets padding = grilla.getPadding();
+        if (relacionAspectoGrilla > relacionAspectoMapa) {
+            factor = (x - padding.getLeft() - padding.getRight())/ boundsMapa.getWidth();
+        } else {
+            factor = (y - padding.getTop() - padding.getBottom()) / boundsMapa.getHeight();
+        }
 
-        mapa.setScaleX(escala);
-        mapa.setScaleY(escala);
 
-
+        mapa.setScaleX(factor);
+        mapa.setScaleY(factor);
     }
 }
