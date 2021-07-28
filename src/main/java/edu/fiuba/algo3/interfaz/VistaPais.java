@@ -20,7 +20,6 @@ public class VistaPais implements Observer {
     private Circle ficha;
     private Label texto;
     private Shape pais;
-    private final String color;
 
     static private final String[] colores = {"#FFFFFF", "#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
     static private final Map<String, String> colorDeContinente = Map.of(
@@ -32,8 +31,7 @@ public class VistaPais implements Observer {
             "Oceania","#888"
     );
 
-    public VistaPais(Node unaVista, String color){
-        this.color = color;
+    public VistaPais(Node unaVista){
         vista =  (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
 
@@ -45,7 +43,7 @@ public class VistaPais implements Observer {
 
         if( Objects.isNull(ficha) ) return;
 
-        texto = new Label("2");
+        texto = new Label("X");
         texto.setLayoutX( ficha.centerXProperty().get()-ficha.getRadius()/3 );
         texto.setLayoutY( ficha.centerYProperty().get()-ficha.getRadius()*0.7 );
         vista.getChildren().add(texto);
@@ -53,19 +51,23 @@ public class VistaPais implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        System.out.println("HELP");
         Pais pais = (Pais) o;
 
         Shape img = (Shape)vista.getChildren().get(0);
 
+        //FIXME - HAY UN BUG RARO
+        this.pais.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );//TODO - Si ponemos color x continente esto no va
 
         if( Objects.nonNull(ficha) )
-            ficha.setFill( Color.web( this.color ) );
+            ficha.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
 
         if( Objects.nonNull(texto) )
             texto.setText(String.valueOf(pais.cantidadFichas()));
 
-        //this.pais.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
-        this.pais.setFill( Color.web( colorDeContinente.get( pais.continente() ) ) );
+
+        // TODO - No es necesario en cada update - podria recibir el pais en el constructor
+        //this.pais.setFill( Color.web( colorDeContinente.get( pais.continente() ) ) );
         vista.setUserData(pais);
     }
 

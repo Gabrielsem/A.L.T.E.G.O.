@@ -67,7 +67,7 @@ public class Pais extends Observable {
     }
 
     public void perderFichas(int cantidadFichas) {//FIXME - deprecated (?)
-        agregarFichas(-cantidadFichas);
+        agregarFichas(- cantidadFichas);
     }
 
     public void agregarFichas(int cantidadFichas) {
@@ -99,7 +99,8 @@ public class Pais extends Observable {
     }
 
     public void notificar() {
-        setChanged();notifyObservers();
+        setChanged();
+        notifyObservers();
     }
 
     public Collection<String> getVecinos() {

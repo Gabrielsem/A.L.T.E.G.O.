@@ -48,7 +48,7 @@ public class ControladorPantallaPedirJugadores {
         HashMap<String, Observer> observers = new HashMap<>();
         for (Node nodo : ((Group) scene.lookup("#_root")).getChildren()) {
             if (nodo.getStyleClass().contains("pais")) {
-                observers.put(nodo.getId(), new VistaPais(nodo, this.coloresJugadores.get(juego.obtenerPais(nodo.getId()).getNumeroPropietario())));
+                observers.put(nodo.getId(), new VistaPais(nodo));
             }
         }
 
