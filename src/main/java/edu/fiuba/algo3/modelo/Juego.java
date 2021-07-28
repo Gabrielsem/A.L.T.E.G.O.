@@ -4,17 +4,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Juego extends Observable {
 
     private final ArrayList<Jugador> jugadores;
-    int turnoActual;
+    int turnoActual, turnoOffset;
     private final Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
     private boolean finalizado;
@@ -22,13 +21,15 @@ public class Juego extends Observable {
     public Juego(int cantJugadores, String archivoPaises) throws FileNotFoundException {
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa(archivoPaises);
-        //this.crearTarjetas(); FIXME
+        this.crearTarjetas();
 
         for ( int numJugador = 0 ; numJugador < cantJugadores; numJugador++ ) {
             this.jugadores.add(new Jugador(numJugador + 1, this));
         }
 
+        this.tarjetas = new ArrayList<Tarjeta>();
         turnoActual = 0;
+        turnoOffset = ThreadLocalRandom.current().nextInt(cantJugadores);
         this.mapa.repartirPaises(this.jugadores);
     }
 
@@ -44,11 +45,14 @@ public class Juego extends Observable {
         if (turnosCompletados()) {
             return null;
         }
-        return jugadores.get(turnoActual++);
+        Jugador jug = jugadores.get((turnoActual + turnoOffset) % jugadores.size());
+        turnoActual++;
+        return jug;
     }
 
     public void reiniciarTurnos() {
         turnoActual = 0;
+        turnoOffset = (turnoOffset + 1) % jugadores.size();
     }
 
     public int cantidadFichas(String nombrePais) {
