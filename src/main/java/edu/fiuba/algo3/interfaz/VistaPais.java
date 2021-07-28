@@ -20,6 +20,7 @@ public class VistaPais implements Observer {
     private Circle ficha;
     private Label texto;
     private Shape pais;
+    private final String color;
 
     static private final String[] colores = {"#FFFFFF", "#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
     static private final Map<String, String> colorDeContinente = Map.of(
@@ -31,7 +32,8 @@ public class VistaPais implements Observer {
             "Oceania","#888"
     );
 
-    public VistaPais(Node unaVista){
+    public VistaPais(Node unaVista, String color){
+        this.color = color;
         vista =  (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
 
@@ -57,7 +59,7 @@ public class VistaPais implements Observer {
 
 
         if( Objects.nonNull(ficha) )
-            ficha.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
+            ficha.setFill( Color.web( this.color ) );
 
         if( Objects.nonNull(texto) )
             texto.setText(String.valueOf(pais.cantidadFichas()));
