@@ -12,6 +12,8 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.util.Collections.shuffle;
+
 public class Juego extends Observable {
 
     private final ArrayList<Jugador> jugadores;
@@ -19,7 +21,7 @@ public class Juego extends Observable {
     private final Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
     private boolean finalizado;
-    private ArrayList<Objetivo> objetivosIndividuales;
+    private ArrayList<Objetivo> objetivosSecretos;
     private ObjetivoComun objetivoComun;
 
     public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos) throws FileNotFoundException {
@@ -35,7 +37,8 @@ public class Juego extends Observable {
         turnoActual = 0;
         turnoOffset = ThreadLocalRandom.current().nextInt(cantJugadores);
         this.mapa.repartirPaises(this.jugadores);
-
+        crearObjetivos();
+        repartirObjetivos();
     }
 
     public void addJugador(Jugador jug) {
@@ -78,18 +81,19 @@ public class Juego extends Observable {
     }
 
     private void crearObjetivos() throws FileNotFoundException {
-        this.objetivosIndividuales = new ArrayList<>();
+        this.objetivosSecretos = new ArrayList<>();
 
         FileReader lector = new FileReader("archivos/objetivos.json");
 
         JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
-        crearObjetivoComun(objetoJson.get("objetivoComun").getAsJsonObject());
+        crearObjetivoComun(objetoJson.get("objetivoComun").getAsJsonArray());
         crearObjetivosOcupacion(objetoJson.get("objetivoOcupacion").getAsJsonArray());
         crearObjetivosDestruccion(objetoJson.get("objetivoDestruccion").getAsJsonArray());
     }
 
-    private void crearObjetivoComun(JsonObject objetivoComunJson) {
-        int cantidad = objetivoComunJson.get("CantidadAConquistar").getAsInt();
+    private void crearObjetivoComun(JsonArray objetivoComunJson) {
+        JsonObject objetivoComunJsonObj = objetivoComunJson.get(0).getAsJsonObject();
+        int cantidad = objetivoComunJsonObj.get("CantidadAConquistar").getAsInt();
         this.objetivoComun = new ObjetivoComun(cantidad, mapa);
     }
 
@@ -111,7 +115,7 @@ public class Juego extends Observable {
                     cantidadesPorContinente.put(continente, Integer.parseInt(cantidad));
                 }
             }
-            this.objetivosIndividuales.add(new ObjetivoOcupacion(cantidadesPorContinente, mapa));
+            this.objetivosSecretos.add(new ObjetivoOcupacion(cantidadesPorContinente, mapa));
         }
     }
 
@@ -121,7 +125,24 @@ public class Juego extends Observable {
 
             int numJugador = objetivoDestruccionJson.get("JugadorADerrotar").getAsInt();
 
-            this.objetivosIndividuales.add(new ObjetivoDestruccion(numJugador, mapa));
+            this.objetivosSecretos.add(new ObjetivoDestruccion(numJugador, mapa));
+        }
+    }
+
+    public void repartirObjetivos(){
+
+        shuffle(objetivosSecretos);
+
+        for(Jugador jugador: jugadores){
+            Objetivo objetivoSecreto = objetivosSecretos.remove(0);
+
+            if(objetivoSecreto instanceof ObjetivoDestruccion){
+                ((ObjetivoDestruccion) objetivoSecreto).verificarJugadorADerrotar(jugador, jugadores);
+            }
+            //FIXME: esta horrible, hay que verificar el jugador a derrotar una vez asignado el objetivo
+            // sin castear en lo posible
+
+            jugador.asignarObjetivos(objetivoComun, objetivoSecreto);
         }
     }
 
