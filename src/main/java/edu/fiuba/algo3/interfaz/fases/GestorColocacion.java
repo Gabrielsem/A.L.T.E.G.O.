@@ -4,9 +4,11 @@ import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.PaisNoEsDeEsteJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class GestorColocacion implements Fase {
     Juego juego;
@@ -35,9 +37,9 @@ public class GestorColocacion implements Fase {
         cambiarInstruccionAgregarFichas(actual);
     }
 
-    public void tocoPais(String nombrePais) {
+    public void tocoPais(Node pais) {
         try {
-            actual.ponerFichas(nombrePais, 1);
+            actual.ponerFichas(pais.getId(), 1);
             cambiarInstruccionAgregarFichas(actual);
         } catch (JugadorNoTieneFichasSuficientes | PaisNoEsDeEsteJugador e) {
             return;
@@ -49,9 +51,10 @@ public class GestorColocacion implements Fase {
         }
     }
 
-    public Fase tocoSiguiente() {
+    public Fase tocoBoton(Button unBoton) {
         if (juego.turnosCompletados()) {
             siguienteFase.iniciar();
+            botonSiguiente.setVisible(false);
             return siguienteFase;
         }
 

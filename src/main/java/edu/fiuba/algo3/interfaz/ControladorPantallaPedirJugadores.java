@@ -47,9 +47,6 @@ public class ControladorPantallaPedirJugadores {
     private void addPaisObservers(Juego juego) {
         HashMap<String, Observer> observers = new HashMap<>();
         for (Node nodo : ((Group) scene.lookup("#_root")).getChildren()) {
-            /*
-            if (nodo.getId().equals("fondo") || nodo.getId().startsWith("puente")) continue;
-            observers.put(nodo.getId(), new VistaPais(nodo));*/
             if (nodo.getStyleClass().contains("pais")) {
                 observers.put(nodo.getId(), new VistaPais(nodo, this.coloresJugadores.get(juego.obtenerPais(nodo.getId()).getNumeroPropietario())));
             }

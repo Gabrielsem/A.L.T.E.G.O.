@@ -27,7 +27,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <ButtonBar prefHeight="42.0" prefWidth="515.0">
+            <ButtonBar prefHeight="42.0" prefWidth="502.0">
               <buttons>
                 <Button fx:id="botonRojo" accessibleText="#cc3311" mnemonicParsing="false" onAction="#agregarJugador" prefHeight="27.0" style="-fx-background-color: #cc3311; -fx-border-color: #000;" textAlignment="CENTER" userData="#" />
                   <Button accessibleText="#009988" mnemonicParsing="false" onAction="#agregarJugador" style="-fx-border-color: #000; -fx-background-color: #009988;" />

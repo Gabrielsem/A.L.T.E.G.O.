@@ -43,10 +43,6 @@ public class Jugador {
         }
     }
 
-    public int invadir(Pais atacante, Pais defensor) {
-        // pedir un dato al jugador y devolverlo
-        return 3;
-    }
 
     public void atacar(Pais atacante, Pais defensor, int cantFichas){
         if( !paisesConquistados.containsValue(atacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",atacante.nombre()));
@@ -84,61 +80,6 @@ public class Jugador {
     public void recibirTarjeta( Tarjeta unaTarjeta ) {
         tarjetas.add( unaTarjeta );
     }
-
-/*
-    public void turnoAtaque(){
-        int cantInicialPaises = paisesConquistados.size();
-        Scanner entrada = new Scanner(System.in);
-        String nombreAtacante;
-        String nombreDefensor;
-        int cantFichas;
-
-        while (true)  {
-            System.out.println("introduzca cantidad de fichas para atacar: ");
-            cantFichas = Integer.parseInt(entrada.nextLine());
-            if(cantFichas == 0) break;
-            System.out.println("introduzca atacante: ");
-            nombreAtacante = entrada.nextLine();
-            System.out.println("introduzca defensor: ");
-            nombreDefensor = entrada.nextLine();
-            if( !paisesConquistados.containsKey(nombreAtacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",nombreAtacante));
-            Pais atacante = paisesConquistados.get(nombreAtacante);
-            Pais defensor = juego.obtenerPais(nombreDefensor);
-            atacante.atacar(defensor, cantFichas);
-        }
-
-        if (paisesConquistados.size() > cantInicialPaises) {
-            recibirTarjeta( juego.pedirTarjeta() );
-        }
-    }
-
-    public void turnoReagrupacion(){
-
-        Scanner entrada = new Scanner(System.in);
-        String nombreOrigen;
-        String nombreDestino;
-        int cantFichas;
-
-        while (true) {
-            System.out.println("introduzca cantidad de fichas a mover: ");
-            cantFichas = Integer.parseInt(entrada.nextLine());
-            if(cantFichas == 0) break;
-            System.out.println("introduzca el origen: ");
-            nombreOrigen = entrada.nextLine();
-            System.out.println("introduzca el destino: ");
-            nombreDestino = entrada.nextLine();
-
-            if( !paisesConquistados.containsKey(nombreOrigen) ) throw new JugadorNoTienePais(String.format("El jugador no mover fichas desde el pais %s porque no es suyo",nombreOrigen));
-            if( !paisesConquistados.containsKey(nombreDestino) ) throw new JugadorNoTienePais(String.format("El jugador no puede mover fichas al pais %s porque no es suyo",nombreDestino));
-
-            Pais Origen = paisesConquistados.get(nombreOrigen);
-            Pais Destino = paisesConquistados.get(nombreDestino);
-
-            Origen.reagruparA(Destino, cantFichas);
-        }
-    }
-TODO: borrar estos metodos
-*/
 
     public void reagrupar(String origen, String destino, int cantFichas) {
         if( !paisesConquistados.containsKey(origen) )
@@ -187,5 +128,14 @@ TODO: borrar estos metodos
 
     public int cantidadFichas() {
         return fichasDisponibles;
+    }
+
+    public Collection<String> paisesAtacables(Collection<String> listaPaises) {
+        listaPaises.removeAll(paisesConquistados.keySet());
+        return listaPaises;
+    } //TODO: probar esto
+
+    public Collection<String> paisesConquistados() {
+        return  paisesConquistados.keySet();
     }
 }

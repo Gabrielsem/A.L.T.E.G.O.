@@ -5,6 +5,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseInicial;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Pais;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,12 +15,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -62,18 +63,18 @@ public class ControladorPantallaJuego {
     public void tocarPais(MouseEvent mouseEvent) {
 
         Node node = (Node) mouseEvent.getSource();
-
+        Pais pais = (Pais) node.getUserData();
         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-            fase.tocoPais(node.getId());
+            fase.tocoPais(node);
         } else {
             System.out.printf("País %s (%d fichas del Jugador %d)%n",
-            node.getId(), juego.cantidadFichas(node.getId()), juego.propietarioDe(node.getId()).numero());;
+                node.getId(), pais.cantidadFichas(), pais.getPropietario().numero());
         }
     }
 
     @FXML
-    public void tocoSiguiente(ActionEvent actionEvent) {
-        fase = fase.tocoSiguiente();
+    public void tocoBoton(ActionEvent actionEvent) {
+        fase = fase.tocoBoton((Button) actionEvent.getSource());
     }
 
     private void ajustarEscala(EjeCambioEscala cambio, Number nuevoValor) {

@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.transform.Affine?>
-
 
 <GridPane fx:id="grilla" alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
@@ -36,7 +36,7 @@
             <Label fx:id="nombrePais" alignment="CENTER" contentDisplay="CENTER" text="Pais actual" textAlignment="CENTER" />
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: #D7DDDD;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+      <VBox fx:id="cajaDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: #D7DDDD;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
@@ -53,7 +53,21 @@
                   <Font size="14.0" />
                </font>
             </Label>
-              <Button fx:id="botonSiguiente" alignment="CENTER" contentDisplay="CENTER" onAction="#tocoSiguiente" text="Pasar turno" />
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                    <Button fx:id="botonSiguiente" alignment="CENTER" contentDisplay="CENTER" onAction="#tocoBoton" text="Pasar turno" />
+                  <HBox alignment="CENTER" pickOnBounds="false" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="botonAtaque1" alignment="CENTER" contentDisplay="CENTER" onAction="#tocoBoton" text="Atacar con 1 fichas" visible="false" />
+                        <Button fx:id="botonAtaque2" alignment="CENTER" contentDisplay="CENTER" onAction="#tocoBoton" text="Atacar con 2 fichas" visible="false" />
+                        <Button fx:id="botonAtaque3" alignment="CENTER" contentDisplay="CENTER" onAction="#tocoBoton" text="Atacar con 3 fichas" visible="false" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </StackPane>
          </children>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -192,8 +206,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Colombia" onMouseClicked="#tocarPais" opacity="1.0" styleClass="pais">
@@ -207,8 +220,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Peru" onMouseClicked="#tocarPais" opacity="1.0" styleClass="pais">
@@ -222,8 +234,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Uruguay" onMouseClicked="#tocarPais" opacity="1.0" styleClass="pais">
@@ -237,8 +248,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Argentina" onMouseClicked="#tocarPais" opacity="1.0" styleClass="pais">

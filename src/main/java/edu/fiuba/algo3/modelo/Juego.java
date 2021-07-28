@@ -60,10 +60,6 @@ public class Juego extends Observable {
         turnoOffset = (turnoOffset + 1) % jugadores.size();
     }
 
-    public int cantidadFichas(String nombrePais) {
-        return mapa.cantidadFichas(nombrePais);
-    }
-
     private void crearTarjetas() throws FileNotFoundException {
         this.tarjetas = new ArrayList<>();
 
@@ -124,45 +120,20 @@ public class Juego extends Observable {
             JsonObject objetivoDestruccionJson = objetivosDestruccionJson.get(i).getAsJsonObject();
 
             int numJugador = objetivoDestruccionJson.get("JugadorADerrotar").getAsInt();
-            /*
-            try {
 
-            }catch{
-
-            }
-            // hay que evitar que le toque destruirse a si mismo y ver a quien le pasamos si el jugador no existe
-            // hay que actualizar el jugador a destruir una vez ya asignado el objetivo a otro jugador
-
-
-            this.objetivosIndividuales.add(new ObjetivoDestruccion());
-            */
-
+            this.objetivosIndividuales.add(new ObjetivoDestruccion(numJugador, mapa));
         }
     }
-/*
-    public void rondaAtaques() {
-        for ( Jugador jugador : this.jugadores) {
-            jugador.turnoAtaque();
-        }
-    }
-*/ // TODO: Borrar este metodo
 
     public Pais obtenerPais(String nombrePais){
         return mapa.obtenerPais(nombrePais);
-    }
+    } //FIXME: privado? se usa en tests
 
     public Tarjeta pedirTarjeta() {
 
         Random rand = new Random();
 
         return this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
-    }
-
-    public Jugador propietarioDe(String nombrePais) {
-        for (Jugador j : jugadores) {
-            if (j.tienePais(nombrePais)) return j;
-        }
-        return null;
     }
 
     public void devolverTarjetas(ArrayList<Tarjeta> tarjetas ) {
@@ -197,4 +168,9 @@ public class Juego extends Observable {
         mapa.addObservers(observers);
         mapa.notificarObservers();
     }
+
+    public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
+        mapa.atacar(paisAtacante, paisDefensor, cantFichas);
+    }
+
 }

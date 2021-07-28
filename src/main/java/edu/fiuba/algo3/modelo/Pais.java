@@ -11,11 +11,12 @@ public class Pais extends Observable {
     private final Set<String> vecinos;
     private int fichas = 0;
     private Jugador propietario = null;
+    Pais paisInvadido;
 
     public Pais(String nombrePais, String nombreContinente, Collection<String> limitrofes) {
         nombre = nombrePais;
         continente = nombreContinente;
-        vecinos = limitrofes.stream().map(String::toLowerCase).collect(Collectors.toSet());
+        vecinos = new HashSet<>(limitrofes);
     }
 
     public Jugador getPropietario() {
@@ -54,13 +55,13 @@ public class Pais extends Observable {
     }
 
     public void atacar(Pais defensor, int cantidadFichas) {
-        if (!vecinos.contains(defensor.nombre.toLowerCase())) {
+        if (!vecinos.contains(defensor.nombre)) {
             throw new PaisSoloPuedeAtacarVecinos(
                 String.format("El país %s no es vecino de %s", defensor.nombre(), nombre));
         }
         if (defensor.propietario.equals(propietario)) {
             throw new PaisDelMismoPropietarioNoPuedeSerAtacado(
-                String.format("El país %s no puede atacar a %s", nombre, defensor.nombre()));
+                String.format("El país %s no puede atacar a %s (mismo propietario)", nombre, defensor.nombre()));
         }
         this.verificarAlcanzanFichas(cantidadFichas);
 
@@ -81,16 +82,26 @@ public class Pais extends Observable {
         setChanged();notifyObservers();
     }
 
+    public boolean ataqueExitoso() {
+        return paisInvadido != null;
+    }//FIXME probar estas cosas
+
     public void moverEjercitos(Pais paisConquistado) {
         if (propietario == null) {
             throw new PaisNoTienePropietario(String.format("El pais %s no tiene propietario", nombre));
         }
+        paisInvadido = paisConquistado;
+    }
 
-        int fichasAMover = propietario.invadir(this, paisConquistado);
-        this.verificarAlcanzanFichas(fichasAMover);
+    public void invadirPaisConquistado(int cantFichas) {
+        if (!ataqueExitoso()) {
+            throw new RuntimeException("No se invadio ningún país");//FIXME crear excepcion custom
+        }
+        this.verificarAlcanzanFichas(cantFichas);
 
-        paisConquistado.ocupadoPor(propietario, fichasAMover);
-        agregarFichas(-fichasAMover);
+        paisInvadido.ocupadoPor(propietario, cantFichas);
+        agregarFichas(-cantFichas);
+        paisInvadido = null;
     }
 
     public void reagruparA(Pais paisDestino, int cantFichas){
@@ -102,7 +113,7 @@ public class Pais extends Observable {
     }
 
     public boolean esVecino(String nombrePais){
-        return vecinos.contains(nombrePais.toLowerCase());
+        return vecinos.contains(nombrePais);
     }
 
     public int getNumeroPropietario() {
@@ -111,5 +122,9 @@ public class Pais extends Observable {
 
     public void notificar() {
         setChanged();notifyObservers();
+    }
+
+    public Collection<String> getVecinos() {
+        return vecinos;
     }
 }

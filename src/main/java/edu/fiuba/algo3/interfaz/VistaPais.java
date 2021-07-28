@@ -66,7 +66,7 @@ public class VistaPais implements Observer {
 
         //this.pais.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
         this.pais.setFill( Color.web( colorDeContinente.get( pais.continente() ) ) );
-
+        vista.setUserData(pais);
     }
 
 
