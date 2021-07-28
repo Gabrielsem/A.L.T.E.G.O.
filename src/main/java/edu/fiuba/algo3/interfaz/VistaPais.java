@@ -31,7 +31,7 @@ public class VistaPais implements Observer {
             "Oceania","#888"
     );
 
-    public VistaPais(Node unaVista ){
+    public VistaPais(Node unaVista){
         vista =  (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
 
@@ -64,7 +64,7 @@ public class VistaPais implements Observer {
 
         //this.pais.setFill( Color.web( colores[pais.getNumeroPropietario()] ) );
         this.pais.setFill( Color.web( colorDeContinente.get( pais.continente() ) ) );
-
+        vista.setUserData(pais);
     }
 
 

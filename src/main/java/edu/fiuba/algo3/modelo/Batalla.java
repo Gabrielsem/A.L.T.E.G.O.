@@ -17,6 +17,7 @@ public class Batalla {
         int min = 1;
         int max = 6;
         int[] dados = new int[3];
+        cantidad--;
         for (int i = 0; i < cantidad; i++) {
             dados[i] = (int)(Math.random() * ((max - min) + 1)) + min;
         }

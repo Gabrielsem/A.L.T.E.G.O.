@@ -60,10 +60,6 @@ public class Juego extends Observable {
         turnoOffset = (turnoOffset + 1) % jugadores.size();
     }
 
-    public int cantidadFichas(String nombrePais) {
-        return mapa.cantidadFichas(nombrePais);
-    }
-
     private void crearTarjetas() throws FileNotFoundException {
         this.tarjetas = new ArrayList<>();
 
@@ -139,30 +135,16 @@ public class Juego extends Observable {
 
         }
     }
-/*
-    public void rondaAtaques() {
-        for ( Jugador jugador : this.jugadores) {
-            jugador.turnoAtaque();
-        }
-    }
-*/ // TODO: Borrar este metodo
 
     public Pais obtenerPais(String nombrePais){
         return mapa.obtenerPais(nombrePais);
-    }
+    } //FIXME: privado? se usa en tests
 
     public Tarjeta pedirTarjeta() {
 
         Random rand = new Random();
 
         return this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
-    }
-
-    public Jugador propietarioDe(String nombrePais) {
-        for (Jugador j : jugadores) {
-            if (j.tienePais(nombrePais)) return j;
-        }
-        return null;
     }
 
     public void devolverTarjetas(ArrayList<Tarjeta> tarjetas ) {
@@ -197,4 +179,9 @@ public class Juego extends Observable {
         mapa.addObservers(observers);
         mapa.notificarObservers();
     }
+
+    public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
+        mapa.atacar(paisAtacante, paisDefensor, cantFichas);
+    }
+
 }
