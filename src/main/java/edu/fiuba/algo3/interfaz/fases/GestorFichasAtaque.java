@@ -78,7 +78,6 @@ public class GestorFichasAtaque implements Fase{
 
     public void atacarCon(int fichas) {
 
-        System.out.println("IMPLEMENTAR ATAQUE");
         ocultarBotonesAtaque();
 
         paisAtacante.atacar(paisAtacado, fichas);
