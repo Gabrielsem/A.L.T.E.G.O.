@@ -17,7 +17,7 @@ public class JuegoTest {
     @BeforeEach
     public void setUp() throws FileNotFoundException {
 
-        juego = new Juego(2, "archivos/paises.json");
+        juego = new Juego(2, "archivos/paises.json", "objetivos.json");
     }
 
     @Test
@@ -46,13 +46,13 @@ public class JuegoTest {
 
     @Test
     public void turnoSiguienteDevuelveElOtroJugadorSiHay2Jugadores() throws FileNotFoundException {
-        Juego juego2jug = new Juego(2, "archivos/paises.json");
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json");
         assertNotEquals(juego.siguienteTurno(), juego.siguienteTurno());
     }
 
     @Test
     public void turnoCompletadoTrasRecorrer6Jugadores() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json");
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
         int i = 0;
         while(!juego6jug.turnosCompletados()) {
             i++;
@@ -64,7 +64,7 @@ public class JuegoTest {
 
     @Test
     public void turnoSiguienteEnJuegoDe6PasaPorTodosLosJugadores() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json");
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
         HashSet<Jugador> jugadores = new HashSet<>();
 
         while(!juego6jug.turnosCompletados()) {
@@ -85,7 +85,7 @@ public class JuegoTest {
 
     @Test
     public void trasReiniciarTurnosVuelveADevolverJugadoresEmpezandoPorElSegundo() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json");
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
         ArrayList<Jugador> jugadores1 = new ArrayList<>();
         ArrayList<Jugador> jugadores2 = new ArrayList<>();
 

@@ -100,6 +100,14 @@ public class Mapa {
         return paises.get(nombrePais).cantidadFichas();
     }
 
+    public int cantidadDePaises(String continente) {
+        int contador = 0;
+        for (Pais pais : paises.values()) {
+            if(pais.continente().equals(continente)) contador++;
+        }
+        return contador;
+    }
+
     public void addObservers(HashMap<String, Observer> observers) {
         for (String nombre : observers.keySet()) {
             //System.out.println("Agrega observer a: " + nombre);

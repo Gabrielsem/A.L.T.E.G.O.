@@ -2,13 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -140,7 +138,7 @@ public class IntegracionTests {
     @Test
     public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
 
-        Juego juego = new Juego(1, "archivos/paises.json");
+        Juego juego = new Juego(1, "archivos/paises.json", "objetivos.json");
         Jugador jugador = new Jugador(1,juego);
 
         Pais p1 = new Pais("P1","C",new ArrayList<>());

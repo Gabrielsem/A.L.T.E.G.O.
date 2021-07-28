@@ -1,7 +1,7 @@
 {
   "objetivoComun" : [
     {
-      "cantidadAConquistar" : 30
+      "CantidadAConquistar" : 30
     }
   ],
 
@@ -9,8 +9,29 @@
     {
       "Continentes" : ["Oceania", "Asia"],
       "CantidadPorContinente" : [2, "*"]
-
+    },
+    {
+      "Continentes" : ["Europa", "Asia"],
+      "CantidadPorContinente" : [3, 2]
+    },
+    {
+      "Continentes" : ["Europa", "Asia"],
+      "CantidadPorContinente" : ["*", "*"]
+    },
+    {
+      "Continentes" : ["Europa", "Oceania"],
+      "CantidadPorContinente" : ["*", 3]
     }
   ],
-  "objetivoDestruccion" : []
+  "objetivoDestruccion" : [
+    {
+      "JugadorADerrotar" : 2
+    },
+    {
+      "JugadorADerrotar" : 1
+    },
+    {
+      "JugadorADerrotar" : 3
+    }
+  ]
 }

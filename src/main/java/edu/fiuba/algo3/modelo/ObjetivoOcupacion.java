@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ObjetivoOcupacion {
+public class ObjetivoOcupacion implements Objetivo{
     private final Mapa mapa;
     private final HashMap<String, Integer> cantidadesPorContinente;
 

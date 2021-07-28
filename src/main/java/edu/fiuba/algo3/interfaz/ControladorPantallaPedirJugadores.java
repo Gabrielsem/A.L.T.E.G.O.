@@ -28,7 +28,7 @@ public class ControladorPantallaPedirJugadores {
         System.out.println("Comenzar Juego");
 
         int cantJ = 3; // TODO -
-        Juego juego = new Juego(cantJ, "archivos/paises.json");
+        Juego juego = new Juego(cantJ, "archivos/paises.json", "objetivos.json");
 
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 
-public class ObjetivoComun {
+public class ObjetivoComun implements Objetivo{
 
     private final int cantidadAConquistar;
     private final Mapa mapa;

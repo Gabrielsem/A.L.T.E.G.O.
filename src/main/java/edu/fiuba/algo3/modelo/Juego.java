@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
+import edu.fiuba.algo3.errores.NoExisteJugadorConNumeroIndicado;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,8 +19,10 @@ public class Juego extends Observable {
     private final Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
     private boolean finalizado;
+    private ArrayList<Objetivo> objetivosIndividuales;
+    private ObjetivoComun objetivoComun;
 
-    public Juego(int cantJugadores, String archivoPaises) throws FileNotFoundException {
+    public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos) throws FileNotFoundException {
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa(archivoPaises);
         this.crearTarjetas();
@@ -31,6 +35,7 @@ public class Juego extends Observable {
         turnoActual = 0;
         turnoOffset = ThreadLocalRandom.current().nextInt(cantJugadores);
         this.mapa.repartirPaises(this.jugadores);
+
     }
 
     public void addJugador(Jugador jug) {
@@ -75,6 +80,65 @@ public class Juego extends Observable {
         }
 
     }
+
+    private void crearObjetivos() throws FileNotFoundException {
+        this.objetivosIndividuales = new ArrayList<>();
+
+        FileReader lector = new FileReader("archivos/objetivos.json");
+
+        JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
+        crearObjetivoComun(objetoJson.get("objetivoComun").getAsJsonObject());
+        crearObjetivosOcupacion(objetoJson.get("objetivoOcupacion").getAsJsonArray());
+        crearObjetivosDestruccion(objetoJson.get("objetivoDestruccion").getAsJsonArray());
+    }
+
+    private void crearObjetivoComun(JsonObject objetivoComunJson) {
+        int cantidad = objetivoComunJson.get("CantidadAConquistar").getAsInt();
+        this.objetivoComun = new ObjetivoComun(cantidad, mapa);
+    }
+
+    private void crearObjetivosOcupacion(JsonArray objetivosOcupacionJson) {
+        for (int i = 0; i < objetivosOcupacionJson.size(); i++) {
+            JsonObject objetivoOcupacionJsonObj = objetivosOcupacionJson.get(i).getAsJsonObject();
+            JsonArray arregloJsonContinentes = objetivoOcupacionJsonObj.get("Continentes").getAsJsonArray();
+            JsonArray arregloJsonCantidadesPorContinente = objetivoOcupacionJsonObj.get("CantidadPorContinente").getAsJsonArray();
+            HashMap<String, Integer> cantidadesPorContinente = new HashMap<>();
+
+            for (int j = 0; j < arregloJsonContinentes.size(); j++) {
+
+                String cantidad = arregloJsonCantidadesPorContinente.get(j).getAsString();
+                String continente = arregloJsonContinentes.get(j).getAsString();
+
+                if(cantidad.equals("*")) {
+                    cantidadesPorContinente.put(continente, mapa.cantidadDePaises(continente));
+                }else{
+                    cantidadesPorContinente.put(continente, Integer.parseInt(cantidad));
+                }
+            }
+            this.objetivosIndividuales.add(new ObjetivoOcupacion(cantidadesPorContinente, mapa));
+        }
+    }
+
+    private void crearObjetivosDestruccion(JsonArray objetivosDestruccionJson) {
+        for (int i = 0; i < objetivosDestruccionJson.size(); i++) {
+            JsonObject objetivoDestruccionJson = objetivosDestruccionJson.get(i).getAsJsonObject();
+
+            int numJugador = objetivoDestruccionJson.get("JugadorADerrotar").getAsInt();
+            /*
+            try {
+
+            }catch{
+
+            }
+            // hay que evitar que le toque destruirse a si mismo y ver a quien le pasamos si el jugador no existe
+            // hay que actualizar el jugador a destruir una vez ya asignado el objetivo a otro jugador
+
+
+            this.objetivosIndividuales.add(new ObjetivoDestruccion());
+            */
+
+        }
+    }
 /*
     public void rondaAtaques() {
         for ( Jugador jugador : this.jugadores) {
@@ -115,6 +179,13 @@ public class Juego extends Observable {
 
     public ArrayList<Jugador> getJugadores() {
         return new ArrayList<>(jugadores);
+    }
+
+    public Jugador obtenerJugadorConNumero(int numeroDeJugador) {
+        for (Jugador jugador : jugadores) {
+            if(jugador.numero() == numeroDeJugador) return jugador;
+        }
+        throw new NoExisteJugadorConNumeroIndicado(String.format("No existe jugador con numero %d", numeroDeJugador));
     }
 
     //Esto es horrible - x suerte fdelu va a refactorizar - 🤔 tmb se podria resolver con un metodo tipo add controlers 🤔

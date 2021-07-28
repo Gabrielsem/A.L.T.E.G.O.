@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -266,7 +265,7 @@ public class JugadorTest {
     @Test
     public void jugadorRecibeFichasAlCanjearTarjetas() throws FileNotFoundException {
 
-        jugador = new Jugador(1, new Juego(1, "archivos/paises.json") );
+        jugador = new Jugador(1, new Juego(1, "archivos/paises.json", "objetivos.json") );
 
         Tarjeta t1 = new Tarjeta(new Pais("N1","C",new ArrayList<>()),
                 new Simbolo("S1") );
