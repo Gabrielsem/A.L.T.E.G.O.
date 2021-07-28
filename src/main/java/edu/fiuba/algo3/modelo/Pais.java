@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.errores.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Pais extends Observable {
     private final String nombre;
@@ -67,13 +66,8 @@ public class Pais extends Observable {
         Batalla batalla = new Batalla(defensor, this, cantidadFichas);
     }
 
-    public void perderFichas(int cantidadFichas, Batalla batalla) {
+    public void perderFichas(int cantidadFichas) {//FIXME - deprecated (?)
         agregarFichas(-cantidadFichas);
-
-        // Si sucede esto, el país fue conquistado
-        if (fichas <= 0) {
-            batalla.murioDefensor();
-        }
     }
 
     public void agregarFichas(int cantidadFichas) {
