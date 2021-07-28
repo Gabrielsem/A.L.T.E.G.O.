@@ -11,12 +11,14 @@ import static java.lang.Math.max;
 
 public class Jugador {
 
-    HashMap<String, Pais> paisesConquistados = new HashMap<>();
-    ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-    int numero;
-    Juego juego;
-    int canjesRealizados = 0;
-    int fichasDisponibles = 0;
+    private HashMap<String, Pais> paisesConquistados = new HashMap<>();
+    private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+    private int numero;
+    private Juego juego;
+    private int canjesRealizados = 0;
+    private int fichasDisponibles = 0;
+    static final private int minFichas = 3;
+    private boolean debeRecibirTarjeta = false;
 
     public Jugador(){}
 
@@ -35,6 +37,10 @@ public class Jugador {
 
     public void ocupar(Pais unPais){
         paisesConquistados.put(unPais.nombre(),unPais);
+        if (debeRecibirTarjeta) {
+            recibirTarjeta(juego.pedirTarjeta());//TODO: Actualizar uml con esta secuencia (ver este bool en codigo)
+            debeRecibirTarjeta = false;
+        }
     }
 
     public int invadir(Pais atacante, Pais defensor) {
@@ -64,7 +70,11 @@ public class Jugador {
             throw new JugadorNoTieneFichasSuficientes(String.format("El jugador %d no tiene mas fichas", numero));
         }
         paisesConquistados.get(nombrePais).agregarFichas(cantFichas);
-        fichasDisponibles--;
+        fichasDisponibles -= cantFichas;
+    }
+
+    public void prepararAtaques() {
+        debeRecibirTarjeta = true;
     }
 
     public int obtenerCantidadPaises(){
@@ -75,6 +85,7 @@ public class Jugador {
         tarjetas.add( unaTarjeta );
     }
 
+/*
     public void turnoAtaque(){
         int cantInicialPaises = paisesConquistados.size();
         Scanner entrada = new Scanner(System.in);
@@ -126,16 +137,22 @@ public class Jugador {
             Origen.reagruparA(Destino, cantFichas);
         }
     }
-/*
-    public void turnoColocacion(){
-        int fichas = 0;
+TODO: borrar estos metodos
+*/
 
-        fichas += canjearTarjetas();
+    public void reagrupar(String origen, String destino, int cantFichas) {
+        if( !paisesConquistados.containsKey(origen) )
+            throw new JugadorNoTienePais(String.format("El jugador no mover fichas desde el pais %s porque no es suyo",origen));
+        if( !paisesConquistados.containsKey(destino) )
+            throw new JugadorNoTienePais(String.format("El jugador no puede mover fichas al pais %s porque no es suyo",destino));
 
-        fichas += fichasPorConquista();
-        agregarFichas( fichas );
+
+        paisesConquistados.get(origen).reagruparA(paisesConquistados.get(destino), cantFichas);
     }
-*/ //TODO: Borrar ese metodo?
+
+    public void actualizarFichas() {
+        fichasDisponibles += fichasPorConquista() + canjearTarjetas(); //FIXME: estos metodos no deberian ser privados?
+    }
 
     public int canjearTarjetas(){
         for( Tarjeta tarjeta : tarjetas )

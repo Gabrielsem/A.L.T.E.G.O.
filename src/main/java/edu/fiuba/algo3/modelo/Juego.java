@@ -75,12 +75,13 @@ public class Juego extends Observable {
         }
 
     }
-
+/*
     public void rondaAtaques() {
         for ( Jugador jugador : this.jugadores) {
             jugador.turnoAtaque();
         }
     }
+*/ // TODO: Borrar este metodo
 
     public Pais obtenerPais(String nombrePais){
         return mapa.obtenerPais(nombrePais);
