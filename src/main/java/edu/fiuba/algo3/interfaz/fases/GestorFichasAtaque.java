@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class GestorFichasAtaque implements Fase{
     Pais paisAtacado;
 
     Collection<String> seleccionables;
-    Button[] botones = new Button[3];
+    ArrayList<Button> botones;
 
     Label instruccion;
 
@@ -44,7 +45,6 @@ public class GestorFichasAtaque implements Fase{
     public void iniciar() {
         instruccion.setText(String.format("Jugador %d, elegí con cuantas fichas atacar", jugadorActual.numero()));
         setSeleccionables( new ArrayList<>());
-        inicializarBotones();
         agregarBotonesAtaque();
     }
 
@@ -58,22 +58,21 @@ public class GestorFichasAtaque implements Fase{
 
     }
 
-
-    private void inicializarBotones() {
-        botones[0] = (Button) scene.lookup("#botonAtaque1");
-        botones[1] = (Button) scene.lookup("#botonAtaque2");
-        botones[2] = (Button) scene.lookup("#botonAtaque3");
-        botones[0].setOnAction((a) -> atacarCon(1));
-        botones[1].setOnAction((a) -> atacarCon(2));
-        botones[2].setOnAction((a) -> atacarCon(3));
-    }
     private void agregarBotonesAtaque() {
+        HBox box = (HBox) scene.lookup("#cajaBotones");
+        botones = new ArrayList<>();
+
         for (int i = 0; i < (paisAtacante.cantidadFichas() - 1) && i < 3; i++) {
-            botones[i].setVisible(true);
+            int index = i+1;
+            Button boton = new Button("Atacar con "+index);
+            boton.setOnAction( (a) -> atacarCon(index) );
+            box.getChildren().add(boton);
         }
     }
     private void ocultarBotonesAtaque() {
-        Arrays.stream(botones).forEach((Button b) -> b.setVisible(false));
+
+        HBox box = (HBox) scene.lookup("#cajaBotones");
+        box.getChildren().clear();
     }
 
     public void atacarCon(int fichas) {

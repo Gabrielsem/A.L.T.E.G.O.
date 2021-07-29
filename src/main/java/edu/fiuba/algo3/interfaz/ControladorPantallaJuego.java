@@ -84,8 +84,6 @@ public class ControladorPantallaJuego {
         String nombrePais = nodoPais.getId();
         nombrePais = nombrePais.replace("_", " ");
 
-        System.out.println(nombrePais);
-
         Label labelNombrePais = (Label) scene.lookup("#nombrePais");
         Label labelNombreContinente = (Label) scene.lookup("#nombreContinente");
 
