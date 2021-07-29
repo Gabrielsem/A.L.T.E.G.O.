@@ -38,7 +38,7 @@ public class GestorInvasion implements Fase {
 
     @Override
     public void iniciar() {
-        instruccion.setText(String.format("Elegí con cuantas fichas invadir"));
+        instruccion.setText(String.format("Elegí cuantas fichas mover al país conquistado"));
         paisAtacado.ocupadoPor(juego.turnoActual(),0);
         fase.setSeleccionables( new ArrayList<>());
         agregarBotonesInvasion();
