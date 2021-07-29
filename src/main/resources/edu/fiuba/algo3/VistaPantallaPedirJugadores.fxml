@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
@@ -23,10 +24,14 @@
    <children>
       <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
           <children>
-              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold; -fx-font-size: 16;" text="Seleccione los jugadores">
-               <VBox.margin>
+              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" text="Seleccione los jugadores">
+                  <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+
             </Label>
             <HBox />
             <GridPane prefHeight="187.0" prefWidth="374.0">
@@ -43,7 +48,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="colorJugadorAzul" accessibleText="#0b5394" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarJugador" style="-fx-border-color: #000; -fx-background-color: #0b5394;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                     <padding>
+                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </Button>
@@ -72,15 +77,28 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </Button>
-                  <Label fx:id="JugadorAmarillo" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorRosa" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorRojo" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorAzul" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorVerde" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorNegro" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="JugadorAmarillo" style="-fx-font-style: italic;" textFill="#ee7733" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
+                   <Label fx:id="JugadorRosa" style="-fx-font-style: italic;" textFill="#ee3377" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="JugadorRojo" style="-fx-font-style: italic;" textFill="#cc3311" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="JugadorAzul" style="-fx-font-style: italic;" textFill="#0b5394" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="JugadorVerde" style="-fx-font-style: italic;" textFill="#009988" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label fx:id="advertenciaCantidadJugadores" text="Seleccione al menos 2 jugadores antes de comenzar" textFill="#ef0202" visible="false" />
           </children>
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
