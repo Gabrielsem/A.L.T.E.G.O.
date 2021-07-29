@@ -31,11 +31,16 @@ public class ControladorPantallaPedirJugadores {
     @FXML
     public void agregarJugador(ActionEvent actionEvent) {
         Button botonColor = (Button) actionEvent.getSource();
+
         int numeroJugadorActual = this.coloresJugadores.size() + 1;
+
         String jugador = botonColor.getId();
         jugador = jugador.replace("color", "");
 
         coloresJugadores.put(numeroJugadorActual, botonColor.getAccessibleText());
+
+        Label advertenciaCantidadJugadores = (Label) scene.lookup("#advertenciaCantidadJugadores");
+        advertenciaCantidadJugadores.setVisible(false);
 
         Label labelJugador = (Label) scene.lookup(String.format("#%s", jugador));
         labelJugador.setText(String.format("Jugador %d", numeroJugadorActual));
@@ -46,7 +51,13 @@ public class ControladorPantallaPedirJugadores {
 
     @FXML
     public void iniciarJuego(ActionEvent actionEvent) throws IOException {
-        System.out.println("Comenzar Juego");
+
+        if (this.coloresJugadores.size() < 2) {
+            Label advertenciaCantidadJugadores = (Label) scene.lookup("#advertenciaCantidadJugadores");
+            advertenciaCantidadJugadores.setVisible(true);
+            return;
+        }
+
         Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json");
         VistaPais.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
