@@ -71,18 +71,9 @@ public class GestorColocacion implements Fase {
     private void cambiarInstruccionAgregarFichas(Jugador jugador) {
         instruccion.setText(String.format("Jugador %d, clickeá un país para agregarle fichas (te quedan %d fichas)",
                 jugador.numero(), jugador.cantidadFichas()));
-        actualizarUI();
     }
 
     private void cambiarInstruccionSiguiente() {
         instruccion.setText("Tocá siguiente para pasar al siguiente turno.");
-    }
-
-    private void actualizarUI() {
-        VBox box = (VBox) scene.lookup("#playerBox");
-        String color = VistaPais.getColorJugador(actual.numero());
-        box.setStyle("-fx-background-color: "+color+";");
-
-        ((Label) box.getChildren().get(0)).setText("Jugador "+actual.numero());
     }
 }

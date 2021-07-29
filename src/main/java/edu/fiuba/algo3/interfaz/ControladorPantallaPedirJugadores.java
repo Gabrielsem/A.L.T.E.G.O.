@@ -43,6 +43,7 @@ public class ControladorPantallaPedirJugadores {
         VistaPais.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
+        juego.addObserverTurnos(new VistaTurno(scene));
     }
 
     private void addPaisObservers(Juego juego) {

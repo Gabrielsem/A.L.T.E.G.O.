@@ -166,6 +166,11 @@ public class Juego extends Observable {
         mapa.notificarObservers();
     }
 
+    public void addObserverTurnos(Observer observer) {
+        turnos.addObserver(observer);
+        turnos.notificarObservers();
+    }
+
     public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
         mapa.atacar(paisAtacante, paisDefensor, cantFichas);
     }

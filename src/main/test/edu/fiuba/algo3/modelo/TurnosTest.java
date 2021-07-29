@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.errores.TurnoInvalido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,9 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class TurnosTest {
@@ -55,12 +54,12 @@ public class TurnosTest {
     }
 
     @Test
-    public void trasPasarPorLosJugadoresDevuelveNull() {
+    public void trasPasarPorLosJugadoresLanzaExcepcion() {
         while(!turnos6jug.turnosCompletados()) {
             Jugador jug = turnos6jug.siguienteTurno();
         }
 
-        assertNull(turnos6jug.siguienteTurno());
+        assertThrows(TurnoInvalido.class, () -> turnos6jug.siguienteTurno());
     }
 
     @Test
@@ -91,6 +90,11 @@ public class TurnosTest {
 
     @Test
     public void turnoActualNoPasaTurno() {
-        assertEquals(turnos2jug.turnoActual(), turnos2jug.siguienteTurno());
+        assertEquals(turnos2jug.siguienteTurno(), turnos2jug.turnoActual());
+    }
+
+    @Test
+    public void pedirTurnoActualAntesDePrimerTurnoLanzaExcepcion() {
+        assertThrows(TurnoInvalido.class, () -> turnos6jug.turnoActual());
     }
 }
