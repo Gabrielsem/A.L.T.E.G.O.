@@ -25,7 +25,7 @@ public class JugadorTest {
 
     @BeforeEach
     public void setUp(){
-        jugador = new Jugador();
+        jugador = new Jugador(1, mock(Juego.class));
         atacante = mock(Pais.class);
         defensor = mock(Pais.class);
         when(atacante.nombre()).thenReturn("SoyAtacante");

@@ -4,20 +4,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.NoExisteJugadorConNumeroIndicado;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static java.util.Collections.shuffle;
 
 public class Juego extends Observable {
 
     private final ArrayList<Jugador> jugadores;
-    int turnoActual, turnoOffset;
+    private Turnos turnos;
     private final Mapa mapa;
     private ArrayList<Tarjeta> tarjetas;
     private boolean finalizado;
@@ -34,33 +32,11 @@ public class Juego extends Observable {
         }
 
         this.tarjetas = new ArrayList<Tarjeta>();
-        turnoActual = 0;
-        turnoOffset = ThreadLocalRandom.current().nextInt(cantJugadores);
+        turnos = new Turnos(jugadores);
+
         this.mapa.repartirPaises(this.jugadores);
         crearObjetivos();
         repartirObjetivos();
-    }
-
-    public void addJugador(Jugador jug) {
-        jugadores.add(jug);
-    }
-
-    public boolean turnosCompletados() {
-        return turnoActual == jugadores.size();
-    }
-
-    public Jugador siguienteTurno() {
-        if (turnosCompletados()) {
-            return null;
-        }
-        Jugador jug = jugadores.get((turnoActual + turnoOffset) % jugadores.size());
-        turnoActual++;
-        return jug;
-    }
-
-    public void reiniciarTurnos() {
-        turnoActual = 0;
-        turnoOffset = (turnoOffset + 1) % jugadores.size();
     }
 
     private void crearTarjetas() throws FileNotFoundException {
@@ -192,6 +168,22 @@ public class Juego extends Observable {
 
     public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
         mapa.atacar(paisAtacante, paisDefensor, cantFichas);
+    }
+
+    public boolean turnosCompletados() {
+        return turnos.turnosCompletados();
+    }
+
+    public Jugador turnoActual() {
+        return turnos.turnoActual();
+    }
+
+    public Jugador siguienteTurno() {
+        return turnos.siguienteTurno();
+    }
+
+    public void reiniciarTurnos() {
+        turnos.reiniciarTurnos();
     }
 
 }

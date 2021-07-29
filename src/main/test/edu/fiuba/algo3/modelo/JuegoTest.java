@@ -44,64 +44,6 @@ public class JuegoTest {
         verify(tarjetaBrasil, times(1)).desactivar();
     }
 
-    @Test
-    public void turnoSiguienteDevuelveElOtroJugadorSiHay2Jugadores() throws FileNotFoundException {
-        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json");
-        assertNotEquals(juego.siguienteTurno(), juego.siguienteTurno());
-    }
-
-    @Test
-    public void turnoCompletadoTrasRecorrer6Jugadores() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
-        int i = 0;
-        while(!juego6jug.turnosCompletados()) {
-            i++;
-            Jugador jug = juego6jug.siguienteTurno();
-        }
-
-        assertEquals(6, i);
-    }
-
-    @Test
-    public void turnoSiguienteEnJuegoDe6PasaPorTodosLosJugadores() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
-        HashSet<Jugador> jugadores = new HashSet<>();
-
-        while(!juego6jug.turnosCompletados()) {
-            jugadores.add(juego6jug.siguienteTurno());
-        }
-
-        assertEquals(6, jugadores.size());
-    }
-
-    @Test
-    public void trasPasarPorLosJugadoresDevuelveNull() {
-        while(!juego.turnosCompletados()) {
-            Jugador jug = juego.siguienteTurno();
-        }
-
-        assertNull(juego.siguienteTurno());
-    }
-
-    @Test
-    public void trasReiniciarTurnosVuelveADevolverJugadoresEmpezandoPorElSegundo() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
-        ArrayList<Jugador> jugadores1 = new ArrayList<>();
-        ArrayList<Jugador> jugadores2 = new ArrayList<>();
-
-        while(!juego6jug.turnosCompletados()) {
-            jugadores1.add(juego6jug.siguienteTurno());
-        }
-        juego6jug.reiniciarTurnos();
-        while(!juego6jug.turnosCompletados()) {
-            jugadores2.add(juego6jug.siguienteTurno());
-        }
-
-        Jugador primero = jugadores1.remove(0);
-        jugadores1.add(primero);
-        assertEquals(jugadores1, jugadores2);
-    }
-
     //FIXME: hay que hacer bien estos test
     /*
     @Test
@@ -119,5 +61,27 @@ public class JuegoTest {
         assert (true);
     }
     */
+
+    @Test
+    public void juegoDe2JugadoresDa2Turnos() throws FileNotFoundException {
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json");
+        int i = 0;
+        while (!juego2jug.turnosCompletados()) {
+            juego2jug.siguienteTurno();
+            i++;
+        }
+        assertEquals(2, i);
+    }
+
+    @Test
+    public void juegoDe6JugadoresDa6Turnos() throws FileNotFoundException {
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
+        int i = 0;
+        while (!juego6jug.turnosCompletados()) {
+            juego6jug.siguienteTurno();
+            i++;
+        }
+        assertEquals(6, i);
+    }
 
 }
