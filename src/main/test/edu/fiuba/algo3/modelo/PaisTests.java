@@ -32,7 +32,7 @@ public class PaisTests {
 
     @Test
     public void paisAsignaFichasCorrectamenteAlOcuparse() {
-        Jugador jug = new Jugador();
+        Jugador jug = new Jugador(1, mock(Juego.class));
         pais.ocupadoPor(jug, 3);
 
         assertEquals(pais.cantidadFichas(), 3);
@@ -40,7 +40,7 @@ public class PaisTests {
 
     @Test
     public void paisAgregaFichasCorrectamente() {
-        Jugador jug = new Jugador();
+        Jugador jug = new Jugador(1, mock(Juego.class));
         pais.ocupadoPor(jug, 1);
 
         pais.agregarFichas(37);
@@ -59,7 +59,7 @@ public class PaisTests {
     @Test
     public void paisAvisaAPropietarioAnteriorAlSerOcupado() {
         Jugador jug_anterior = mock(Jugador.class);
-        Jugador jug_nuevo = new Jugador();
+        Jugador jug_nuevo = new Jugador(1, mock(Juego.class));
         pais.ocupadoPor(jug_anterior, 3);
         pais.ocupadoPor(jug_nuevo, 1);
 
@@ -72,8 +72,8 @@ public class PaisTests {
         Pais defensor = new Pais("España", "Europa", Arrays.asList("a", "b"));
 
         // En principio no se necesitan mocks ya que lo único que debería hacer País es fijarse si es el mismo
-        Jugador jugAtc = new Jugador();
-        Jugador jugDef = new Jugador();
+        Jugador jugAtc = new Jugador(1, mock(Juego.class));
+        Jugador jugDef = new Jugador(1, mock(Juego.class));
 
         atacante.ocupadoPor(jugAtc, 5);
         defensor.ocupadoPor(jugDef, 5);
@@ -86,7 +86,7 @@ public class PaisTests {
         Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
         Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
 
-        Jugador jug = new Jugador();
+        Jugador jug = new Jugador(1, mock(Juego.class));
 
         atacante.ocupadoPor(jug, 5);
         defensor.ocupadoPor(jug, 5);
@@ -99,8 +99,8 @@ public class PaisTests {
         Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
         Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
 
-        Jugador jugAtc = new Jugador();
-        Jugador jugDef = new Jugador();
+        Jugador jugAtc = new Jugador(1, mock(Juego.class));
+        Jugador jugDef = new Jugador(1, mock(Juego.class));
 
         atacante.ocupadoPor(jugAtc, 1);
         defensor.ocupadoPor(jugDef, 5);
@@ -156,7 +156,7 @@ public class PaisTests {
     @Test
     public void paisPierdeFichasCorrectamente() {
         Batalla batalla = mock(Batalla.class);
-        Jugador jugador = new Jugador();
+        Jugador jugador = new Jugador(1, mock(Juego.class));
 
         pais.ocupadoPor(jugador, 5);
         pais.perderFichas(3);
@@ -167,7 +167,7 @@ public class PaisTests {
     @Test
     public void paisNoDerrotadoNoEsInvadible() {
         Batalla batalla = mock(Batalla.class);
-        Jugador jugador = new Jugador();
+        Jugador jugador = new Jugador(1, mock(Juego.class));
 
         pais.ocupadoPor(jugador, 5);
         pais.perderFichas(3);
@@ -178,7 +178,7 @@ public class PaisTests {
     @Test
     public void paisDerrotadoEsInvadible() {
         Batalla batalla = mock(Batalla.class);
-        Jugador jugador = new Jugador();
+        Jugador jugador = new Jugador(1, mock(Juego.class));
 
         pais.ocupadoPor(jugador, 5);
         pais.perderFichas(5);

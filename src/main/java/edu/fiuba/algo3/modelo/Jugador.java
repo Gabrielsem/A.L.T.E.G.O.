@@ -22,8 +22,6 @@ public class Jugador {
     private Objetivo objetivoComun;
     private Objetivo objetivoSecreto;
 
-    public Jugador(){}
-
     public Jugador(int numeroDeJugador, Juego claseJuego){
         numero = numeroDeJugador;
         juego = claseJuego;
