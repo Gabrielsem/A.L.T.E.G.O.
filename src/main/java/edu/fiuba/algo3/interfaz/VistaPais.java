@@ -20,7 +20,8 @@ public class VistaPais implements Observer {
     private Circle ficha;
     private Label texto;
     private Shape pais;
-    private HashMap<Integer, String> colores;
+    private HashMap<Integer, String> colores;// TODO - Me parece mejor que sea estatico ya que es el mismo para todos
+    static HashMap<Integer, String>colorJugador;// FIXME - En este momento es accedido publicamente pq hay varias partes de la interfaz que lo necesitan - Habria que ver si lo pasamos por parametro (no me gusta) o  reasignamos la tenencia a algo mas ligado con Jugador (VistaJugador ?)
 
     //static private final String[] colores = {"#FFFFFF", "#0077BB", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"};
     static private final Map<String, String> colorDeContinente = Map.of(
@@ -49,6 +50,7 @@ public class VistaPais implements Observer {
         texto.setLayoutX( ficha.centerXProperty().get()-ficha.getRadius()/3 );
         texto.setLayoutY( ficha.centerYProperty().get()-ficha.getRadius()*0.7 );
         vista.getChildren().add(texto);
+
     }
 
     @Override
@@ -72,7 +74,11 @@ public class VistaPais implements Observer {
     }
 
 
-    public void addClickHandler(EventHandler eventHandler){
-        vista.addEventHandler( MouseEvent.MOUSE_CLICKED, eventHandler);
+    public static String getColorJugador(int nJug){
+        return colorJugador.get(nJug);
+    };
+
+    public static void setColorJugador( HashMap<Integer,String> colores ) {
+        colorJugador = colores;
     }
 }

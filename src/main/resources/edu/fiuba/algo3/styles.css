@@ -42,3 +42,9 @@
     -fx-padding: 5;
     -fx-font-size: 12 pt;
 }
+#playerBox > Label {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-stroke: #FFF ;
+    -fx-strokeWidth: 3;
+}

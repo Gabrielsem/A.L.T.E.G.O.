@@ -40,6 +40,7 @@ public class ControladorPantallaPedirJugadores {
     public void iniciarJuego(ActionEvent actionEvent) throws IOException {
         System.out.println("Comenzar Juego");
         Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json");
+        VistaPais.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
     }
