@@ -16,6 +16,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -75,6 +76,18 @@ public class ControladorPantallaJuego {
     @FXML
     public void tocoBoton(ActionEvent actionEvent) {
         fase = fase.tocoBoton((Button) actionEvent.getSource());
+    }
+
+    @FXML
+    public void mostrarNombrePais(MouseEvent mouseEvent) {
+        String nombrePais = ((Group) mouseEvent.getSource()).getId();
+        nombrePais = nombrePais.replace("_", " ");
+
+        System.out.println(nombrePais);
+
+        Label labelNombrePais = (Label) scene.lookup("#nombrePais");
+
+        labelNombrePais.setText(nombrePais);
     }
 
     private void ajustarEscala(EjeCambioEscala cambio, Number nuevoValor) {
