@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,8 +31,15 @@ public class ControladorPantallaPedirJugadores {
     @FXML
     public void agregarJugador(ActionEvent actionEvent) {
         Button botonColor = (Button) actionEvent.getSource();
-        System.out.println(((Button) actionEvent.getSource()).getAccessibleText());
-        coloresJugadores.put(this.coloresJugadores.size() + 1, botonColor.getAccessibleText());
+        int numeroJugadorActual = this.coloresJugadores.size() + 1;
+        String jugador = botonColor.getId();
+        jugador = jugador.replace("color", "");
+
+        coloresJugadores.put(numeroJugadorActual, botonColor.getAccessibleText());
+
+        Label labelJugador = (Label) scene.lookup(String.format("#%s", jugador));
+        labelJugador.setText(String.format("Jugador %d", numeroJugadorActual));
+
         botonColor.setOnAction(null);
         botonColor.setOpacity(0.5);
     }
