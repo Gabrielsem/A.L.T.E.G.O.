@@ -1,65 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(file:///C:/Users/arian/Pictures/guerra_photoshopeada.jpg); -fx-background-position: center; -fx-background-size: 1200;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="199.20001449584962" minHeight="10.0" prefHeight="101.80001831054688" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="199.20001449584962" minHeight="10.0" prefHeight="81.79998168945312" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="333.5999816894531" minHeight="10.0" prefHeight="70.79998779296875" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="159.20000610351565" minHeight="10.0" prefHeight="159.20000610351565" vgrow="SOMETIMES" />
+  </rowConstraints>
    <children>
-      <ImageView fitHeight="384.0" fitWidth="677.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
-         <image>
-            <Image url="@../../../../../../imagenes/guerra.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <GridPane layoutY="3.0" prefHeight="413.0" prefWidth="677.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.4" minWidth="10.0" prefWidth="186.4" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="742.4" minWidth="10.0" prefWidth="566.4" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.199951171875" minWidth="10.0" prefWidth="199.199951171875" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints maxHeight="326.66668395996095" minHeight="10.0" prefHeight="155.20001373291015" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="494.3999938964844" minHeight="10.0" prefHeight="117.19998779296876" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="494.3999938964844" minHeight="10.0" prefHeight="169.20001220703122" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <VBox alignment="CENTER" prefHeight="228.0" prefWidth="566.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                <padding>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                </padding>
-               <children>
-                  <Button fx:id="botonJugar" mnemonicParsing="false" onAction="#pedirJugadores" text="Jugar" textAlignment="CENTER">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            
-                  </VBox>
-            <ImageView fitHeight="91.0" fitWidth="428.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <image>
-                  <Image url="@../../../../../../imagenes/titulo_teg.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
+      <Button fx:id="botonJugar" mnemonicParsing="false" onAction="#pedirJugadores" text="Jugar" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label text="T.E.G" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font name="Times New Roman" size="90.0" />
+         </font></Label>
+      <Label text="Plan táctico y estratégico de guerra" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font></Label>
    </children>
-</Pane>
+</GridPane>
