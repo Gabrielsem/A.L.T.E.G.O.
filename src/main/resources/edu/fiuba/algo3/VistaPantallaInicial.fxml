@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="384.0" fitWidth="677.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
          <image>
-            <Image url="@../../../../../../../guerra.png" />
+            <Image url="@../../../../../../imagenes/guerra.png" />
          </image>
          <viewport>
             <Rectangle2D />
@@ -56,7 +56,7 @@
                   </VBox>
             <ImageView fitHeight="91.0" fitWidth="428.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@../../../../../../../titulo_teg.png" />
+                  <Image url="@../../../../../../imagenes/titulo_teg.png" />
                </image>
             </ImageView>
          </children>
