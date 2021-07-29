@@ -14,6 +14,30 @@
     -fx-strokeType: CENTER;
 }
 
+.americaDelNorte > SVGPath {
+    -fx-fill: #999;
+}
+
+.americaDelSur > SVGPath {
+    -fx-fill: #666;
+}
+
+.europa > SVGPath {
+    -fx-fill: #777;
+}
+
+.asia > SVGPath {
+    -fx-fill: #555;
+}
+
+.oceania > SVGPath {
+    -fx-fill: #888;
+}
+
+.africa > SVGPath {
+    -fx-fill: #444;
+}
+
 .pais > Label {
     -fx-text-fill: white;
     -fx-font-size: 20;
