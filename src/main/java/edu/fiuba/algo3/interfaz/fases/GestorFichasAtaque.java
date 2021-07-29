@@ -35,7 +35,7 @@ public class GestorFichasAtaque implements Fase{
     @Override
     public void iniciar() {
         instruccion.setText("Elegí con cuantas fichas atacar");
-        fase.setSeleccionables( new ArrayList<>());
+        fase.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ));
         agregarBotonesAtaque();
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class GestorInvasion implements Fase {
@@ -40,7 +41,7 @@ public class GestorInvasion implements Fase {
     public void iniciar() {
         instruccion.setText(String.format("Elegí cuantas fichas mover al país conquistado"));
         paisAtacado.ocupadoPor(juego.turnoActual(),0);
-        fase.setSeleccionables( new ArrayList<>());
+        fase.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ));
         agregarBotonesInvasion();
     }
 

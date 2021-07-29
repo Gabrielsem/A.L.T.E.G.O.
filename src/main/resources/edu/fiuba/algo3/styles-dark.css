@@ -1,0 +1,92 @@
+.button {
+    -fx-text-fill: #235623;
+}
+
+.pais > SVGPath{
+    -fx-stroke: #000 ;
+    -fx-stroke-width: 2;
+    -fx-strokeType: INSIDE;
+}
+
+.pais:hover > SVGPath, .pais:active > SVGPath, .pais:focus > SVGPath {
+    -fx-fill: #C9C9C9;
+    -fx-stroke-width: 3;
+    -fx-strokeType: CENTER;
+}
+
+.americaDelNorte > SVGPath {
+    -fx-fill: #999;
+}
+
+.americaDelSur > SVGPath {
+    -fx-fill: #666;
+}
+
+.europa > SVGPath {
+    -fx-fill: #777;
+}
+
+.asia > SVGPath {
+    -fx-fill: #BBB;
+}
+
+.oceania > SVGPath {
+    -fx-fill: #888;
+}
+
+.africa > SVGPath {
+    -fx-fill: #AAA;
+}
+
+.pais > Label {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 3;
+}
+
+
+
+.ficha {
+    -fx-stroke: #000 ;
+    -fx-stroke-width: 1;
+    -fx-alignment: center;
+}
+
+#Lineas_negras > Rectangle {
+    -fx-fill: #FFF ;
+    -fx-stroke: #FFF ;
+}
+
+#_root {
+    -fx-stroke: #000 ;
+    -fx-strokeWidth: 3;
+}
+
+.Options {
+    -fx-spacing: 10;
+    -fx-padding: 5;
+    -fx-font-size: 12 pt;
+}
+#playerBox > Label {
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-stroke: #FFF ;
+    -fx-strokeWidth: 3;
+}
+
+.paisSeleccionable > SVGPath {
+    -fx-fill: #B58989;
+}
+
+#grilla {
+    -fx-background-color: #2C2B2C;
+}
+
+.caja {
+    -fx-background-color: #3C3F42;
+}
+
+.caja * {
+    -fx-text-fill: white;
+}

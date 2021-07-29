@@ -46,8 +46,7 @@ public class VistaPais implements Observer {
         Pais pais = (Pais) o;
 
         Shape img = (Shape)vista.getChildren().get(0);
-        
-        //FIXME - HAY UN BUG RARO
+
         //this.pais.setFill( Color.web( this.colores.get(pais.getNumeroPropietario()) ) );//TODO - Si ponemos color x continente esto no va
         if( Objects.nonNull(ficha) )
             ficha.setFill( Color.web( this.colores.get(pais.getNumeroPropietario()) ) );

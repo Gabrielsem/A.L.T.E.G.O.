@@ -27,7 +27,7 @@
       <RowConstraints minHeight="120.0" percentHeight="12.0" valignment="CENTER" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" style="-fx-background-color: #D7DDDD;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <HBox styleClass="caja" alignment="CENTER"   GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
@@ -48,7 +48,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="cajaDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: #D7DDDD;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+      <VBox styleClass="caja" fx:id="cajaDerecha" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"   GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
           <children>
               <Label text="DATA BOX" />
           </children>
@@ -56,7 +56,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </VBox>
-      <VBox id="playerBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: #D7DDDD;" GridPane.columnIndex="1">
+      <VBox id="playerBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0"   GridPane.columnIndex="1">
          <children>
              <Label text="PLAYER BOX">
                <font>
@@ -67,7 +67,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </VBox>
-      <VBox alignment="CENTER" spacing="3.0" style="-fx-background-color: #D7DDDD;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <VBox styleClass="caja" alignment="CENTER" spacing="3.0"   GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <children>
               <Label fx:id="instruccion" alignment="CENTER" contentDisplay="CENTER" text="Instrucción inicial" textAlignment="CENTER">
                <font>

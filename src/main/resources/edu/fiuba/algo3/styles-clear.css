@@ -27,7 +27,7 @@
 }
 
 .asia > SVGPath {
-    -fx-fill: #555;
+    -fx-fill: #BBB;
 }
 
 .oceania > SVGPath {
@@ -77,4 +77,8 @@
 
 .paisSeleccionable > SVGPath {
     -fx-fill: #B5C9B5;
+}
+
+#grilla > * {
+    -fx-background-color: #3C3F42;
 }

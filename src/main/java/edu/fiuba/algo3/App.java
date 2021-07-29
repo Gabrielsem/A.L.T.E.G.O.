@@ -22,7 +22,7 @@ public class App extends Application {
         stage.setTitle("TEG "+version);
         Scene scene = new Scene(new Label("Cargando..."), 920, 540);
         stage.setScene(scene);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-dark.css")).toExternalForm());
         stage.sizeToScene();
         stage.show();
         stage.setMinWidth(stage.getWidth());
