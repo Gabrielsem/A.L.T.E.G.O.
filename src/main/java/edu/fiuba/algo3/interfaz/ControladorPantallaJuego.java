@@ -84,8 +84,6 @@ public class ControladorPantallaJuego {
         String nombrePais = nodoPais.getId();
         nombrePais = nombrePais.replace("_", " ");
 
-        System.out.println(nombrePais);
-
         Label labelNombrePais = (Label) scene.lookup("#nombrePais");
         Label labelNombreContinente = (Label) scene.lookup("#nombreContinente");
 
@@ -96,10 +94,15 @@ public class ControladorPantallaJuego {
     private void ajustarEscala(EjeCambioEscala cambio, Number nuevoValor) {
 
         Group mapa = (Group) scene.lookup("#_root");
-        Bounds boundsMapa = mapa.getLayoutBounds();
         GridPane grilla = (GridPane) scene.lookup("#grilla");
         ColumnConstraints col1 = grilla.getColumnConstraints().get(0);
         RowConstraints fila2 = grilla.getRowConstraints().get(1);
+        Bounds boundsMapa = mapa.getLayoutBounds();
+
+        Insets padding = grilla.getPadding();
+        Insets margen = GridPane.getMargin(mapa);
+        double dx = padding.getRight() + padding.getRight() + margen.getRight() + margen.getLeft();
+        double dy = padding.getTop() + padding.getBottom() + margen.getTop() + margen.getBottom();
 
         double x = cambio == EjeCambioEscala.HORIZONTAL ? nuevoValor.doubleValue() : grilla.getWidth();
         double y = cambio == EjeCambioEscala.VERTICAL ? nuevoValor.doubleValue() : grilla.getHeight();
@@ -110,13 +113,11 @@ public class ControladorPantallaJuego {
         double relacionAspectoGrilla = y/x;
 
         double factor = 0;
-        Insets padding = grilla.getPadding();
         if (relacionAspectoGrilla > relacionAspectoMapa) {
-            factor = (x - padding.getLeft() - padding.getRight())/ boundsMapa.getWidth();
+            factor = (x - dx)/ boundsMapa.getWidth();
         } else {
-            factor = (y - padding.getTop() - padding.getBottom()) / boundsMapa.getHeight();
+            factor = (y - dy) / boundsMapa.getHeight();
         }
-
 
         mapa.setScaleX(factor);
         mapa.setScaleY(factor);

@@ -18,8 +18,6 @@ public class GestorDefensor implements Fase{
     Jugador jugadorActual;
     Pais atacante;
 
-    Collection<String> seleccionables;
-
     Label instruccion;
 
     public GestorDefensor(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais atacante) {
@@ -32,16 +30,10 @@ public class GestorDefensor implements Fase{
 
     }
 
-    private void setSeleccionables(Collection<String> seleccion) {
-        seleccionables = seleccion;
-        //TODO limpiar y agregar styleClass seleccionable
-        //FIXME este metodo se repite igualito - podria heredarse o ser estatico de app(?)
-    }
-
     @Override
     public void iniciar() {
         instruccion.setText(String.format("Jugador %d, toca el país que quieras atacar", jugadorActual.numero()));
-        setSeleccionables( jugadorActual.paisesAtacables(atacante.getVecinos()) );
+        fase.setSeleccionables( jugadorActual.paisesAtacables(atacante.getVecinos()) );
     }
 
     @Override
@@ -52,8 +44,6 @@ public class GestorDefensor implements Fase{
     @Override
     public void tocoPais(Node nodoPais) {
         Pais pais = (Pais) nodoPais.getUserData();
-
-        if( seleccionables.contains( pais.nombre() ) )
-            fase.setGestor(new GestorFichasAtaque(fase, scene, jugadorActual,atacante, pais));
+        fase.setGestor(new GestorFichasAtaque(fase, scene, jugadorActual,atacante, pais));
     }
 }

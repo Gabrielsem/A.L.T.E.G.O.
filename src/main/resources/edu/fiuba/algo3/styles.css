@@ -74,3 +74,7 @@
     -fx-stroke: #FFF ;
     -fx-strokeWidth: 3;
 }
+
+.paisSeleccionable > SVGPath {
+    -fx-fill: #B5C9B5;
+}
