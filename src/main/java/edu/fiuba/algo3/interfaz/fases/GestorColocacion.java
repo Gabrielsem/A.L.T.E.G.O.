@@ -2,15 +2,19 @@ package edu.fiuba.algo3.interfaz.fases;
 
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.PaisNoEsDeEsteJugador;
+import edu.fiuba.algo3.interfaz.VistaPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
 
 public class GestorColocacion implements Fase {
     Juego juego;
+    Scene scene;
     Jugador actual;
     Label instruccion;
     Button botonSiguiente;
@@ -23,6 +27,7 @@ public class GestorColocacion implements Fase {
         this.juego = juego;
         this.fichasExtra = fichasExtra;
         this.siguienteFase = siguienteFase;
+        this.scene = scene;
     }
 
     public void iniciar() {
@@ -66,9 +71,18 @@ public class GestorColocacion implements Fase {
     private void cambiarInstruccionAgregarFichas(Jugador jugador) {
         instruccion.setText(String.format("Jugador %d, clickeá un país para agregarle fichas (te quedan %d fichas)",
                 jugador.numero(), jugador.cantidadFichas()));
+        actualizarUI();
     }
 
     private void cambiarInstruccionSiguiente() {
         instruccion.setText("Tocá siguiente para pasar al siguiente turno.");
+    }
+
+    private void actualizarUI() {
+        VBox box = (VBox) scene.lookup("#playerBox");
+        String color = VistaPais.getColorJugador(actual.numero());
+        box.setStyle("-fx-background-color: "+color+";");
+
+        ((Label) box.getChildren().get(0)).setText("Jugador "+actual.numero());
     }
 }
