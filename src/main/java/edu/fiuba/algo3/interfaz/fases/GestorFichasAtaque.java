@@ -21,9 +21,6 @@ public class GestorFichasAtaque implements Fase{
     Pais paisAtacante;
     Pais paisAtacado;
 
-    Collection<String> seleccionables;
-    ArrayList<Button> botones;
-
     Label instruccion;
 
     public GestorFichasAtaque(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais atacante, Pais defensor) {
@@ -35,16 +32,10 @@ public class GestorFichasAtaque implements Fase{
         instruccion = (Label) scene.lookup("#instruccion");
     }
 
-    private void setSeleccionables(Collection<String> seleccion) {
-        seleccionables = seleccion;
-        //TODO limpiar y agregar styleClass seleccionable
-        //FIXME este metodo se repite igualito - podria heredarse o ser estatico de app(?) o a FaseAtaque
-    }
-
     @Override
     public void iniciar() {
         instruccion.setText(String.format("Jugador %d, elegí con cuantas fichas atacar", jugadorActual.numero()));
-        setSeleccionables( new ArrayList<>());
+        fase.setSeleccionables( new ArrayList<>());
         agregarBotonesAtaque();
     }
 
@@ -60,7 +51,6 @@ public class GestorFichasAtaque implements Fase{
 
     private void agregarBotonesAtaque() {
         HBox box = (HBox) scene.lookup("#cajaBotones");
-        botones = new ArrayList<>();
 
         for (int i = 0; i < (paisAtacante.cantidadFichas() - 1) && i < 3; i++) {
             int index = i+1;
