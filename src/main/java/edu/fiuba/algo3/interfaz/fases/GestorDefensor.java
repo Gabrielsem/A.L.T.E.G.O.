@@ -32,7 +32,7 @@ public class GestorDefensor implements Fase{
 
     @Override
     public void iniciar() {
-        instruccion.setText("Toca el país que quieras atacar");
+        instruccion.setText("Clickeá el país al que queres atacar");
         fase.setSeleccionables( juego.turnoActual().paisesAtacables(atacante.getVecinos()) );
     }
 

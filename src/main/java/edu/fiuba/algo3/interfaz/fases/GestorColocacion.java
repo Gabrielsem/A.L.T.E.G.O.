@@ -69,7 +69,7 @@ public class GestorColocacion implements Fase {
     }
 
     private void cambiarInstruccionAgregarFichas(Jugador jugador) {
-        instruccion.setText(String.format("Jugador %d, clickeá un país para agregarle fichas (te quedan %d fichas)",
+        instruccion.setText(String.format("Clickeá un país para agregarle fichas (te quedan %d fichas)",
                 jugador.numero(), jugador.cantidadFichas()));
     }
 

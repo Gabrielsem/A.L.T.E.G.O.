@@ -27,7 +27,7 @@ public class App extends Application {
         stage.show();
         stage.setMinWidth(stage.getWidth());
         stage.setMinHeight(stage.getHeight());
-        
+
         new ControladorPantallaInicial(scene);
     }
 

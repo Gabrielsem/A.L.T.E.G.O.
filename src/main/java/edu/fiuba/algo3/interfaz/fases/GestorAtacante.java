@@ -34,7 +34,7 @@ public class GestorAtacante implements Fase {
 
     @Override
     public void iniciar() {
-        instruccion.setText("Toca el país del que quieras atacar");
+        instruccion.setText("Clickeá el país con el que queres atacar");
         fase.setSeleccionables( juego.turnoActual().paisesConquistados() );
         agregarBotones();
     }
