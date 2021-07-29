@@ -38,13 +38,13 @@ public class Turnos extends Observable {
             throw new TurnoInvalido("Se pidió siguiente cuando ya se llegó al último jugador");
         }
         actual++;
+        notificarObservers();
         return turnoActual();
     }
 
     public void reiniciarTurnos() {
         actual = -1;
         offset = (offset + 1) % jugadores.size();
-        setChanged();notifyObservers();
     }
 
     public void notificarObservers() {
