@@ -32,15 +32,10 @@ public class GestorAtacante implements Fase {
 
     }
 
-    private void setSeleccionables(Collection<String> seleccion) {
-        seleccionables = seleccion;
-        //TODO limpiar y agregar styleClass seleccionable
-    }
-
     @Override
     public void iniciar() {
         instruccion.setText(String.format("Jugador %d, toca el país del que quieras atacar", jugadorActual.numero()));
-        setSeleccionables( jugadorActual.paisesConquistados() );
+        fase.setSeleccionables( jugadorActual.paisesConquistados() );
     }
 
     @Override
@@ -51,7 +46,6 @@ public class GestorAtacante implements Fase {
     @Override
     public void tocoPais(Node nodoPais) {
         Pais pais = (Pais) nodoPais.getUserData();
-        if( seleccionables.contains( pais.nombre() ) )
-            fase.setGestor( new GestorDefensor( fase, scene, jugadorActual, pais ) );
+        fase.setGestor( new GestorDefensor( fase, scene, jugadorActual, pais ) );
     }
 }
