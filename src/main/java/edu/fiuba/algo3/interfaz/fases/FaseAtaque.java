@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 import java.util.Collection;
 
@@ -27,7 +28,6 @@ public class FaseAtaque implements Fase {
     public FaseAtaque(Juego juego, Scene scene) {
         this.scene = scene;
         this.juego = juego;
-        scene.lookup("#botonSiguiente").setVisible(true);
         instruccion = (Label) scene.lookup("#instruccion");
     }
 
@@ -35,7 +35,9 @@ public class FaseAtaque implements Fase {
         juego.reiniciarTurnos();
         jugadorActual = juego.siguienteTurno();
 
-        setGestor( new GestorAtacante(this,scene,jugadorActual) );
+        scene.lookup("#botonSiguiente").setVisible(true);
+
+        setGestor( new GestorAtacante(this) );
     }
 
     public void tocoPais(Node nodoPais) {
@@ -45,6 +47,7 @@ public class FaseAtaque implements Fase {
     }
 
     public Fase tocoBoton(Button unBoton) {
+        gestor.tocoBoton(unBoton);
         return this; //TODO: siguiente jugador/etapa reagrupacion
     }
 
@@ -65,7 +68,6 @@ public class FaseAtaque implements Fase {
                 //Style
                 if( seleccionables.contains( nodo.getId() ) ){
                     nodo.getStyleClass().add("paisSeleccionable");
-                    System.out.print( nodo.getId() );
                 }
             }
         }

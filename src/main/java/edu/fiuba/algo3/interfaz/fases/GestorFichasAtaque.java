@@ -17,16 +17,16 @@ public class GestorFichasAtaque implements Fase{
 
     FaseAtaque fase;
     Scene scene;
-    Jugador jugadorActual;
+    Juego juego;
     Pais paisAtacante;
     Pais paisAtacado;
 
     Label instruccion;
 
-    public GestorFichasAtaque(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais atacante, Pais defensor) {
+    public GestorFichasAtaque(FaseAtaque faseAtaque, Pais atacante, Pais defensor) {
         fase = faseAtaque;
-        this.scene = scene;
-        this.jugadorActual = jugadorActual;
+        scene = fase.scene;
+        juego = fase.juego;
         this. paisAtacante = atacante;
         this.paisAtacado =  defensor;
         instruccion = (Label) scene.lookup("#instruccion");
@@ -34,7 +34,7 @@ public class GestorFichasAtaque implements Fase{
 
     @Override
     public void iniciar() {
-        instruccion.setText(String.format("Jugador %d, elegí con cuantas fichas atacar", jugadorActual.numero()));
+        instruccion.setText("Elegí con cuantas fichas atacar");
         fase.setSeleccionables( new ArrayList<>());
         agregarBotonesAtaque();
     }
@@ -71,8 +71,8 @@ public class GestorFichasAtaque implements Fase{
 
         paisAtacante.atacar(paisAtacado, fichas);
         if( paisAtacado.invadible() )
-            fase.setGestor( new GestorInvasion(fase,scene,jugadorActual,paisAtacante,paisAtacado) );
-
-        fase.setGestor( new GestorAtacante(fase,scene,jugadorActual) );
+            fase.setGestor( new GestorInvasion(fase,paisAtacante,paisAtacado) );
+        else
+            fase.setGestor( new GestorAtacante(fase) );
     }
 }

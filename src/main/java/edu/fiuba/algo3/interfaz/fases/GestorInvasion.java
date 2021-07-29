@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases;
 
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
@@ -15,7 +16,8 @@ public class GestorInvasion implements Fase {
 
     FaseAtaque fase;
     Scene scene;
-    Jugador jugadorActual;
+    Juego juego;
+
     Pais paisAtacante;
     Pais paisAtacado;
 
@@ -24,11 +26,11 @@ public class GestorInvasion implements Fase {
 
     Label instruccion;
 
-    public GestorInvasion(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais paisAtacante, Pais paisAtacado) {
+    public GestorInvasion(FaseAtaque faseAtaque, Pais paisAtacante, Pais paisAtacado) {
 
         fase = faseAtaque;
-        this.scene = scene;
-        this.jugadorActual = jugadorActual;
+        juego = fase.juego;
+        scene = fase.scene;
         this. paisAtacante = paisAtacante;
         this.paisAtacado =  paisAtacado;
         instruccion = (Label) scene.lookup("#instruccion");
@@ -37,7 +39,7 @@ public class GestorInvasion implements Fase {
     @Override
     public void iniciar() {
         instruccion.setText(String.format("Elegí con cuantas fichas invadir"));
-        paisAtacado.ocupadoPor(jugadorActual,0);
+        paisAtacado.ocupadoPor(juego.turnoActual(),0);
         fase.setSeleccionables( new ArrayList<>());
         agregarBotonesInvasion();
     }
@@ -52,6 +54,8 @@ public class GestorInvasion implements Fase {
 
     private void agregarBotonesInvasion() {
         HBox box = (HBox) scene.lookup("#cajaBotones");
+
+        box.getChildren().clear();
 
         for (int i = 0; i < (paisAtacante.cantidadFichas() - 1) && i < 3; i++) {
             int index = i+1;
@@ -71,8 +75,8 @@ public class GestorInvasion implements Fase {
         ocultarBotones();
 
         paisAtacante.perderFichas(fichas);
-        paisAtacado.ocupadoPor(jugadorActual,fichas);
+        paisAtacado.ocupadoPor(juego.turnoActual(),fichas);
 
-        fase.setGestor( new GestorAtacante(fase,scene,jugadorActual) );
+        fase.setGestor( new GestorAtacante(fase) );
     }
 }

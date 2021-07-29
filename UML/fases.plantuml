@@ -4,6 +4,7 @@ skinparam style strictuml
 skinparam classAttributeIconSize 0
 
 state FaseInicial{
+    GestorColocacion -> GestorColocacion
 }
 state FaseAtaque {
 
@@ -31,7 +32,6 @@ state FaseColocacion {
 FaseInicial --> FaseAtaque
 
 FaseAtaque ->FaseReagrupacion
-FaseReagrupacion -> FaseAtaque
 
 FaseReagrupacion --> FaseColocacion
 FaseColocacion -> FaseAtaque

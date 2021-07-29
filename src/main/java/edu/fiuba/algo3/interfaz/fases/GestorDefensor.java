@@ -15,16 +15,16 @@ public class GestorDefensor implements Fase{
 
     FaseAtaque fase;
     Scene scene;
-    Jugador jugadorActual;
+    Juego juego;
     Pais atacante;
 
     Label instruccion;
 
-    public GestorDefensor(FaseAtaque faseAtaque, Scene scene, Jugador jugadorActual, Pais atacante) {
+    public GestorDefensor(FaseAtaque faseAtaque, Pais atacante) {
 
         this.fase = faseAtaque;
-        this.jugadorActual = jugadorActual;
-        this.scene= scene;
+        juego = fase.juego;
+        scene= fase.scene;
         this.atacante = atacante;
         instruccion = (Label) scene.lookup("#instruccion");
 
@@ -32,8 +32,8 @@ public class GestorDefensor implements Fase{
 
     @Override
     public void iniciar() {
-        instruccion.setText(String.format("Jugador %d, toca el país que quieras atacar", jugadorActual.numero()));
-        fase.setSeleccionables( jugadorActual.paisesAtacables(atacante.getVecinos()) );
+        instruccion.setText("Toca el país que quieras atacar");
+        fase.setSeleccionables( juego.turnoActual().paisesAtacables(atacante.getVecinos()) );
     }
 
     @Override
@@ -44,6 +44,6 @@ public class GestorDefensor implements Fase{
     @Override
     public void tocoPais(Node nodoPais) {
         Pais pais = (Pais) nodoPais.getUserData();
-        fase.setGestor(new GestorFichasAtaque(fase, scene, jugadorActual,atacante, pais));
+        fase.setGestor(new GestorFichasAtaque(fase,atacante, pais));
     }
 }
