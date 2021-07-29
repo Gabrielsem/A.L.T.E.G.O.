@@ -22,9 +22,12 @@ public class App extends Application {
         stage.setTitle("TEG "+version);
         Scene scene = new Scene(new Label("Cargando..."), 920, 540);
         stage.setScene(scene);
-        stage.show();
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
-
+        stage.sizeToScene();
+        stage.show();
+        stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
+        
         new ControladorPantallaInicial(scene);
     }
 
