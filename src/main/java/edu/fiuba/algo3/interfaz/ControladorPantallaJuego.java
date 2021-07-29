@@ -80,14 +80,17 @@ public class ControladorPantallaJuego {
 
     @FXML
     public void mostrarNombrePais(MouseEvent mouseEvent) {
-        String nombrePais = ((Group) mouseEvent.getSource()).getId();
+        Group nodoPais = (Group) mouseEvent.getSource();
+        String nombrePais = nodoPais.getId();
         nombrePais = nombrePais.replace("_", " ");
 
         System.out.println(nombrePais);
 
         Label labelNombrePais = (Label) scene.lookup("#nombrePais");
+        Label labelNombreContinente = (Label) scene.lookup("#nombreContinente");
 
         labelNombrePais.setText(nombrePais);
+        labelNombreContinente.setText(((Pais) nodoPais.getUserData()).continente());
     }
 
     private void ajustarEscala(EjeCambioEscala cambio, Number nuevoValor) {
