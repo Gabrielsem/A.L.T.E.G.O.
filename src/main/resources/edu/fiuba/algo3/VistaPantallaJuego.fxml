@@ -58,7 +58,7 @@
          <children>
             <Accordion fx:id="acordion" styleClass="fondo" VBox.vgrow="ALWAYS">
               <panes>
-                <TitledPane animated="false" onMouseClicked="#clickeoConquistados" styleClass="cajaDatos" text="Conquistados">
+                <TitledPane animated="false" styleClass="cajaDatos" text="Conquistados">
                   <content>
                     <AnchorPane styleClass="caja" />
                   </content>
@@ -69,7 +69,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                 </TitledPane>
-                  <TitledPane animated="false" onMouseClicked="#clickeoObjetivos" styleClass="cajaDatos" text="Objetivos">
+                  <TitledPane animated="false" styleClass="cajaDatos" text="Objetivos">
                      <content>
                         <AnchorPane styleClass="caja" />
                      </content>
@@ -80,7 +80,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </TitledPane>
-                  <TitledPane animated="false" onMouseClicked="#clickeoTarjetas" styleClass="cajaDatos" text="Tarjetas">
+                  <TitledPane animated="false" styleClass="cajaDatos" text="Tarjetas">
                      <content>
                         <AnchorPane styleClass="caja" />
                      </content>

@@ -5,14 +5,17 @@ import edu.fiuba.algo3.modelo.Turnos;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,12 +23,20 @@ public class VistaTurno implements Observer {
     VBox cajaTurno;
     Label labelTurno;
     TitledPane panelConquistados;
+    TitledPane panelObjetivos;
+    TitledPane panelTarjetas;
+    HashMap<Integer, VistaJugador> vistasJugadores;
 
-    public VistaTurno(Scene scene) {
+    public VistaTurno(Scene scene, HashMap<Integer, VistaJugador> vistasJugadores) {
         cajaTurno = (VBox) scene.lookup("#playerBox");
         labelTurno = (Label) cajaTurno.getChildren().get(0);
-        panelConquistados = ((Accordion) scene.lookup("#acordion")).getPanes().get(0);
+        Accordion acc = (Accordion) scene.lookup("#acordion");
+        panelConquistados = acc.getPanes().get(0);
+        panelObjetivos = acc.getPanes().get(1);
+        panelTarjetas = acc.getPanes().get(2);
+        this.vistasJugadores = vistasJugadores;
     }
+
 
     public void update(Observable observable, Object arg) {
         Turnos turnos = (Turnos) observable;
@@ -34,8 +45,15 @@ public class VistaTurno implements Observer {
         cajaTurno.setStyle("-fx-background-color: "+color+";");
         labelTurno.setText("Jugador "+ numeroActual);
         panelConquistados.expandedProperty().set(true);
-        Event.fireEvent(panelConquistados, new MouseEvent(MouseEvent.MOUSE_CLICKED,
-                0, 0, 0, 0, MouseButton.PRIMARY, 1,
-                true, true, true, true, true, true, true, true, true, true, null));
+        VistaJugador vistaActual = vistasJugadores.get(turnos.turnoActual().numero());
+        actualizarPanel(panelConquistados, vistaActual.getVistaConquistados());
+        actualizarPanel(panelObjetivos, vistaActual.getVistaObjetivos());
+        actualizarPanel(panelTarjetas, vistaActual.getVistaTarjetas());
+    }
+
+    private void actualizarPanel(TitledPane titulo, Node vista) {
+        AnchorPane panel = (AnchorPane) titulo.getContent();
+        panel.getChildren().clear();
+        panel.getChildren().add(vista);
     }
 }

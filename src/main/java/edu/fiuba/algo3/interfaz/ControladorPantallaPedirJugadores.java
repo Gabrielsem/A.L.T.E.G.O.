@@ -62,8 +62,7 @@ public class ControladorPantallaPedirJugadores {
         VistaPais.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
-        addJugadorObservers(juego);
-        juego.addObserverTurnos(new VistaTurno(scene));
+        addJugadorYTurnoObservers(juego);
     }
 
     private void addPaisObservers(Juego juego) {
@@ -77,13 +76,15 @@ public class ControladorPantallaPedirJugadores {
         juego.addPaisObservers(observers);
     }
 
-    private HashMap<Integer, Observer> addJugadorObservers(Juego juego) {
+    private void addJugadorYTurnoObservers(Juego juego) {
         HashMap<Integer, Observer> observers = new HashMap<>();
+        HashMap<Integer, VistaJugador> vistasJugadores = new HashMap<>();
         for (int i : coloresJugadores.keySet()) {
-            observers.put(i, new VistaJugador(scene, i));
+            vistasJugadores.put(i, new VistaJugador(scene));
+            observers.put(i, vistasJugadores.get(i));
         }
 
         juego.addJugadorObserver(observers);
-        return observers;
+        juego.addObserverTurnos(new VistaTurno(scene, vistasJugadores));
     }
 }

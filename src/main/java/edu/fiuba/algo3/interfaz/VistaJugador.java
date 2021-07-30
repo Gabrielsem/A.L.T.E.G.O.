@@ -20,14 +20,12 @@ public class VistaJugador implements Observer {
     private VBox cajaObjetivos;
     private VBox cajaConquistados;
     private VBox cajaTarjetas;
-    static private HashMap<Integer, VistaJugador> vistas = new HashMap<>();
 
-    public VistaJugador(Scene scene, int numJugador) {
+    public VistaJugador(Scene scene) {
         this.scene = scene;
         cajaObjetivos = nuevaCaja();
         cajaTarjetas = nuevaCaja();
         cajaConquistados = nuevaCaja();
-        vistas.put(numJugador, this);
     }
 
     private VBox nuevaCaja() {
@@ -64,15 +62,15 @@ public class VistaJugador implements Observer {
         cajaObjetivos.getChildren().add(objetivo);
     }
 
-    static public Node getVistaObjetivos(int numJugador) {
-        return vistas.get(numJugador).cajaObjetivos;
+    public Node getVistaObjetivos() {
+        return cajaObjetivos;
     }
 
-    static public Node getVistaTarjetas(int numJugador) {
-        return vistas.get(numJugador).cajaTarjetas;
+    public Node getVistaTarjetas() {
+        return cajaTarjetas;
     }
 
-    static public Node getVistaConquistados(int numJugador) {
-        return vistas.get(numJugador).cajaConquistados;
+    public Node getVistaConquistados() {
+        return cajaConquistados;
     }
 }

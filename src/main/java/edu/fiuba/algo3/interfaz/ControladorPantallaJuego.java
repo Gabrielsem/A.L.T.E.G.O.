@@ -124,24 +124,4 @@ public class ControladorPantallaJuego {
         mapa.setScaleX(factor);
         mapa.setScaleY(factor);
     }
-
-    private void actualizarPanel(MouseEvent evento, Node vista) {
-        TitledPane titulo = (TitledPane) evento.getSource();
-        if(!titulo.isExpanded()) return;
-        AnchorPane panel = (AnchorPane) titulo.getContent();
-        panel.getChildren().clear();
-        panel.getChildren().add(vista);
-    }
-
-    public void clickeoObjetivos(MouseEvent evento) {
-        actualizarPanel(evento, VistaJugador.getVistaObjetivos(juego.turnoActual().numero()));
-    }
-
-    public void clickeoConquistados(MouseEvent evento) {
-        actualizarPanel(evento, VistaJugador.getVistaConquistados(juego.turnoActual().numero()));
-    }
-
-    public void clickeoTarjetas(MouseEvent evento) {
-        actualizarPanel(evento, VistaJugador.getVistaTarjetas(juego.turnoActual().numero()));
-    }
 }
