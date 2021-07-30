@@ -157,10 +157,6 @@ public class Juego extends Observable {
         jugadores.forEach((Jugador j) -> j.addObserver(observers.get(j.numero())));
     }
 
-    public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
-        mapa.atacar(paisAtacante, paisDefensor, cantFichas);
-    }
-
     public boolean turnosCompletados() {
         return turnos.turnosCompletados();
     }

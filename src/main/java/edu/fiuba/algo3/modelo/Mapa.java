@@ -96,10 +96,6 @@ public class Mapa {
 
     }
 
-    public int cantidadFichas(String nombrePais) {
-        return paises.get(nombrePais).cantidadFichas();
-    }
-
     public int cantidadDePaises(String continente) {
         int contador = 0;
         for (Pais pais : paises.values()) {
@@ -110,12 +106,7 @@ public class Mapa {
 
     public void addObservers(HashMap<String, Observer> observers) {
         for (String nombre : observers.keySet()) {
-            //System.out.println("Agrega observer a: " + nombre);
             paises.get(nombre).addObserver(observers.get(nombre));
         }
-    }
-
-    public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
-        paises.get(paisAtacante).atacar(paises.get(paisDefensor), cantFichas);
     }
 }
