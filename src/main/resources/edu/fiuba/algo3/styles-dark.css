@@ -81,6 +81,7 @@
 
 .caja {
     -fx-background-color: #3C3F42;
+    -fx-text-fill: #FFF;
 }
 
 TitledPane > *.content {
@@ -88,7 +89,7 @@ TitledPane > *.content {
 }
 
 .caja * {
-    -fx-text-fill: white;
+    -fx-text-fill: #FFF;
 }
 
 .cajaDatos {
