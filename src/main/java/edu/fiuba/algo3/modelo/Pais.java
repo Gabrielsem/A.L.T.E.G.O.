@@ -17,10 +17,6 @@ public class Pais extends Observable {
         vecinos = new HashSet<>(limitrofes);
     }
 
-    public Jugador getPropietario() {
-        return propietario;
-    }
-
     public String nombre() {
         return nombre;
     }
@@ -73,13 +69,6 @@ public class Pais extends Observable {
     public void agregarFichas(int cantidadFichas) {
         fichas += cantidadFichas;
         setChanged();notifyObservers();
-    }
-
-
-    public void moverEjercitos(Pais paisConquistado) {
-        if (propietario == null) {
-            throw new PaisNoTienePropietario(String.format("El pais %s no tiene propietario", nombre));
-        }
     }
 
     public void reagruparA(Pais paisDestino, int cantFichas){

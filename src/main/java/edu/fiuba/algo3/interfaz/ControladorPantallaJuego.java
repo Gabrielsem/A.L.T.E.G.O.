@@ -70,8 +70,8 @@ public class ControladorPantallaJuego {
         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
             fase.tocoPais(node);
         } else {
-            System.out.printf("País %s (%d fichas del Jugador %d)%n",
-                node.getId(), pais.cantidadFichas(), pais.getPropietario().numero());
+            System.out.printf("País %s (%d fichas)%n",
+                node.getId(), pais.cantidadFichas());
         }
     }
 

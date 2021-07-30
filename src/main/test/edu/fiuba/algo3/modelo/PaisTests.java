@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -13,16 +15,22 @@ import static org.mockito.Mockito.*;
 public class PaisTests {
 
     Pais pais;
+    Collection<String> limitrofes;
 
     @BeforeEach
     public void setUp(){
-        Collection<String> limitrofes = Arrays.asList("Argentina", "Uruguay");
+        limitrofes = Arrays.asList("Argentina", "Uruguay");
         pais = new Pais("Brasil", "América", limitrofes);
     }
 
     @Test
     public void paisTieneNombreCorrecto() {
         assertEquals(pais.nombre(), "Brasil");
+    }
+
+    @Test
+    public void paisTieneVecinosCorrectos() {
+        assertEquals(limitrofes, new LinkedList<>(pais.getVecinos()) );
     }
 
     @Test
@@ -109,49 +117,25 @@ public class PaisTests {
     }
 
     @Test
-    public void paisNoMueveEjercitosSinPropietario() {
+    public void sePierdenFichasCorrectamenteAlAtacar() {
         Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
         Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
 
-        assertThrows(PaisNoTienePropietario.class, () -> atacante.moverEjercitos(defensor));
+        Jugador jugAtc = new Jugador(1, mock(Juego.class));
+        Jugador jugDef = new Jugador(2, mock(Juego.class));
+
+        int fichasTotales = 1000;
+
+        atacante.ocupadoPor(jugAtc, fichasTotales/2);
+        defensor.ocupadoPor(jugDef, fichasTotales/2);
+
+        for( int i = 0; i<10;i++ ) {
+            int fichasAtaque = new Random().nextInt(3) +1;
+            atacante.atacar(defensor,fichasAtaque);
+            fichasTotales -= fichasAtaque;
+            assertEquals(fichasTotales, atacante.cantidadFichas()+ defensor.cantidadFichas() );
+        }
     }
-/*
-    @Test
-    public void paisPideInvadirASuPropietarioAlMoverEjercitos() {
-        Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
-        Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
-
-        Jugador prop = mock(Jugador.class);
-        atacante.ocupadoPor(prop, 5);
-        atacante.moverEjercitos(defensor);
-
-        verify(prop,times(1)).invadir(atacante, defensor);
-    }
-
-    @Test
-    public void paisNoPuedeMoverEjercitosSiNoLeAlcanzan() {
-        Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
-        Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
-
-        Jugador prop = mock(Jugador.class);
-        when(prop.invadir(atacante, defensor)).thenReturn(5);
-        atacante.ocupadoPor(prop, 5);
-
-        assertThrows(PaisNoTieneFichasSuficientes.class, () -> atacante.moverEjercitos(defensor));
-    }
-
-    @Test
-    public void paisRestaFichasCorrectamenteAlMoverEjercitos() {
-        Pais atacante = new Pais("México", "América", Arrays.asList("España", "a"));
-        Pais defensor = new Pais("España", "Europa", Arrays.asList("México", "b"));
-
-        Jugador prop = mock(Jugador.class);
-        when(prop.invadir(atacante, defensor)).thenReturn(3);
-        atacante.ocupadoPor(prop, 10);
-        atacante.moverEjercitos(defensor);
-
-        assertEquals(atacante.cantidadFichas(), 7);
-    }*/
 
     @Test
     public void paisPierdeFichasCorrectamente() {
@@ -194,8 +178,6 @@ public class PaisTests {
 
         pais.agregarFichas(3);
         pais.reagruparA(destino, 2);
-
-
 
         assertEquals(destino.cantidadFichas(), 2);
         assertEquals(pais.cantidadFichas(), 1);
