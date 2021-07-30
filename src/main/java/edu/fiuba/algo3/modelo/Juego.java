@@ -4,6 +4,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import edu.fiuba.algo3.modelo.objetivos.Objetivo;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoDestruccion;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoOcupacion;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoDestruccion;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoOcupacion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
