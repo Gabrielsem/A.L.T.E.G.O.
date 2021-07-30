@@ -34,6 +34,7 @@ public class FaseAtaque implements Fase {
     public void iniciar() {
         juego.reiniciarTurnos();
         jugadorActual = juego.siguienteTurno();
+        jugadorActual.prepararAtaques();
 
         scene.lookup("#botonSiguiente").setVisible(true);
 

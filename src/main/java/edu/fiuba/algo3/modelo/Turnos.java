@@ -4,7 +4,6 @@ import edu.fiuba.algo3.errores.TurnoInvalido;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Observable;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Turnos extends Observable {
@@ -38,16 +37,12 @@ public class Turnos extends Observable {
             throw new TurnoInvalido("Se pidió siguiente cuando ya se llegó al último jugador");
         }
         actual++;
-        notificarObservers();
+        setChanged();notifyObservers();
         return turnoActual();
     }
 
     public void reiniciarTurnos() {
         actual = -1;
         offset = (offset + 1) % jugadores.size();
-    }
-
-    public void notificarObservers() {
-        setChanged();notifyObservers();
     }
 }

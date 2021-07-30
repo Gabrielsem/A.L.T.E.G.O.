@@ -31,7 +31,6 @@ public class Juego extends Observable {
             this.jugadores.add(new Jugador(numJugador + 1, this));
         }
 
-        this.tarjetas = new ArrayList<Tarjeta>();
         turnos = new Turnos(jugadores);
 
         this.mapa.repartirPaises(this.jugadores);
@@ -53,7 +52,6 @@ public class Juego extends Observable {
             Pais pais = this.mapa.obtenerPais(tarjetaJsonObj.get("Pais").getAsString());
             this.tarjetas.add(new Tarjeta(pais, new Simbolo(tarjetaJsonObj.get("Simbolo").getAsString())));
         }
-
     }
 
     private void crearObjetivos() throws FileNotFoundException {
@@ -129,7 +127,6 @@ public class Juego extends Observable {
     public Tarjeta pedirTarjeta() {
 
         Random rand = new Random();
-
         return this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
     }
 
@@ -156,19 +153,16 @@ public class Juego extends Observable {
         throw new NoExisteJugadorConNumeroIndicado(String.format("No existe jugador con numero %d", numeroDeJugador));
     }
 
-    //Esto es horrible - x suerte fdelu va a refactorizar - 🤔 tmb se podria resolver con un metodo tipo add controlers 🤔
-    public void agregarFichas(String nombrePais, int cantFichas) {
-        mapa.obtenerPais(nombrePais).agregarFichas(cantFichas);
-    }
-
     public void addPaisObservers(HashMap<String, Observer> observers) {
         mapa.addObservers(observers);
-        mapa.notificarObservers();
     }
 
     public void addObserverTurnos(Observer observer) {
         turnos.addObserver(observer);
-        turnos.notificarObservers();
+    }
+
+    public void addJugadorObserver(HashMap<Integer, Observer> observers) {
+        jugadores.forEach((Jugador j) -> j.addObserver(observers.get(j.numero())));
     }
 
     public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {

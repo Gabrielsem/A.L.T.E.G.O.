@@ -55,9 +55,10 @@ public class GestorAtacante implements Fase {
         Button botonSiguiente = new Button("Siguiente");
         botonSiguiente.setOnAction( (e)->{
             if(juego.turnosCompletados()){
-                juego.reiniciarTurnos();//TODO - Ir a reagrup
+                juego.reiniciarTurnos();//TODO - Ir a colocacion
             }
-            juego.siguienteTurno();
+            // TODO - ir a reagrupacion
+            juego.siguienteTurno().prepararAtaques();
             fase.setGestor( new GestorAtacante(fase) );
         } );
 

@@ -9,7 +9,7 @@ import java.util.*;
 
 import static java.lang.Math.max;
 
-public class Jugador {
+public class Jugador extends Observable {
 
     private HashMap<String, Pais> paisesConquistados = new HashMap<>();
     private ArrayList<Tarjeta> tarjetas = new ArrayList<>();
@@ -79,6 +79,7 @@ public class Jugador {
 
     public void recibirTarjeta( Tarjeta unaTarjeta ) {
         tarjetas.add( unaTarjeta );
+        setChanged();notifyObservers();
     }
 
     public void reagrupar(String origen, String destino, int cantFichas) {
@@ -92,10 +93,10 @@ public class Jugador {
     }
 
     public void actualizarFichas() {
-        fichasDisponibles += fichasPorConquista() + canjearTarjetas(); //FIXME: estos metodos no deberian ser privados?
+        fichasDisponibles += fichasPorConquista() + canjearTarjetas();
     }
 
-    public int canjearTarjetas(){
+    public int canjearTarjetas(){//FIXME: estos metodos no deberian ser privados?
         for( Tarjeta tarjeta : tarjetas )
             if( paisesConquistados.containsKey( tarjeta.pais() ) )
                 tarjeta.activar();
@@ -120,6 +121,10 @@ public class Jugador {
         fichas += juego.fichasSegunContinentes(paisesConquistados.keySet());
 
         return fichas;
+    }
+
+    public Collection<Tarjeta> getTarjetas() {
+        return tarjetas;
     }
 
     public void asignarObjetivos(Objetivo unObjetivoComun, Objetivo unObjetivoSecreto){

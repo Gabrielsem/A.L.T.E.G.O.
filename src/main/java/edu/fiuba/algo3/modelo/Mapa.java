@@ -115,12 +115,6 @@ public class Mapa {
         }
     }
 
-    public void notificarObservers() {
-        for (Pais pais : paises.values()) {
-            pais.notificar();
-        }
-    }
-
     public void atacar(String paisAtacante, String paisDefensor, int cantFichas) {
         paises.get(paisAtacante).atacar(paises.get(paisDefensor), cantFichas);
     }

@@ -59,6 +59,7 @@ public class GestorFichasAtaque implements Fase{
             box.getChildren().add(boton);
         }
     }
+
     private void ocultarBotonesAtaque() {
 
         HBox box = (HBox) scene.lookup("#cajaBotones");

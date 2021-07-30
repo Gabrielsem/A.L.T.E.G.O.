@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" styleClass="fondo">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.4000122070313" minWidth="10.0" prefWidth="92.93330078125" />
@@ -24,7 +24,7 @@
    <children>
       <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
           <children>
-              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" text="Seleccione los jugadores">
+              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" text="Seleccione los jugadores" styleClass="texto">
                   <VBox.margin>
                   <Insets />
                </VBox.margin>

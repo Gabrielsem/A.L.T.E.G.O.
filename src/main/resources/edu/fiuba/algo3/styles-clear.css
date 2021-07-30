@@ -79,6 +79,6 @@
     -fx-fill: #B5C9B5;
 }
 
-#grilla > * {
+.fondo > * {
     -fx-background-color: #3C3F42;
 }

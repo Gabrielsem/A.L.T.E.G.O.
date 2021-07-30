@@ -42,7 +42,7 @@ public class Pais extends Observable {
         propietario = jugador;
         fichas = cantidadFichas;
 
-        notificar();
+        setChanged();notifyObservers();
     }
 
     private void verificarAlcanzanFichas(int cantidad) {
@@ -72,7 +72,7 @@ public class Pais extends Observable {
 
     public void agregarFichas(int cantidadFichas) {
         fichas += cantidadFichas;
-        notificar();
+        setChanged();notifyObservers();
     }
 
 
@@ -96,11 +96,6 @@ public class Pais extends Observable {
 
     public int getNumeroPropietario() {
         return propietario.numero();
-    }
-
-    public void notificar() {
-        setChanged();
-        notifyObservers();
     }
 
     public Collection<String> getVecinos() {
