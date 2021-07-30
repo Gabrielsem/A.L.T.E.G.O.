@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
+import edu.fiuba.algo3.errores.PaisNoExiste;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MapaTest {
 
@@ -76,5 +77,12 @@ public class MapaTest {
         assertEquals(3,mapa.fichasSegunContinentes( paisesPorContinente.get("Africa") ));
         assertEquals(2,mapa.fichasSegunContinentes( paisesPorContinente.get("Oceania") ));
         assertEquals(0,mapa.fichasSegunContinentes(new HashSet<>() ));
+    }
+
+    @Test
+    public void paisInexistenteLanzaError() {
+        assertThrows(PaisNoExiste.class, () -> {
+            mapa.obtenerPais("Pais que no existe");
+        });
     }
 }

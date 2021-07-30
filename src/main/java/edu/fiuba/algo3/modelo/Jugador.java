@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
-import edu.fiuba.algo3.errores.PaisNoEsDeEsteJugador;
 
 import java.util.*;
 
@@ -60,7 +59,7 @@ public class Jugador extends Observable {
 
     public void ponerFichas(String nombrePais, int cantFichas){
         if (!paisesConquistados.containsKey(nombrePais)) {
-            throw new PaisNoEsDeEsteJugador(String.format("El país %s no es del jugador %d", nombrePais, numero));
+            throw new JugadorNoTienePais(String.format("El país %s no es del jugador %d", nombrePais, numero));
         }
         if (fichasDisponibles <= 0) {
             throw new JugadorNoTieneFichasSuficientes(String.format("El jugador %d no tiene mas fichas", numero));

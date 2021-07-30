@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.fiuba.algo3.errores.NoExisteJugadorConNumeroIndicado;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -144,13 +143,6 @@ public class Juego extends Observable {
 
     public ArrayList<Jugador> getJugadores() {
         return new ArrayList<>(jugadores);
-    }
-
-    public Jugador obtenerJugadorConNumero(int numeroDeJugador) {
-        for (Jugador jugador : jugadores) {
-            if(jugador.numero() == numeroDeJugador) return jugador;
-        }
-        throw new NoExisteJugadorConNumeroIndicado(String.format("No existe jugador con numero %d", numeroDeJugador));
     }
 
     public void addPaisObservers(HashMap<String, Observer> observers) {

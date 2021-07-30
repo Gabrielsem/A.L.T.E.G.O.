@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.interfaz.fases;
 
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
-import edu.fiuba.algo3.errores.PaisNoEsDeEsteJugador;
-import edu.fiuba.algo3.interfaz.VistaPais;
+import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.scene.Node;
@@ -45,7 +44,7 @@ public class GestorColocacion implements Fase {
         try {
             actual.ponerFichas(pais.getId(), 1);
             cambiarInstruccionAgregarFichas(actual);
-        } catch (JugadorNoTieneFichasSuficientes | PaisNoEsDeEsteJugador e) {
+        } catch (JugadorNoTieneFichasSuficientes | JugadorNoTienePais e) {
             return;
         }
 
