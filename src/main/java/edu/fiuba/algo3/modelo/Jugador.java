@@ -137,7 +137,7 @@ public class Jugador extends Observable {
     }
 
     public String descripcionObjetivos() {
-        return this.objetivoComun.descripcion() + "\n" + this.objetivoSecreto.descripcion();
+        return "Objetivo Comun:\n" + this.objetivoComun.descripcion() + "\n\nObjetivo Secreto: \n" + this.objetivoSecreto.descripcion();
     }
 
     public int numero() {
@@ -155,5 +155,11 @@ public class Jugador extends Observable {
 
     public Collection<String> paisesConquistados() {
         return  paisesConquistados.keySet();
+    }
+
+    public Collection<String> paisesDisponiblesParaAtacar() {
+        Collection<String> disponiblesParaAtacar = paisesConquistados.keySet();
+        disponiblesParaAtacar.removeIf(nombrePais->(paisesConquistados.get(nombrePais).cantidadFichas() <= 1));
+        return disponiblesParaAtacar;
     }
 }

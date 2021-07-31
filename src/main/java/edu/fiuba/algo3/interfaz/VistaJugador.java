@@ -42,7 +42,14 @@ public class VistaJugador implements Observer {
         actualizarConquistados(jug);
     }
 
-    private void actualizarConquistados(Jugador jugador) {
+    private void actualizarConquistados(Jugador jugador) { //FIXME: Work in progress. Habría que mostrarlo mejor, con las cantidades por cada continente
+        cajaConquistados.getChildren().clear();
+        String texto = "";
+        for (String nombrePais : jugador.paisesConquistados()){
+            texto = texto.concat(nombrePais + ", ");
+        }
+        Label paises = new Label(texto);
+        cajaConquistados.getChildren().add(paises);
     }
 
     private void actualizarTarjetas(Jugador jugador) {
@@ -52,7 +59,7 @@ public class VistaJugador implements Observer {
         for (Tarjeta t : tarjetas) {
             texto = texto.concat(String.format("%s - %s\n", t.obtenerSimbolo().obtenerNombre(), t.pais()));
         }
-        Label objetivo = new Label(texto);
+        Label objetivo = new Label(texto); //El label no debería llamarse tarjetas?
         cajaTarjetas.getChildren().add(objetivo);
     }
 
