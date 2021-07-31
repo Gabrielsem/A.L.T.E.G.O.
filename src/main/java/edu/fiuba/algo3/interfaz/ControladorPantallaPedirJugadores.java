@@ -9,16 +9,18 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Observer;
+import java.util.*;
 
 public class ControladorPantallaPedirJugadores {
 
     Scene scene;
     HashMap<Integer, String> coloresJugadores;
+    HashSet<String> idLabelsActivas = new HashSet<>();
 
     public ControladorPantallaPedirJugadores(Scene scene) throws IOException {
         this.scene = scene;
@@ -29,10 +31,27 @@ public class ControladorPantallaPedirJugadores {
     }
 
     @FXML
-    public void agregarJugador(ActionEvent actionEvent) {
-        Button botonColor = (Button) actionEvent.getSource();
+    public void botonJugador(ActionEvent actionEvent) {
 
-        int numeroJugadorActual = this.coloresJugadores.size() + 1;
+        ToggleButton botonColor = (ToggleButton) actionEvent.getSource();
+
+        if(botonColor.isSelected()) agregarJugador(actionEvent);
+        else eliminarJugador(actionEvent);
+
+    }
+
+    @FXML
+    public void agregarJugador(ActionEvent actionEvent) {
+
+        ToggleButton botonColor = (ToggleButton) actionEvent.getSource();
+        int numeroJugadorActual = 0;
+
+        for(int i = 1; i <= 6; i++){
+            if(!coloresJugadores.containsKey(i)){
+                numeroJugadorActual = i;
+                break;
+            }
+        }
 
         String jugador = botonColor.getId();
         jugador = jugador.replace("color", "");
@@ -45,8 +64,54 @@ public class ControladorPantallaPedirJugadores {
         Label labelJugador = (Label) scene.lookup(String.format("#%s", jugador));
         labelJugador.setText(String.format("Jugador %d", numeroJugadorActual));
 
-        botonColor.setOnAction(null);
+        idLabelsActivas.add(labelJugador.getId());
         botonColor.setOpacity(0.5);
+    }
+
+    @FXML
+    public void eliminarJugador(ActionEvent actionEvent) {
+
+        ToggleButton botonColor = (ToggleButton) actionEvent.getSource();
+
+        String jugador = botonColor.getId();
+        jugador = jugador.replace("color", "");
+
+        Label labelJugador = (Label) scene.lookup(String.format("#%s", jugador));
+        String textoNombreJugador = labelJugador.getText();
+        int numeroJugadorActual = Character.getNumericValue(textoNombreJugador.charAt(textoNombreJugador.length() - 1));
+
+        coloresJugadores.remove(numeroJugadorActual);
+
+        labelJugador.setText("");
+        String idLabelJugador = labelJugador.getId();
+        idLabelsActivas.remove(idLabelJugador);
+
+        botonColor.setOpacity(1);
+        botonColor.setSelected(false);
+        actualizarJugadores();
+    }
+
+    private void actualizarJugadores() { //TODO: Refactor fuerte aca (muy feo)
+        for( int numeroJugador: coloresJugadores.keySet()){ //Recorro para ver si hay algun "hueco" en los numeros de los jugadores o si falta el jugador 1
+            if((coloresJugadores.containsKey(numeroJugador + 2) && !coloresJugadores.containsKey(numeroJugador + 1)) || !coloresJugadores.containsKey(1)){
+                if(!coloresJugadores.containsKey(1)) numeroJugador --;
+                for( int numeroJugadorACambiar: new HashSet<>(coloresJugadores.keySet())){ //Muevo los colores hacia atrás para "llenar" el hueco
+                    if(numeroJugadorACambiar > numeroJugador){
+                        coloresJugadores.put(numeroJugadorACambiar - 1,coloresJugadores.get(numeroJugadorACambiar));
+                        coloresJugadores.remove(numeroJugadorACambiar);
+                    }
+                }
+                for (String idLabel: idLabelsActivas){ // Actualizo las labels para que se visualize el cambio
+                    Label labelJugador = (Label) scene.lookup(String.format("#%s",idLabel));
+                    String textoNombreJugador = labelJugador.getText();
+                    int numeroJugadorACambiar = Character.getNumericValue(textoNombreJugador.charAt(textoNombreJugador.length() - 1));
+                    if(numeroJugadorACambiar > numeroJugador){
+                        labelJugador.setText(String.format("Jugador %d", numeroJugadorACambiar - 1));
+                    }
+                }
+                break; // Como solo va a haber un hueco a la vez, dejo de recorrer
+            }
+        }
     }
 
     @FXML
