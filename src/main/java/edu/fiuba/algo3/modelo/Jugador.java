@@ -5,6 +5,7 @@ import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static java.lang.Math.max;
@@ -149,8 +150,9 @@ public class Jugador extends Observable {
     }
 
     public Collection<String> paisesAtacables(Collection<String> listaPaises) {
-        listaPaises.removeAll(paisesConquistados.keySet());
-        return listaPaises;
+        Set<String> listaPaisesAtacables = new HashSet<>(listaPaises);
+        listaPaisesAtacables.removeIf(nombrePais->(paisesConquistados.containsKey(nombrePais)));
+        return listaPaisesAtacables;
     } //TODO: probar esto
 
     public Collection<String> paisesConquistados() {
@@ -158,7 +160,7 @@ public class Jugador extends Observable {
     }
 
     public Collection<String> paisesDisponiblesParaAtacar() {
-        Collection<String> disponiblesParaAtacar = paisesConquistados.keySet();
+        Set<String> disponiblesParaAtacar = new HashSet<>(paisesConquistados.keySet());
         disponiblesParaAtacar.removeIf(nombrePais->(paisesConquistados.get(nombrePais).cantidadFichas() <= 1));
         return disponiblesParaAtacar;
     }

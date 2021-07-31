@@ -110,7 +110,7 @@
          <children>
               <Label fx:id="instruccion" alignment="CENTER" contentDisplay="CENTER" text="Instrucción inicial" textAlignment="CENTER">
                <font>
-                  <Font name="Times New Roman" size="24.0" />
+                  <Font name="Times New Roman" size="22.0" />
                </font>
             </Label>
             <HBox fx:id="cajaBotones" alignment="CENTER" spacing="20.0">
