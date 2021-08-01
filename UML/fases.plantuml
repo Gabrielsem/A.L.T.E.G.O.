@@ -32,6 +32,7 @@ state FaseColocacion {
 FaseInicial --> FaseAtaque
 
 FaseAtaque ->FaseReagrupacion
+FaseReagrupacion -> FaseAtaque
 
 FaseReagrupacion --> FaseColocacion
 FaseColocacion -> FaseAtaque
