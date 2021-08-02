@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 public class ObjetivosTest {
@@ -174,12 +175,8 @@ public class ObjetivosTest {
                 pais.ocupadoPor(jug1, 1);
                 contOceania--;
             }
-            if (pais.continente().equals("Asia") && contAsia > 1) {
-                jug1.ocupar(pais);
-                pais.ocupadoPor(jug1, 1);
-                contAsia--;
             }
-        }
+
 
         assert(!objetivo.gano(jug1));
     }
@@ -235,5 +232,23 @@ public class ObjetivosTest {
         paisesDelMapa.get(0).ocupadoPor(jug2, 1);
 
         assert(!objetivo.gano(jug1));
+    }
+
+    @Test
+    public void objetivoOcupacionTieneDescripcionCorrecta() {
+        HashMap <String, Integer> cantidades = new HashMap<>();
+        cantidades.put("Oceania", 2);
+        cantidades.put("Africa", 6);
+        //Creamos el objetivo con ciertas cantidades predeterminadas
+        ObjetivoOcupacion objetivo = new ObjetivoOcupacion(cantidades, mapa);
+
+        assertEquals(objetivo.descripcion(), "Ocupar: \nAfrica\n2 paises de Oceania \n");
+    }
+
+    @Test
+    public void objetivoComunTieneDescripcionCorrecta() {
+        ObjetivoComun objetivo = new ObjetivoComun(30, mapa);
+
+        assertEquals(objetivo.descripcion(), "Ocupar 30 paises");
     }
 }
