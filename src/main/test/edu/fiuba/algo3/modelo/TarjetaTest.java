@@ -61,9 +61,9 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableSinCanjeDevuelveNull() {
-        when(simboloArgentina.obtenerNombre()).thenReturn("Barco");
-        when(simboloColombia.obtenerNombre()).thenReturn("Barco");
-        when(simboloBrasil.obtenerNombre()).thenReturn("Globo");
+        when(simboloArgentina.nombre()).thenReturn("Barco");
+        when(simboloColombia.nombre()).thenReturn("Barco");
+        when(simboloBrasil.nombre()).thenReturn("Globo");
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 
@@ -76,9 +76,9 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableConTresTarjetasConMismoSimboloLasDevuelve() {
-        when(simboloBrasil.obtenerNombre()).thenReturn("Barco");
-        when(simboloArgentina.obtenerNombre()).thenReturn("Barco");
-        when(simboloColombia.obtenerNombre()).thenReturn("Barco");
+        when(simboloBrasil.nombre()).thenReturn("Barco");
+        when(simboloArgentina.nombre()).thenReturn("Barco");
+        when(simboloColombia.nombre()).thenReturn("Barco");
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 
@@ -93,9 +93,9 @@ public class TarjetaTest {
 
     @Test
     public void obtenerGrupoCanjeableConTresTarjetasConDistintoSimboloLasDevuelve() {
-        when(simboloColombia.obtenerNombre()).thenReturn("Globo");
-        when(simboloBrasil.obtenerNombre()).thenReturn("Barco");
-        when(simboloArgentina.obtenerNombre()).thenReturn("Cañon");
+        when(simboloColombia.nombre()).thenReturn("Globo");
+        when(simboloBrasil.nombre()).thenReturn("Barco");
+        when(simboloArgentina.nombre()).thenReturn("Cañon");
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 

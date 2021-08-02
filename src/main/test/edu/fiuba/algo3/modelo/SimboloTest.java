@@ -12,7 +12,7 @@ public class SimboloTest {
         String nombreSimbolo = "Barco";
         Simbolo simbolo = new Simbolo(nombreSimbolo);
 
-        assertEquals(nombreSimbolo, simbolo.obtenerNombre());
+        assertEquals(nombreSimbolo, simbolo.nombre());
     }
 
     @Test

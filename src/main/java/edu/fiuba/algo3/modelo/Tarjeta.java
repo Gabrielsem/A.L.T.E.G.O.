@@ -59,7 +59,7 @@ public class Tarjeta {
         HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo = new HashMap<>();
 
         for ( Tarjeta tarjeta : tarjetas) {
-            String simboloActual = tarjeta.obtenerSimbolo().obtenerNombre();
+            String simboloActual = tarjeta.obtenerSimbolo().nombre();
             ArrayList<Tarjeta> tarjetasActuales = tarjetasPorSimbolo.get(simboloActual);
 
             if (tarjetasActuales == null) { tarjetasActuales = new ArrayList<>(); }

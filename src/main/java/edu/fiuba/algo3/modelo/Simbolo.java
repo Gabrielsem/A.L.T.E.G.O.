@@ -7,12 +7,12 @@ public class Simbolo {
         this.nombre = nombre;
     }
 
-    public String obtenerNombre() {
+    public String nombre() {
         return this.nombre;
     }
 
     public boolean esIgualA(Simbolo simbolo) {
-        return simbolo.obtenerNombre().equals(this.nombre);
+        return simbolo.nombre().equals(this.nombre);
     }
 
 }

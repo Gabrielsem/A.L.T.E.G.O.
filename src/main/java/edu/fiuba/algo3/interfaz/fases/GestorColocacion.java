@@ -64,6 +64,7 @@ public class GestorColocacion implements Fase {
         actual = juego.siguienteTurno();
         botonSiguiente.setVisible(false);
         cambiarInstruccionAgregarFichas(actual);
+
         return this;
     }
 

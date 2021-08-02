@@ -102,10 +102,21 @@ Accordion > * > * {
 
 Button {
     -fx-text-fill: white;
-    -fx-background-color: #2C2B2C;
+    -fx-background-color: #313335;
     -fx-effect: dropshadow(gaussian, #888888, 10, 0.5, 0, 0);
 }
 
 .texto {
     -fx-text-fill: white;
+}
+
+.tarjeta > HBox {
+    -fx-text-fill: white;
+    -fx-background-color: #313335;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, #555, 5, 0.2, 0, 0);
+}
+
+.tarjeta > ImageView {
+    -fx-effect: innershadow(gaussian, #FFF, 10, 1,0,0)
 }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tarjeta;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -88,11 +89,7 @@ public class VistaJugador implements Observer {
     private void actualizarTarjetas(Jugador jugador) {
         cajaTarjetas.getChildren().clear();
         Collection<Tarjeta> tarjetas = jugador.getTarjetas();
-
-        VBox caja = new VBox();
-        caja.getStyleClass().add("tarjetas");
-
-        cajaTarjetas.getChildren().add(caja);
+        cajaTarjetas.getStyleClass().add("tarjetas");
 
         for (Tarjeta t : tarjetas) {
 
@@ -102,18 +99,28 @@ public class VistaJugador implements Observer {
             HBox pais = new HBox();
 
             try {
-                imagen = new ImageView(new Image(new FileInputStream("imagenes/globo.png")));
-                //String texto = String.format("%s - %s\n", t.obtenerSimbolo().obtenerNombre(), t.pais());
+                imagen = new ImageView(new Image(new FileInputStream("imagenes/canon.png")));
+                imagen = new ImageView(new Image(new FileInputStream("imagenes/"+t.obtenerSimbolo().nombre()+".png")));
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
             }
+            StackPane.setAlignment(imagen,Pos.CENTER_LEFT);
+            imagen.setPreserveRatio(true);
+            imagen.setFitHeight(30);
+            StackPane.setMargin(imagen,new Insets(0,0,0,10));
+
 
             pais.getChildren().add( new Label( t.pais() ) );
+            pais.setAlignment(Pos.CENTER);
+            StackPane.setMargin(pais, new Insets(3,0,3,0));
 
-
-            tarjeta.getChildren().addAll(imagen,pais);
-            caja.getChildren().add(tarjeta);
+            tarjeta.getChildren().addAll(pais,imagen);
+            tarjeta.setPadding( new Insets(3,0,3,0) );
+            cajaTarjetas.getChildren().add(tarjeta);
         }
+
+        AnchorPane.setLeftAnchor(cajaTarjetas,0.0);
+        AnchorPane.setRightAnchor(cajaTarjetas,0.0);
     }
 
     private void actualizarObjetivos(Jugador jugador) {
