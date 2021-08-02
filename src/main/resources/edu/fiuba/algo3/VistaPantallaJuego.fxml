@@ -1120,32 +1120,32 @@
          <children>
             <HBox fx:id="tabJugadores" alignment="CENTER" prefHeight="92.0" prefWidth="514.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
                      <children>
                         <Label text="0" />
                      </children>

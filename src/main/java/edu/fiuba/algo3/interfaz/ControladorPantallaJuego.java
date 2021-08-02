@@ -23,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ControladorPantallaJuego {
 
@@ -50,15 +52,21 @@ public class ControladorPantallaJuego {
 
     private void mostrarTabJugadores(){
         HBox caja = (HBox) scene.lookup("#tabJugadores");
+        ArrayList<Node> sobrantes = new ArrayList<>();
+
         for( int i=0 ; i<6; i++ ){
             String color = VistaJugador.getColorJugador(i+1);
-            if( color=="" ) return;
+            if( color=="" ) {
+                sobrantes.add( caja.getChildren().get(i) );
+                continue;
+            }
             HBox tab = (HBox) caja.getChildren().get(i);
             tab.setStyle(String.format("-fx-background-color: %s;",color));
             tab.setVisible(true);
 
             ( (Label) tab.getChildren().get(0) ).setText(String.valueOf(i+1));
         }
+        caja.getChildren().removeAll(sobrantes);
 
     }
 
