@@ -203,4 +203,13 @@ public class PaisTests {
 
         assertEquals(p1,p2);
     }
+
+    @Test
+    public void paisesConLosDistintosDatosSonDistintos() {
+        Pais p1 = new Pais("P1","Q1",Arrays.asList("A","B","C"));
+        Pais p2 = new Pais("P2","Q2",Arrays.asList("A","B","C"));
+
+        assertNotEquals(p1,p2);
+        assertNotEquals(p1, null);
+    }
 }

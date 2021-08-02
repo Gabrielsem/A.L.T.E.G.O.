@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Objects;
-
 public class Simbolo {
     final private String nombre;
 
@@ -11,10 +9,6 @@ public class Simbolo {
 
     public String nombre() {
         return this.nombre;
-    }
-
-    public boolean esIgualA(Simbolo simbolo) {
-        return simbolo.nombre().equals(this.nombre);
     }
 
     @Override

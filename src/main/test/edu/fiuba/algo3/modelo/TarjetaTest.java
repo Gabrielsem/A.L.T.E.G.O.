@@ -131,6 +131,16 @@ public class TarjetaTest {
         Tarjeta t1 =new Tarjeta(new Pais("P","C",new ArrayList<>()),new Simbolo("S"));
         Tarjeta t2 =new Tarjeta(new Pais("P","C",new ArrayList<>()),new Simbolo("S"));
 
-        assertEquals( t1, t2 );
+        assertEquals(t1, t2);
     }
+
+    @Test
+    public void dosTarjetasConDistintosDatosSonDistintas() {
+        Tarjeta t1 =new Tarjeta(new Pais("P1","C1",new ArrayList<>()),new Simbolo("S1"));
+        Tarjeta t2 =new Tarjeta(new Pais("P2","C2",new ArrayList<>()),new Simbolo("S2"));
+
+        assertNotEquals(t1, t2);
+        assertNotEquals(t1, null);
+    }
+
 }
