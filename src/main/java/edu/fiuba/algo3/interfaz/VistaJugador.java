@@ -36,7 +36,7 @@ public class VistaJugador implements Observer {
     }
 
     public static String getColorJugador(int nJug){
-        return colorJugador.get(nJug);
+        return colorJugador.getOrDefault(nJug,"");
     };
 
     private VBox nuevaCaja() {
