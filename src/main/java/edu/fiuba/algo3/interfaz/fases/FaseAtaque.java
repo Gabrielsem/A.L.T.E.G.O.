@@ -37,6 +37,8 @@ public class FaseAtaque implements Fase {
         jugadorActual.prepararAtaques();
 
         scene.lookup("#botonSiguiente").setVisible(true);
+        Label faseActual = (Label) scene.lookup("#faseActual");
+        faseActual.setText("Fase Ataque");
 
         setGestor( new GestorAtacante(this) );
     }

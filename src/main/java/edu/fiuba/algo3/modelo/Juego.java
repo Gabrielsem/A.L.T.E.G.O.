@@ -145,6 +145,8 @@ public class Juego extends Observable {
         return mapa.fichasSegunContinentes(paises);
     }
 
+    public HashMap<String, Integer> cantidadPaisesPorContinente() { return mapa.cantidadPaisesPorContinente();}
+
     public ArrayList<Jugador> getJugadores() {
         return new ArrayList<>(jugadores);
     }

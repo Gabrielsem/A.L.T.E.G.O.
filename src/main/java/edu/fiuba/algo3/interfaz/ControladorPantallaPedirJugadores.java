@@ -144,6 +144,7 @@ public class ControladorPantallaPedirJugadores {
     private void addJugadorYTurnoObservers(Juego juego) {
         HashMap<Integer, Observer> observers = new HashMap<>();
         HashMap<Integer, VistaJugador> vistasJugadores = new HashMap<>();
+        VistaJugador.setJuego(juego);
         for (int i : coloresJugadores.keySet()) {
             vistasJugadores.put(i, new VistaJugador(scene));
             observers.put(i, vistasJugadores.get(i));

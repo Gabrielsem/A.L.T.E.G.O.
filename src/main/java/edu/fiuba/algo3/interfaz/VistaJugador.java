@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tarjeta;
 import javafx.geometry.Pos;
@@ -20,6 +21,7 @@ public class VistaJugador implements Observer {
     private VBox cajaObjetivos;
     private VBox cajaConquistados;
     private VBox cajaTarjetas;
+    static private Juego juego;
 
     public VistaJugador(Scene scene) {
         this.scene = scene;
@@ -27,6 +29,8 @@ public class VistaJugador implements Observer {
         cajaTarjetas = nuevaCaja();
         cajaConquistados = nuevaCaja();
     }
+
+    static public void setJuego(Juego unJuego) { juego = unJuego;}
 
     private VBox nuevaCaja() {
         VBox caja = new VBox();
@@ -45,9 +49,24 @@ public class VistaJugador implements Observer {
     private void actualizarConquistados(Jugador jugador) { //FIXME: Work in progress. Habría que mostrarlo mejor, con las cantidades por cada continente
         cajaConquistados.getChildren().clear();
         String texto = "";
-        for (String nombrePais : jugador.paisesConquistados()){
-            texto = texto.concat(nombrePais + ", ");
+        int totalPaisesJugador = 0;
+        int totalPaises = 0;
+        HashMap<String, Integer> cantidadPaisesPorContinenteJugador = jugador.paisesPorContinente();
+        HashMap<String, Integer> cantidadPaisesPorContinente = juego.cantidadPaisesPorContinente();
+
+        for (int cantidad : jugador.paisesPorContinente().values()) {
+            totalPaisesJugador += cantidad;
         }
+        for (int cantidad : cantidadPaisesPorContinente.values()) {
+            totalPaises += cantidad;
+        }
+
+        texto += "Total: " + totalPaisesJugador + "/" + totalPaises + "\n";
+
+        for (String nombreContinente : cantidadPaisesPorContinenteJugador.keySet()){
+            texto += nombreContinente + ": " + cantidadPaisesPorContinenteJugador.get(nombreContinente) + "/" + cantidadPaisesPorContinente.get(nombreContinente) + "\n";
+        }
+
         Label paises = new Label(texto);
         cajaConquistados.getChildren().add(paises);
     }

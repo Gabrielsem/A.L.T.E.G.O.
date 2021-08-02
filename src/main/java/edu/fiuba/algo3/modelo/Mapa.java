@@ -104,6 +104,15 @@ public class Mapa {
         return contador;
     }
 
+    public HashMap<String, Integer> cantidadPaisesPorContinente() {
+        HashMap<String, Integer> cantidadPaisesPorContinente = new HashMap<>();
+        for (Pais pais : paises.values()) {
+            String continente = pais.continente();
+            cantidadPaisesPorContinente.put(continente, cantidadPaisesPorContinente.getOrDefault(continente, 0) +1);
+        }
+        return cantidadPaisesPorContinente;
+    }
+
     public void addObservers(HashMap<String, Observer> observers) {
         for (String nombre : observers.keySet()) {
             paises.get(nombre).addObserver(observers.get(nombre));

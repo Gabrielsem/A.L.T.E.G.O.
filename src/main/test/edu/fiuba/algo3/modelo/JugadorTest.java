@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -318,4 +320,19 @@ public class JugadorTest {
         assertEquals(0,p1.cantidadFichas());
         assertEquals(0,p2.cantidadFichas());
     }
+
+    @Test
+    public void obtenerPaisesPorContinente() {
+        Pais pais1 = new Pais("juan", "pedro", new ArrayList<>());
+        Pais pais2 = new Pais("pedro", "pedro", new ArrayList<>());
+        Pais pais3 = new Pais("marce", "marce", new ArrayList<>());
+
+        jugador.ocupar(pais1);
+        jugador.ocupar(pais2);
+        jugador.ocupar(pais3);
+
+        HashMap<String, Integer> paises = new HashMap<>(Map.of("pedro", 2, "marce", 1));
+        assertEquals(paises, jugador.paisesPorContinente());
+    }
+
 }

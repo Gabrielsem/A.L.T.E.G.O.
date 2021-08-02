@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class FaseInicial implements Fase {
     Scene scene;
@@ -17,10 +18,14 @@ public class FaseInicial implements Fase {
         GestorColocacion gestorSiguiente = new GestorColocacion(juego, scene, 3, new FaseAtaque(juego, scene));
         // TODO ponerle al gestor la siguiente fase
         gestor = new GestorColocacion(juego, scene, 5, gestorSiguiente);
+
     }
 
     public void iniciar() {
         gestor.iniciar();
+
+        Label faseActual = (Label) scene.lookup("#faseActual");
+        faseActual.setText("Fase Inicial");
     }
 
     public void tocoPais(Node pais) {

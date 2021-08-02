@@ -34,6 +34,7 @@ public class Jugador extends Observable {
 
     public void desocupar(Pais unPais) {
         paisesConquistados.remove(unPais.nombre());
+        notificarObservadores();
     }
 
     public void ocupar(Pais unPais){
@@ -42,6 +43,7 @@ public class Jugador extends Observable {
             recibirTarjeta(juego.pedirTarjeta());//TODO: Actualizar uml con esta secuencia (ver este bool en codigo)
             debeRecibirTarjeta = false;
         }
+        notificarObservadores();
     }
 
 
@@ -82,6 +84,8 @@ public class Jugador extends Observable {
         tarjetas.add( unaTarjeta );
         setChanged();notifyObservers();
     }
+
+    public void notificarObservadores() { setChanged();notifyObservers(); }
 
     public void reagrupar(String origen, String destino, int cantFichas) {
         if( !paisesConquistados.containsKey(origen) )
@@ -155,8 +159,13 @@ public class Jugador extends Observable {
         return listaPaisesAtacables;
     } //TODO: probar esto
 
-    public Collection<String> paisesConquistados() {
-        return  paisesConquistados.keySet();
+    public HashMap<String, Integer> paisesPorContinente() {
+        HashMap<String, Integer> paises = new HashMap<>();
+        for (Pais pais : paisesConquistados.values()) {
+            String continente = pais.continente();
+            paises.put(continente, paises.getOrDefault(continente, 0) +1);
+        }
+        return paises;
     }
 
     public Collection<String> paisesDisponiblesParaAtacar() {
