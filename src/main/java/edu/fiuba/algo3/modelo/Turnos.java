@@ -43,6 +43,10 @@ public class Turnos extends Observable {
 
     public void reiniciarTurnos() {
         actual = -1;
+    }
+
+    public void nuevoCiclo() {
+        reiniciarTurnos();
         offset = (offset + 1) % jugadores.size();
     }
 }

@@ -66,19 +66,19 @@ public class TurnosTest {
     public void trasReiniciarEmpiezaConElSegundo() {
         Jugador jug1 = turnos6jug.siguienteTurno();
         Jugador jug2 = turnos6jug.siguienteTurno();
-        turnos6jug.reiniciarTurnos();
+        turnos6jug.nuevoCiclo();
         assertEquals(jug2, turnos6jug.siguienteTurno());
     }
 
     @Test
-    public void trasReiniciarEsMismoOrdenEmpezandoConElSegundo() throws FileNotFoundException {
+    public void trasNuevoCicloEsMismoOrdenEmpezandoConElSegundo() throws FileNotFoundException {
         ArrayList<Jugador> jugadores1 = new ArrayList<>();
         ArrayList<Jugador> jugadores2 = new ArrayList<>();
 
         while(!turnos6jug.turnosCompletados()) {
             jugadores1.add(turnos6jug.siguienteTurno());
         }
-        turnos6jug.reiniciarTurnos();
+        turnos6jug.nuevoCiclo();
         while(!turnos6jug.turnosCompletados()) {
             jugadores2.add(turnos6jug.siguienteTurno());
         }
