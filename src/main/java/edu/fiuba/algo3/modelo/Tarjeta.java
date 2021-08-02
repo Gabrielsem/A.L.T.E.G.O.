@@ -86,9 +86,4 @@ public class Tarjeta {
         Tarjeta tarjeta = (Tarjeta) o;
         return pais.equals(tarjeta.pais) && simbolo.equals(tarjeta.simbolo);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(pais, simbolo);
-    }
 }
