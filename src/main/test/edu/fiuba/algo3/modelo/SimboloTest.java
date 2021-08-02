@@ -21,6 +21,6 @@ public class SimboloTest {
         Simbolo simbolo1 = new Simbolo(nombreSimbolo);
         Simbolo simbolo2 = new Simbolo(nombreSimbolo);
 
-        assertTrue(simbolo1.esIgualA(simbolo2));
+        assertEquals( simbolo1, simbolo2 );
     }
 }

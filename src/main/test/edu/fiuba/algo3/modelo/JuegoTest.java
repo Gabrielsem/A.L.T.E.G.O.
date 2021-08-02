@@ -17,7 +17,7 @@ public class JuegoTest {
     @BeforeEach
     public void setUp() throws FileNotFoundException {
 
-        juego = new Juego(2, "archivos/paises.json", "objetivos.json");
+        juego = new Juego(2, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
     }
 
     @Test
@@ -64,7 +64,7 @@ public class JuegoTest {
 
     @Test
     public void juegoDe2JugadoresDa2Turnos() throws FileNotFoundException {
-        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json");
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego2jug.turnosCompletados()) {
             juego2jug.siguienteTurno();
@@ -75,13 +75,25 @@ public class JuegoTest {
 
     @Test
     public void juegoDe6JugadoresDa6Turnos() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json");
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego6jug.turnosCompletados()) {
             juego6jug.siguienteTurno();
             i++;
         }
         assertEquals(6, i);
+    }
+
+    @Test
+    public void pedirTarjetasDaTarjetasDiferentes() {
+
+        HashSet<Tarjeta> tarjetas = new HashSet<>();
+
+        for( int i=0; i<50; i++ )
+            tarjetas.add(juego.pedirTarjeta() );
+        // El hashset no puede tener elementos repetidos
+
+        assertEquals(50,tarjetas.size());
     }
 
 }

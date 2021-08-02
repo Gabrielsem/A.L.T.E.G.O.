@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Tarjeta {
 
@@ -42,7 +43,7 @@ public class Tarjeta {
         return null;
     }
 
-    static private ArrayList<Tarjeta> obetnerTresTarjetasDistintas(HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo) {
+    static private ArrayList<Tarjeta> obtenerTresTarjetasDistintas(HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo) {
 
         if (tarjetasPorSimbolo.size() < 3) return null;
 
@@ -71,10 +72,23 @@ public class Tarjeta {
         ArrayList<Tarjeta> grupoCanjeable = Tarjeta.obtenerTresTarjetasIguales(tarjetasPorSimbolo);
         if (grupoCanjeable != null) return grupoCanjeable;
 
-        return Tarjeta.obetnerTresTarjetasDistintas(tarjetasPorSimbolo);
+        return Tarjeta.obtenerTresTarjetasDistintas(tarjetasPorSimbolo);
     }
 
     public String pais(){
         return pais.nombre();
     };
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tarjeta tarjeta = (Tarjeta) o;
+        return pais.equals(tarjeta.pais) && simbolo.equals(tarjeta.simbolo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pais, simbolo);
+    }
 }

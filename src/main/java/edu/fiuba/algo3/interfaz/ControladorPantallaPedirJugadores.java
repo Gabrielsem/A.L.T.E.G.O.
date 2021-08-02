@@ -123,7 +123,7 @@ public class ControladorPantallaPedirJugadores {
             return;
         }
 
-        Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json");
+        Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
         VistaJugador.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);

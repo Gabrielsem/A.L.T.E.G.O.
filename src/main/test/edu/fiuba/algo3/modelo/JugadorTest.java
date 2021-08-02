@@ -182,7 +182,6 @@ public class JugadorTest {
         Pais chile = mock(Pais.class);
         when(arg.nombre()).thenReturn("Argentina");
         when(chile.nombre()).thenReturn("Chile");
-        when(juego.obtenerPais("Chile")).thenReturn(chile);
 
         jug.ocupar(arg);
 
@@ -201,7 +200,6 @@ public class JugadorTest {
         Pais chile = mock(Pais.class);
         when(arg.nombre()).thenReturn("Argentina");
         when(chile.nombre()).thenReturn("Chile");
-        when(juego.obtenerPais("Chile")).thenReturn(chile);
 
         doAnswer(invocation ->{
             jug.ocupar(chile);
@@ -224,7 +222,6 @@ public class JugadorTest {
         Pais chile = mock(Pais.class);
         when(arg.nombre()).thenReturn("Argentina");
         when(chile.nombre()).thenReturn("Chile");
-        when(juego.obtenerPais("Chile")).thenReturn(chile);
         jug.ocupar(arg);
         jug.ocupar(chile);
 
@@ -240,7 +237,6 @@ public class JugadorTest {
         Pais chile = mock(Pais.class);
         when(arg.nombre()).thenReturn("Argentina");
         when(chile.nombre()).thenReturn("Chile");
-        when(juego.obtenerPais("Chile")).thenReturn(chile);
         jugador.ocupar(arg);
 
         assertThrows(JugadorNoTienePais.class, () -> {
@@ -256,7 +252,6 @@ public class JugadorTest {
         Pais chile = mock(Pais.class);
         when(arg.nombre()).thenReturn("Argentina");
         when(chile.nombre()).thenReturn("Chile");
-        when(juego.obtenerPais("Chile")).thenReturn(chile);
         jugador.ocupar(chile);
 
         assertThrows(JugadorNoTienePais.class, () -> {
@@ -267,7 +262,7 @@ public class JugadorTest {
     @Test
     public void jugadorRecibeFichasAlCanjearTarjetas() throws FileNotFoundException {
 
-        jugador = new Jugador(1, new Juego(1, "archivos/paises.json", "objetivos.json") );
+        jugador = new Jugador(1, new Juego(1, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json") );
 
         Tarjeta t1 = new Tarjeta(new Pais("N1","C",new ArrayList<>()),
                 new Simbolo("S1") );

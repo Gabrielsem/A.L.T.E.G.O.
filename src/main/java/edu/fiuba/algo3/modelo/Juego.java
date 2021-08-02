@@ -25,10 +25,10 @@ public class Juego extends Observable {
     private ArrayList<Objetivo> objetivosSecretos;
     private ObjetivoComun objetivoComun;
 
-    public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos) throws FileNotFoundException {
+    public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos, String archivoTarjetas) throws FileNotFoundException {
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa(archivoPaises);
-        this.crearTarjetas();
+        this.crearTarjetas(archivoTarjetas);
 
         for ( int numJugador = 0 ; numJugador < cantJugadores; numJugador++ ) {
             this.jugadores.add(new Jugador(numJugador + 1, this));
@@ -41,10 +41,10 @@ public class Juego extends Observable {
         repartirObjetivos();
     }
 
-    private void crearTarjetas() throws FileNotFoundException {
+    private void crearTarjetas(String archivo) throws FileNotFoundException {
         this.tarjetas = new ArrayList<>();
 
-        FileReader lector = new FileReader("archivos/tarjetas.json");
+        FileReader lector = new FileReader(archivo);
 
         JsonElement elementoJson = JsonParser.parseReader(lector);
         JsonArray tarjetasArregloJson = elementoJson.getAsJsonArray();
@@ -123,14 +123,12 @@ public class Juego extends Observable {
         }
     }
 
-    public Pais obtenerPais(String nombrePais){
-        return mapa.obtenerPais(nombrePais);
-    } //FIXME: privado? se usa en tests
-
     public Tarjeta pedirTarjeta() {
 
         Random rand = new Random();
-        return this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
+        Tarjeta tarjeta = this.tarjetas.get(rand.nextInt(this.tarjetas.size()));
+        tarjetas.remove(tarjeta);
+        return tarjeta;
     }
 
     public void devolverTarjetas(ArrayList<Tarjeta> tarjetas ) {

@@ -92,4 +92,13 @@ public class Pais extends Observable {
     }
 
     public boolean invadible() { return fichas<= 0; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pais pais = (Pais) o;
+        return nombre.equals(pais.nombre) && continente.equals(pais.continente) && Objects.equals(vecinos, pais.vecinos);
+    }
+
 }

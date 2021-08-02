@@ -116,7 +116,7 @@ public class TarjetaTest {
     }
 
     @Test
-    public void FichasObtenidasAlRealizarCanjesDeTarjetas(){
+    public void FichasObtenidasAlRealizarCanjesDeTarjetas() {
 
         assertEquals(Tarjeta.cantidadFichasCanje(0),4);
         assertEquals(Tarjeta.cantidadFichasCanje(1),7);
@@ -124,5 +124,13 @@ public class TarjetaTest {
         for (int i = 2; i <= 10; i++) {
             assertEquals(i * 5, Tarjeta.cantidadFichasCanje(i));
         }
+    }
+
+    @Test
+    public void dosTarjetasConLosMismosDatosSonIguales() {
+        Tarjeta t1 =new Tarjeta(new Pais("P","C",new ArrayList<>()),new Simbolo("S"));
+        Tarjeta t2 =new Tarjeta(new Pais("P","C",new ArrayList<>()),new Simbolo("S"));
+
+        assertEquals( t1, t2 );
     }
 }

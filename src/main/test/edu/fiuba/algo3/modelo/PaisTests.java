@@ -4,10 +4,7 @@ import edu.fiuba.algo3.errores.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -197,5 +194,13 @@ public class PaisTests {
         pais.agregarFichas(6);
 
         assertThrows(PaisNoPuedeReagruparAPaisNoVecino.class, () -> pais.reagruparA(destino, 2));
+    }
+
+    @Test
+    public void paisesConLosMismosDatosSonIguales() {
+        Pais p1 = new Pais("P","Q",Arrays.asList("A","B","C"));
+        Pais p2 = new Pais("P","Q",Arrays.asList("A","B","C"));
+
+        assertEquals(p1,p2);
     }
 }

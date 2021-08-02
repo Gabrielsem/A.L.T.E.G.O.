@@ -88,11 +88,11 @@ public class Jugador extends Observable {
     public void notificarObservadores() { setChanged();notifyObservers(); }
 
     public void reagrupar(String origen, String destino, int cantFichas) {
+
         if( !paisesConquistados.containsKey(origen) )
             throw new JugadorNoTienePais(String.format("El jugador no mover fichas desde el pais %s porque no es suyo",origen));
         if( !paisesConquistados.containsKey(destino) )
             throw new JugadorNoTienePais(String.format("El jugador no puede mover fichas al pais %s porque no es suyo",destino));
-
 
         paisesConquistados.get(origen).reagruparA(paisesConquistados.get(destino), cantFichas);
     }
