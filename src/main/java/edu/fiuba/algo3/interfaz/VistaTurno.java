@@ -23,7 +23,7 @@ public class VistaTurno implements Observer {
 
     public VistaTurno(Scene scene, HashMap<Integer, VistaJugador> vistasJugadores) {
         cajaTurno = (VBox) scene.lookup("#playerBox");
-        labelTurno = (Label) cajaTurno.getChildren().get(0);
+        labelTurno = (Label) scene.lookup("#labelJugadorActual");
         Accordion acc = (Accordion) scene.lookup("#acordion");
         panelConquistados = acc.getPanes().get(0);
         panelObjetivos = acc.getPanes().get(1);

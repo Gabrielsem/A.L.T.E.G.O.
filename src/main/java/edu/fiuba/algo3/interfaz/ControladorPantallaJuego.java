@@ -20,10 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 
@@ -46,7 +43,23 @@ public class ControladorPantallaJuego {
         this.fase = new FaseInicial(juego, scene);
         this.fase.iniciar();
 
+        mostrarTabJugadores();
+
         inicializarAjusteEscala();
+    }
+
+    private void mostrarTabJugadores(){
+        HBox caja = (HBox) scene.lookup("#tabJugadores");
+        for( int i=0 ; i<6; i++ ){
+            String color = VistaJugador.getColorJugador(i+1);
+            if( color=="" ) return;
+            HBox tab = (HBox) caja.getChildren().get(i);
+            tab.setStyle(String.format("-fx-background-color: %s;",color));
+            tab.setVisible(true);
+
+            ( (Label) tab.getChildren().get(0) ).setText(String.valueOf(i+1));
+        }
+
     }
 
     private void inicializarAjusteEscala() {
