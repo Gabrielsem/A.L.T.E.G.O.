@@ -8,13 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.ToggleButton;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
 
@@ -124,7 +124,7 @@ public class ControladorPantallaPedirJugadores {
         }
 
         Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json");
-        VistaPais.setColorJugador(coloresJugadores);//FIXME
+        VistaJugador.setColorJugador(coloresJugadores);//FIXME
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
         addJugadorYTurnoObservers(juego);
@@ -134,7 +134,7 @@ public class ControladorPantallaPedirJugadores {
         HashMap<String, Observer> observers = new HashMap<>();
         for (Node nodo : ((Group) scene.lookup("#_root")).getChildren()) {
             if (nodo.getStyleClass().contains("pais")) {
-                observers.put(nodo.getId(), new VistaPais(nodo, this.coloresJugadores));
+                observers.put(nodo.getId(), new VistaPais(nodo));
             }
         }
 

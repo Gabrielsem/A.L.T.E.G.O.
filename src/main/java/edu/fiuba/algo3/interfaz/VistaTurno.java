@@ -1,17 +1,11 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Turnos;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -41,7 +35,7 @@ public class VistaTurno implements Observer {
     public void update(Observable observable, Object arg) {
         Turnos turnos = (Turnos) observable;
         int numeroActual = turnos.turnoActual().numero();
-        String color = VistaPais.getColorJugador(numeroActual);
+        String color = VistaJugador.getColorJugador(numeroActual);
         cajaTurno.setStyle("-fx-background-color: "+color+";");
         labelTurno.setText("Jugador "+ numeroActual);
         panelConquistados.expandedProperty().set(true);

@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" styleClass="fondo">
+<GridPane alignment="CENTER" styleClass="fondo" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.4000122070313" minWidth="10.0" prefWidth="92.93330078125" />
@@ -25,7 +25,7 @@
    <children>
       <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
           <children>
-              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" text="Seleccione los jugadores" styleClass="texto">
+              <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" styleClass="texto" text="Seleccione los jugadores">
                   <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -48,32 +48,32 @@
                 <RowConstraints maxHeight="182.4000076293945" minHeight="0.0" prefHeight="59.46662597656251" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ToggleButton fx:id="colorJugadorAzul" accessibleText="#0b5394" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#botonJugador" style="-fx-border-color: #000; -fx-background-color: #0b5394;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToggleButton fx:id="colorJugadorAzul" accessibleText="#0b5394" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #0b5394;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                       <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </ToggleButton>
-                  <ToggleButton fx:id="colorJugadorVerde" accessibleText="#009988" mnemonicParsing="false" onAction="#botonJugador" style="-fx-border-color: #000; -fx-background-color: #009988;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToggleButton fx:id="colorJugadorVerde" accessibleText="#009988" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #009988;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </ToggleButton>
-                  <ToggleButton fx:id="colorJugadorAmarillo" accessibleText="#ee7733" mnemonicParsing="false" onAction="#botonJugador" style="-fx-border-color: #000; -fx-background-color: #ee7733;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToggleButton fx:id="colorJugadorAmarillo" accessibleText="#ee7733" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #ee7733;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </ToggleButton>
-                  <ToggleButton fx:id="colorJugadorRosa" accessibleText="#ee3377" mnemonicParsing="false" onAction="#botonJugador" style="-fx-border-color: #000; -fx-background-color: ee3377;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToggleButton fx:id="colorJugadorRosa" accessibleText="#ee3377" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: ee3377;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </ToggleButton>
-                <ToggleButton fx:id="colorJugadorRojo" accessibleText="#cc3311" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #cc3311; -fx-border-color: #000;" textAlignment="CENTER" userData="#" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                <ToggleButton fx:id="colorJugadorRojo" accessibleText="#cc3311" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #cc3311;" textAlignment="CENTER" userData="#" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>
                   </ToggleButton>
-                  <ToggleButton fx:id="colorJugadorNegro" accessibleText="#000000" mnemonicParsing="false" onAction="#botonJugador" style="-fx-border-color: #000; -fx-background-color: #000;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToggleButton fx:id="colorJugadorNegro" accessibleText="#000000" mnemonicParsing="false" onAction="#botonJugador" style="-fx-background-color: #000;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </padding>

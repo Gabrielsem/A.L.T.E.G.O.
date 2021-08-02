@@ -18,11 +18,9 @@ public class VistaPais implements Observer {
     private Circle ficha;
     private Label texto;
     private Shape pais;
-    private HashMap<Integer, String> colores;// TODO - Me parece mejor que sea estatico ya que es el mismo para todos
-    static HashMap<Integer, String>colorJugador;// FIXME - En este momento es accedido publicamente pq hay varias partes de la interfaz que lo necesitan - Habria que ver si lo pasamos por parametro (no me gusta) o  reasignamos la tenencia a algo mas ligado con Jugador (VistaJugador ?)
+    static HashMap<Integer, String>colorJugador;
 
-    public VistaPais(Node unaVista, HashMap<Integer, String> colores){
-        this.colores = colores;
+    public VistaPais(Node unaVista){
         vista =  (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
 
@@ -49,20 +47,11 @@ public class VistaPais implements Observer {
 
         //this.pais.setFill( Color.web( this.colores.get(pais.getNumeroPropietario()) ) );//TODO - Si ponemos color x continente esto no va
         if( Objects.nonNull(ficha) )
-            ficha.setFill( Color.web( this.colores.get(pais.getNumeroPropietario()) ) );
+            ficha.setFill( Color.web( VistaJugador.getColorJugador(pais.getNumeroPropietario()) ) );
 
         if( Objects.nonNull(texto) )
             texto.setText(String.valueOf(pais.cantidadFichas()));
         
         vista.setUserData(pais);
-    }
-
-
-    public static String getColorJugador(int nJug){
-        return colorJugador.get(nJug);
-    };
-
-    public static void setColorJugador( HashMap<Integer,String> colores ) {
-        colorJugador = colores;
     }
 }

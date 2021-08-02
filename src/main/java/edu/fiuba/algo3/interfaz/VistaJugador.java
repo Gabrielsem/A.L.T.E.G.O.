@@ -6,9 +6,7 @@ import edu.fiuba.algo3.modelo.Tarjeta;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.util.Collection;
@@ -22,6 +20,7 @@ public class VistaJugador implements Observer {
     private VBox cajaConquistados;
     private VBox cajaTarjetas;
     static private Juego juego;
+    static HashMap<Integer, String>colorJugador;
 
     public VistaJugador(Scene scene) {
         this.scene = scene;
@@ -31,6 +30,14 @@ public class VistaJugador implements Observer {
     }
 
     static public void setJuego(Juego unJuego) { juego = unJuego;}
+
+    public static void setColorJugador( HashMap<Integer,String> colores ) {
+        colorJugador = colores;
+    }
+
+    public static String getColorJugador(int nJug){
+        return colorJugador.get(nJug);
+    };
 
     private VBox nuevaCaja() {
         VBox caja = new VBox();
@@ -46,7 +53,7 @@ public class VistaJugador implements Observer {
         actualizarConquistados(jug);
     }
 
-    private void actualizarConquistados(Jugador jugador) { //FIXME: Work in progress. Habría que mostrarlo mejor, con las cantidades por cada continente
+    private void actualizarConquistados(Jugador jugador) {
         cajaConquistados.getChildren().clear();
         String texto = "";
         int totalPaisesJugador = 0;
