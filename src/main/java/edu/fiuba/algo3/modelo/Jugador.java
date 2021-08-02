@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
-import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 import static java.lang.Math.max;
@@ -28,10 +27,6 @@ public class Jugador extends Observable {
         juego = claseJuego;
     }
 
-    public boolean tienePais(String nombrePais) {
-        return paisesConquistados.containsKey(nombrePais);
-    }
-
     public void desocupar(Pais unPais) {
         paisesConquistados.remove(unPais.nombre());
         notificarObservadores();
@@ -50,7 +45,7 @@ public class Jugador extends Observable {
     public void atacar(Pais atacante, Pais defensor, int cantFichas){
         if( !paisesConquistados.containsValue(atacante) ) throw new JugadorNoTienePais(String.format("El jugador no puede atacar con el pais %s porque no es suyo",atacante.nombre()));
         if( paisesConquistados.containsValue(defensor) ) throw new PaisDelMismoPropietarioNoPuedeSerAtacado(String.format("El jugador no puede atacar a el pais %s porque ya es suyo",defensor.nombre()));
-        atacante.atacar(defensor,cantFichas);
+        atacante.atacar(defensor, cantFichas);
     }
 
     public void darFichas(int cantidadFichas) {

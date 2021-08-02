@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
-import org.junit.jupiter.api.BeforeEach;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
+import edu.fiuba.algo3.modelo.objetivos.ObjetivoOcupacion;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -13,8 +16,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class JugadorTest {
@@ -330,4 +332,110 @@ public class JugadorTest {
         assertEquals(paises, jugador.paisesPorContinente());
     }
 
+    @Test
+    public void alDarFichaAJugadorTieneFichas() {
+        jugador.darFichas(4);
+
+        assertTrue(jugador.tieneFichas());
+    }
+
+    @Test
+    public void poner5FichasAPaisConquistado() {
+        Pais alaska = new Pais("Alaska", "America del Norte", new ArrayList<>());
+
+        jugador.ocupar(alaska);
+        jugador.darFichas(5);
+
+        assertEquals(jugador.cantidadFichas(), 5);
+
+        jugador.ponerFichas("Alaska", 3);
+
+        assertEquals(jugador.cantidadFichas(), 2);
+
+        jugador.ponerFichas("Alaska", 2);
+
+        assertEquals(jugador.cantidadFichas(), 0);
+        assertEquals(alaska.cantidadFichas(), 5);
+    }
+
+    @Test
+    public void ponerFichasEnUnPaisQueNoLePerteneceLanzaError() {
+        Pais alaska = new Pais("Alaska", "America del Norte", new ArrayList<>());
+
+        assertThrows(JugadorNoTienePais.class, () -> {
+            jugador.ponerFichas("Alaska", 1);
+        });
+    }
+
+    @Test
+    public void ponerFichasSinTenerFichasDisponiblesLanzaError() {
+        Pais alaska = new Pais("Alaska", "America del Norte", new ArrayList<>());
+
+        jugador.ocupar(alaska);
+        assertEquals(jugador.cantidadFichas(), 0);
+
+        assertThrows(JugadorNoTieneFichasSuficientes.class, () -> {
+            jugador.ponerFichas("Alaska", 1);
+        });
+    }
+
+    @Test
+    public void obtenerTarjetas() {
+        Tarjeta tarjeta1 = new Tarjeta(new Pais("P1", "C1", new ArrayList<>()), new Simbolo("S1"));
+        Tarjeta tarjeta2 = new Tarjeta(new Pais("P2", "C2", new ArrayList<>()), new Simbolo("S2"));
+        Tarjeta tarjeta3 = new Tarjeta(new Pais("P3", "C3", new ArrayList<>()), new Simbolo("S3"));
+
+        ArrayList<Tarjeta> tarjetas = new ArrayList<>(Arrays.asList(tarjeta1, tarjeta2, tarjeta3));
+
+        for (Tarjeta tarjeta : tarjetas) {
+            jugador.recibirTarjeta(tarjeta);
+        }
+
+        assertEquals(tarjetas, jugador.getTarjetas());
+    }
+    
+    @Test 
+    public void jugadorGanaConObjetivoComun() {
+        ObjetivoComun objetivoComun = mock(ObjetivoComun.class);
+        ObjetivoOcupacion objetivoOcupacion = mock(ObjetivoOcupacion.class);
+        
+        jugador.asignarObjetivos(objetivoComun, objetivoOcupacion);
+        
+        when(objetivoComun.gano(jugador)).thenReturn(true);
+        when(objetivoOcupacion.gano(jugador)).thenReturn(false);
+        
+        assertTrue(jugador.gane());
+    }
+
+    @Test
+    public void jugadorGanaConobjetivoOcupacion() {
+        ObjetivoComun objetivoComun = mock(ObjetivoComun.class);
+        ObjetivoOcupacion objetivoOcupacion = mock(ObjetivoOcupacion.class);
+
+        jugador.asignarObjetivos(objetivoComun, objetivoOcupacion);
+
+        when(objetivoComun.gano(jugador)).thenReturn(false);
+        when(objetivoOcupacion.gano(jugador)).thenReturn(true);
+
+        assertTrue(jugador.gane());
+    }
+
+    @Test
+    public void jugadorNoGana() {
+        ObjetivoComun objetivoComun = mock(ObjetivoComun.class);
+        ObjetivoOcupacion objetivoOcupacion = mock(ObjetivoOcupacion.class);
+
+        jugador.asignarObjetivos(objetivoComun, objetivoOcupacion);
+
+        when(objetivoComun.gano(jugador)).thenReturn(false);
+        when(objetivoOcupacion.gano(jugador)).thenReturn(false);
+
+        assertFalse(jugador.gane());
+    }
+
+    @Test
+    public void obtenerPaisesAtacables() {
+
+
+    }
 }
