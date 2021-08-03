@@ -6,6 +6,7 @@ import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.max;
 
@@ -96,11 +97,13 @@ public class Jugador extends Observable {
         fichasDisponibles += fichasPorConquista() + canjearTarjetas();
     }
 
-    public int canjearTarjetas(){
+    public void activarTarjetas() {
         for( Tarjeta tarjeta : tarjetas )
             if( paisesConquistados.containsKey( tarjeta.pais() ) )
                 tarjeta.activar();
+    }
 
+    public int canjearTarjetas(){//FIXME: estos metodos no deberian ser privados?
         ArrayList<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
 
         if( Objects.nonNull(grupoCanjeable) ){
@@ -165,5 +168,29 @@ public class Jugador extends Observable {
 
     public boolean tienePais(String nombrePais) {
         return paisesConquistados.containsKey(nombrePais);
+    }
+
+    // Devuelve diccionario Pais
+    public Collection<String> paisesParaReagrupar() {
+        HashSet<String> disponiblesParaReagrupar = new HashSet<>();
+        for (Pais p : paisesConquistados.values()) {
+            if (p.cantidadFichas() <= 1) continue;
+            if (paisesConquistados.keySet().stream().noneMatch(p::esVecino)) continue;
+            disponiblesParaReagrupar.add(p.nombre());
+        }
+
+        return disponiblesParaReagrupar;
+    }
+
+    public Collection<String> reagrupablesDesde(String unPais) {
+        if (!paisesConquistados.containsKey(unPais)) throw new RuntimeException("El jugador no tiene ese Pais");
+        // TODO excepcion custom?
+        Pais pais = paisesConquistados.get(unPais);
+
+        return paisesConquistados.keySet().stream().filter(pais::esVecino).collect(Collectors.toSet());
+    }
+
+    public Collection<String> paises() {
+        return paisesConquistados.keySet();
     }
 }

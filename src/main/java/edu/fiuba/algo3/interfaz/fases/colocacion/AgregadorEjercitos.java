@@ -1,69 +1,79 @@
-package edu.fiuba.algo3.interfaz.fases;
+package edu.fiuba.algo3.interfaz.fases.colocacion;
 
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
+import edu.fiuba.algo3.interfaz.fases.Fase;
+import edu.fiuba.algo3.interfaz.fases.FaseConColocacion;
+import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+
+import java.lang.reflect.Executable;
 
 
-public class GestorColocacion implements Fase {
+public class AgregadorEjercitos extends FaseConSeleccionables {
     Juego juego;
-    Scene scene;
     Jugador actual;
     Label instruccion;
     Button botonSiguiente;
-    int fichasExtra;
-    Fase siguienteFase;
+    FaseConColocacion fase;
+    private int fichasExtra;
 
-    public GestorColocacion(Juego juego, Scene scene, int fichasExtra, Fase siguienteFase) {
+    public AgregadorEjercitos(Juego juego, Scene scene, FaseConColocacion fase) {
+        this(juego, scene, fase, 0);
+    }
+
+    public AgregadorEjercitos(Juego juego, Scene scene, FaseConColocacion fase, int fichasExtra) {
         instruccion = (Label) scene.lookup("#instruccion");
         botonSiguiente = (Button) scene.lookup("#botonSiguiente");
         this.juego = juego;
+        this.fase = fase;
+        super.scene = scene;
         this.fichasExtra = fichasExtra;
-        this.siguienteFase = siguienteFase;
-        this.scene = scene;
+        iniciar();
     }
 
-    public void iniciar() {
+    private void iniciar() {
         for (Jugador j : juego.getJugadores()) {
             j.darFichas(fichasExtra);
         }
+
         botonSiguiente.setVisible(false);
         juego.reiniciarTurnos();
         actual = juego.siguienteTurno();
-
+        super.setSeleccionables(actual.paises());
         cambiarInstruccionAgregarFichas(actual);
     }
 
-    public void tocoPais(Node pais) {
+    public Fase tocoSeleccionable(Node pais) {
         try {
             actual.ponerFichas(pais.getId(), 1);
             cambiarInstruccionAgregarFichas(actual);
         } catch (JugadorNoTieneFichasSuficientes | JugadorNoTienePais e) {
-            return;
+            return this;
         }
 
         if (!actual.tieneFichas()) {
             botonSiguiente.setVisible(true);
             cambiarInstruccionSiguiente();
         }
+        return this;
     }
 
     public Fase tocoBoton(Button unBoton) {
         if (juego.turnosCompletados()) {
-            siguienteFase.iniciar();
             botonSiguiente.setVisible(false);
-            return siguienteFase;
+            return fase.siguienteFase();
         }
 
         actual = juego.siguienteTurno();
         botonSiguiente.setVisible(false);
         cambiarInstruccionAgregarFichas(actual);
+        super.setSeleccionables(actual.paises());
 
         return this;
     }

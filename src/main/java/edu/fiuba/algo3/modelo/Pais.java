@@ -103,7 +103,13 @@ public class Pais extends Observable {
 
     public Collection<String> getPaisesAtacables() {
         Set<String> listaPaisesAtacables = new HashSet<>(vecinos);
-        listaPaisesAtacables.removeIf(nombreVecino->(propietario.tienePais(nombreVecino)));
+        listaPaisesAtacables.removeIf(nombreVecino -> (propietario.tienePais(nombreVecino)));
         return listaPaisesAtacables;
+    }
+
+    public void invadir(Pais otroPais, int fichas) { //todo probar esto
+        verificarAlcanzanFichas(fichas);
+        perderFichas(fichas);
+        otroPais.ocupadoPor(propietario, fichas);
     }
 }

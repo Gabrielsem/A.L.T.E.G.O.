@@ -177,4 +177,8 @@ public class Juego extends Observable {
         turnos.reiniciarTurnos();
     }
 
+    public void nuevoCiclo() {
+        turnos.nuevoCiclo();
+    }
+
 }

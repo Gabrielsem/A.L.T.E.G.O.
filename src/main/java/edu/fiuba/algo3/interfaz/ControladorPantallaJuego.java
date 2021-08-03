@@ -3,7 +3,7 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
-import edu.fiuba.algo3.interfaz.fases.FaseInicial;
+import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.beans.value.ChangeListener;
@@ -17,14 +17,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ControladorPantallaJuego {
 
@@ -43,8 +41,8 @@ public class ControladorPantallaJuego {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
-        this.fase = new FaseInicial(juego, scene);
-        this.fase.iniciar();
+        this.fase = new Inicial(juego, scene);
+        scene.lookup("#slider").setManaged(false);
 
         mostrarTabJugadores();
 
@@ -90,7 +88,7 @@ public class ControladorPantallaJuego {
         Node node = (Node) mouseEvent.getSource();
         Pais pais = (Pais) node.getUserData();
         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-            fase.tocoPais(node);
+            fase = fase.tocoPais(node);
         } else {
             System.out.printf("País %s (%d fichas)%n",
                 node.getId(), pais.cantidadFichas());
