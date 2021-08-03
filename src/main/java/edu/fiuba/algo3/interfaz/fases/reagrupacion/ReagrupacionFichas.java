@@ -31,9 +31,9 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
 
     private void iniciar() {
         instruccion.setText("Elegí la cantidad de fichas a mover");
-        slider.mostrar(origen.cantidadFichas() - 1);
         botonSiguiente.setText("Reagrupar");
         botonSiguiente.setVisible(true);
+        slider.mostrar(origen.cantidadFichas() - 1);
     }
 
     @Override

@@ -46,7 +46,7 @@ public class ControladorPantallaJuego {
         this.fase = new Inicial(juego, scene);
 
         Slider nodoSlider = (Slider) scene.lookup("#slider");
-        nodoSlider.setUserData(new VistaSlider(nodoSlider));
+        nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));
         mostrarTabJugadores();
         inicializarAjusteEscala();
     }

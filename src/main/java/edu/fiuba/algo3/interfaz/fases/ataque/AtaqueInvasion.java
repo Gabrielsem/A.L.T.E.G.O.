@@ -44,8 +44,8 @@ public class AtaqueInvasion extends FaseConSeleccionables {
         instruccion.setText("Elegí cuantas fichas mover al país conquistado");
         paisAtacado.ocupadoPor(juego.turnoActual(),0);
         super.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ));
-        slider.mostrar(paisAtacante.cantidadFichas() - 1);
         botonSiguiente.setText("Invadir");
+        slider.mostrar(paisAtacante.cantidadFichas() - 1);
     }
 
     @Override

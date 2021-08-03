@@ -1,13 +1,16 @@
 package edu.fiuba.algo3.interfaz;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
 public class VistaSlider {
     Slider slider;
+    Button botonSiguiente;
 
-    public VistaSlider(Slider slider) {
+    public VistaSlider(Slider slider, Button botonSiguiente) {
         this.slider = slider;
+        this.botonSiguiente = botonSiguiente;
         ocultar();
     }
 
@@ -19,6 +22,7 @@ public class VistaSlider {
             slider.setVisible(true);
         } else {
             ocultar();
+            botonSiguiente.setText(botonSiguiente.getText() + " con 1 ficha");
         }
 
         slider.adjustValue(1);
