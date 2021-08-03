@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases.reagrupacion;
 
+import edu.fiuba.algo3.interfaz.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.modelo.Juego;
@@ -14,7 +15,7 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
     private Juego juego;
     private Pais origen, destino;
     private Label instruccion;
-    private Slider slider;
+    private VistaSlider slider;
     private Button botonSiguiente;
 
     public ReagrupacionFichas(Scene scene, Juego juego, Pais origen, Pais destino) {
@@ -23,28 +24,24 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
         this.origen = origen;
         this.destino = destino;
         instruccion = (Label) scene.lookup("#instruccion");
-        slider = (Slider) scene.lookup("#slider");
+        slider = (VistaSlider) scene.lookup("#slider").getUserData();
         botonSiguiente = (Button) scene.lookup("#botonSiguiente");
         iniciar();
     }
 
     private void iniciar() {
         instruccion.setText("Elegí la cantidad de fichas a mover");
-        slider.setMax(origen.cantidadFichas() - 1);
-        slider.setValue(1);
-        slider.setManaged(true);
-        slider.setVisible(true);
+        slider.mostrar(origen.cantidadFichas() - 1);
         botonSiguiente.setText("Reagrupar");
         botonSiguiente.setVisible(true);
     }
 
     @Override
     public Fase tocoBoton(Button unBoton) {
-        juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), (int) slider.getValue());
+        juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), slider.getValue());
         //FIXME sirve tener ese metodo de jugador? (el reagrupar), podria llamar directo al de pais, no se
         //si es bueno o malo
-        slider.setVisible(false);
-        slider.setManaged(false);
+        slider.ocultar();
         return new ReagrupacionOrigen(scene, juego);
     }
 

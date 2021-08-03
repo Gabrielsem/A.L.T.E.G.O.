@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases.ataque;
 
+import edu.fiuba.algo3.interfaz.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.modelo.Juego;
@@ -23,7 +24,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
 
     HBox cajaBotones;
     Label instruccion;
-    Slider slider;
+    VistaSlider slider;
     Button botonSiguiente;
 
     public AtaqueInvasion(Scene scene, Juego juego, Pais paisAtacante, Pais paisAtacado) {
@@ -33,7 +34,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
         this.paisAtacante = paisAtacante;
         this.paisAtacado =  paisAtacado;
         instruccion = (Label) scene.lookup("#instruccion");
-        slider = (Slider) scene.lookup("#slider");
+        slider = (VistaSlider) scene.lookup("#slider").getUserData();
         botonSiguiente = (Button) scene.lookup("#botonSiguiente");
         cajaBotones = (HBox) scene.lookup("#cajaBotones");
         iniciar();
@@ -43,17 +44,15 @@ public class AtaqueInvasion extends FaseConSeleccionables {
         instruccion.setText("Elegí cuantas fichas mover al país conquistado");
         paisAtacado.ocupadoPor(juego.turnoActual(),0);
         super.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ));
-        slider.setMax(paisAtacante.cantidadFichas() - 1);
-        slider.setValue(1);
+        slider.mostrar(paisAtacante.cantidadFichas() - 1);
         botonSiguiente.setText("Invadir");
     }
 
     @Override
     public Fase tocoBoton(Button unBoton) {
-        paisAtacante.invadir(paisAtacado, (int) slider.getValue());
+        paisAtacante.invadir(paisAtacado, slider.getValue());
         botonSiguiente.setVisible(false);
-        slider.setVisible(false);
-        slider.setManaged(false);
+        slider.ocultar();
 
         return new AtaqueAtacante(scene, juego);
     }
