@@ -33,6 +33,8 @@ public class ObjetivoOcupacion implements Objetivo{
         return true;
     }
 
+    public void verificar(Jugador jugadorPropietario, ArrayList<Jugador> jugadores){ return; }
+
     public String descripcion(){
         String mensaje = "Ocupar: \n";
 
