@@ -98,7 +98,7 @@ public class ControladorPantallaJuego {
     }
 
     @FXML
-    public void tocoBoton(ActionEvent actionEvent) {
+    public void tocoBoton(ActionEvent actionEvent) throws IOException {
         fase = fase.tocoBoton((Button) actionEvent.getSource());
         verificarGanador();
     }
@@ -148,7 +148,7 @@ public class ControladorPantallaJuego {
         mapa.setScaleY(factor);
     }
 
-    private void verificarGanador() {
+    private void verificarGanador()  throws IOException {
 
         ArrayList<Jugador> jugadores = juego.getJugadores();
         ArrayList<Jugador> ganadores = new ArrayList<>();
@@ -159,14 +159,6 @@ public class ControladorPantallaJuego {
 
         if(ganadores.size() == 0) return;
 
-        String textoGanador = "Ganador: ";
-
-        if(ganadores.size() > 1) textoGanador = "Gandores: ";
-
-        for(Jugador jug : ganadores) {
-            textoGanador = textoGanador.concat("\n" + jug.numero());
-        }
-
-        scene.setRoot(new Label(textoGanador));
+        new ControladorPantallaFinal(scene, ganadores);
     }
 }
