@@ -99,7 +99,6 @@ public class VistaJugador implements Observer {
             HBox pais = new HBox();
 
             try {
-                imagen = new ImageView(new Image(new FileInputStream("imagenes/canon.png")));
                 imagen = new ImageView(new Image(new FileInputStream("imagenes/"+t.obtenerSimbolo().nombre()+".png")));
             } catch (FileNotFoundException e) {
                 System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");

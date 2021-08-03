@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" styleClass="fondo" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="grilla" fx:id="grilla" alignment="CENTER" styleClass="fondo" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.4000122070313" minWidth="10.0" prefWidth="92.93330078125" />
@@ -30,7 +30,7 @@
                   <Insets />
                </VBox.margin>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Times New Roman" size="24.0" />
                </font>
 
             </Label>
@@ -80,16 +80,28 @@
                   </ToggleButton>
                   <Label fx:id="JugadorAmarillo" style="-fx-font-style: italic;" textFill="#ee7733" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
-                        <Font name="System Italic" size="12.0" />
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
                      </font></Label>
                    <Label fx:id="JugadorRosa" style="-fx-font-style: italic;" textFill="#ee3377" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
-                        <Font name="System Italic" size="12.0" />
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
                      </font></Label>
-                  <Label fx:id="JugadorRojo" style="-fx-font-style: italic;" textFill="#cc3311" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorAzul" style="-fx-font-style: italic;" textFill="#0b5394" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorVerde" style="-fx-font-style: italic;" textFill="#009988" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" textFill="#d3d3d3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="JugadorRojo" style="-fx-font-style: italic;" textFill="#cc3311" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="JugadorAzul" style="-fx-font-style: italic;" textFill="#0b5394" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="JugadorVerde" style="-fx-font-style: italic;" textFill="#009988" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" textFill="#d3d3d3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="13.0" />
+                     </font></Label>
                </children>
             </GridPane>
             <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" VBox.vgrow="ALWAYS">
