@@ -150,11 +150,14 @@ public class IntegracionTests {
         p1.ocupadoPor(jugador,1);
         jugador.recibirTarjeta(t1);
         jugador.recibirTarjeta(t2);
+        jugador.activarTarjetas();
 
         jugador.actualizarFichas();
+        assertEquals(3, jugador.cantidadFichas());    // 3 minimo
+
         jugador.ponerFichas("P1", 3);
 
-        assertEquals(1+2+3,p1.cantidadFichas());// 1 original + 2 por tarjeta + 3 minimo
+        assertEquals(6, p1.cantidadFichas());   // 1 original + 2 de tarjeta + 3 que puso el jugador
         assertEquals(0,p2.cantidadFichas());
 
     }

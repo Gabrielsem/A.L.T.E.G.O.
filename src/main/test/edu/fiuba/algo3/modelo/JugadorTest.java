@@ -298,7 +298,7 @@ public class JugadorTest {
         p2.ocupadoPor(jugador,0);
         jugador.recibirTarjeta(t2);
 
-        jugador.canjearTarjetas();
+        jugador.activarTarjetas();
         assertEquals(2,p1.cantidadFichas());
         assertEquals(2,p2.cantidadFichas());
     }
