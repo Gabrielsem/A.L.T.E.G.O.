@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -44,24 +46,6 @@ public class JuegoTest {
         verify(tarjetaBrasil, times(1)).desactivar();
     }
 
-    //FIXME: hay que hacer bien estos test
-    /*
-    @Test
-    public void objetivosAsignadosCorrectamente() throws FileNotFoundException {
-
-        Juego juego = new Juego(6, "archivos/paises.json", "objetivos.json");
-        ArrayList<Jugador> jugadores;
-
-        jugadores = juego.getJugadores();
-
-        for(Jugador jug : jugadores){
-            System.out.println(String.format("Objetivos del jugador: %d\n", jug.numero()) + jug.descripcionObjetivos());
-        }
-
-        assert (true);
-    }
-    */
-
     @Test
     public void juegoDe2JugadoresDa2Turnos() throws FileNotFoundException {
         Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
@@ -96,4 +80,17 @@ public class JuegoTest {
         assertEquals(50,tarjetas.size());
     }
 
+    @Test
+    public void cantidadPaisesPorContinente() {
+        HashMap<String, Integer> cantidadPaises = new HashMap<>(Map.of(
+                "Africa", 6,
+                "Oceania", 4,
+                "Europa", 9,
+                "America del Norte", 10,
+                "Asia", 15,
+                "America del Sur", 6
+        ));
+
+        assertEquals(cantidadPaises, juego.cantidadPaisesPorContinente());
+    }
 }

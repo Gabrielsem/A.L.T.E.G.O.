@@ -148,12 +148,6 @@ public class Jugador extends Observable {
         return fichasDisponibles;
     }
 
-    public Collection<String> paisesAtacables(Collection<String> listaPaises) {
-        Set<String> listaPaisesAtacables = new HashSet<>(listaPaises);
-        listaPaisesAtacables.removeIf(nombrePais->(paisesConquistados.containsKey(nombrePais)));
-        return listaPaisesAtacables;
-    } //TODO: probar esto
-
     public HashMap<String, Integer> paisesPorContinente() {
         HashMap<String, Integer> paises = new HashMap<>();
         for (Pais pais : paisesConquistados.values()) {
@@ -167,5 +161,9 @@ public class Jugador extends Observable {
         Set<String> disponiblesParaAtacar = new HashSet<>(paisesConquistados.keySet());
         disponiblesParaAtacar.removeIf(nombrePais->(paisesConquistados.get(nombrePais).cantidadFichas() <= 1));
         return disponiblesParaAtacar;
+    }
+
+    public boolean tienePais(String nombrePais) {
+        return paisesConquistados.containsKey(nombrePais);
     }
 }

@@ -101,4 +101,9 @@ public class Pais extends Observable {
         return nombre.equals(pais.nombre) && continente.equals(pais.continente) && Objects.equals(vecinos, pais.vecinos);
     }
 
+    public Collection<String> getPaisesAtacables() {
+        Set<String> listaPaisesAtacables = new HashSet<>(vecinos);
+        listaPaisesAtacables.removeIf(nombreVecino->(propietario.tienePais(nombreVecino)));
+        return listaPaisesAtacables;
+    }
 }

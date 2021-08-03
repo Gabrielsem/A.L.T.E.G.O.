@@ -434,8 +434,41 @@ public class JugadorTest {
     }
 
     @Test
-    public void obtenerPaisesAtacables() {
+    public void tienePais() {
+        Pais p1 = new Pais("P1", "B", new ArrayList<>());
+        Pais p2 = new Pais("P2", "B", new ArrayList<>());
 
+        Jugador jug1 = new Jugador(1, null);
 
+        p1.ocupadoPor(jug1, 1);
+
+        assertTrue(jug1.tienePais(p1.nombre()));
+    }
+
+    @Test
+    public void noTienePais() {
+        Pais p1 = new Pais("P1", "B", new ArrayList<>());
+        Pais p2 = new Pais("P2", "B", new ArrayList<>());
+
+        Jugador jug1 = new Jugador(1, null);
+
+        p1.ocupadoPor(jug1, 1);
+
+        assertFalse(jug1.tienePais(p2.nombre()));
+    }
+
+    @Test
+    public void paisesDisponiblesParaAtacar() {
+        Pais p1 = new Pais("P1", "B", new ArrayList<>());
+        Pais p2 = new Pais("P2", "B", new ArrayList<>());
+        Pais p3 = new Pais("P3", "B", Arrays.asList("P1", "P2"));
+
+        Jugador jug2 = new Jugador(2, null);
+
+        p1.ocupadoPor(jug2, 1);
+        p2.ocupadoPor(jug2, 3);
+        p3.ocupadoPor(jug2, 8);
+
+        assertEquals(Arrays.asList("P2","P3"), new ArrayList<>(jug2.paisesDisponiblesParaAtacar()));
     }
 }

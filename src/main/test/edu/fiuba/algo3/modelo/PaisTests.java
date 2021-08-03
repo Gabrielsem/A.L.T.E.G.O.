@@ -212,4 +212,20 @@ public class PaisTests {
         assertNotEquals(p1,p2);
         assertNotEquals(p1, null);
     }
+
+    @Test
+    public void getPaisesAtacables() {
+        Pais p1 = new Pais("P1", "B", new ArrayList<>());
+        Pais p2 = new Pais("P2", "B", new ArrayList<>());
+        Pais p3 = new Pais("P3", "B", Arrays.asList("P1", "P2"));
+
+        Jugador jug1 = new Jugador(1, null);
+        Jugador jug2 = new Jugador(2, null);
+
+        p1.ocupadoPor(jug1, 1);
+        p2.ocupadoPor(jug2, 1);
+        p3.ocupadoPor(jug2, 8);
+
+        assertEquals(Arrays.asList("P1"),new ArrayList<>( p3.getPaisesAtacables()));
+    }
 }
