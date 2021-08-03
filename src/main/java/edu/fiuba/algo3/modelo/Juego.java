@@ -113,11 +113,7 @@ public class Juego extends Observable {
         for(Jugador jugador: jugadores){
             Objetivo objetivoSecreto = objetivosSecretos.remove(0);
 
-            if(objetivoSecreto instanceof ObjetivoDestruccion){
-                ((ObjetivoDestruccion) objetivoSecreto).verificarJugadorADerrotar(jugador, jugadores);
-            }
-            //FIXME: esta horrible, hay que verificar el jugador a derrotar una vez asignado el objetivo
-            // sin castear en lo posible
+            objetivoSecreto.verificar(jugador, jugadores);
 
             jugador.asignarObjetivos(objetivoComun, objetivoSecreto);
         }
