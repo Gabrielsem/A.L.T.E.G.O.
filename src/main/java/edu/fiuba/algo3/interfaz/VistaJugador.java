@@ -39,7 +39,7 @@ public class VistaJugador implements Observer {
 
     static public void setJuego(Juego unJuego) { juego = unJuego;}
 
-    public static void setColorJugador( HashMap<Integer,String> colores ) {
+    public static void setColoresJugadores(HashMap<Integer,String> colores ) {
         colorJugador = colores;
     }
 

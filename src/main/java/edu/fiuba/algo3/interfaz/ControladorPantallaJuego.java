@@ -39,6 +39,7 @@ public class ControladorPantallaJuego {
         this.scene = scene;
         this.juego = juego;
 
+        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());

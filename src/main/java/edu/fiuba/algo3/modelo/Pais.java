@@ -62,7 +62,7 @@ public class Pais extends Observable {
         Batalla batalla = new Batalla(defensor, this, cantidadFichas);
     }
 
-    public void perderFichas(int cantidadFichas) {//FIXME - deprecated (?)
+    public void perderFichas(int cantidadFichas) {
         agregarFichas(- cantidadFichas);
     }
 

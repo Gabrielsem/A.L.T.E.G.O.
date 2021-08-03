@@ -96,7 +96,7 @@ public class Jugador extends Observable {
         fichasDisponibles += fichasPorConquista() + canjearTarjetas();
     }
 
-    public int canjearTarjetas(){//FIXME: estos metodos no deberian ser privados?
+    public int canjearTarjetas(){
         for( Tarjeta tarjeta : tarjetas )
             if( paisesConquistados.containsKey( tarjeta.pais() ) )
                 tarjeta.activar();

@@ -51,7 +51,7 @@ public class FaseAtaque implements Fase {
 
     public Fase tocoBoton(Button unBoton) {
         gestor.tocoBoton(unBoton);
-        return this; //TODO: siguiente jugador/etapa reagrupacion
+        return this;
     }
 
     public void setGestor(Fase gestor ) {

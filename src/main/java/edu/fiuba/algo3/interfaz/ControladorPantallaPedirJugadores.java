@@ -25,6 +25,8 @@ public class ControladorPantallaPedirJugadores {
     public ControladorPantallaPedirJugadores(Scene scene) throws IOException {
         this.scene = scene;
         this.coloresJugadores = new HashMap<>();
+
+        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
@@ -91,7 +93,7 @@ public class ControladorPantallaPedirJugadores {
         actualizarJugadores();
     }
 
-    private void actualizarJugadores() { //TODO: Refactor fuerte aca (muy feo)
+    private void actualizarJugadores() {
         for( int numeroJugador: coloresJugadores.keySet()){ //Recorro para ver si hay algun "hueco" en los numeros de los jugadores o si falta el jugador 1
             if((coloresJugadores.containsKey(numeroJugador + 2) && !coloresJugadores.containsKey(numeroJugador + 1)) || !coloresJugadores.containsKey(1)){
                 if(!coloresJugadores.containsKey(1)) numeroJugador --;
@@ -124,7 +126,8 @@ public class ControladorPantallaPedirJugadores {
         }
 
         Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
-        VistaJugador.setColorJugador(coloresJugadores);//FIXME
+        VistaJugador.setColoresJugadores(coloresJugadores);
+
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
         addJugadorYTurnoObservers(juego);

@@ -48,7 +48,7 @@ public class GestorAtacante implements Fase {
         fase.setGestor( new GestorDefensor( fase, pais ) );
     }
 
-    private void agregarBotones() {
+    private void agregarBotones() {//TODO : Pasar a FaseAtaque
         HBox box = (HBox) scene.lookup("#cajaBotones");
         box.getChildren().clear();
 

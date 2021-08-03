@@ -16,7 +16,6 @@ public class FaseInicial implements Fase {
         this.scene = scene;
         this.juego = juego;
         GestorColocacion gestorSiguiente = new GestorColocacion(juego, scene, 3, new FaseAtaque(juego, scene));
-        // TODO ponerle al gestor la siguiente fase
         gestor = new GestorColocacion(juego, scene, 5, gestorSiguiente);
 
     }
