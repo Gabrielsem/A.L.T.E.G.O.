@@ -37,7 +37,7 @@ public class Juego extends Observable {
         turnos = new Turnos(jugadores);
 
         this.mapa.repartirPaises(this.jugadores);
-        crearObjetivos();
+        crearObjetivos(archivoObjetivos);
         repartirObjetivos();
     }
 
@@ -57,10 +57,10 @@ public class Juego extends Observable {
         }
     }
 
-    private void crearObjetivos() throws FileNotFoundException {
+    private void crearObjetivos(String archivoObjetivos) throws FileNotFoundException {
         this.objetivosSecretos = new ArrayList<>();
 
-        FileReader lector = new FileReader("archivos/objetivos.json");
+        FileReader lector = new FileReader(archivoObjetivos);
 
         JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
         crearObjetivoComun(objetoJson.get("objetivoComun").getAsJsonArray());

@@ -32,9 +32,10 @@ participant juego as ":Juego"
 participant mapa as ":Mapa"
 participant jug as "Jugador"
 participant pais as ":Pais"
-
+participant turnos as ":Turnos"
+participant tarjeta as ":Tarjeta"
 actor ++
-actor -> juego++: inicializar()
+actor -> juego++: inicializar(cantJugadores:int, \n archivoPaises:String,\n archivoObjetivos:String, \n archivoTarjetas:String)
 
 loop para cada jugador
     juego -> jug: <<create>>(numJugador:int)
@@ -47,6 +48,15 @@ loop para cada pais
 end loop
 mapa--
 
+juego -> juego++: crearTarjetas(archivoTarjetas:String)
+loop para cada tarjeta
+juego -> tarjeta: <<create>>(pais:Pais, simbolo:Simbolo)
+end loop
+juego--
+
+juego -> turnos: <<create>>(jugadores:ArrayList)
+
+
 juego -> mapa++: repartirPaises(jugadores:Jugador)
 juego--
 
@@ -58,24 +68,20 @@ end loop
 mapa--
 pais--
 
-actor -> juego++: colocarFichasIniciales()
-
-loop para cada jugador
-    juego -> jug++: agregarFichas(5)
-    loop hasta quedarse sin fichas
-        jug -> pais++: agregarFichas(nFichas:int)
-        pais--
-    end loop
+juego -> juego++: crearObjetivos()
+juego -> ":ObjetivoComun": <<create>>(cant:int, mapa:Mapa)
+loop por cada objetivo ocupacion
+juego -> ":ObjetivoOcupacion": <<create>>(cantidadesPorContinente:HashMap, mapa:Mapa)
 end loop
-jug--
-
-loop para cada jugador
-    juego -> jug++: agregarFichas(3)
-    loop hasta quedarse sin fichas
-        jug -> pais++: agregarFichas(nFichas:int)
-        pais--
-    end loop
+loop por cada objetivo destruccion
+juego -> ":ObjetivoDestruccion": <<create>>(numJugador:int, mapa:Mapa)
 end loop
+juego--
 
+juego -> juego++: repartirObjetivos()
+loop por cada jugador
+juego -> jug: asignarObjetivos(objetivoComun:ObjetivoComun, objetivoSecreto:Objetivo)
+end loop
+juego--
 
 @enduml
