@@ -5,6 +5,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -98,6 +99,7 @@ public class ControladorPantallaJuego {
     @FXML
     public void tocoBoton(ActionEvent actionEvent) {
         fase = fase.tocoBoton((Button) actionEvent.getSource());
+        verificarGanador();
     }
 
     @FXML
@@ -143,5 +145,27 @@ public class ControladorPantallaJuego {
 
         mapa.setScaleX(factor);
         mapa.setScaleY(factor);
+    }
+
+    private void verificarGanador() {
+
+        ArrayList<Jugador> jugadores = juego.getJugadores();
+        ArrayList<Jugador> ganadores = new ArrayList<>();
+
+        for (Jugador jug: jugadores) {
+            if(jug.gane()) ganadores.add(jug);
+        }
+
+        if(ganadores.size() == 0) return;
+
+        String textoGanador = "Ganador: ";
+
+        if(ganadores.size() > 1) textoGanador = "Gandores: ";
+
+        for(Jugador jug : ganadores) {
+            textoGanador = textoGanador.concat("\n" + jug.numero());
+        }
+
+        scene.setRoot(new Label(textoGanador));
     }
 }
