@@ -110,9 +110,9 @@ public class TarjetaTest {
 
     @Test
     public void pedirPaisTarjeta() {
-        assertEquals("Argentina",tarjetaArgentina.pais());
-        assertEquals("Brasil",tarjetaBrasil.pais());
-        assertEquals("Colombia",tarjetaColombia.pais());
+        assertEquals("Argentina",tarjetaArgentina.displayPais());
+        assertEquals("Brasil",tarjetaBrasil.displayPais());
+        assertEquals("Colombia",tarjetaColombia.displayPais());
     }
 
     @Test

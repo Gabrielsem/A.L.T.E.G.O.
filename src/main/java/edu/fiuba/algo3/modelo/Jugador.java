@@ -100,8 +100,12 @@ public class Jugador extends Observable {
 
     public void activarTarjetas() {
         for( Tarjeta tarjeta : tarjetas )
-            if( paisesConquistados.containsKey( tarjeta.pais() ) )
+            if( paisesConquistados.containsKey( tarjeta.displayPais() ) ){
                 tarjeta.activar();
+                setChanged();
+            }
+        notifyObservers();
+
     }
 
     public int canjearTarjetas(){
