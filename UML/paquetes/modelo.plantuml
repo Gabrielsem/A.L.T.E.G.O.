@@ -1,5 +1,5 @@
 @startuml
-title Paquetes
+title Cortar Modelo
 skinparam monochrome true
 skinparam componentStyle rectangle
 /'skinparam style strictuml'/
@@ -8,6 +8,7 @@ skinparam componentStyle rectangle
 package main as "edu.fiuba.algo3" {
 
   package errores {
+
    }
   package modelo {
     [Juego]<..>[Objetivo]
@@ -32,13 +33,10 @@ package main as "edu.fiuba.algo3" {
 
     [Batalla]<.>[Pais]
   }
-  package interfaz {
-    [Fase]
-  }
 
-  interfaz ..> modelo
 
-  modelo ..> errores
+
+  modelo .[hidden].> errores
 
 
 }
