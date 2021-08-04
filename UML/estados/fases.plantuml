@@ -8,7 +8,7 @@ title
 end title
 
 
-[*] -up-> Inicial: Comienzo del juego
+[*] --> Inicial: Comienzo del juego
 
 state Inicial {
     [*] --> AgregadorEjercitos
@@ -16,7 +16,7 @@ state Inicial {
     AgregadorEjercitos --> [*]: Luego de colocar\nlas segundas fichas
 }
 
-Inicial -> Ataque
+Inicial --> Ataque
 
 state Ataque {
     
@@ -70,8 +70,9 @@ Las clases Inicial, Ataque y Colocacion solo viven al principio de cada\n\
 una de las fases, donde hacen las preparaciones pertinentes.\n\
 Luego solo quedan las clases de cada subfase." as N
 
-Colocacion -[hidden]left> N
+Colocacion -[hidden]right> N
+Colocacion -[hidden]left> Inicial
 
-Ataque --> [*]: Fin del juego si se detecta ganador
+Ataque -> [*]: Fin del juego\nsi se detecta ganador
 
 @enduml
