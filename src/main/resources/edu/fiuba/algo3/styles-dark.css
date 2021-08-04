@@ -106,6 +106,19 @@ Button {
     -fx-effect: dropshadow(gaussian, #888888, 10, 0.5, 0, 0);
 }
 
+.button:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.toggle-button:hover {
+    -fx-effect: dropshadow(gaussian, #888888, 5, 0.5, 0, 0);
+}
+
+Slider {
+    -fx-text-fill: black;
+}
+
 .texto {
     -fx-text-fill: white;
 }
