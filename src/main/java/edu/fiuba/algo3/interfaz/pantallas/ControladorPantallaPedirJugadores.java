@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaPais;
 import edu.fiuba.algo3.interfaz.vistas.VistaTurno;
@@ -135,6 +136,7 @@ public class ControladorPantallaPedirJugadores {
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
         addJugadorYTurnoObservers(juego);
+        VistaBatalla.habilitar();
     }
 
     private void addPaisObservers(Juego juego) {

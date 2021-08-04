@@ -49,6 +49,9 @@ public class App extends Application {
     }
 
     public static void notificacion(String mensaje){
+
+        if( Objects.isNull(appStage) ) return;
+
         HBox msjBox = new HBox( new Label(mensaje) );
         msjBox.getStyleClass().add("popupMessage");
         msjBox.setPadding( new Insets(10) );
@@ -59,10 +62,14 @@ public class App extends Application {
     }
 
     public static void popUpWindow( VBox window ) {
+
+        if( Objects.isNull(appStage) ) return;
+
         Popup popupWindow = new Popup();
         popupWindow.setAutoHide(true);
         popupWindow.getContent().add(window);
 
+        // TODO - Centrar en _root
         double offsetX = appStage.getX() + (appStage.getWidth()-popupWindow.getWidth())/2 ;
         double offsetY = appStage.getY() + (appStage.getHeight()-popupWindow.getHeight())/2 ;
 

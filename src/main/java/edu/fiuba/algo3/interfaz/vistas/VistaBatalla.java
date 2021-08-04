@@ -7,7 +7,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class VistaBatalla {
+
+    private static boolean habilitado = false;
+    public static void habilitar(){ habilitado=true; }
+
     public VistaBatalla(int[] dadosAtacante, int[] dadosDefensor) {
+
+        if( !habilitado ) return;
 
         VBox caja = new VBox();
         caja.getStyleClass().add("Batalla");
