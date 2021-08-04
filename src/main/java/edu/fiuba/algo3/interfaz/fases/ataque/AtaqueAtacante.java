@@ -32,6 +32,9 @@ public class AtaqueAtacante extends FaseConSeleccionables {
         super.setSeleccionables( juego.turnoActual().paisesDisponiblesParaAtacar() );
         botonSiguiente.setText("Pasar a reagrupación");
         botonSiguiente.setVisible(true);
+
+        Label faseActual = (Label) scene.lookup("#faseActual");
+        faseActual.setText("Fase Ataque");
     }
 
     @Override

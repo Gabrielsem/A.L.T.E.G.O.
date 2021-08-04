@@ -1,0 +1,46 @@
+@startuml
+/'title Paquetes'/
+skinparam monochrome true
+skinparam componentStyle rectangle
+skinparam ranksep 10
+/'skinparam style strictuml'/
+
+
+package main as "edu.fiuba.algo3" {
+
+  package errores {
+    node err as " errores   "
+   }
+  package modelo {
+    node mod as "  modelo  "
+  }
+  package interfaz {
+    package pantallas
+    package fases
+    package vistas
+
+    pantallas ..> fases
+    fases ..> vistas
+  }
+
+  interfaz ..> modelo
+
+  modelo ..> errores
+
+
+}
+
+node Resources
+
+cloud e as "Dependencias Externas"
+
+
+
+Resources <. pantallas
+main ..> e
+
+vistas <..> mod
+
+
+
+@enduml

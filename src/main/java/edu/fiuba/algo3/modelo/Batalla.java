@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
+
 import java.util.Arrays;
-import java.util.HashSet;
 
 import static java.lang.Math.min;
 
@@ -38,7 +39,6 @@ public class Batalla {
 
     private void efectuarBatalla() {
 
-
         int[] dadosAtacante = lanzarDados(cantFichasAtaque);
         int[] dadosDefensor = lanzarDados(defensor.cantidadFichas());
         int cantidad = min(3,min(cantFichasAtaque,defensor.cantidadFichas()) );
@@ -53,5 +53,7 @@ public class Batalla {
 
         atacante.perderFichas(perdidaAtacante);
         defensor.perderFichas(perdidaDefensor);
+
+        new VistaBatalla( dadosAtacante, dadosDefensor );
     }
 }

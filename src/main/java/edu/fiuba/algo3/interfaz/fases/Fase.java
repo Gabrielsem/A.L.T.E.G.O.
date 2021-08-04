@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 
 public interface Fase {
 
-    public Fase tocoPais(Node nodoPais);
+    Fase tocoPais(Node nodoPais);
 
-    public Fase tocoBoton(Button unBoton);
+    Fase tocoBoton(Button unBoton);
 }

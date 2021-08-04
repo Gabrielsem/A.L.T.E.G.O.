@@ -1,0 +1,77 @@
+@startuml
+skinparam monochrome true
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+title 
+    Diagrama de estados
+    <b>Fases del juego</b>
+end title
+
+
+[*] -up-> Inicial: Comienzo del juego
+
+state Inicial {
+    [*] --> AgregadorEjercitos
+    AgregadorEjercitos --> AgregadorEjercitos: Luego de colocar\nlas primeras fichas
+    AgregadorEjercitos --> [*]: Luego de colocar\nlas segundas fichas
+}
+
+Inicial -> Ataque
+
+state Ataque {
+    
+    [*] -> AtaqueAtacante: Primer turno
+    AtaqueAtacante: Se elige país atacante\no pasar a reagrupacion 
+
+    AtaqueAtacante -up--> AtaqueDefensor: Elige país atacante
+    AtaqueDefensor: Se elige país defensor
+
+    AtaqueDefensor -> AtaqueFichas: \t\t\t\t\t\t\t\t
+    AtaqueFichas: Se elige la cantidad de fichas\ny se efectúa la batalla
+
+    AtaqueFichas --> AtaqueAtacante: Pierde batalla
+    AtaqueFichas ---> AtaqueInvasion: Gana batalla
+    AtaqueInvasion: Se elige la cantidad de fichas\na poner en país invadido
+
+    AtaqueInvasion -left> AtaqueAtacante: \t\t\t\t\t\t\t\t
+
+    AtaqueAtacante --> Reagrupacion: Pasa a reagrupacion
+    
+    state Reagrupacion {
+        [*] -> ReagrupacionOrigen
+        ReagrupacionOrigen: Se elige país origen para reagrupar\no pasar a siguiente turno
+        
+        ReagrupacionOrigen --up> ReagrupacionDestino: Elige origen reagrupacion
+        ReagrupacionDestino: Se elige país destino para reagrupar
+        
+        ReagrupacionDestino --> ReagrupacionFichas
+        ReagrupacionFichas: Se elige cantidad de fichas\na mover
+
+        ReagrupacionFichas -left> ReagrupacionOrigen
+        ReagrupacionOrigen --> [*]: Elige siguiente turno
+    }
+    Reagrupacion -up-> AtaqueAtacante: Si hay jugadores por atacar
+    Reagrupacion -> [*]: Si era ultimo turno
+}
+
+Ataque --> Colocacion
+
+state Colocacion {
+    state "AgregadorEjercitos" as AgregadorEjercitos2
+    [*] -> AgregadorEjercitos2
+    AgregadorEjercitos2 -> [*]
+}
+
+Colocacion --> Ataque
+
+note \
+"Cada estado en este diagrama es una clase, exceptuando Reagrupacion.\n\
+Las clases Inicial, Ataque y Colocacion solo viven al principio de cada\n\
+una de las fases, donde hacen las preparaciones pertinentes.\n\
+Luego solo quedan las clases de cada subfase." as N
+
+Colocacion -[hidden]left> N
+
+Ataque --> [*]: Fin del juego si se detecta ganador
+
+@enduml

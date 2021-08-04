@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vistas;
 
 
 import edu.fiuba.algo3.modelo.Pais;
@@ -13,15 +13,13 @@ import java.util.*;
 
 public class VistaPais implements Observer {
 
-    private String nombre;
-    private Group vista;
+    private final Group vista;
     private Circle ficha;
     private Label texto;
-    private Shape pais;
-    static HashMap<Integer, String>colorJugador;
+    private final Shape pais;
 
     public VistaPais(Node unaVista){
-        vista =  (Group) unaVista;
+        vista = (Group) unaVista;
         pais = (Shape) vista.getChildren().get(0);
 
         for( Node child : vista.getChildren() )
@@ -43,9 +41,6 @@ public class VistaPais implements Observer {
     public void update(Observable o, Object arg) {
         Pais pais = (Pais) o;
 
-        Shape img = (Shape)vista.getChildren().get(0);
-
-        //this.pais.setFill( Color.web( this.colores.get(pais.getNumeroPropietario()) ) );//Si ponemos color x continente esto no va
         if( Objects.nonNull(ficha) )
             ficha.setFill( Color.web( VistaJugador.getColorJugador(pais.getNumeroPropietario()) ) );
 

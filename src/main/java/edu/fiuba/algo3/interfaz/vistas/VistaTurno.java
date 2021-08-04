@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.modelo.Turnos;
 import javafx.scene.Node;
@@ -14,6 +14,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VistaTurno implements Observer {
+
+    //FIXME ? - no deberia ser privado?
     VBox cajaTurno;
     Label labelTurno;
     TitledPane panelConquistados;
@@ -30,7 +32,6 @@ public class VistaTurno implements Observer {
         panelTarjetas = acc.getPanes().get(2);
         this.vistasJugadores = vistasJugadores;
     }
-
 
     public void update(Observable observable, Object arg) {
         Turnos turnos = (Turnos) observable;

@@ -1,6 +1,10 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
+import edu.fiuba.algo3.interfaz.vistas.VistaPais;
+import edu.fiuba.algo3.interfaz.vistas.VistaTurno;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +22,7 @@ import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
 
+    //FIXME ?- no deberia ser privado?
     Scene scene;
     HashMap<Integer, String> coloresJugadores;
     HashSet<String> idLabelsActivas = new HashSet<>();
@@ -131,6 +136,7 @@ public class ControladorPantallaPedirJugadores {
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
         addJugadorYTurnoObservers(juego);
+        VistaBatalla.habilitar();
     }
 
     private void addPaisObservers(Juego juego) {

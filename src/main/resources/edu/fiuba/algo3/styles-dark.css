@@ -36,7 +36,7 @@
 
 .pais > Label {
     -fx-text-fill: white;
-    -fx-font-size: 20;
+    -fx-font-size: 12pt;
     -fx-stroke: #000 ;
     -fx-strokeWidth: 3;
 }
@@ -62,11 +62,11 @@
 .Options {
     -fx-spacing: 10;
     -fx-padding: 5;
-    -fx-font-size: 12 pt;
+    -fx-font-size: 13 pt;
 }
 #playerBox Label {
     -fx-text-fill: white;
-    -fx-font-size: 1.3em;
+    -fx-font-size: 15pt;
     -fx-stroke: #FFF ;
     -fx-strokeWidth: 3;
 }
@@ -106,6 +106,19 @@ Button {
     -fx-effect: dropshadow(gaussian, #888888, 10, 0.5, 0, 0);
 }
 
+.button:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.toggle-button:hover {
+    -fx-effect: dropshadow(gaussian, #888888, 5, 0.5, 0, 0);
+}
+
+Slider {
+    -fx-text-fill: black;
+}
+
 .texto {
     -fx-text-fill: white;
 }
@@ -119,4 +132,21 @@ Button {
 
 .tarjeta > ImageView {
     -fx-effect: innershadow(gaussian, #FFF, 10, 1,0,0)
+}
+
+#slider *{
+    -fx-tick-label-fill: white;
+    -fx-font-size: 11pt;
+}
+
+.popupMessage , .Batalla{
+    -fx-background-color: #313335;
+    -fx-background-radius: 10;
+}
+.popupMessage *, .Batalla *{
+    -fx-text-fill: white;
+}
+.dataBoxSection > Label{
+    -fx-text-fill: white;
+    -fx-font-size: 11pt;
 }

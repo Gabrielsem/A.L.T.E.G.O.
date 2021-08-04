@@ -30,6 +30,9 @@ public class ReagrupacionOrigen extends FaseConSeleccionables {
         botonSiguiente.setText("Pasar turno");
         super.setSeleccionables(juego.turnoActual().paisesParaReagrupar());
         juego.turnoActual().activarTarjetas();
+
+        Label faseActual = (Label) scene.lookup("#faseActual");
+        faseActual.setText("Fase Ataque");
     }
 
     @Override
@@ -38,7 +41,7 @@ public class ReagrupacionOrigen extends FaseConSeleccionables {
             return new Colocacion(scene, juego);
         }
 
-        juego.siguienteTurno();
+        juego.siguienteTurno().prepararAtaques();
         return new AtaqueAtacante(scene, juego);
     }
 

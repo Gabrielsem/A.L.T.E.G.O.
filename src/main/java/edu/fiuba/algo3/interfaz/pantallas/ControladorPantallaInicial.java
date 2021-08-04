@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
 import javafx.event.ActionEvent;

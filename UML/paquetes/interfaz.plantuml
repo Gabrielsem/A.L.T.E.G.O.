@@ -1,0 +1,40 @@
+@startuml
+title Cortar Interfaz
+skinparam monochrome true
+skinparam componentStyle rectangle
+skinparam nodesep 10
+skinparam ranksep 10
+/'skinparam style strictuml'/
+
+
+package interfaz {
+
+    package pantallas {
+        [ControladorPantallaInicial] ..> [ControladorPantallaPedirJugadores]
+        [ControladorPantallaPedirJugadores] ..> [ControladorPantallaJuego]
+        [ControladorPantallaJuego] ..> [ControladorPantallaFinal]
+    }
+    package fases {
+        package ataque
+        package colocacion
+        package reagrupacion
+        [Fase] ..> ataque
+        [Fase] ..> colocacion
+        [Fase] ..> reagrupacion
+
+    }
+    package vistas {
+        [VistaJugador] -[hidden]- [VistaPais]
+        [VistaPais] -[hidden]- [VistaTurno]
+        [VistaTurno] -[hidden]- [VistaSlider]
+    }
+
+
+}
+
+
+node Resources
+package modelo
+
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+title Cortar Modelo
+skinparam monochrome true
+skinparam componentStyle rectangle
+/'skinparam style strictuml'/
+
+
+package main as "edu.fiuba.algo3" {
+
+  package errores {
+
+   }
+  package modelo {
+    [Juego]<..>[Objetivo]
+    [Juego]<..>[Jugador]
+    [Juego]..>[Mapa]
+    [Juego]..>[Tarjeta]
+    [Turno]<.[Juego]
+
+    [Turno]..>[Jugador]
+    [Turno]~[hidden]~[Tarjeta]
+
+
+    [Objetivo]<.>[Jugador]
+    [Mapa]<.>[Objetivo]
+    [Jugador].right.>[Tarjeta]
+
+    [Mapa]..>[Pais]
+    [Objetivo]..>[Pais]
+    [Jugador]<..>[Pais]
+    [Tarjeta]..>[Pais]
+    [Tarjeta]..>[Simbolo]
+
+    [Batalla]<.>[Pais]
+  }
+
+
+
+  modelo .[hidden].> errores
+
+
+}
+
+
+@enduml

@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tarjeta;
@@ -14,21 +15,50 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class VistaJugador implements Observer {
     private Scene scene;
-    private VBox cajaObjetivos;
-    private VBox cajaConquistados;
-    private VBox cajaTarjetas;
+    private final VBox cajaObjetivos;
+    private final VBox cajaConquistados;
+    private final VBox cajaTarjetas;
+
     static private Juego juego;
-    static HashMap<Integer, String>colorJugador;
+    static HashMap<Integer, String>colorJugadores;
+
+    public enum Aviso {
+        nuevaTarjeta{
+            @Override
+            public void avisar(VistaJugador vista) {
+                Tarjeta tarjeta = (Tarjeta) args;
+                App.notificacion( "Nueva Tarjeta: "+ tarjeta.pais() );
+            }
+        },
+        canjeTarjetas{
+            @Override
+            public void avisar(VistaJugador vista) {
+                Collection<Tarjeta> tarjetas = (Collection<Tarjeta>) args;
+                String mensaje = "Canje Tarjetas:";
+                for (Tarjeta t : tarjetas)
+                    mensaje += " "+t.pais();
+
+                App.notificacion( mensaje );
+            }
+        };
+        Object args;
+
+        public Aviso nuevo(Object args){
+            this.args = args;
+            return this;
+        }
+
+        public abstract void avisar(VistaJugador vista);
+    }
 
     public VistaJugador(Scene scene) {
         this.scene = scene;
@@ -40,16 +70,18 @@ public class VistaJugador implements Observer {
     static public void setJuego(Juego unJuego) { juego = unJuego;}
 
     public static void setColoresJugadores(HashMap<Integer,String> colores ) {
-        colorJugador = colores;
+        colorJugadores = colores;
     }
 
     public static String getColorJugador(int nJug){
-        return colorJugador.getOrDefault(nJug,"");
+        return colorJugadores.getOrDefault(nJug,"");
     };
 
     private VBox nuevaCaja() {
         VBox caja = new VBox();
         caja.setAlignment(Pos.TOP_CENTER);
+        caja.setPadding(new Insets(10));
+        caja.getStyleClass().add("dataBoxSection");
         return caja;
     }
 
@@ -59,6 +91,8 @@ public class VistaJugador implements Observer {
         actualizarObjetivos(jug);
         actualizarTarjetas(jug);
         actualizarConquistados(jug);
+
+        if( Objects.nonNull(arg) ) ((Aviso)arg).avisar(this);// FIXME - Habria que checkear que es parte del enum
     }
 
     private void actualizarConquistados(Jugador jugador) {
@@ -139,4 +173,5 @@ public class VistaJugador implements Observer {
     public Node getVistaConquistados() {
         return cajaConquistados;
     }
+
 }

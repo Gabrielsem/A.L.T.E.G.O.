@@ -1,7 +1,9 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.pantallas;
 
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
+import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
 import edu.fiuba.algo3.modelo.Juego;
@@ -18,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -43,10 +46,10 @@ public class ControladorPantallaJuego {
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
         this.fase = new Inicial(juego, scene);
-        scene.lookup("#slider").setManaged(false);
 
+        Slider nodoSlider = (Slider) scene.lookup("#slider");
+        nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));
         mostrarTabJugadores();
-
         inicializarAjusteEscala();
     }
 
@@ -97,7 +100,7 @@ public class ControladorPantallaJuego {
     }
 
     @FXML
-    public void tocoBoton(ActionEvent actionEvent) {
+    public void tocoBoton(ActionEvent actionEvent) throws IOException {
         fase = fase.tocoBoton((Button) actionEvent.getSource());
         verificarGanador();
     }
@@ -147,7 +150,7 @@ public class ControladorPantallaJuego {
         mapa.setScaleY(factor);
     }
 
-    private void verificarGanador() {
+    private void verificarGanador()  throws IOException {
 
         ArrayList<Jugador> jugadores = juego.getJugadores();
         ArrayList<Jugador> ganadores = new ArrayList<>();
@@ -158,14 +161,6 @@ public class ControladorPantallaJuego {
 
         if(ganadores.size() == 0) return;
 
-        String textoGanador = "Ganador: ";
-
-        if(ganadores.size() > 1) textoGanador = "Gandores: ";
-
-        for(Jugador jug : ganadores) {
-            textoGanador = textoGanador.concat("\n" + jug.numero());
-        }
-
-        scene.setRoot(new Label(textoGanador));
+        new ControladorPantallaFinal(scene, ganadores);
     }
 }
