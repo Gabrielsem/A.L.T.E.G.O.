@@ -15,8 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +34,7 @@ public class VistaJugador implements Observer {
             @Override
             public void avisar(VistaJugador vista) {
                 Tarjeta tarjeta = (Tarjeta) args;
-                App.notificacion( "Nueva Tarjeta: "+ tarjeta.pais() );
+                App.notificacion( "Nueva Tarjeta: "+ tarjeta.displayPais() );
             }
         },
         canjeTarjetas{
@@ -45,7 +43,7 @@ public class VistaJugador implements Observer {
                 Collection<Tarjeta> tarjetas = (Collection<Tarjeta>) args;
                 String mensaje = "Canje Tarjetas:";
                 for (Tarjeta t : tarjetas)
-                    mensaje += " "+t.pais();
+                    mensaje += " "+t.displayPais();
 
                 App.notificacion( mensaje );
             }
@@ -143,7 +141,7 @@ public class VistaJugador implements Observer {
             StackPane.setMargin(imagen,new Insets(0,0,0,10));
 
 
-            pais.getChildren().add( new Label( t.pais() ) );
+            pais.getChildren().add( new Label( t.displayPais() ) );
             pais.setAlignment(Pos.CENTER);
             StackPane.setMargin(pais, new Insets(3,0,3,0));
 

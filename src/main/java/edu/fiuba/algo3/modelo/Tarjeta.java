@@ -74,8 +74,8 @@ public class Tarjeta {
         return Tarjeta.obtenerTresTarjetasDistintas(tarjetasPorSimbolo);
     }
 
-    public String pais(){
-        return pais.nombre();
+    public String displayPais(){
+        return pais.nombre()+((activable)?"":" ✓");
     };
 
     @Override
