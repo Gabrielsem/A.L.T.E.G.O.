@@ -2,9 +2,16 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.App;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class VistaBatalla {
 
@@ -23,11 +30,31 @@ public class VistaBatalla {
         caja.getChildren().addAll(cajaTitulo,cajaAtacante,cajaDefensor);
 
         for (int j : dadosAtacante) {
-            cajaAtacante.getChildren().add(new Label(String.valueOf(j)));// TODO - Imagenes
+            ImageView imagen = new ImageView();
+            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
+            try {
+                imagen = new ImageView(new Image(new FileInputStream(url)));
+            } catch (FileNotFoundException e) {
+                System.out.println(url);
+            }
+            cajaAtacante.getChildren().add( imagen );
+            imagen.setPreserveRatio(true);
+            imagen.setFitHeight(60);
+            HBox.setMargin(imagen,new Insets(3) );
         }
 
         for( int j : dadosDefensor ){
-            cajaDefensor.getChildren().add( new Label( String.valueOf( j ) ) );// TODO - Imagenes
+            ImageView imagen = new ImageView();
+            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
+            try {
+                imagen = new ImageView(new Image(new FileInputStream(url)));
+            } catch (FileNotFoundException e) {
+                System.out.println(url);
+            }
+            cajaDefensor.getChildren().add( imagen );
+            imagen.setPreserveRatio(true);
+            imagen.setFitHeight(60);
+            HBox.setMargin(imagen,new Insets(3) );
         }
 
         caja.setPadding( new Insets(10) );
