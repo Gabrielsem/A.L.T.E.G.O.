@@ -138,7 +138,7 @@ public class IntegracionTests {
     @Test
     public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
 
-        Juego juego = new Juego(1, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
+        Juego juego = new Juego(1, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         Jugador jugador = new Jugador(1,juego);
 
         Pais p1 = new Pais("P1","C",new ArrayList<>());

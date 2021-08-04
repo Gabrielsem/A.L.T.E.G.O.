@@ -19,7 +19,7 @@ public class JuegoTest {
     @BeforeEach
     public void setUp() throws FileNotFoundException {
 
-        juego = new Juego(2, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
+        juego = new Juego(2, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class JuegoTest {
 
     @Test
     public void juegoDe2JugadoresDa2Turnos() throws FileNotFoundException {
-        Juego juego2jug = new Juego(2, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego2jug.turnosCompletados()) {
             juego2jug.siguienteTurno();
@@ -59,7 +59,7 @@ public class JuegoTest {
 
     @Test
     public void juegoDe6JugadoresDa6Turnos() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "archivos/paises.json", "objetivos.json","archivos/tarjetas.json");
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego6jug.turnosCompletados()) {
             juego6jug.siguienteTurno();
