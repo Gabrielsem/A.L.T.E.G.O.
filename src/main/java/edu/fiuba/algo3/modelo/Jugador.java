@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
+import edu.fiuba.algo3.interfaz.VistaJugador;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.*;
@@ -78,7 +79,7 @@ public class Jugador extends Observable {
 
     public void recibirTarjeta( Tarjeta unaTarjeta ) {
         tarjetas.add( unaTarjeta );
-        setChanged();notifyObservers();
+        setChanged();notifyObservers( VistaJugador.Aviso.nuevaTarjeta.nuevo(unaTarjeta) );
     }
 
     public void notificarObservadores() { setChanged();notifyObservers(); }
@@ -110,6 +111,7 @@ public class Jugador extends Observable {
             tarjetas.removeAll( grupoCanjeable );
             juego.devolverTarjetas( grupoCanjeable );
             canjesRealizados++;
+            setChanged();notifyObservers( VistaJugador.Aviso.canjeTarjetas.nuevo( grupoCanjeable ) );
             return Tarjeta.cantidadFichasCanje(canjesRealizados - 1);
         }
 

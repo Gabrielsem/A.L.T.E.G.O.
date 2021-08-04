@@ -17,10 +17,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class VistaJugador implements Observer {
     private Scene scene;
@@ -29,6 +26,34 @@ public class VistaJugador implements Observer {
     private VBox cajaTarjetas;
     static private Juego juego;
     static HashMap<Integer, String>colorJugador;
+
+    public enum Aviso {
+        nuevaTarjeta{
+            @Override
+            public void avisar() {
+                Tarjeta tarjeta = (Tarjeta) args;
+                System.out.println("Nueva Tarjeta: "+ tarjeta.pais() );
+            }
+        },
+        canjeTarjetas{
+            @Override
+            public void avisar() {
+                Collection<Tarjeta> tarjetas = (Collection<Tarjeta>) args;
+                String mensaje = "Canje Tarjetas:";
+                for (Tarjeta t : tarjetas)
+                    mensaje += " "+t.pais();
+                System.out.println(mensaje);
+            }
+        };
+        Object args;
+
+        public Aviso nuevo(Object args){
+            this.args = args;
+            return this;
+        }
+
+        public abstract void avisar();
+    }
 
     public VistaJugador(Scene scene) {
         this.scene = scene;
@@ -59,6 +84,8 @@ public class VistaJugador implements Observer {
         actualizarObjetivos(jug);
         actualizarTarjetas(jug);
         actualizarConquistados(jug);
+
+        if( Objects.nonNull(arg) ) ((Aviso)arg).avisar();// FIXME - Habria que checkear que es parte del enum
     }
 
     private void actualizarConquistados(Jugador jugador) {
