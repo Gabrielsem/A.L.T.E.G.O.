@@ -163,6 +163,7 @@ public class Jugador extends Observable {
     public Collection<String> paisesDisponiblesParaAtacar() {
         Set<String> disponiblesParaAtacar = new HashSet<>(paisesConquistados.keySet());
         disponiblesParaAtacar.removeIf(nombrePais->(paisesConquistados.get(nombrePais).cantidadFichas() <= 1));
+        disponiblesParaAtacar.removeIf(nombrePais->(paisesConquistados.get(nombrePais).getPaisesAtacables().size() == 0));
         return disponiblesParaAtacar;
     }
 
