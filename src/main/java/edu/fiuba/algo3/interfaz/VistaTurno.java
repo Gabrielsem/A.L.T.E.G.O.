@@ -14,6 +14,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VistaTurno implements Observer {
+
+    //FIXME ? - no deberia ser privado?
     VBox cajaTurno;
     Label labelTurno;
     TitledPane panelConquistados;
@@ -30,7 +32,6 @@ public class VistaTurno implements Observer {
         panelTarjetas = acc.getPanes().get(2);
         this.vistasJugadores = vistasJugadores;
     }
-
 
     public void update(Observable observable, Object arg) {
         Turnos turnos = (Turnos) observable;

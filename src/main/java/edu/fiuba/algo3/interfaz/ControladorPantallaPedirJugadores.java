@@ -18,6 +18,7 @@ import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
 
+    //FIXME ?- no deberia ser privado?
     Scene scene;
     HashMap<Integer, String> coloresJugadores;
     HashSet<String> idLabelsActivas = new HashSet<>();

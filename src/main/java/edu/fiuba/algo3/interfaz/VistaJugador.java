@@ -24,11 +24,11 @@ import java.util.Observer;
 
 public class VistaJugador implements Observer {
     private Scene scene;
-    private VBox cajaObjetivos;
-    private VBox cajaConquistados;
-    private VBox cajaTarjetas;
+    private final VBox cajaObjetivos;
+    private final VBox cajaConquistados;
+    private final VBox cajaTarjetas;
     static private Juego juego;
-    static HashMap<Integer, String>colorJugador;
+    static HashMap<Integer, String>colorJugadores;
 
     public VistaJugador(Scene scene) {
         this.scene = scene;
@@ -40,11 +40,11 @@ public class VistaJugador implements Observer {
     static public void setJuego(Juego unJuego) { juego = unJuego;}
 
     public static void setColoresJugadores(HashMap<Integer,String> colores ) {
-        colorJugador = colores;
+        colorJugadores = colores;
     }
 
     public static String getColorJugador(int nJug){
-        return colorJugador.getOrDefault(nJug,"");
+        return colorJugadores.getOrDefault(nJug,"");
     };
 
     private VBox nuevaCaja() {
