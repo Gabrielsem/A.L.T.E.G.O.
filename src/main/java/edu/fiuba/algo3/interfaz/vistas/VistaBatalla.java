@@ -61,6 +61,7 @@ public class VistaBatalla {
         cajaAtacante.setPadding( new Insets(10) );
         cajaDefensor.setPadding( new Insets(10) );
 
+        App.sonido("batalla");
         App.popUpWindow( caja );
     }
 }

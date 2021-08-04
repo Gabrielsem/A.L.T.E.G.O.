@@ -9,7 +9,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -76,5 +79,16 @@ public class App extends Application {
         popupWindow.show(appStage,offsetX,offsetY);
     }
 
+    public static void sonido( String sonido ) {
+
+        String url = "sonidos/"+sonido+".mp3";
+        try {
+            Media sound = new Media(new File(url).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } catch (Exception e ) {
+            System.out.println("Cannot play: "+url);
+        }
+    }
 
 }
