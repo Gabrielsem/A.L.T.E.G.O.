@@ -1,10 +1,9 @@
 @startuml
 skinparam monochrome true
 skinparam style strictuml
-skinparam classAttributeIconSize 0
 
-actor api
-
-
+' diagrama realizado en StarUml porque no logre organizar bien tantas flechas y cosas aca y que puedan entrar bien en el informe.
+' !!! Sugerencias al docs del informe.
+' Dejo el archivo de staruml igualemente.
 
 @enduml

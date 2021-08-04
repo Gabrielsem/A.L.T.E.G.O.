@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 import java.util.Arrays;
-import java.util.HashSet;
 
 import static java.lang.Math.min;
 
@@ -37,7 +36,6 @@ public class Batalla {
     }
 
     private void efectuarBatalla() {
-
 
         int[] dadosAtacante = lanzarDados(cantFichasAtaque);
         int[] dadosDefensor = lanzarDados(defensor.cantidadFichas());

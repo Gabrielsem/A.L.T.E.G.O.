@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class Tarjeta {
 
@@ -23,12 +22,6 @@ public class Tarjeta {
         }
     }
 
-    static public int cantidadFichasCanje(int cantidadCanjes){
-        if( cantidadCanjes == 0 ) return 4;
-        if( cantidadCanjes == 1 ) return 7;
-        return cantidadCanjes * 5;
-    }
-
     public Simbolo obtenerSimbolo() { return this.simbolo; }
 
     public void desactivar() { this.activable = true; }
@@ -41,6 +34,12 @@ public class Tarjeta {
         }
 
         return null;
+    }
+
+    static public int cantidadFichasCanje(int cantidadCanjes){
+        if( cantidadCanjes == 0 ) return 4;
+        if( cantidadCanjes == 1 ) return 7;
+        return cantidadCanjes * 5;
     }
 
     static private ArrayList<Tarjeta> obtenerTresTarjetasDistintas(HashMap<String, ArrayList<Tarjeta>> tarjetasPorSimbolo) {

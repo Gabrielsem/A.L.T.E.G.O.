@@ -59,7 +59,7 @@ public class Pais extends Observable {
         }
         this.verificarAlcanzanFichas(cantidadFichas);
 
-        Batalla batalla = new Batalla(defensor, this, cantidadFichas);
+        Batalla batalla = new Batalla(defensor, this, cantidadFichas);//FIXME - no deberia guardarse
     }
 
     public void perderFichas(int cantidadFichas) {
