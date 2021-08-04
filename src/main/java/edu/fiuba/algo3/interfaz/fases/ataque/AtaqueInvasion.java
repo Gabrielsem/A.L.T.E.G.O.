@@ -57,7 +57,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
 
     @Override
     public Fase tocoSeleccionable(Node nodoPais) {
-        return null;
+        return this;
     }
 
 }
