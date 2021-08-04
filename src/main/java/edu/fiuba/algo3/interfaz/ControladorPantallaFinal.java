@@ -38,10 +38,17 @@ public class ControladorPantallaFinal {
     @FXML
     public void mostrarGanadores(ArrayList<Jugador> ganadores) {
 
+        if(ganadores.size() > 1) {
+            Label labelGanadores = (Label) scene.lookup("#tituloPantalla");
+            labelGanadores.setText("Felicitaciones, los ganadores son: ");
+        }
+
         String textoGanador = "";
 
-        for(Jugador jug : ganadores) {
-            textoGanador = textoGanador.concat(" " + "Jugador " + jug.numero() + " ");
+        for(int i = 0; i < ganadores.size(); i++) {
+            textoGanador = textoGanador.concat("Jugador " + ganadores.get(i).numero());
+            if(i == ganadores.size() - 2) textoGanador = textoGanador.concat(" y ");
+            else if(ganadores.size() > 1 && i != ganadores.size() - 1) textoGanador = textoGanador.concat(", ");
         }
 
         Label labelGanadores = (Label) scene.lookup("#textoGanadores");
