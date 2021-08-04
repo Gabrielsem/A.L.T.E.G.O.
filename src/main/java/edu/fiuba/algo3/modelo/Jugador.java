@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
-import edu.fiuba.algo3.interfaz.VistaJugador;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 
 import java.util.*;
@@ -104,7 +104,7 @@ public class Jugador extends Observable {
                 tarjeta.activar();
     }
 
-    public int canjearTarjetas(){//FIXME: estos metodos no deberian ser privados?
+    public int canjearTarjetas(){
         ArrayList<Tarjeta> grupoCanjeable = Tarjeta.grupoCanjeable( tarjetas );
 
         if( Objects.nonNull(grupoCanjeable) ){
@@ -186,8 +186,7 @@ public class Jugador extends Observable {
     }
 
     public Collection<String> reagrupablesDesde(String unPais) {
-        if (!paisesConquistados.containsKey(unPais)) throw new RuntimeException("El jugador no tiene ese Pais");
-        // TODO excepcion custom?
+        if (!paisesConquistados.containsKey(unPais)) throw new JugadorNoTienePais("El jugador no tiene ese Pais");
         Pais pais = paisesConquistados.get(unPais);
 
         return paisesConquistados.keySet().stream().filter(pais::esVecino).collect(Collectors.toSet());

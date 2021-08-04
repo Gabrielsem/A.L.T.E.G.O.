@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases.ataque;
 
-import edu.fiuba.algo3.interfaz.VistaSlider;
+import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.modelo.Juego;
@@ -9,11 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
 
 import java.util.Arrays;
-import java.util.Collection;
 
 public class AtaqueInvasion extends FaseConSeleccionables {
 

@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
+
 import java.util.Arrays;
 
 import static java.lang.Math.min;
@@ -51,5 +53,7 @@ public class Batalla {
 
         atacante.perderFichas(perdidaAtacante);
         defensor.perderFichas(perdidaDefensor);
+
+        new VistaBatalla( dadosAtacante, dadosDefensor );
     }
 }

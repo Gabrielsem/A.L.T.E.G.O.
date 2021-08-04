@@ -28,8 +28,6 @@ public class VistaJugador implements Observer {
     private final VBox cajaConquistados;
     private final VBox cajaTarjetas;
 
-    private final Popup popup;
-    private final VBox popupTray;
     static private Juego juego;
     static HashMap<Integer, String>colorJugadores;
 
@@ -38,7 +36,7 @@ public class VistaJugador implements Observer {
             @Override
             public void avisar(VistaJugador vista) {
                 Tarjeta tarjeta = (Tarjeta) args;
-                vista.notificacion( "Nueva Tarjeta: "+ tarjeta.pais() );
+                App.notificacion( "Nueva Tarjeta: "+ tarjeta.pais() );
             }
         },
         canjeTarjetas{
@@ -49,7 +47,7 @@ public class VistaJugador implements Observer {
                 for (Tarjeta t : tarjetas)
                     mensaje += " "+t.pais();
 
-                vista.notificacion( mensaje );
+                App.notificacion( mensaje );
             }
         };
         Object args;
@@ -67,11 +65,6 @@ public class VistaJugador implements Observer {
         cajaObjetivos = nuevaCaja();
         cajaTarjetas = nuevaCaja();
         cajaConquistados = nuevaCaja();
-
-        popup = new Popup();
-        popup.setAutoHide(true);
-        popupTray = new VBox();
-        popup.getContent().add( popupTray );
     }
 
     static public void setJuego(Juego unJuego) { juego = unJuego;}
@@ -87,6 +80,8 @@ public class VistaJugador implements Observer {
     private VBox nuevaCaja() {
         VBox caja = new VBox();
         caja.setAlignment(Pos.TOP_CENTER);
+        caja.setPadding(new Insets(10));
+        caja.getStyleClass().add("dataBoxSection");
         return caja;
     }
 
@@ -179,13 +174,4 @@ public class VistaJugador implements Observer {
         return cajaConquistados;
     }
 
-    private void notificacion( String mensaje ) {
-
-        HBox msjBox = new HBox( new Label(mensaje) );
-        msjBox.getStyleClass().add("popupMessage");
-        msjBox.setPadding( new Insets(10) );
-        popupTray.getChildren().clear();
-        popupTray.getChildren().add( msjBox );
-        popup.show(App.appStage,App.appStage.getX()+20,App.appStage.getY()+50);
-    }
 }
