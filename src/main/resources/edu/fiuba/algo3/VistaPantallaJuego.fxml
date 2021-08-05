@@ -23,7 +23,7 @@
 <GridPane fx:id="grilla" alignment="CENTER" minHeight="360.0" minWidth="640.0" styleClass="fondo" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="750.0" percentWidth="75.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" percentWidth="25.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" percentWidth="25.0"/>
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="180.0" percentHeight="18.0" vgrow="SOMETIMES" />
@@ -57,44 +57,45 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
          <children>
-            <Accordion fx:id="acordion" styleClass="fondo" VBox.vgrow="ALWAYS">
+            <Accordion fx:id="acordion" styleClass="fondo" VBox.vgrow="ALWAYS" GridPane.fillWidth="true">
               <panes>
-                <TitledPane animated="false" styleClass="cajaDatos" text="Conquistados">
+                <TitledPane styleClass="cajaDatos" text="Conquistados" GridPane.fillWidth="true">
                   <content>
-                    <AnchorPane styleClass="caja" />
+                    <AnchorPane styleClass="caja" managed="false"/>
                   </content>
                      <font>
-                        <Font name="Times New Roman" size="24.0" />
+                        <Font name="Times New Roman" size="20.0" />
                      </font>
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                 </TitledPane>
-                  <TitledPane animated="false" styleClass="cajaDatos" text="Objetivos">
-                     <content>
-                        <AnchorPane styleClass="caja" />
-                     </content>
-                     <font>
-                        <Font name="Times New Roman" size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </TitledPane>
-                  <TitledPane animated="false" styleClass="cajaDatos" text="Tarjetas">
-                     <content>
-                        <AnchorPane styleClass="caja">
-                           <children>
+                <TitledPane styleClass="cajaDatos" text="Objetivos" GridPane.fillWidth="true">
+                   <content>
+                      <AnchorPane styleClass="caja" managed="false"/>
+                   </content>
+                   <font>
+                      <Font name="Times New Roman" size="20.0" />
+                   </font>
+                   <padding>
+                      <Insets bottom="10.0" top="10.0"/>
+                   </padding>
+                </TitledPane>
+                <TitledPane styleClass="cajaDatos" text="Tarjetas" GridPane.fillWidth="true">
+                   <content>
+                      <AnchorPane styleClass="caja" managed="false">
+                          <children>
                               <VBox id="tarjetas" maxHeight="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                           </children></AnchorPane>
-                     </content>
-                     <font>
-                        <Font name="Times New Roman" size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="21.0" top="10.0" />
-                     </padding>
-                  </TitledPane>
+                          </children>
+                      </AnchorPane>
+                   </content>
+                   <font>
+                      <Font name="Times New Roman" size="20.0" />
+                   </font>
+                   <padding>
+                      <Insets bottom="21.0" top="10.0" />
+                   </padding>
+                </TitledPane>
               </panes>
             </Accordion>
          </children>
@@ -870,8 +871,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Taymir" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -885,8 +885,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Tartaria" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -900,8 +899,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Aral" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -915,8 +913,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Japon" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -930,8 +927,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Iran" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -945,8 +941,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Kamtchatka" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -960,8 +955,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="China" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -975,8 +969,7 @@
                         <styleClass>
                             <String fx:value="st1" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
             <Group id="Mongolia" onMouseClicked="#tocarPais" onMouseEntered="#mostrarNombrePais" opacity="1.0" styleClass="pais, asia">
@@ -990,8 +983,7 @@
                         <styleClass>
                             <String fx:value="st7" />
                         </styleClass>
-
-                             </Circle>
+                    </Circle>
                 </children>
             </Group>
         </children>
@@ -999,43 +991,43 @@
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </GridPane.margin>
     </Group>
-      <VBox id="playerBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" GridPane.columnIndex="1">
+      <VBox id="playerBox" alignment="TOP_CENTER" GridPane.columnIndex="1">
          <children>
-            <HBox fx:id="tabJugadores" alignment="CENTER" prefHeight="92.0" prefWidth="514.0">
+            <HBox fx:id="tabJugadores" alignment="CENTER" VBox.vgrow="NEVER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER" visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER" visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER"  visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER" visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER" visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" visible="false">
+                  <HBox alignment="CENTER" visible="false" HBox.hgrow="SOMETIMES">
                      <children>
                         <Label text="0" />
                      </children>
                   </HBox>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
                    <Label fx:id="labelJugadorActual" text="PLAYER BOX">
                      <font>
@@ -1043,11 +1035,6 @@
                      </font>
                   </Label>
                   <Label fx:id="faseActual" text="Fase actual">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label>
                      <font>
                         <Font size="14.0" />
                      </font>

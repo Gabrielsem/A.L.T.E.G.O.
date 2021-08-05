@@ -30,13 +30,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         stage.setTitle("TEG "+version);
-        Scene scene = new Scene(new Label("Cargando..."), 1200, 800);
+        Scene scene = new Scene(new Label("Cargando..."), 854, 480);
         stage.setScene(scene);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-dark.css")).toExternalForm());
-        stage.sizeToScene();
-        stage.show();
-        stage.setMinWidth(stage.getWidth());
-        stage.setMinHeight(stage.getHeight());
+        inicializarEscala(stage, scene);
 
         appStage = stage;
         popup = new Popup();
@@ -45,6 +41,17 @@ public class App extends Application {
         popup.getContent().add( popupTray );
 
         new ControladorPantallaInicial(scene);
+    }
+
+    private void inicializarEscala(Stage stage, Scene scene) {
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-dark.css")).toExternalForm());
+        stage.sizeToScene();
+        stage.show();
+        stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
+
+        //stage.setWidth(1200);
+        //stage.setHeight(800);
     }
 
     public static void main(String[] args) {
