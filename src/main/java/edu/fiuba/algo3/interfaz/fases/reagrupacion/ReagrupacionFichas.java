@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.interfaz.fases.reagrupacion;
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class ReagrupacionFichas extends FaseConSeleccionables {

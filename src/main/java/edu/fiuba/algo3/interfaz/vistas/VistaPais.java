@@ -9,7 +9,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 
-import java.util.*;
+import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
 public class VistaPais implements Observer {
 
