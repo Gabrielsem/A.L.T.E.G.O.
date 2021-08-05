@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ControladorPantallaFinal {
 
@@ -51,5 +53,17 @@ public class ControladorPantallaFinal {
     @FXML
     public void botonSalir(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    @FXML
+    public void switchVista(ActionEvent actionEvent) {
+        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
+
+        scene.getStylesheets().clear();
+        if (botonSwitch.isSelected()){
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
+        }
     }
 }

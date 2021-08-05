@@ -3,9 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<GridPane styleClass="fondoMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="493.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="493.0" styleClass="fondoMenu" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="600.0" />
   </columnConstraints>
@@ -13,25 +19,30 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox alignment="CENTER">
+      <VBox alignment="CENTER" spacing="10.0">
          <children>
-            <Label id="tituloPantalla" fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="351.0" style="-fx-font-weight: bold; -fx-font-size: 18;" text="Felicitaciones, el ganador es:" textAlignment="CENTER" textFill="#d1d1d1">
+            <Label id="tituloPantalla" fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold; -fx-font-size: 18;" text="Felicitaciones, el ganador es:" textAlignment="CENTER" textFill="#d1d1d1">
                <font>
                   <Font name="Times New Roman Bold Italic" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER">
                <children>
                   <Label id="textoGanadores" style="-fx-font-size: 18;" text="Label" textFill="#d0d0d0" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" top="20.0" />
+               </VBox.margin>
             </HBox>
             <Button mnemonicParsing="false" onAction="#botonSalir" scaleX="1.5" scaleY="1.5" text="Salir" textFill="#d0d0d0">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets bottom="40.0" />
                </VBox.margin></Button>
+            <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" />
+            <ToggleButton fx:id="botonSwitchVista" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#switchVista" prefHeight="30.0" prefWidth="30.0" styleClass="botonSwitch" />
          </children>
       </VBox>
    </children>

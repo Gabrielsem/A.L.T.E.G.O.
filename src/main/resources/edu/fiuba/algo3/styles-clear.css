@@ -79,7 +79,7 @@
 
 .fondoMenu {
     -fx-background-color: #FFF;
-    -fx-background-image: url("../../../../../imagenes/Guerra.jpg");
+    -fx-background-image: url("../../../../../imagenes/Guerra.png");
     -fx-background-repeat: repeat no-repeat;
 }
 
@@ -125,7 +125,7 @@ Button, .botonMusica {
     -fx-text-fill: -fx-text-base-color;
 }
 
-.botonMusica: selected {
+.botonMusica:selected {
     -fx-opacity: 0.5;
 }
 
@@ -168,6 +168,15 @@ Slider {
     -fx-text-fill: #000;
     -fx-font-size: 11pt;
 }
+
 .blackPlayerLabel {
     -fx-text-fill: #000;
+}
+
+.botonSwitch {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../../../../imagenes/dark_mode.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-border-color: transparent;
 }

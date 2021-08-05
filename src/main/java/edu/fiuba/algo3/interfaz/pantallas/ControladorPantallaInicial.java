@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ControladorPantallaInicial {
 
@@ -34,5 +35,17 @@ public class ControladorPantallaInicial {
 
         if (botonMusica.isSelected()) App.detenerCancion();
         else App.reproducirCancion();
+    }
+
+    @FXML
+    public void switchVista(ActionEvent actionEvent) {
+        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
+
+        scene.getStylesheets().clear();
+        if (botonSwitch.isSelected()){
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
+        }
     }
 }

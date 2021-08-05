@@ -172,6 +172,16 @@ Slider {
     -fx-font-size: 11pt;
 }
 
+
 .blackPlayerLabel {
     -fx-text-fill: #FFF;
 }
+
+.botonSwitch {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../../../../imagenes/clear_mode.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-border-color: transparent;
+}
+

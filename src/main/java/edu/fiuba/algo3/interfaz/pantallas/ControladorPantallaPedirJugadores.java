@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
@@ -173,5 +174,17 @@ public class ControladorPantallaPedirJugadores {
 
         if (botonMusica.isSelected()) App.detenerCancion();
         else App.reproducirCancion();
+    }
+
+    @FXML
+    public void switchVista(ActionEvent actionEvent) {
+        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
+
+        scene.getStylesheets().clear();
+        if (botonSwitch.isSelected()){
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
+        }
     }
 }
