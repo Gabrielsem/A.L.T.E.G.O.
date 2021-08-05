@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class ReagrupacionFichas extends FaseConSeleccionables {
     private Juego juego;
     private Pais origen, destino;
@@ -29,6 +32,8 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
     }
 
     private void iniciar() {
+        super.setSeleccionables(Arrays.asList(origen.nombre(), destino.nombre()));
+
         instruccion.setText("Elegí la cantidad de fichas a mover");
         botonSiguiente.setText("Reagrupar");
         botonSiguiente.setVisible(true);
