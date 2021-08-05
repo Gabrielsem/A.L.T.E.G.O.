@@ -66,4 +66,12 @@ public class ControladorPantallaFinal {
             scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
         }
     }
+
+    @FXML
+    public void modificarMusica(ActionEvent actionEvent) {
+        ToggleButton botonMusica = (ToggleButton) actionEvent.getSource();
+
+        if (botonMusica.isSelected()) App.detenerCancion();
+        else App.reproducirCancion();
+    }
 }
