@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Observer;

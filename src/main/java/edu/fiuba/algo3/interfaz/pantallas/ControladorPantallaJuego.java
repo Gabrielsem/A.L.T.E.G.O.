@@ -2,10 +2,10 @@ package edu.fiuba.algo3.interfaz.pantallas;
 
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
-import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
+import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Pais;
@@ -21,9 +21,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.media.AudioClip;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class ControladorPantallaJuego {
     private Juego juego;
     private Scene scene;
     private Fase fase;
+    private AudioClip audio;
     private enum EjeCambioEscala {
         HORIZONTAL, VERTICAL, NINGUNO;
     }
@@ -51,7 +57,20 @@ public class ControladorPantallaJuego {
         nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));
         mostrarTabJugadores();
         inicializarAjusteEscala();
+
+        App.cancion("cancion1");
     }
+
+    @FXML
+    public void modificarMusica(ActionEvent actionEvent) {
+        ToggleButton botonMusica = (ToggleButton) actionEvent.getSource();
+
+        if (botonMusica.isSelected()) App.detenerCancion();
+        else App.reproducirCancion();
+    }
+
+    @FXML
+
 
     private void mostrarTabJugadores(){
         HBox caja = (HBox) scene.lookup("#tabJugadores");

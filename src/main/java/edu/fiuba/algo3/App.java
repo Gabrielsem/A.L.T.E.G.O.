@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +21,7 @@ import java.util.Objects;
  */
 public class App extends Application {
 
+    private static MediaPlayer reproductor;
     String version = "0.9";
     private static Stage appStage;
     private static Popup popup;
@@ -86,16 +87,33 @@ public class App extends Application {
         popupWindow.show(appStage,offsetX,offsetY);
     }
 
-    public static void sonido( String sonido ) {
+    public static MediaPlayer sonido(String sonido) {
 
         String url = "sonidos/"+sonido+".mp3";
         try {
             Media sound = new Media(new File(url).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
+            return mediaPlayer;
         } catch (Exception e ) {
             System.out.println("Cannot play: "+url);
         }
+        return null;
     }
 
+    public static void cancion(String cancion) {
+        MediaPlayer reproductor = sonido(cancion);
+
+        if (reproductor == null) return;
+
+        reproductor.setVolume(0.2);
+        reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+        reproductor.play();
+        App.reproductor = reproductor;
+
+    }
+
+    public static void detenerCancion() { App.reproductor.pause(); }
+
+    public static void reproducirCancion() { App.reproductor.play(); }
 }

@@ -110,7 +110,7 @@ Accordion > * > * {
     -fx-border-radius: 10;
 }
 
-Button {
+Button, .botonMusica {
     -fx-text-fill: white;
     -fx-background-color: #313335;
     -fx-effect: dropshadow(gaussian, #888888, 10, 0.5, 0, 0);
@@ -119,6 +119,10 @@ Button {
 .button:hover{
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-text-fill: -fx-text-base-color;
+}
+
+.botonMusica: selected {
+    -fx-opacity: 0.5;
 }
 
 .toggle-button:hover {
