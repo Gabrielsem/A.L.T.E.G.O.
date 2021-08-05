@@ -109,6 +109,7 @@ public class Pais extends Observable {
 
     public void invadir(Pais otroPais, int fichas) { //todo probar esto
         verificarAlcanzanFichas(fichas);
+        if( !esVecino(otroPais.nombre()) ) throw new PaisNoPuedeInvadirAPaisNoVecino(String.format("El país %s no puede no es vecino de %s",nombre,otroPais.nombre()) );
         perderFichas(fichas);
         otroPais.ocupadoPor(propietario, fichas);
     }

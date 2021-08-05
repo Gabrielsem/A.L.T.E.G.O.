@@ -228,4 +228,32 @@ public class PaisTests {
 
         assertEquals(Arrays.asList("P1"),new ArrayList<>( p3.getPaisesAtacables()));
     }
+
+    @Test
+    public void invadirCorrectamente() {
+        Jugador jug = new Jugador(6, mock(Juego.class) );
+        Pais p1 = new Pais("P1","C",Arrays.asList("P2"));
+        Pais p2 = new Pais("P2","C",Arrays.asList("P1"));
+
+        p1.ocupadoPor(jug,10);
+        p1.invadir(p2,5);
+
+        assertEquals(6,p2.getNumeroPropietario());
+        assertEquals(5,p1.cantidadFichas());
+        assertEquals(5,p2.cantidadFichas());
+    }
+
+    @Test
+    public void noPuedeInvadir() {
+        Jugador jug = new Jugador(6, mock(Juego.class) );
+        Pais p1 = new Pais("P1","C",Arrays.asList("P2"));
+        Pais p2 = new Pais("P2","C",Arrays.asList("P1"));
+        Pais p3 = new Pais("P3","C",Arrays.asList(""));
+
+        p1.ocupadoPor(jug,3);
+
+
+        assertThrows( PaisNoTieneFichasSuficientes.class , ()-> p1.invadir(p2,5) );
+        assertThrows( PaisNoPuedeInvadirAPaisNoVecino.class , ()-> p1.invadir(p3,1) );
+    }
 }
