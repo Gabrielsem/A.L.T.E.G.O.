@@ -79,7 +79,7 @@
 
 .fondoMenu {
     -fx-background-color: #FFF;
-    -fx-background-image: url("../../../../../imagenes/Guerra.jpg");
+    -fx-background-image: url("../../../../../imagenes/Guerra.png");
     -fx-background-repeat: repeat no-repeat;
 }
 
