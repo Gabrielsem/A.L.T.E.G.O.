@@ -2,7 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.*;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class Pais extends Observable {
     private final String nombre;

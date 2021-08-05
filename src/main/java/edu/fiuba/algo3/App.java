@@ -22,9 +22,11 @@ import java.util.Objects;
 public class App extends Application {
 
     private static MediaPlayer reproductor;
-    String version = "0.9";
+    String version = "0.9.9";
+
     private static Stage appStage;
     private static Popup popup;
+    private static Popup popupWindow;
     private static VBox popupTray;
 
     @Override
@@ -76,7 +78,7 @@ public class App extends Application {
 
         if( Objects.isNull(appStage) ) return;
 
-        Popup popupWindow = new Popup();
+        popupWindow = new Popup();
         popupWindow.setAutoHide(true);
         popupWindow.getContent().add(window);
 
@@ -85,6 +87,13 @@ public class App extends Application {
         double offsetY = appStage.getY() + appStage.getHeight() - 223;
 
         popupWindow.show(appStage,offsetX,offsetY);
+    }
+
+    public static void clearPopUps(){
+        popup.hide();
+        popup.getContent().clear();
+        popupWindow.hide();
+        popupWindow.getContent().clear();
     }
 
     public static MediaPlayer sonido(String sonido) {

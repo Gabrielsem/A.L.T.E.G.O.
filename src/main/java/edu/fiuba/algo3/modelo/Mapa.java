@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.fiuba.algo3.errores.PaisNoExiste;
 
 import java.io.FileNotFoundException;

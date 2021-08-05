@@ -27,6 +27,7 @@ public class ControladorPantallaFinal {
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
 
+        App.clearPopUps();
         mostrarGanadores(ganadores);
     }
 

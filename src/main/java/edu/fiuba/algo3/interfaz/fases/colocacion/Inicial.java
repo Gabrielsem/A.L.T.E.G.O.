@@ -6,7 +6,6 @@ import edu.fiuba.algo3.interfaz.fases.ataque.Ataque;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
