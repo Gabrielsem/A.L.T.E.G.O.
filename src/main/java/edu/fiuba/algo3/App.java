@@ -73,8 +73,8 @@ public class App extends Application {
         popupWindow.getContent().add(window);
 
         // TODO - Centrar en _root
-        double offsetX = appStage.getX() + (appStage.getWidth()-popupWindow.getWidth())/2 ;
-        double offsetY = appStage.getY() + (appStage.getHeight()-popupWindow.getHeight())/2 ;
+        double offsetX = appStage.getX() + 30 ;
+        double offsetY = appStage.getY() + appStage.getHeight() - 240;
 
         popupWindow.show(appStage,offsetX,offsetY);
     }
