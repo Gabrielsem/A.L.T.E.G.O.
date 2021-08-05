@@ -31,6 +31,7 @@ import javafx.scene.media.AudioClip;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ControladorPantallaJuego {
 
@@ -174,5 +175,17 @@ public class ControladorPantallaJuego {
         if(ganadores.size() == 0) return;
 
         new ControladorPantallaFinal(scene, ganadores);
+    }
+
+    @FXML
+    public void switchVista(ActionEvent actionEvent) {
+        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
+
+        scene.getStylesheets().clear();
+        if (botonSwitch.isSelected()){
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        }
     }
 }
