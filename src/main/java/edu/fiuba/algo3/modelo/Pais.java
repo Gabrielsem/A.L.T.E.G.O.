@@ -62,7 +62,7 @@ public class Pais extends Observable {
         }
         this.verificarAlcanzanFichas(cantidadFichas);
 
-        Batalla batalla = new Batalla(defensor, this, cantidadFichas);//FIXME - no deberia guardarse
+        Batalla batalla = new Batalla(defensor, this, cantidadFichas);
     }
 
     public void perderFichas(int cantidadFichas) {
@@ -110,7 +110,7 @@ public class Pais extends Observable {
         return listaPaisesAtacables;
     }
 
-    public void invadir(Pais otroPais, int fichas) { //todo probar esto
+    public void invadir(Pais otroPais, int fichas) {
         verificarAlcanzanFichas(fichas);
         if( !esVecino(otroPais.nombre()) ) throw new PaisNoPuedeInvadirAPaisNoVecino(String.format("El país %s no puede no es vecino de %s",nombre,otroPais.nombre()) );
         perderFichas(fichas);

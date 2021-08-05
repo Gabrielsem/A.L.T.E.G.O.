@@ -44,7 +44,7 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
     public Fase tocoBoton(Button unBoton) {
         App.sonido("marchar");
         juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), slider.getValue());
-        //FIXME sirve tener ese metodo de jugador? (el reagrupar), podria llamar directo al de pais, no se si es bueno o malo
+        //FIXME - Metodo puede se directamente de pais (?)
         slider.ocultar();
         return new ReagrupacionOrigen(scene, juego);
     }

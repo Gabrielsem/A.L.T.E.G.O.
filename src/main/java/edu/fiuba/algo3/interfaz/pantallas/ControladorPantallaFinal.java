@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class ControladorPantallaFinal {
 
-    //FIXME ?- no deberia ser privado?
+    //FIXME - Privatize
     Scene scene;
     HashMap<Integer, String> coloresJugadores;
 
@@ -22,7 +22,7 @@ public class ControladorPantallaFinal {
         this.scene = scene;
         this.coloresJugadores = new HashMap<>();
 
-        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
+        //FIXME - Repeated - Load FXML
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaFinal.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());

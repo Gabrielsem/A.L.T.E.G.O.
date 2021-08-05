@@ -15,7 +15,7 @@ import java.util.Observer;
 
 public class VistaTurno implements Observer {
 
-    //FIXME ? - no deberia ser privado?
+    //FIXME - Privatize
     VBox cajaTurno;
     Label labelTurno;
     TitledPane panelConquistados;

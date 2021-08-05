@@ -49,7 +49,7 @@ public class ControladorPantallaJuego {
 
         App.cancion("cancion1");
 
-        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
+        //FIXME - Repeated - Load FXML
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());

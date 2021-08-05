@@ -23,7 +23,7 @@ import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
 
-    //FIXME ?- no deberia ser privado?
+    //FIXME - Privatize
     Scene scene;
     HashMap<Integer, String> coloresJugadores;
     HashSet<String> idLabelsActivas = new HashSet<>();
@@ -32,7 +32,7 @@ public class ControladorPantallaPedirJugadores {
         this.scene = scene;
         this.coloresJugadores = new HashMap<>();
 
-        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
+        //FIXME - Repeated - Load FXML
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());

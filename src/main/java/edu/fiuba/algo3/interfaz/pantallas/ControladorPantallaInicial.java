@@ -19,7 +19,7 @@ public class ControladorPantallaInicial {
     public ControladorPantallaInicial(Scene scene) throws IOException {
         this.scene = scene;
 
-        //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
+        //FIXME - Repeated - Load FXML
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaInicial.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
@@ -28,7 +28,7 @@ public class ControladorPantallaInicial {
         Image imagen = new Image(new FileInputStream("imagenes/Guerra_dark.jpg"));
 
         BackgroundImage fondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        grilla.setBackground(new Background(fondo));//FIXME-HELPMARCE
+        grilla.setBackground(new Background(fondo));//FIXME-HELPMARCE - SHOW BACKGROUD IMAGE
 
         App.cancion("cancionInicio");
     }

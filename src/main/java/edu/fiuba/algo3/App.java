@@ -68,7 +68,7 @@ public class App extends Application {
         HBox msjBox = new HBox( new Label(mensaje) );
         msjBox.getStyleClass().add("popupMessage");
         msjBox.setPadding( new Insets(10) );
-        popupTray.getChildren().clear();// TODO - Para stackear: Reemplazar x una llamada que elimine
+        popupTray.getChildren().clear();// Para stackear: Reemplazar x una llamada que elimine
         popupTray.getChildren().add( msjBox );
         popup.show(appStage,appStage.getX()+30,appStage.getY()+100);
 
@@ -82,7 +82,6 @@ public class App extends Application {
         popupWindow.setAutoHide(true);
         popupWindow.getContent().add(window);
 
-        // TODO - Centrar en _root
         double offsetX = appStage.getX() + 15 ;
         double offsetY = appStage.getY() + appStage.getHeight() - 223;
 
