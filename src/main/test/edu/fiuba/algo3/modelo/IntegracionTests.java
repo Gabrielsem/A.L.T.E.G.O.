@@ -9,8 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.AdditionalAnswers.delegatesTo;
 import static org.mockito.Mockito.*;
 
@@ -105,7 +104,7 @@ public class IntegracionTests {
         assertEquals(4, alemania.cantidadFichas()); // 1 que tenía + 3 nuevas
     }
 
-/*    @Test
+    @Test
     public void rondaDosJugadoresJugador1Conquista2PaisesDelJugador2() {
         // Le doy 5 países al jugador 1, sin completar continente, con muchísimas fichas
         String[] nombresPaisesJ1 = {"Francia", "Tartaria", "Australia", "Kamtchatka", "Israel"};
@@ -115,26 +114,44 @@ public class IntegracionTests {
         String[] nombresPaisesJ2 = {"Alemania", "Italia", "China", "Arabia", "Borneo"};
         HashMap<String, Pais> paisesJ2 = obtenerPaises(nombresPaisesJ2, j2, 1);
 
-        // En principio con 50000 fichas debería poder asumir que se conquista el país tras varios intentos
-        while (paisesJ1.get("Francia").cantidadFichas() > 0) {
+        // - Primer Ataque -
+
+        Pais atacante1 = paisesJ1.get("Francia");
+        Pais defensor1 = paisesJ2.get("Alemania");
+
+        j1.atacar(atacante1, defensor1, 3);
+
+        while ( !defensor1.invadible() ){
             try {
-                j1.atacar(paisesJ1.get("Francia"), paisesJ2.get("Alemania"), 3);
-            } catch (PaisDelMismoPropietarioNoPuedeSerAtacado e) {
-                break;
+                j1.atacar(atacante1, defensor1, 3);
+            } catch (RuntimeException e) {
+                fail("Primer ataque fallido");
             }
         }
-        while (paisesJ1.get("Australia").cantidadFichas() > 0) {
+        atacante1.invadir(defensor1,1);
+
+        // - Segundo Ataque -
+
+        Pais atacante2 = paisesJ1.get("Australia");
+        Pais defensor2 = paisesJ2.get("Borneo");
+
+        j1.atacar(atacante2, defensor2, 3);
+
+        while ( !defensor2.invadible() ){
             try {
-                j1.atacar(paisesJ1.get("Australia"), paisesJ2.get("Borneo"), 3);
-            } catch (PaisDelMismoPropietarioNoPuedeSerAtacado e) {
-                break;
+                j1.atacar(atacante2, defensor2, 3);
+            } catch (RuntimeException e) {
+                fail("Primer ataque fallido");
             }
         }
+        atacante2.invadir(defensor2,1);
+
+        // - Verify -
 
         assertEquals(7, j1.obtenerCantidadPaises());
         assertEquals(3, j2.obtenerCantidadPaises());
     }
-*/
+
     @Test
     public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
 
