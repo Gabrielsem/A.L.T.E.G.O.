@@ -34,7 +34,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         stage.setTitle("TEG "+version);
-        Scene scene = new Scene(new Label("Cargando..."), 854, 480);
+        Scene scene = new Scene(new Label(""), 854, 480);
         stage.setScene(scene);
         inicializarEscena(stage, scene);
 
