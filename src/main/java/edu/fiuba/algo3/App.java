@@ -36,7 +36,7 @@ public class App extends Application {
         stage.setTitle("TEG "+version);
         Scene scene = new Scene(new Label("Cargando..."), 854, 480);
         stage.setScene(scene);
-        inicializarEscala(stage, scene);
+        inicializarEscena(stage, scene);
 
         appStage = stage;
         popup = new Popup();
@@ -47,8 +47,8 @@ public class App extends Application {
         new ControladorPantallaInicial(scene);
     }
 
-    private void inicializarEscala(Stage stage, Scene scene) {
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-dark.css")).toExternalForm());
+    private void inicializarEscena(Stage stage, Scene scene) {
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-clear.css")).toExternalForm());
         stage.sizeToScene();
         stage.show();
         stage.setMinWidth(stage.getWidth());
@@ -56,6 +56,7 @@ public class App extends Application {
 
         stage.setWidth(1200);
         stage.setHeight(800);
+        stage.centerOnScreen();
     }
 
     public static void main(String[] args) {
