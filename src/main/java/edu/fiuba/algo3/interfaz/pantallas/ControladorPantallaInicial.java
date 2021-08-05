@@ -43,9 +43,9 @@ public class ControladorPantallaInicial {
 
         scene.getStylesheets().clear();
         if (botonSwitch.isSelected()){
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
-        } else {
             scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
         }
     }
 }

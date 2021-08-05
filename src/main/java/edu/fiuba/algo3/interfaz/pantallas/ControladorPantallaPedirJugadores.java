@@ -49,8 +49,8 @@ public class ControladorPantallaPedirJugadores {
 
         if(botonColor.isSelected()) agregarJugador(actionEvent);
         else eliminarJugador(actionEvent);
-
     }
+
 
     @FXML
     public void agregarJugador(ActionEvent actionEvent) {
@@ -182,9 +182,9 @@ public class ControladorPantallaPedirJugadores {
 
         scene.getStylesheets().clear();
         if (botonSwitch.isSelected()){
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
-        } else {
             scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
         }
     }
 }
