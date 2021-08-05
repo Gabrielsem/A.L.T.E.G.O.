@@ -115,8 +115,6 @@ public class ControladorPantallaJuego {
         } else {
             // TODO sacar este hack
             pais.agregarFichas(1);
-            System.out.printf("País %s (%d fichas)%n",
-                node.getId(), pais.cantidadFichas());
         }
     }
 
