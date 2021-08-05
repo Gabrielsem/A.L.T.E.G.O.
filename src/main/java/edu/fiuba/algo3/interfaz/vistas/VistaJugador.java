@@ -140,9 +140,9 @@ public class VistaJugador implements Observer {
             imagen.setFitHeight(30);
             StackPane.setMargin(imagen,new Insets(0,0,0,10));
 
-
-            pais.getChildren().add( new Label( t.displayPais() ) );
-            pais.setAlignment(Pos.CENTER);
+            pais.getChildren().add(new Label( t.displayPais() ));
+            pais.setAlignment(Pos.CENTER_RIGHT);
+            pais.setPadding(new Insets(5, 15, 5, 0));
             StackPane.setMargin(pais, new Insets(3,0,3,0));
 
             tarjeta.getChildren().addAll(pais,imagen);

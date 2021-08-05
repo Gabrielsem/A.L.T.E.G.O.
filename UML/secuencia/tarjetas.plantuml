@@ -2,6 +2,7 @@
 title
 **__Ronda de Ataques__**
 Secuencia de obtención de Tarjeta
+(Caso en que atacante gana batalla)
 end title
 skinparam responseMessageBelowArrow true
 skinparam monochrome true
@@ -9,38 +10,55 @@ skinparam style strictuml
 hide footbox
 
 actor Actor
-participant jueg as ":Juego"
-participant jug as ":Jugador"
-participant pais as ":Pais"
+participant juego as ":Juego"
+participant jug as "atacante:Jugador"
+participant atacante as "paisAtacante:Pais"
+participant batalla as ":Batalla"
+participant defensor as "paisDefensor:Pais"
+activate Actor
 
-Actor ++
-Actor -> jueg ++: rondaAtaques()
+Actor -> jug ++: prepararAtaques()
+note over jug
+    debeRecibirTarjeta = true
+end note
+return
 
-loop Para cada jugador
-    jueg -> jug ++: turnoAtaque()
-    note right: cant = len(paises)
-    loop Para cada ataque
-        jug -> pais ++: atacar(defensor, cantFichas)
-        jug <-] ++: ocupar(defensor)
-        pais --
-        jug --
-    end loop
+Actor -> atacante ++: atacar(defensor, cantFichas)
+atacante -> atacante: verificarAlcanzanFichas(cantFichas)
 
-    jug -> jueg ++: pedirTarjeta()
-    note right: if len(paises) > cant
-    jueg --> jug --: unaTarjeta
-    jug -> jug: recibirTarjeta(unaTarjeta)
-    deactivate jug
+create batalla
+atacante -> batalla: new Batalla\n(defensor, atacante, cantFichas)
+batalla -> batalla ++: efectuarBatalla()
+batalla -> batalla: lanzarDados()
+batalla -> atacante ++: perderFichas(cantFichas)
+return
+batalla -> defensor ++: perderFichas(cantFichas)
+return
+destroy batalla
+deactivate batalla
+return
+
+Actor -> defensor ++: invadible()
+return true
+
+Actor -> atacante ++: invadir(defensor, cantFichas)
+atacante -> atacante: verificarAlcanzanFichas(cantFichas)
+atacante -> atacante: perderFichas(cantFichas)
+atacante -> defensor ++: ocupadoPor(jugador, cantFichas)
+defensor ->: desocupar(paisDefensor)
+defensor <--]
+
+defensor -> jug ++: ocupar(paisDefensor)
+jug -> juego ++: pedirTarjeta()
+note over jug
+    debeRecibirTarjeta = false
+end note
+return unaTarjeta
+return
+return
+return
 
 
-    jueg -> jug ++: turnoReagrupacion()
-    loop Para cada reagrupación
-        jug -> pais ++: reagruparA(destinatario, cantFichas)
-        pais -> pais: esVecino(nombreDestinatario)
-        pais -> pais: verificarAlcanzanFichas(cantFichas)
-        pais -> "destinatario: Pais": agregarFichas(cantFichas)
-    end loop
 
-end loop
 
 @enduml

@@ -37,7 +37,7 @@ public class Jugador extends Observable {
     public void ocupar(Pais unPais){
         paisesConquistados.put(unPais.nombre(),unPais);
         if (debeRecibirTarjeta) {
-            recibirTarjeta(juego.pedirTarjeta());//TODO: Actualizar uml con esta secuencia (ver este bool en codigo)
+            recibirTarjeta(juego.pedirTarjeta());
             debeRecibirTarjeta = false;
         }
         notificarObservadores();

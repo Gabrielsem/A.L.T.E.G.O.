@@ -83,7 +83,7 @@
                 </TitledPane>
                 <TitledPane styleClass="cajaDatos" text="Tarjetas" GridPane.fillWidth="true">
                    <content>
-                      <AnchorPane styleClass="caja" managed="false">
+                      <AnchorPane styleClass="caja">
                           <children>
                               <VBox id="tarjetas" maxHeight="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                           </children>
