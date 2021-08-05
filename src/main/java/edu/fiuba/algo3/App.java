@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.interfaz.pantallas.ControladorPantallaInicial;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -128,4 +129,10 @@ public class App extends Application {
     public static void reproducirCancion() { App.reproductor.setMute(false); }
 
     public static boolean hayMusica() { return !App.reproductor.isMute(); }
+
+    public static void loadFXML(String nombre, Object controlador) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(nombre));
+        fxmlLoader.setController(controlador);
+        appStage.getScene().setRoot(fxmlLoader.load());
+    }
 }

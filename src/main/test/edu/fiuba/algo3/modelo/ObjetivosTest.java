@@ -193,7 +193,7 @@ public class ObjetivosTest {
         jugadores.add(jug2);
 
         ObjetivoDestruccion objetivo = new ObjetivoDestruccion(2, mapa);
-        objetivo.verificar(jug1, jugadores);
+        objetivo.verificarObjetivoValido(jug1, jugadores);
 
         ArrayList<Pais> paisesDelMapa = mapa.obtenerPaises();
 
@@ -218,7 +218,7 @@ public class ObjetivosTest {
         jugadores.add(jug2);
 
         ObjetivoDestruccion objetivo = new ObjetivoDestruccion(2, mapa);
-        objetivo.verificar(jug1, jugadores);
+        objetivo.verificarObjetivoValido(jug1, jugadores);
 
         ArrayList<Pais> paisesDelMapa = mapa.obtenerPaises();
 

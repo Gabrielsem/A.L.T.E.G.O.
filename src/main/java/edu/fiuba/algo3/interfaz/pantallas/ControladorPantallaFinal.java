@@ -14,18 +14,13 @@ import java.util.HashMap;
 
 public class ControladorPantallaFinal {
 
-    //FIXME - Privatize
-    Scene scene;
-    HashMap<Integer, String> coloresJugadores;
+    private Scene scene;
+    private HashMap<Integer, String> coloresJugadores;
 
     public ControladorPantallaFinal(Scene scene, ArrayList<Jugador> ganadores) throws IOException {
         this.scene = scene;
         this.coloresJugadores = new HashMap<>();
-
-        //FIXME - Repeated - Load FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaFinal.fxml"));
-        fxmlLoader.setController(this);
-        scene.setRoot(fxmlLoader.load());
+        App.loadFXML("VistaPantallaFinal.fxml", this);
 
         App.clearPopUps();
         App.detenerCancion();

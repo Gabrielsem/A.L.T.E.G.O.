@@ -26,19 +26,15 @@ import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
 
-    //FIXME - Privatize
-    Scene scene;
-    HashMap<Integer, String> coloresJugadores;
-    HashSet<String> idLabelsActivas = new HashSet<>();
+    private Scene scene;
+    private HashMap<Integer, String> coloresJugadores;
+    private HashSet<String> idLabelsActivas = new HashSet<>();
 
     public ControladorPantallaPedirJugadores(Scene scene) throws IOException {
         this.scene = scene;
         this.coloresJugadores = new HashMap<>();
 
-        //FIXME - Repeated - Load FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
-        fxmlLoader.setController(this);
-        scene.setRoot(fxmlLoader.load());
+        App.loadFXML("VistaPantallaPedirJugadores.fxml", this);
         setBackground();
         if (!App.hayMusica()) {
             ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");

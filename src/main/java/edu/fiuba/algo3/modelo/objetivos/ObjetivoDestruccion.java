@@ -19,7 +19,7 @@ public class ObjetivoDestruccion implements Objetivo{
 
     //Al crear los objetivos de destruccion no sabemos a quien se le van a asignar, por lo tanto, una vez asignado
     //es necesario verificar que el objetivo no sea inválido
-    public void verificar(Jugador jugadorPropietario, ArrayList<Jugador> jugadores){
+    public void verificarObjetivoValido(Jugador jugadorPropietario, ArrayList<Jugador> jugadores){
 
         // Se fija si existe el jugador objetivo, y si existe lo asigna
         for(Jugador jugador: jugadores){

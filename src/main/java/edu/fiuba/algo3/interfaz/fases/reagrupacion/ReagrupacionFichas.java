@@ -44,7 +44,6 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
     public Fase tocoBoton(Button unBoton) {
         App.sonido("marchar");
         juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), slider.getValue());
-        //FIXME - Metodo puede se directamente de pais (?)
         slider.ocultar();
         return new ReagrupacionOrigen(scene, juego);
     }

@@ -29,7 +29,7 @@ public class ObjetivoComun implements Objetivo{
         return cantidadPaisesDeJugador >= cantidadAConquistar;
     }
 
-    public void verificar(Jugador jugadorPropietario, ArrayList<Jugador> jugadores) { return; };
+    public void verificarObjetivoValido(Jugador jugadorPropietario, ArrayList<Jugador> jugadores) { return; };
 
     public String descripcion(){
         return String.format("Ocupar %d paises", cantidadAConquistar);

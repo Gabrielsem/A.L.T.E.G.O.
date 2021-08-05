@@ -48,11 +48,8 @@ public class ControladorPantallaJuego {
         this.juego = juego;
 
         App.cancion("cancion1");
-
-        //FIXME - Repeated - Load FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
-        fxmlLoader.setController(this);
-        scene.setRoot(fxmlLoader.load());
+        
+        App.loadFXML("VistaPantallaJuego.fxml", this);
         this.fase = new Inicial(juego, scene);
 
         Slider nodoSlider = (Slider) scene.lookup("#slider");

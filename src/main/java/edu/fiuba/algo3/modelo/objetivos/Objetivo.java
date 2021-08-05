@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public interface Objetivo {
     public boolean gano(Jugador jugador);
-    public void verificar(Jugador jugadorPropietario, ArrayList<Jugador> jugadores);//FIXME - Nombre No representativo
+    public void verificarObjetivoValido(Jugador jugadorPropietario, ArrayList<Jugador> jugadores);
     public String descripcion();
 }

@@ -15,13 +15,12 @@ import java.util.Observer;
 
 public class VistaTurno implements Observer {
 
-    //FIXME - Privatize
-    VBox cajaTurno;
-    Label labelTurno;
-    TitledPane panelConquistados;
-    TitledPane panelObjetivos;
-    TitledPane panelTarjetas;
-    HashMap<Integer, VistaJugador> vistasJugadores;
+    private VBox cajaTurno;
+    private Label labelTurno;
+    private TitledPane panelConquistados;
+    private TitledPane panelObjetivos;
+    private TitledPane panelTarjetas;
+    private HashMap<Integer, VistaJugador> vistasJugadores;
 
     public VistaTurno(Scene scene, HashMap<Integer, VistaJugador> vistasJugadores) {
         cajaTurno = (VBox) scene.lookup("#playerBox");

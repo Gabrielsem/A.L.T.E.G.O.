@@ -113,7 +113,7 @@ public class Juego extends Observable {
         for(Jugador jugador: jugadores){
             Objetivo objetivoSecreto = objetivosSecretos.remove(0);
 
-            objetivoSecreto.verificar(jugador, jugadores);
+            objetivoSecreto.verificarObjetivoValido(jugador, jugadores);
 
             jugador.asignarObjetivos(objetivoComun, objetivoSecreto);
         }

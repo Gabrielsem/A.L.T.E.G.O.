@@ -19,11 +19,7 @@ public class ControladorPantallaInicial {
     public ControladorPantallaInicial(Scene scene) throws IOException {
         this.scene = scene;
 
-        //FIXME - Repeated - Load FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaInicial.fxml"));
-        fxmlLoader.setController(this);
-        scene.setRoot(fxmlLoader.load());
-
+        App.loadFXML("VistaPantallaInicial.fxml", this);
         setBackground();
         App.cancion("cancionInicio");
     }
