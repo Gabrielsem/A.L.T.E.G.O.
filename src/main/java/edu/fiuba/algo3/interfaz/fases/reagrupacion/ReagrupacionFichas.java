@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases.reagrupacion;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
@@ -42,9 +43,9 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
 
     @Override
     public Fase tocoBoton(Button unBoton) {
+        App.sonido("marchar");
         juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), slider.getValue());
-        //FIXME sirve tener ese metodo de jugador? (el reagrupar), podria llamar directo al de pais, no se
-        //si es bueno o malo
+        //FIXME sirve tener ese metodo de jugador? (el reagrupar), podria llamar directo al de pais, no se si es bueno o malo
         slider.ocultar();
         return new ReagrupacionOrigen(scene, juego);
     }

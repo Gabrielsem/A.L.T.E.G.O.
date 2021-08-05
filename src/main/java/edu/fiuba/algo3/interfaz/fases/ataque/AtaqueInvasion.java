@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.fases.ataque;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
@@ -48,6 +49,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
 
     @Override
     public Fase tocoBoton(Button unBoton) {
+        App.sonido("marchar");
         paisAtacante.invadir(paisAtacado, slider.getValue());
         botonSiguiente.setVisible(false);
         slider.ocultar();
