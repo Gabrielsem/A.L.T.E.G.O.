@@ -23,7 +23,7 @@ import java.util.Objects;
 public class App extends Application {
     
     private static MediaPlayer reproductor;
-    String version = "0.9.9";
+    String version = "1.2.1";
 
     private static Stage appStage;
     private static Popup popup;
