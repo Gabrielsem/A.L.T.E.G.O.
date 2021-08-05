@@ -48,8 +48,8 @@ public class ControladorPantallaPedirJugadores {
 
         if(botonColor.isSelected()) agregarJugador(actionEvent);
         else eliminarJugador(actionEvent);
-
     }
+
 
     @FXML
     public void agregarJugador(ActionEvent actionEvent) {
