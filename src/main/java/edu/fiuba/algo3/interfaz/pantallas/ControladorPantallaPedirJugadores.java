@@ -15,7 +15,10 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,10 +39,9 @@ public class ControladorPantallaPedirJugadores {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
-
+        setBackground();
         if (!App.hayMusica()) {
             ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
-            System.out.println("apago boton");
             botonMusica.setSelected(true);
         };
     }
@@ -176,5 +178,19 @@ public class ControladorPantallaPedirJugadores {
 
         if (botonMusica.isSelected()) App.detenerCancion();
         else App.reproducirCancion();
+    }
+
+    @FXML
+    public void setBackground() throws IOException {
+
+        GridPane grilla = (GridPane) scene.lookup("#grilla");
+        Image imagen = new Image(new FileInputStream("imagenes/Guerra_dark_blur.png"));
+        BackgroundImage fondoimg = new BackgroundImage(imagen,
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false));
+        grilla.setBackground(new Background(fondoimg));
+        grilla.setStyle("#fondo");
     }
 }

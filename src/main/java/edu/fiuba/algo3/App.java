@@ -91,8 +91,10 @@ public class App extends Application {
     public static void clearPopUps(){
         popup.hide();
         popup.getContent().clear();
-        popupWindow.hide();
-        popupWindow.getContent().clear();
+        if(popupWindow != null){
+            popupWindow.hide();
+            popupWindow.getContent().clear();
+        }
     }
 
     public static MediaPlayer sonido(String sonido) {

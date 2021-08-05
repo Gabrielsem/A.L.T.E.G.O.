@@ -24,12 +24,7 @@ public class ControladorPantallaInicial {
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
 
-        GridPane grilla = (GridPane) scene.lookup("#grilla");
-        Image imagen = new Image(new FileInputStream("imagenes/Guerra_dark.jpg"));
-
-        BackgroundImage fondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        grilla.setBackground(new Background(fondo));//FIXME-HELPMARCE - SHOW BACKGROUD IMAGE
-
+        setBackground();
         App.cancion("cancionInicio");
     }
 
@@ -44,5 +39,19 @@ public class ControladorPantallaInicial {
 
         if (botonMusica.isSelected()) App.detenerCancion();
         else App.reproducirCancion();
+    }
+
+    @FXML
+    public void setBackground() throws IOException {
+
+        GridPane grilla = (GridPane) scene.lookup("#grilla");
+        Image imagen = new Image(new FileInputStream("imagenes/Guerra_dark_blur.png"));
+        BackgroundImage fondoimg = new BackgroundImage(imagen,
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false));
+        grilla.setBackground(new Background(fondoimg));
+        grilla.setStyle("#fondo");
     }
 }
