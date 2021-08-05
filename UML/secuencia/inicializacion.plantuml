@@ -38,7 +38,11 @@ actor ++
 actor -> juego++: inicializar(cantJugadores, \n archivoPaises,\n archivoObjetivos, \n archivoTarjetas)
 
 loop para cada jugador
+<<<<<<< Updated upstream
     juego -> jug**: new (numJugador)
+=======
+    juego -> jug**: <<create>>(numJugador:int)
+>>>>>>> Stashed changes
 end loop
 
 juego -> mapa**: new (continentes)
