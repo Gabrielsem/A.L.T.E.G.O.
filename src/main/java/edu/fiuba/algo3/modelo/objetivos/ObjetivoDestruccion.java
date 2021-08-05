@@ -44,6 +44,6 @@ public class ObjetivoDestruccion implements Objetivo{
     }
 
     public String descripcion(){
-        return String.format("Destruir el ejército del jugador: %d\n", jugadorADerrotar.numero());
+        return String.format("Destruir al jugador: %d\n", jugadorADerrotar.numero());
     }
 }
