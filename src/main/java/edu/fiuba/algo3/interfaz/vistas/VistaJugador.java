@@ -29,35 +29,6 @@ public class VistaJugador implements Observer {
     static private Juego juego;
     static HashMap<Integer, String>colorJugadores;
 
-    public enum Aviso {
-        nuevaTarjeta{
-            @Override
-            public void avisar(VistaJugador vista) {
-                Tarjeta tarjeta = (Tarjeta) args;
-                App.notificacion( "Nueva Tarjeta: "+ tarjeta.displayPais() );
-            }
-        },
-        canjeTarjetas{
-            @Override
-            public void avisar(VistaJugador vista) {
-                Collection<Tarjeta> tarjetas = (Collection<Tarjeta>) args;
-                String mensaje = "Canje Tarjetas:";
-                for (Tarjeta t : tarjetas)
-                    mensaje += " "+t.displayPais();
-
-                App.notificacion( mensaje );
-            }
-        };
-        Object args;
-
-        public Aviso nuevo(Object args){
-            this.args = args;
-            return this;
-        }
-
-        public abstract void avisar(VistaJugador vista);
-    }
-
     public VistaJugador(Scene scene) {
         this.scene = scene;
         cajaObjetivos = nuevaCaja();
@@ -90,7 +61,7 @@ public class VistaJugador implements Observer {
         actualizarTarjetas(jug);
         actualizarConquistados(jug);
 
-        if( Objects.nonNull(arg) ) ((Aviso)arg).avisar(this);// FIXME - Habria que checkear que es parte del enum
+        if( Objects.nonNull(arg) ) App.notificacion( String.valueOf(arg) );
     }
 
     private void actualizarConquistados(Jugador jugador) {
