@@ -75,14 +75,22 @@
     -fx-fill: #B58989;
 }
 
-.fondo {
+.fondo, #tabJugadores {
     -fx-background-color: #2C2B2C;
 }
 
-.caja {
+.caja,#playerBox {
     -fx-background-color: #3C3F42;
     -fx-text-fill: #FFF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
+
+#tabJugadores HBox {
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 10 10 0 0;
+}
+
 
 TitledPane > *.content {
     -fx-border-color: transparent;
@@ -98,6 +106,8 @@ TitledPane > *.content {
 
 Accordion > * > * {
     -fx-background-color: #3C3F42;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 
 Button {
