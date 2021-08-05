@@ -102,9 +102,9 @@ public class VistaJugador implements Observer {
             HBox pais = new HBox();
 
             try {
-                imagen = new ImageView(new Image(new FileInputStream("imagenes/"+t.obtenerSimbolo().nombre()+".png")));
+                imagen = new ImageView(new Image(new FileInputStream("src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png")));
             } catch (FileNotFoundException e) {
-                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
+                System.out.println("Didnt find src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png");
             }
             StackPane.setAlignment(imagen,Pos.CENTER_LEFT);
             imagen.setPreserveRatio(true);

@@ -20,7 +20,7 @@ public class MapaTest {
     Mapa mapa;
     static String[] continentes = {"Asia", "Europa", "America del Norte", "America del Sur","Africa","Oceania"};
     static Map<String, HashSet<String>> paisesPorContinente;
-    static String rutaArchivo = "archivos/paises.json";
+    static String rutaArchivo = "src/main/resources/archivos/paises.json";
 
     @BeforeAll
     static public void cargarPaisesPorContinente() {
@@ -42,7 +42,7 @@ public class MapaTest {
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
-        mapa = new Mapa("archivos/paises.json");
+        mapa = new Mapa("src/main/resources/archivos/paises.json");
     }
 
     @Test

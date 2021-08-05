@@ -32,7 +32,7 @@ public class VistaBatalla implements Observer {
 
         for (int j : dadosAtacante) {
             ImageView imagen = new ImageView();
-            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
+            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
             try {
                 imagen = new ImageView(new Image(new FileInputStream(url)));
             } catch (FileNotFoundException e) {
@@ -46,7 +46,7 @@ public class VistaBatalla implements Observer {
 
         for( int j : dadosDefensor ){
             ImageView imagen = new ImageView();
-            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
+            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
             try {
                 imagen = new ImageView(new Image(new FileInputStream(url)));
             } catch (FileNotFoundException e) {

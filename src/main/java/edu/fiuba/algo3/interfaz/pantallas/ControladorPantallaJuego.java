@@ -106,7 +106,6 @@ public class ControladorPantallaJuego {
     public void tocarPais(MouseEvent mouseEvent) {
 
         Node node = (Node) mouseEvent.getSource();
-        Pais pais = (Pais) node.getUserData();
         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
             fase = fase.tocoPais(node);
         }

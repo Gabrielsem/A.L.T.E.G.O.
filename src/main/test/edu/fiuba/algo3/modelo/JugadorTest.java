@@ -264,7 +264,7 @@ public class JugadorTest {
     @Test
     public void jugadorRecibeFichasAlCanjearTarjetas() throws FileNotFoundException {
 
-        jugador = new Jugador(1, new Juego(1, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json") );
+        jugador = new Jugador(1, new Juego(1, "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json") );
 
         Tarjeta t1 = new Tarjeta(new Pais("N1","C",new ArrayList<>()),
                 new Simbolo("S1") );

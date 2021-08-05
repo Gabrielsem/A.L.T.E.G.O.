@@ -101,7 +101,7 @@ public class App extends Application {
 
     public static MediaPlayer sonido(String sonido, double volumen) {
 
-        String url = "sonidos/"+sonido+".mp3";
+        String url = "src/main/resources/sonidos/"+sonido+".mp3";
         try {
             Media sound = new Media(new File(url).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);

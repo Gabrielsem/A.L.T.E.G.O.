@@ -135,7 +135,7 @@ public class ControladorPantallaPedirJugadores {
             return;
         }
 
-        Juego juego = new Juego(this.coloresJugadores.size(), "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
+        Juego juego = new Juego(this.coloresJugadores.size(), "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json");
         VistaJugador.setColoresJugadores(coloresJugadores);
 
         new ControladorPantallaJuego(scene, juego);

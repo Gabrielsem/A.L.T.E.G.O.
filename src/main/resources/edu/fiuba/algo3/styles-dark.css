@@ -82,7 +82,7 @@
 
 .fondoMenu {
     -fx-background-color: #2C2B2C;
-    -fx-background-image: url("../../../../../imagenes/Guerra_dark.png");
+    -fx-background-image: url("../../../imagenes/Guerra_dark.png");
     -fx-background-repeat: repeat no-repeat;
 }
 
@@ -179,7 +179,7 @@ Slider {
 
 .botonSwitch {
     -fx-background-color: transparent;
-    -fx-background-image: url("../../../../../imagenes/clear_mode.png");
+    -fx-background-image: url("../../../imagenes/clear_mode.png");
     -fx-background-position: center;
     -fx-background-size: cover;
     -fx-border-color: transparent;

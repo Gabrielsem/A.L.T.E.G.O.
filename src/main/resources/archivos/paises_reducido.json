@@ -1,0 +1,84 @@
+{
+  "fichasPorContinente" : [
+    {
+      "Continente" : "Europa",
+      "Cantidad" : 5
+    },
+    {
+      "Continente" : "Asia",
+      "Cantidad" : 7
+    },
+    {
+      "Continente" : "Oceania",
+      "Cantidad" : 2
+    }
+  ],
+
+  "paises" : [
+    {
+      "Pais": "Francia",
+      "Continente": "Europa",
+      "Limita con": ["Alemania", "Italia"]
+    },
+    {
+      "Pais": "Tartaria",
+      "Continente": "Asia",
+      "Limita con": ["Taymir"]
+    },
+    {
+      "Pais": "Australia",
+      "Continente": "Oceania",
+      "Limita con": ["Sumatra", "Borneo"]
+    },
+    {
+      "Pais": "Kamtchatka",
+      "Continente": "Asia",
+      "Limita con": ["China"]
+    },
+    {
+      "Pais": "Israel",
+      "Continente": "Asia",
+      "Limita con": ["Arabia"]
+    },
+    {
+      "Pais": "Borneo",
+      "Continente": "Oceania",
+      "Limita con": ["Australia"]
+    },
+    {
+      "Pais": "Taymir",
+      "Continente": "Asia",
+      "Limita con": ["Tartaria"]
+    },
+    {
+      "Pais": "Sumatra",
+      "Continente": "Oceania",
+      "Limita con": ["Australia", "India"]
+    },
+    {
+      "Pais": "Italia",
+      "Continente": "Europa",
+      "Limita con": ["Alemania", "Francia"]
+    },
+    {
+      "Pais": "Arabia",
+      "Continente": "Asia",
+      "Limita con": ["Israel"]
+    },
+    {
+      "Pais": "India",
+      "Continente": "Asia",
+      "Limita con": ["China", "Sumatra"]
+    },
+    {
+      "Pais": "Alemania",
+      "Continente": "Europa",
+      "Limita con": ["Italia", "Francia"]
+    },
+    {
+      "Pais": "China",
+      "Continente": "Asia",
+      "Limita con": ["Kamtchatka", "India"]
+    }
+  ]
+}

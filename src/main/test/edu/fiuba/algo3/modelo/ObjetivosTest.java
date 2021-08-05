@@ -15,7 +15,7 @@ import static org.mockito.Mockito.mock;
 
 public class ObjetivosTest {
 
-    static String rutaArchivo = "archivos/paises_reducido.json";
+    static String rutaArchivo = "src/main/resources/archivos/paises_reducido.json";
     Mapa mapa;
 
     @BeforeEach
