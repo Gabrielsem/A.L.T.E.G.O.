@@ -21,6 +21,8 @@ package main as "edu.fiuba.algo3" {
 
     pantallas ..> fases
     fases ..> vistas
+
+    pantallas <.. vistas
   }
 
   interfaz ..> modelo
@@ -39,7 +41,6 @@ cloud e as "Dependencias Externas"
 Resources <. pantallas
 main ..> e
 
-vistas <..> mod
 
 
 
