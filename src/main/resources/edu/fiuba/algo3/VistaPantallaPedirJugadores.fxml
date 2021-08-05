@@ -106,7 +106,7 @@
                         <Font name="Times New Roman Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" textFill="#d3d3d3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" textFill="#d3d3d3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" styleClass="blackPlayerLabel">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
                      </font>

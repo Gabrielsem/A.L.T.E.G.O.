@@ -48,7 +48,7 @@ public class App extends Application {
     }
 
     private void inicializarEscena(Stage stage, Scene scene) {
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-clear.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles-dark.css")).toExternalForm());
         stage.sizeToScene();
         stage.show();
         stage.setMinWidth(stage.getWidth());

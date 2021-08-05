@@ -171,3 +171,7 @@ Slider {
     -fx-text-fill: white;
     -fx-font-size: 11pt;
 }
+
+.blackPlayerLabel {
+    -fx-text-fill: #FFF;
+}
