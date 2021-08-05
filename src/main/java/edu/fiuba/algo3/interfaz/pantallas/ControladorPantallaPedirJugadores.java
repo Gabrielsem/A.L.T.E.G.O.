@@ -36,6 +36,12 @@ public class ControladorPantallaPedirJugadores {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaPedirJugadores.fxml"));
         fxmlLoader.setController(this);
         scene.setRoot(fxmlLoader.load());
+
+        if (!App.hayMusica()) {
+            ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
+            System.out.println("apago boton");
+            botonMusica.setSelected(true);
+        };
     }
 
     @FXML
@@ -162,5 +168,13 @@ public class ControladorPantallaPedirJugadores {
 
         juego.addJugadorObserver(observers);
         juego.addObserverTurnos(new VistaTurno(scene, vistasJugadores));
+    }
+
+    @FXML
+    public void modificarMusica(ActionEvent actionEvent) {
+        ToggleButton botonMusica = (ToggleButton) actionEvent.getSource();
+
+        if (botonMusica.isSelected()) App.detenerCancion();
+        else App.reproducirCancion();
     }
 }

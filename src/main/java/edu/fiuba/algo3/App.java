@@ -113,7 +113,9 @@ public class App extends Application {
 
     }
 
-    public static void detenerCancion() { App.reproductor.pause(); }
+    public static void detenerCancion() { App.reproductor.setMute(true); }
 
-    public static void reproducirCancion() { App.reproductor.play(); }
+    public static void reproducirCancion() { App.reproductor.setMute(false); }
+
+    public static boolean hayMusica() { return !App.reproductor.isMute(); }
 }

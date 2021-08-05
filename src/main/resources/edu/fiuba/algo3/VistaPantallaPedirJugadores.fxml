@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="grilla" fx:id="grilla" alignment="CENTER" styleClass="fondo" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="grilla" fx:id="grilla" alignment="CENTER" prefHeight="570.0" prefWidth="603.0" styleClass="fondo" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.4000122070313" minWidth="10.0" prefWidth="92.93330078125" />
@@ -19,11 +19,11 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="452.5333618164061" minWidth="10.0" prefWidth="93.13334960937505" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="3.1999511122703552" minHeight="0.0" prefHeight="3.1999511122703552" />
-      <RowConstraints maxHeight="1080.0" minHeight="10.0" prefHeight="1076.8000488877296" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1080.0" minHeight="10.0" prefHeight="492.00001220703126" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="407.1999816894531" minHeight="10.0" prefHeight="77.59998779296876" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2">
           <children>
               <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" styleClass="texto" text="Seleccione los jugadores">
                   <VBox.margin>
@@ -32,7 +32,7 @@
                <font>
                   <Font name="Times New Roman" size="24.0" />
                </font>
-
+      
             </Label>
             <HBox />
             <GridPane prefHeight="187.0" prefWidth="374.0">
@@ -81,27 +81,33 @@
                   <Label fx:id="JugadorAmarillo" style="-fx-font-style: italic;" textFill="#ee7733" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                    <Label fx:id="JugadorRosa" style="-fx-font-style: italic;" textFill="#ee3377" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="JugadorRojo" style="-fx-font-style: italic;" textFill="#cc3311" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="JugadorAzul" style="-fx-font-style: italic;" textFill="#0b5394" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="JugadorVerde" style="-fx-font-style: italic;" textFill="#009988" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="JugadorNegro" style="-fx-font-style: italic;" textFill="#d3d3d3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="13.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" VBox.vgrow="ALWAYS">
@@ -110,14 +116,18 @@
                </padding>
                <font>
                   <Font size="14.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Label fx:id="advertenciaCantidadJugadores" text="Seleccione al menos 2 jugadores antes de comenzar" textFill="#ef0202" visible="false" />
           </children>
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
       </VBox>
-      <VBox prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="15.0" />
+         </GridPane.margin>
+      </ToggleButton>
    </children>
 </GridPane>
