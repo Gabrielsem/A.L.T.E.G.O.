@@ -62,7 +62,7 @@ public class VistaBatalla implements Observer {
         cajaAtacante.setPadding( new Insets(10) );
         cajaDefensor.setPadding( new Insets(10) );
 
-        App.sonido("batalla");
+        App.sonido("batalla", 0.5);
         App.popUpWindow( caja );
     }
 }

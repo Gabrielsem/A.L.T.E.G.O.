@@ -49,7 +49,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
 
     @Override
     public Fase tocoBoton(Button unBoton) {
-        App.sonido("marchar");
+        App.sonido("marchar", 0.1);
         paisAtacante.invadir(paisAtacado, slider.getValue());
         botonSiguiente.setVisible(false);
         slider.ocultar();

@@ -98,13 +98,14 @@ public class App extends Application {
         }
     }
 
-    public static MediaPlayer sonido(String sonido) {
+    public static MediaPlayer sonido(String sonido, double volumen) {
 
         String url = "sonidos/"+sonido+".mp3";
         try {
             Media sound = new Media(new File(url).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
+            mediaPlayer.setVolume(volumen);
             return mediaPlayer;
         } catch (Exception e ) {
             System.out.println("Cannot play: "+url);
@@ -113,7 +114,7 @@ public class App extends Application {
     }
 
     public static void cancion(String cancion) {
-        MediaPlayer reproductor = sonido(cancion);
+        MediaPlayer reproductor = sonido(cancion, 1);
 
         if (reproductor == null) return;
 

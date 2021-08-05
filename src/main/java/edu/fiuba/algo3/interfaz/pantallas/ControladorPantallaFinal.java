@@ -25,7 +25,7 @@ public class ControladorPantallaFinal {
         App.clearPopUps();
         App.detenerCancion();
         mostrarGanadores(ganadores);
-        App.sonido("ganar");
+        App.sonido("ganar", 1);
     }
 
     @FXML
