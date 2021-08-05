@@ -78,8 +78,10 @@ public class Jugador extends Observable {
     }
 
     public void recibirTarjeta( Tarjeta unaTarjeta ) {
+        if( Objects.isNull(unaTarjeta) ) return;
+
         tarjetas.add( unaTarjeta );
-        setChanged();notifyObservers( VistaJugador.Aviso.nuevaTarjeta.nuevo(unaTarjeta) );
+        setChanged();notifyObservers( "Nueva Tarjeta: "+unaTarjeta.displayPais() );
     }
 
     public void notificarObservadores() { setChanged();notifyObservers(); }
@@ -115,7 +117,11 @@ public class Jugador extends Observable {
             tarjetas.removeAll( grupoCanjeable );
             juego.devolverTarjetas( grupoCanjeable );
             canjesRealizados++;
-            setChanged();notifyObservers( VistaJugador.Aviso.canjeTarjetas.nuevo( grupoCanjeable ) );
+
+            String mensaje = "Tarjetas Canjeadas:";
+            for( Tarjeta t : grupoCanjeable ) mensaje+=" "+t.displayPais();
+            setChanged();notifyObservers( mensaje );
+
             return Tarjeta.cantidadFichasCanje(canjesRealizados - 1);
         }
 

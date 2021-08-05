@@ -51,7 +51,6 @@ public class Batalla extends Observable{
     private void efectuarBatalla() {
 
         dadosAtacante = lanzarDados(cantFichasAtaque);
-        System.out.println("B"+dadosAtacante);
         dadosDefensor = lanzarDados(defensor.cantidadFichas());
         int cantidad = min(3,min(cantFichasAtaque,defensor.cantidadFichas()) );
 
