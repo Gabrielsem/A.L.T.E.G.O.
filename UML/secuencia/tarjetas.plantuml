@@ -15,6 +15,7 @@ participant jug as "atacante:Jugador"
 participant atacante as "paisAtacante:Pais"
 participant batalla as ":Batalla"
 participant defensor as "paisDefensor:Pais"
+participant jug2 as "defensor:Jugador"
 activate Actor
 
 Actor -> jug ++: prepararAtaques()
@@ -45,8 +46,8 @@ Actor -> atacante ++: invadir(defensor, cantFichas)
 atacante -> atacante: verificarAlcanzanFichas(cantFichas)
 atacante -> atacante: perderFichas(cantFichas)
 atacante -> defensor ++: ocupadoPor(jugador, cantFichas)
-defensor ->: desocupar(paisDefensor)
-defensor <--]
+defensor -> jug2 ++: desocupar(paisDefensor)
+return
 
 defensor -> jug ++: ocupar(paisDefensor)
 jug -> juego ++: pedirTarjeta()
