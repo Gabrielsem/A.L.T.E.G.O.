@@ -35,52 +35,42 @@ participant pais as ":Pais"
 participant turnos as ":Turnos"
 participant tarjeta as ":Tarjeta"
 actor ++
-actor -> juego++: inicializar(cantJugadores:int, \n archivoPaises:String,\n archivoObjetivos:String, \n archivoTarjetas:String)
+actor -> juego++: inicializar(cantJugadores, \n archivoPaises,\n archivoObjetivos, \n archivoTarjetas)
 
 loop para cada jugador
-    juego -> jug: <<create>>(numJugador:int)
+    juego -> jug**: <<create>>(numJugador)
 end loop
 
-juego -> mapa++: <<create>>(continentes:dict)
+juego -> mapa**: <<create>>(continentes)
+activate mapa
 
 loop para cada pais
-    mapa -> pais: <<create>>(nombre:str, continente:str, limitrofes:str)
+    mapa -> pais**: <<create>>(nombre, \ncontinente, \nlimitrofes)
 end loop
 mapa--
 
-juego -> juego++: crearTarjetas(archivoTarjetas:String)
+juego -> juego++: crearTarjetas(archivoTarjetas)
 loop para cada tarjeta
-juego -> tarjeta: <<create>>(pais:Pais, simbolo:Simbolo)
+juego -> tarjeta**: <<create>>(pais, simbolo)
 end loop
 juego--
 
-juego -> turnos: <<create>>(jugadores:ArrayList)
+juego -> turnos**: <<create>>(jugadores)
 
-
-juego -> mapa++: repartirPaises(jugadores:Jugador)
+juego -> mapa++: repartirPaises(jugadores)
 juego--
 
 loop para cada pais
-    mapa -> pais++: ocupadoPor(jugador:Juagdor, 1)
-    pais -> jug++: ocupar(pais:Pais)
+    mapa -> pais++: ocupadoPor(jugador, 1)
+    pais -> jug++: ocupar(pais)
     jug--
 end loop
 mapa--
 pais--
 
 juego -> juego++: crearObjetivos()
-juego -> ":ObjetivoComun": <<create>>(cant:int, mapa:Mapa)
-loop por cada objetivo ocupacion
-juego -> ":ObjetivoOcupacion": <<create>>(cantidadesPorContinente:HashMap, mapa:Mapa)
-end loop
-loop por cada objetivo destruccion
-juego -> ":ObjetivoDestruccion": <<create>>(numJugador:int, mapa:Mapa)
-end loop
-juego--
-
-juego -> juego++: repartirObjetivos()
-loop por cada jugador
-juego -> jug: asignarObjetivos(objetivoComun:ObjetivoComun, objetivoSecreto:Objetivo)
+loop por cada objetivo
+juego -> Objetivo**: <<create>>(...)
 end loop
 juego--
 
