@@ -20,11 +20,13 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="452.5333618164061" minWidth="10.0" prefWidth="93.13334960937505" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="1080.0" minHeight="10.0" prefHeight="492.00001220703126" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1080.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1080.0" minHeight="10.0" prefHeight="396.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="407.1999816894531" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="407.1999816894531" minHeight="10.0" prefHeight="77.59998779296876" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2">
+      <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
           <children>
               <Label alignment="TOP_CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold;" styleClass="texto" text="Seleccione los jugadores">
                   <VBox.margin>
@@ -111,24 +113,27 @@
                   </Label>
                </children>
             </GridPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" VBox.vgrow="ALWAYS">
-               <padding>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </padding>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
             <Label fx:id="advertenciaCantidadJugadores" text="Seleccione al menos 2 jugadores antes de comenzar" textFill="#ef0202" visible="false" />
           </children>
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
       </VBox>
-      <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>
       </ToggleButton>
+      <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#iniciarJuego" text="Iniciar Juego" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <padding>
+            <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
    </children>
 </GridPane>

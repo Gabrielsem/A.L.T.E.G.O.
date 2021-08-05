@@ -42,7 +42,6 @@ public class ControladorPantallaPedirJugadores {
         setBackground();
         if (!App.hayMusica()) {
             ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
-            System.out.println("apago boton");
             botonMusica.setSelected(true);
         };
     }
