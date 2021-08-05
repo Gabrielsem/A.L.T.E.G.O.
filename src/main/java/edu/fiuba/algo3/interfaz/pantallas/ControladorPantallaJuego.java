@@ -112,9 +112,6 @@ public class ControladorPantallaJuego {
         Pais pais = (Pais) node.getUserData();
         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
             fase = fase.tocoPais(node);
-        } else {
-            // TODO sacar este hack
-            pais.agregarFichas(1);
         }
     }
 
