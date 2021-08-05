@@ -28,7 +28,9 @@ public class ControladorPantallaFinal {
         scene.setRoot(fxmlLoader.load());
 
         App.clearPopUps();
+        App.detenerCancion();
         mostrarGanadores(ganadores);
+        App.sonido("ganar");
     }
 
     @FXML
