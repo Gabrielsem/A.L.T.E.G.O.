@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="grilla" fx:id="grilla" alignment="CENTER" prefHeight="570.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane styleClass="fondoMenu" id="grilla" fx:id="grilla" alignment="CENTER" prefHeight="570.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
 
    <columnConstraints>
       <ColumnConstraints />

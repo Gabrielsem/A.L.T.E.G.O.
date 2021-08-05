@@ -79,6 +79,13 @@
     -fx-background-color: #2C2B2C;
 }
 
+
+.fondoMenu {
+    -fx-background-color: #2C2B2C;
+    -fx-background-image: url("../../../../../imagenes/Guerra_dark.png");
+    -fx-background-repeat: repeat no-repeat;
+}
+
 .caja,#playerBox {
     -fx-background-color: #3C3F42;
     -fx-text-fill: #FFF;
