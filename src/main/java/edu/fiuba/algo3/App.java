@@ -50,8 +50,8 @@ public class App extends Application {
         stage.setMinWidth(stage.getWidth());
         stage.setMinHeight(stage.getHeight());
 
-        //stage.setWidth(1200);
-        //stage.setHeight(800);
+        stage.setWidth(1200);
+        stage.setHeight(800);
     }
 
     public static void main(String[] args) {
