@@ -35,7 +35,6 @@ public class ControladorPantallaPedirJugadores {
         this.coloresJugadores = new HashMap<>();
 
         App.loadFXML("VistaPantallaPedirJugadores.fxml", this);
-        setBackground();
         if (!App.hayMusica()) {
             ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
             botonMusica.setSelected(true);
@@ -174,19 +173,5 @@ public class ControladorPantallaPedirJugadores {
 
         if (botonMusica.isSelected()) App.detenerCancion();
         else App.reproducirCancion();
-    }
-
-    @FXML
-    public void setBackground() throws IOException {
-
-        GridPane grilla = (GridPane) scene.lookup("#grilla");
-        Image imagen = new Image(new FileInputStream("imagenes/Guerra_dark_blur.png"));
-        BackgroundImage fondoimg = new BackgroundImage(imagen,
-                BackgroundRepeat.REPEAT,
-                BackgroundRepeat.REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(1, 1, true, true, false, false));
-        grilla.setBackground(new Background(fondoimg));
-        grilla.setStyle("#fondo");
     }
 }
