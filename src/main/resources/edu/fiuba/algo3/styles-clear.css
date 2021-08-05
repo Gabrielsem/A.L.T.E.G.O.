@@ -5,7 +5,7 @@
 }
 
 .pais:hover > SVGPath, .pais:active > SVGPath, .pais:focus > SVGPath {
-    -fx-fill: #ACA;
+    -fx-fill: #C9C9C9;
     -fx-stroke-width: 3;
     -fx-strokeType: CENTER;
 }
