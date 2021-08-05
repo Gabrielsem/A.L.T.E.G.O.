@@ -47,6 +47,8 @@ public class ControladorPantallaJuego {
         this.scene = scene;
         this.juego = juego;
 
+        App.cancion("cancion1");
+
         //FIXME - Estas 3 lineas se repiten en varios lados, hacer una funcion
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("VistaPantallaJuego.fxml"));
         fxmlLoader.setController(this);
@@ -57,8 +59,6 @@ public class ControladorPantallaJuego {
         nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));
         mostrarTabJugadores();
         inicializarAjusteEscala();
-
-        App.cancion("cancion1");
     }
 
     @FXML
