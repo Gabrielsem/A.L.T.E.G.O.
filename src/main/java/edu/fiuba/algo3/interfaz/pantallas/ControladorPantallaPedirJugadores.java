@@ -5,6 +5,7 @@ import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaPais;
 import edu.fiuba.algo3.interfaz.vistas.VistaTurno;
+import edu.fiuba.algo3.modelo.Batalla;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -136,7 +137,7 @@ public class ControladorPantallaPedirJugadores {
         new ControladorPantallaJuego(scene, juego);
         addPaisObservers(juego);
         addJugadorYTurnoObservers(juego);
-        VistaBatalla.habilitar();
+        Batalla.agregarObservador( new VistaBatalla() );
     }
 
     private void addPaisObservers(Juego juego) {

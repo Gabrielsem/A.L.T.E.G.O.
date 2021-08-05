@@ -38,24 +38,24 @@ actor ++
 actor -> juego++: inicializar(cantJugadores, \n archivoPaises,\n archivoObjetivos, \n archivoTarjetas)
 
 loop para cada jugador
-    juego -> jug**: <<create>>(numJugador)
+    juego -> jug**: new (numJugador)
 end loop
 
-juego -> mapa**: <<create>>(continentes)
+juego -> mapa**: new (continentes)
 activate mapa
 
 loop para cada pais
-    mapa -> pais**: <<create>>(nombre, \ncontinente, \nlimitrofes)
+    mapa -> pais**: new (nombre, \ncontinente, \nlimitrofes)
 end loop
 mapa--
 
 juego -> juego++: crearTarjetas(archivoTarjetas)
 loop para cada tarjeta
-juego -> tarjeta**: <<create>>(pais, simbolo)
+juego -> tarjeta**: new (pais, simbolo)
 end loop
 juego--
 
-juego -> turnos**: <<create>>(jugadores)
+juego -> turnos**: new (jugadores)
 
 juego -> mapa++: repartirPaises(jugadores)
 juego--
@@ -70,7 +70,7 @@ pais--
 
 juego -> juego++: crearObjetivos()
 loop por cada objetivo
-juego -> Objetivo**: <<create>>(...)
+juego -> Objetivo**: new (...)
 end loop
 juego--
 

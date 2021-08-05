@@ -1,21 +1,34 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Observer;
 
 import static java.lang.Math.min;
 
 
-public class Batalla {
+public class Batalla extends Observable{
     private final Pais defensor;
     private final Pais atacante;
     private final int cantFichasAtaque;
+    private static HashSet<Observer> observers = new HashSet<>();
+
+    private int[] dadosAtacante;
+    public int[] dadosAtacante() { return dadosAtacante;}
+    private int[] dadosDefensor;
+    public int[] dadosDefensor() { return dadosDefensor;}
 
     public Batalla(Pais def, Pais atk, int FichasAtaque) {
         defensor = def;
         atacante = atk;
         cantFichasAtaque = FichasAtaque;
         efectuarBatalla();
+    }
+
+    public static void agregarObservador(Observer observer) {
+        observers.add( observer );
     }
 
     private int[] lanzarDados(int cantidad){
@@ -39,8 +52,9 @@ public class Batalla {
 
     private void efectuarBatalla() {
 
-        int[] dadosAtacante = lanzarDados(cantFichasAtaque);
-        int[] dadosDefensor = lanzarDados(defensor.cantidadFichas());
+        dadosAtacante = lanzarDados(cantFichasAtaque);
+        System.out.println("B"+dadosAtacante);
+        dadosDefensor = lanzarDados(defensor.cantidadFichas());
         int cantidad = min(3,min(cantFichasAtaque,defensor.cantidadFichas()) );
 
         int perdidaAtacante = 0;
@@ -54,6 +68,6 @@ public class Batalla {
         atacante.perderFichas(perdidaAtacante);
         defensor.perderFichas(perdidaDefensor);
 
-        new VistaBatalla( dadosAtacante, dadosDefensor );
+        for( Observer observer : observers ) this.addObserver(observer);
     }
 }

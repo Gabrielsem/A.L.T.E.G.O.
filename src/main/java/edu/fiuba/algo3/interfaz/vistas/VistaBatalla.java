@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.modelo.Batalla;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,15 +13,19 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Observable;
+import java.util.Observer;
 
-public class VistaBatalla {
+public class VistaBatalla implements Observer {
 
-    private static boolean habilitado = false;
-    public static void habilitar(){ habilitado=true; }
+    @Override
+    public void update(Observable o, Object arg) {
+        Batalla batalla = (Batalla) o;
 
-    public VistaBatalla(int[] dadosAtacante, int[] dadosDefensor) {
-
-        if( !habilitado ) return;
+        int[] dadosAtacante = batalla.dadosAtacante();
+        int[] dadosDefensor = batalla.dadosDefensor();
 
         VBox caja = new VBox();
         caja.getStyleClass().add("Batalla");
