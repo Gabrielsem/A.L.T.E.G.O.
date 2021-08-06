@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.fases.ataque;
 
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
@@ -24,7 +25,7 @@ public class AtaqueDefensor extends FaseConSeleccionables {
         scene.lookup("#botonSiguiente").setVisible(false);
 
         instruccion.setText("Clickeá el país al que queres atacar");
-        super.setSeleccionables( atacante.getPaisesAtacables() );
+        super.setSeleccionables( atacante.getPaisesAtacables() ,VistaJugador.getColorJugador(juego.turnoActual().numero() ));
     }
 
     @Override

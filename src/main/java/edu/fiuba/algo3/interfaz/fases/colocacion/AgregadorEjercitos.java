@@ -5,6 +5,7 @@ import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConColocacion;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.scene.Node;
@@ -43,7 +44,7 @@ public class AgregadorEjercitos extends FaseConSeleccionables {
         botonSiguiente.setVisible(false);
         juego.reiniciarTurnos();
         actual = juego.siguienteTurno();
-        super.setSeleccionables(actual.paises());
+        super.setSeleccionables(actual.paises(), VistaJugador.getColorJugador(juego.turnoActual().numero()));
         cambiarInstruccionAgregarFichas(actual);
     }
 
@@ -71,7 +72,7 @@ public class AgregadorEjercitos extends FaseConSeleccionables {
         actual = juego.siguienteTurno();
         botonSiguiente.setVisible(false);
         cambiarInstruccionAgregarFichas(actual);
-        super.setSeleccionables(actual.paises());
+        super.setSeleccionables(actual.paises(), VistaJugador.getColorJugador(juego.turnoActual().numero()));
 
         return this;
     }

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.interfaz.fases.ataque.AtaqueAtacante;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Colocacion;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
@@ -28,7 +29,7 @@ public class ReagrupacionOrigen extends FaseConSeleccionables {
         instruccion.setText("Clickea el país desde el que quieras mover fichas");
         botonSiguiente.setVisible(true);
         botonSiguiente.setText("Pasar turno");
-        super.setSeleccionables(juego.turnoActual().paisesParaReagrupar());
+        super.setSeleccionables(juego.turnoActual().paisesParaReagrupar(), VistaJugador.getColorJugador(juego.turnoActual().numero()));
         juego.turnoActual().activarTarjetas();
 
         Label faseActual = (Label) scene.lookup("#faseActual");

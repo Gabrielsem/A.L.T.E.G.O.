@@ -4,6 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,18 +25,26 @@ public abstract class FaseConSeleccionables implements Fase {
 
     abstract protected Fase tocoSeleccionable(Node nodoPais);
 
-    protected void setSeleccionables(Collection<String> seleccion) {
+    protected void setSeleccionables(Collection<String> seleccion, String codigoColor) {
         seleccionables = new ArrayList<>(seleccion);
 
         // Estilar seleccionables
         for (Node nodo : ((Group) scene.lookup("#_root")).getChildren()) {
             if (nodo.getStyleClass().contains("pais")) {
                 //Clear
-                nodo.getStyleClass().remove("paisSeleccionable");
+                SVGPath pais = (SVGPath) ((Group)nodo).getChildren().get(0);
+                pais.setEffect(null);
 
                 //Style
                 if( seleccionables.contains( nodo.getId() ) ){
-                    nodo.getStyleClass().add("paisSeleccionable");
+                    InnerShadow efecto = new InnerShadow();
+                    Color color = Color.web(codigoColor);
+
+                    efecto.setColor(color.darker().darker());
+                    efecto.setWidth(pais.getLayoutBounds().getWidth());
+                    efecto.setHeight(pais.getLayoutBounds().getHeight());
+
+                    pais.setEffect(efecto);
                 }
             }
         }

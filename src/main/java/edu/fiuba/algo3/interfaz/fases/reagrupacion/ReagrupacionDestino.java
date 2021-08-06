@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.fases.reagrupacion;
 
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
@@ -20,7 +21,7 @@ public class ReagrupacionDestino extends FaseConSeleccionables {
         this.origen = origen;
         instruccion = (Label) scene.lookup("#instruccion");
 
-        super.setSeleccionables(juego.turnoActual().reagrupablesDesde(origen.nombre()));
+        super.setSeleccionables(juego.turnoActual().reagrupablesDesde(origen.nombre()), VistaJugador.getColorJugador(juego.turnoActual().numero()));
         scene.lookup("#botonSiguiente").setVisible(false);
         instruccion.setText("Elegi el país al que quieras reagrupar");
     }

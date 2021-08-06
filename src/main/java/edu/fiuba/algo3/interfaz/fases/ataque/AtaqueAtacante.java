@@ -3,19 +3,18 @@ package edu.fiuba.algo3.interfaz.fases.ataque;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
 import edu.fiuba.algo3.interfaz.fases.reagrupacion.ReagrupacionOrigen;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 
 public class AtaqueAtacante extends FaseConSeleccionables {
 
     Juego juego;
     Label instruccion;
-    HBox cajaBoton;
     Button botonSiguiente;
 
     public AtaqueAtacante(Scene scene, Juego juego){
@@ -29,7 +28,7 @@ public class AtaqueAtacante extends FaseConSeleccionables {
 
     private void iniciar() {
         instruccion.setText("Clickeá el país con el que queres atacar");
-        super.setSeleccionables( juego.turnoActual().paisesDisponiblesParaAtacar() );
+        super.setSeleccionables( juego.turnoActual().paisesDisponiblesParaAtacar(), VistaJugador.getColorJugador(juego.turnoActual().numero() ));
         botonSiguiente.setText("Pasar a reagrupación");
         botonSiguiente.setVisible(true);
 

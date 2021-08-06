@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz.fases.reagrupacion;
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
@@ -32,7 +33,7 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
     }
 
     private void iniciar() {
-        super.setSeleccionables(Arrays.asList(origen.nombre(), destino.nombre()));
+        super.setSeleccionables(Arrays.asList(origen.nombre(), destino.nombre()), VistaJugador.getColorJugador(juego.turnoActual().numero()));
 
         instruccion.setText("Elegí la cantidad de fichas a mover");
         botonSiguiente.setText("Reagrupar");

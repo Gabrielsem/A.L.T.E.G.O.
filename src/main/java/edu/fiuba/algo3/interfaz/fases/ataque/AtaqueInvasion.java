@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz.fases.ataque;
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.FaseConSeleccionables;
+import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaSlider;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
@@ -42,7 +43,7 @@ public class AtaqueInvasion extends FaseConSeleccionables {
     private void iniciar() {
         instruccion.setText("Elegí cuantas fichas mover al país conquistado");
         paisAtacado.ocupadoPor(juego.turnoActual(),0);
-        super.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ));
+        super.setSeleccionables( Arrays.asList( paisAtacado.nombre(),paisAtacante.nombre() ), VistaJugador.getColorJugador(juego.turnoActual().numero()));
         botonSiguiente.setText("Invadir");
         slider.mostrar(paisAtacante.cantidadFichas() - 1);
     }
