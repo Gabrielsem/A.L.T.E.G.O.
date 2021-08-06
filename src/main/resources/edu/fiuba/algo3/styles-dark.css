@@ -70,10 +70,6 @@
     -fx-strokeWidth: 3;
 }
 
-.paisSeleccionable > SVGPath {
-    -fx-fill: #B58989;
-}
-
 .fondo, #tabJugadores {
     -fx-background-color: #2C2B2C;
 }
