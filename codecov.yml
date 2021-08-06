@@ -3,4 +3,4 @@ ignore:
   - "**/interfaz/**/*"
   -  "**/Main.java"
   -  "**/App.java"
-  -  "**/Observable.java"
+  -  "**/util/*"

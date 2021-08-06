@@ -31,7 +31,7 @@ import java.util.Objects;
 public class App extends Application {
     
     private static MediaPlayer reproductor;
-    String version = "1.2.3";
+    String version = "1.2.4";
 
     private static Stage appStage;
     private static Popup popup;
