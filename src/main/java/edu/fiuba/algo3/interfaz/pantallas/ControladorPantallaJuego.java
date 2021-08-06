@@ -30,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ControladorPantallaJuego {
 
@@ -120,6 +121,11 @@ public class ControladorPantallaJuego {
 
         Label labelNombrePais = (Label) scene.lookup("#nombrePais");
         Label labelNombreContinente = (Label) scene.lookup("#nombreContinente");
+
+        if( Objects.isNull(nodoPais) || Objects.isNull(nodoPais.getUserData()) ) {
+            System.out.println("\u001B[33m ERROR MOSTRAR PAIS: "+ nombrePais+"\u001B[0m");
+            return;
+        }
 
         labelNombrePais.setText(nombrePais);
         labelNombreContinente.setText(((Pais) nodoPais.getUserData()).continente());

@@ -120,7 +120,12 @@ public class Mapa {
 
     public void addObservers(HashMap<String, Observer> observers) {
         for (String nombre : observers.keySet()) {
-            paises.get(nombre).addObserver(observers.get(nombre));
+            Pais pais = paises.get(nombre);
+            if( Objects.isNull(pais) ){
+                System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ nombre +"\u001B[0m");
+                continue;
+            }
+            pais.addObserver(observers.get(nombre));
         }
     }
 }

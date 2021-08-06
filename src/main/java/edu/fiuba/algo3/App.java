@@ -117,6 +117,9 @@ public class App extends Application {
             return mediaPlayer;
         } catch (Exception e ) {
             System.out.println("Cannot play: "+sonido);
+        } catch(java.lang.UnsatisfiedLinkError e)
+        {
+            System.out.println("\u001B[35m ERROR OBTENER SONIDO: "+ sonido+"\u001B[0m");
         }
         return null;
     }
@@ -135,11 +138,11 @@ public class App extends Application {
         App.reproductor = reproductor;
     }
 
-    public static void detenerCancion() { App.reproductor.pause(); }
+    public static void detenerCancion() { if (reproductor == null) return;App.reproductor.pause(); }
 
-    public static void reproducirCancion() { App.reproductor.play(); }
+    public static void reproducirCancion() { if (reproductor == null) return;App.reproductor.play(); }
 
-    public static boolean hayMusica() { return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING; }
+    public static boolean hayMusica() { if (reproductor == null) return false;return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING; }
 
     public static void cambiarVista(Scene scene, ToggleButton botonCambiarVista) {
         scene.getStylesheets().clear();
