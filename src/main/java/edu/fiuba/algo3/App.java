@@ -20,6 +20,9 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -28,7 +31,7 @@ import java.util.Objects;
 public class App extends Application {
     
     private static MediaPlayer reproductor;
-    String version = "1.2.1";
+    String version = "1.2.3";
 
     private static Stage appStage;
     private static Popup popup;
@@ -106,21 +109,27 @@ public class App extends Application {
 
     public static MediaPlayer sonido(String sonido, double volumen) {
 
-        String url = "src/main/resources/sonidos/"+sonido+".mp3";
+        final String ruta = "/sonidos/"+sonido+".mp3";
+
+        final String file = ruta;
+
+        System.out.println( ruta + "->" + file );
+
         try {
-            Media sound = new Media(new File(url).toURI().toString());
+            Media sound = new Media( file );
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
             mediaPlayer.setVolume(volumen);
             return mediaPlayer;
         } catch (Exception e ) {
-            System.out.println("Cannot play: "+url);
+            System.out.println("Cannot play: "+sonido);
         }
         return null;
     }
 
     public static void cancion(String cancion) {
-
+        //FIXME - IN PROCESS
+        /*
         //Fade out de cancion previa
         if (App.reproductor != null) (new Timeline(new KeyFrame(Duration.seconds(5), new KeyValue(App.reproductor.volumeProperty(), 0)))).play();
 
@@ -131,14 +140,14 @@ public class App extends Application {
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.pause();
 
-        App.reproductor = reproductor;
+        App.reproductor = reproductor;*/
     }
 
-    public static void detenerCancion() { App.reproductor.pause(); }
+    public static void detenerCancion() { /*App.reproductor.pause();*/ }
 
-    public static void reproducirCancion() { App.reproductor.play(); }
+    public static void reproducirCancion() { /*App.reproductor.play();*/ }
 
-    public static boolean hayMusica() { return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING; }
+    public static boolean hayMusica() { /*return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING;*/ return true; }
 
     public static void cambiarVista(Scene scene, ToggleButton botonCambiarVista) {
         scene.getStylesheets().clear();
