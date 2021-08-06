@@ -42,7 +42,7 @@ public class ReagrupacionFichas extends FaseConSeleccionables {
 
     @Override
     public Fase tocoBoton(Button unBoton) {
-        App.sonido("marchar", 0.1);
+        if (App.hayMusica()) App.sonido("marchar", 0.1);
         juego.turnoActual().reagrupar(origen.nombre(), destino.nombre(), slider.getValue());
         slider.ocultar();
         return new ReagrupacionOrigen(scene, juego);

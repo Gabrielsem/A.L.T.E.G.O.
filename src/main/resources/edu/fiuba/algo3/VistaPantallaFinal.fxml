@@ -41,7 +41,7 @@
                <VBox.margin>
                   <Insets bottom="40.0" />
                </VBox.margin></Button>
-            <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" />
+            <ToggleButton fx:id="botonMusica" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#modificarMusica" prefHeight="30.0" prefWidth="30.0" styleClass="botonMusica" />
             <ToggleButton fx:id="botonSwitchVista" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#switchVista" prefHeight="30.0" prefWidth="30.0" styleClass="botonSwitch" />
          </children>
       </VBox>

@@ -4,7 +4,6 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -27,7 +26,7 @@ public class ControladorPantallaFinal {
         App.clearPopUps();
         App.detenerCancion();
         mostrarGanadores(ganadores);
-        App.sonido("ganar", 1);
+        if (App.hayMusica()) App.sonido("ganar", 1);
     }
 
     @FXML
