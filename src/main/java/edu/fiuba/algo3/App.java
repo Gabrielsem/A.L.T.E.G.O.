@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.interfaz.pantallas.ControladorPantallaInicial;
+import edu.fiuba.algo3.util.FileLoader;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -18,7 +19,6 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -109,14 +109,8 @@ public class App extends Application {
 
     public static MediaPlayer sonido(String sonido, double volumen) {
 
-        final String ruta = "/sonidos/"+sonido+".mp3";
-
-        final String file = ruta;
-
-        System.out.println( ruta + "->" + file );
-
         try {
-            Media sound = new Media( file );
+            Media sound = FileLoader.sound(sonido+".mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
             mediaPlayer.setVolume(volumen);
@@ -128,8 +122,6 @@ public class App extends Application {
     }
 
     public static void cancion(String cancion) {
-        //FIXME - IN PROCESS
-        /*
         //Fade out de cancion previa
         if (App.reproductor != null) (new Timeline(new KeyFrame(Duration.seconds(5), new KeyValue(App.reproductor.volumeProperty(), 0)))).play();
 
@@ -140,14 +132,14 @@ public class App extends Application {
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
         reproductor.pause();
 
-        App.reproductor = reproductor;*/
+        App.reproductor = reproductor;
     }
 
-    public static void detenerCancion() { /*App.reproductor.pause();*/ }
+    public static void detenerCancion() { App.reproductor.pause(); }
 
-    public static void reproducirCancion() { /*App.reproductor.play();*/ }
+    public static void reproducirCancion() { App.reproductor.play(); }
 
-    public static boolean hayMusica() { /*return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING;*/ return true; }
+    public static boolean hayMusica() { return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING; }
 
     public static void cambiarVista(Scene scene, ToggleButton botonCambiarVista) {
         scene.getStylesheets().clear();
