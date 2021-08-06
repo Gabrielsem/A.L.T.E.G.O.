@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,9 +21,9 @@ public class IntegracionTests {
     Jugador j1, j2;
 
     @BeforeEach
-    public void setUp() throws FileNotFoundException {
+    public void setUp() throws IOException {
         // Mapa reducido con 13 países en total de Asia, Oceanía y Europa
-        mapa = new Mapa("src/main/resources/archivos/paises_reducido.json");
+        mapa = new Mapa("archivos/paises_reducido.json");
         juego = mock(Juego.class);
         // Mockeo la delegación que hace juego
         when(juego.fichasSegunContinentes(any())).thenAnswer(delegatesTo(mapa));
@@ -153,9 +154,9 @@ public class IntegracionTests {
     }
 
     @Test
-    public void activacionDeTarjetasEnRondaDeColocacion() throws FileNotFoundException {
+    public void activacionDeTarjetasEnRondaDeColocacion() throws IOException {
 
-        Juego juego = new Juego(1, "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json");
+        Juego juego = new Juego(1, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         Jugador jugador = new Jugador(1,juego);
 
         Pais p1 = new Pais("P1","C",new ArrayList<>());

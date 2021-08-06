@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.*;
+import edu.fiuba.algo3.util.Observable;
 
 import java.util.Collection;
 import java.util.HashSet;

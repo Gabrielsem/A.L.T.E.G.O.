@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.errores.TurnoInvalido;
+import edu.fiuba.algo3.util.Observable;
 
 import java.util.ArrayList;
 import java.util.Collection;

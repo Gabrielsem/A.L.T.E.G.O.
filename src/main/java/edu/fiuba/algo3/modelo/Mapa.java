@@ -4,9 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.errores.PaisNoExiste;
+import edu.fiuba.algo3.util.FileLoader;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 import static java.util.Collections.shuffle;
@@ -15,14 +18,14 @@ public class Mapa {
     final private HashMap<String, Pais> paises;
     final private HashMap<String, Integer> valorDeContinente;
 
-    public Mapa(String rutaArchivo) throws FileNotFoundException {
+    public Mapa(String rutaArchivo) throws IOException {
         paises = new HashMap<>();
         valorDeContinente = new HashMap<>();
         this.leerArchivo(rutaArchivo);
     }
 
-    private void leerArchivo(String rutaArchivo) throws FileNotFoundException {
-        FileReader lector = new FileReader(rutaArchivo);
+    private void leerArchivo(String rutaArchivo) throws IOException {
+        BufferedReader lector = FileLoader.resourceReader(rutaArchivo);
 
         JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
         cargarFichasPorContinente(objetoJson.get("fichasPorContinente").getAsJsonArray());

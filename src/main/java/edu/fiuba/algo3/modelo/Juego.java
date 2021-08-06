@@ -8,9 +8,13 @@ import edu.fiuba.algo3.modelo.objetivos.Objetivo;
 import edu.fiuba.algo3.modelo.objetivos.ObjetivoComun;
 import edu.fiuba.algo3.modelo.objetivos.ObjetivoDestruccion;
 import edu.fiuba.algo3.modelo.objetivos.ObjetivoOcupacion;
+import edu.fiuba.algo3.util.FileLoader;
+import edu.fiuba.algo3.util.Observable;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 import static java.util.Collections.shuffle;
@@ -25,7 +29,7 @@ public class Juego extends Observable {
     private ArrayList<Objetivo> objetivosSecretos;
     private ObjetivoComun objetivoComun;
 
-    public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos, String archivoTarjetas) throws FileNotFoundException {
+    public Juego(int cantJugadores, String archivoPaises, String archivoObjetivos, String archivoTarjetas) throws IOException {
         this.jugadores = new ArrayList<>();
         this.mapa = new Mapa(archivoPaises);
         this.crearTarjetas(archivoTarjetas);
@@ -41,10 +45,10 @@ public class Juego extends Observable {
         repartirObjetivos();
     }
 
-    private void crearTarjetas(String archivo) throws FileNotFoundException {
+    private void crearTarjetas(String archivo) throws IOException {
         this.tarjetas = new ArrayList<>();
 
-        FileReader lector = new FileReader(archivo);
+        BufferedReader lector = FileLoader.resourceReader(archivo);
 
         JsonElement elementoJson = JsonParser.parseReader(lector);
         JsonArray tarjetasArregloJson = elementoJson.getAsJsonArray();
@@ -57,10 +61,10 @@ public class Juego extends Observable {
         }
     }
 
-    private void crearObjetivos(String archivoObjetivos) throws FileNotFoundException {
+    private void crearObjetivos(String archivoObjetivos) throws IOException {
         this.objetivosSecretos = new ArrayList<>();
 
-        FileReader lector = new FileReader(archivoObjetivos);
+        BufferedReader lector = FileLoader.resourceReader(archivoObjetivos);
 
         JsonObject objetoJson = JsonParser.parseReader(lector).getAsJsonObject();
         crearObjetivoComun(objetoJson.get("objetivoComun").getAsJsonArray());

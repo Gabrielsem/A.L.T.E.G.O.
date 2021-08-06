@@ -4,6 +4,7 @@ import edu.fiuba.algo3.errores.JugadorNoTieneFichasSuficientes;
 import edu.fiuba.algo3.errores.JugadorNoTienePais;
 import edu.fiuba.algo3.errores.PaisDelMismoPropietarioNoPuedeSerAtacado;
 import edu.fiuba.algo3.modelo.objetivos.Objetivo;
+import edu.fiuba.algo3.util.Observable;
 
 import java.util.*;
 import java.util.stream.Collectors;

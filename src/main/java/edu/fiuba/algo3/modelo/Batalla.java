@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.util.Observable;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Observer;
@@ -8,7 +9,7 @@ import java.util.Observer;
 import static java.lang.Math.min;
 
 
-public class Batalla extends Observable{
+public class Batalla extends Observable {
     private final Pais defensor;
     private final Pais atacante;
     private final int cantFichasAtaque;

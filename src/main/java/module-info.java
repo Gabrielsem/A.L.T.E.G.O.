@@ -13,4 +13,5 @@ module edu.fiuba.algo3 {
     opens edu.fiuba.algo3.interfaz.pantallas to javafx.fxml;
     exports edu.fiuba.algo3.interfaz.vistas;
     opens edu.fiuba.algo3.interfaz.vistas to javafx.fxml;
+    exports edu.fiuba.algo3.util;
 }

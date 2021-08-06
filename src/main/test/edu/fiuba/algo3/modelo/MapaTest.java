@@ -4,12 +4,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.errores.PaisNoExiste;
+import edu.fiuba.algo3.util.FileLoader;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +23,7 @@ public class MapaTest {
     Mapa mapa;
     static String[] continentes = {"Asia", "Europa", "America del Norte", "America del Sur","Africa","Oceania"};
     static Map<String, HashSet<String>> paisesPorContinente;
-    static String rutaArchivo = "src/main/resources/archivos/paises.json";
+    static String rutaArchivo = "archivos/paises.json";
 
     @BeforeAll
     static public void cargarPaisesPorContinente() {
@@ -30,8 +33,11 @@ public class MapaTest {
 
         JsonArray arregloJsonPaises;
         try {
-            arregloJsonPaises = JsonParser.parseReader(new FileReader(rutaArchivo)).getAsJsonObject().get("paises").getAsJsonArray();
-        } catch (FileNotFoundException e) { throw new RuntimeException("Error al cargar paisesPorContinente"); }
+            BufferedReader reader = FileLoader.resourceReader(rutaArchivo);
+            arregloJsonPaises = JsonParser.parseReader(reader).getAsJsonObject().get("paises").getAsJsonArray();
+        } catch (IOException e) {
+            throw new RuntimeException("Error al cargar paisesPorContinente");
+        }
 
         for( JsonElement pais : arregloJsonPaises ) {
             String nombrePais = pais.getAsJsonObject().get("Pais").getAsString();
@@ -41,8 +47,8 @@ public class MapaTest {
     }
 
     @BeforeEach
-    public void setUp() throws FileNotFoundException {
-        mapa = new Mapa("src/main/resources/archivos/paises.json");
+    public void setUp() throws IOException {
+        mapa = new Mapa("archivos/paises.json");
     }
 
     @Test

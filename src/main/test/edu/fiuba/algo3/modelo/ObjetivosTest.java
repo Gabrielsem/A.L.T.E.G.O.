@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,11 +16,11 @@ import static org.mockito.Mockito.mock;
 
 public class ObjetivosTest {
 
-    static String rutaArchivo = "src/main/resources/archivos/paises_reducido.json";
+    static String rutaArchivo = "archivos/paises_reducido.json";
     Mapa mapa;
 
     @BeforeEach
-    public void setUp() throws FileNotFoundException {
+    public void setUp() throws IOException {
         mapa = new Mapa(rutaArchivo);
     }
 

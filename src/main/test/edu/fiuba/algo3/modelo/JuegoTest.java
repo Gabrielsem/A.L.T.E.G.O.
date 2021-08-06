@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,9 +18,9 @@ public class JuegoTest {
     Juego juego;
 
     @BeforeEach
-    public void setUp() throws FileNotFoundException {
+    public void setUp() throws IOException {
 
-        juego = new Juego(2, "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json");
+        juego = new Juego(2, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
     }
 
     @Test
@@ -47,8 +48,8 @@ public class JuegoTest {
     }
 
     @Test
-    public void juegoDe2JugadoresDa2Turnos() throws FileNotFoundException {
-        Juego juego2jug = new Juego(2, "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json");
+    public void juegoDe2JugadoresDa2Turnos() throws IOException {
+        Juego juego2jug = new Juego(2, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego2jug.turnosCompletados()) {
             juego2jug.siguienteTurno();
@@ -58,8 +59,8 @@ public class JuegoTest {
     }
 
     @Test
-    public void juegoDe6JugadoresDa6Turnos() throws FileNotFoundException {
-        Juego juego6jug = new Juego(6, "src/main/resources/archivos/paises.json", "src/main/resources/archivos/objetivos.json","src/main/resources/archivos/tarjetas.json");
+    public void juegoDe6JugadoresDa6Turnos() throws IOException {
+        Juego juego6jug = new Juego(6, "archivos/paises.json", "archivos/objetivos.json","archivos/tarjetas.json");
         int i = 0;
         while (!juego6jug.turnosCompletados()) {
             juego6jug.siguienteTurno();
