@@ -40,10 +40,13 @@
          <font>
             <Font name="Times New Roman" size="30.0" />
          </font></Label>
-      <VBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="3">
+      <VBox alignment="CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <ToggleButton fx:id="botonMusica" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" />
-            <ToggleButton fx:id="botonSwitchVista" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#switchVista" prefHeight="30.0" prefWidth="30.0" styleClass="botonSwitch" />
+            <ToggleButton fx:id="botonMusica" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="botonMusica">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></ToggleButton>
+            <ToggleButton fx:id="botonCambiarVista" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#cambiarVista" prefHeight="30.0" prefWidth="30.0" styleClass="botonSwitch" />
          </children>
       </VBox>
    </children>

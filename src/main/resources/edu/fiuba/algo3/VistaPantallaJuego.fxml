@@ -58,8 +58,8 @@
             </HBox>
             <VBox alignment="CENTER_RIGHT" spacing="10.0">
                <children>
-                  <ToggleButton fx:id="botonMusica1" contentDisplay="CENTER" mnemonicParsing="false" onAction="#modificarMusica" styleClass="botonMusica" text="Musica" />
-                  <ToggleButton fx:id="botonSwitchVista" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#switchVista" prefHeight="25.0" prefWidth="25.0" styleClass="botonSwitch" />
+                  <ToggleButton fx:id="botonMusica" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="botonMusica" />
+                  <ToggleButton fx:id="botonCambiarVista" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#cambiarVista" prefHeight="25.0" prefWidth="25.0" styleClass="botonSwitch" />
                </children>
                <opaqueInsets>
                   <Insets />

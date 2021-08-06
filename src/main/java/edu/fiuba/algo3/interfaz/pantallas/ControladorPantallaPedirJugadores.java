@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.handlers.HandlerBotonMusica;
 import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaPais;
@@ -9,20 +10,15 @@ import edu.fiuba.algo3.modelo.Batalla;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Observer;
 
 public class ControladorPantallaPedirJugadores {
@@ -36,10 +32,11 @@ public class ControladorPantallaPedirJugadores {
         this.coloresJugadores = new HashMap<>();
 
         App.loadFXML("VistaPantallaPedirJugadores.fxml", this);
-        if (!App.hayMusica()) {
-            ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
-            botonMusica.setSelected(true);
-        };
+
+        ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
+
+        if (!App.hayMusica()) botonMusica.setSelected(true);
+        botonMusica.setOnAction(new HandlerBotonMusica());
     }
 
     @FXML
@@ -50,7 +47,6 @@ public class ControladorPantallaPedirJugadores {
         if(botonColor.isSelected()) agregarJugador(actionEvent);
         else eliminarJugador(actionEvent);
     }
-
 
     @FXML
     public void agregarJugador(ActionEvent actionEvent) {
@@ -169,22 +165,5 @@ public class ControladorPantallaPedirJugadores {
     }
 
     @FXML
-    public void modificarMusica(ActionEvent actionEvent) {
-        ToggleButton botonMusica = (ToggleButton) actionEvent.getSource();
-
-        if (botonMusica.isSelected()) App.detenerCancion();
-        else App.reproducirCancion();
-    }
-
-    @FXML
-    public void switchVista(ActionEvent actionEvent) {
-        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
-
-        scene.getStylesheets().clear();
-        if (botonSwitch.isSelected()){
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
-        } else {
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
-        }
-    }
+    public void cambiarVista(ActionEvent actionEvent) { App.cambiarVista(scene, (ToggleButton) actionEvent.getSource()); }
 }

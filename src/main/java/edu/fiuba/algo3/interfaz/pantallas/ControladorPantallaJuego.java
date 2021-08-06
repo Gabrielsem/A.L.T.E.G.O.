@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.pantallas;
 
 
 import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.interfaz.handlers.HandlerBotonMusica;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
@@ -27,18 +28,14 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.media.AudioClip;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ControladorPantallaJuego {
 
     private Juego juego;
     private Scene scene;
     private Fase fase;
-    private AudioClip audio;
     private enum EjeCambioEscala {
         HORIZONTAL, VERTICAL, NINGUNO;
     }
@@ -46,11 +43,19 @@ public class ControladorPantallaJuego {
     public ControladorPantallaJuego(Scene scene, Juego juego) throws IOException {
         this.scene = scene;
         this.juego = juego;
-
-        App.cancion("cancion1");
         
         App.loadFXML("VistaPantallaJuego.fxml", this);
         this.fase = new Inicial(juego, scene);
+
+        ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
+
+        boolean hayMusica = App.hayMusica();
+        App.cancion("cancionJuego");
+
+        if (!hayMusica) botonMusica.setSelected(true);
+        else App.reproducirCancion();
+
+        botonMusica.setOnAction(new HandlerBotonMusica());
 
         Slider nodoSlider = (Slider) scene.lookup("#slider");
         nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));
@@ -59,16 +64,6 @@ public class ControladorPantallaJuego {
     }
 
     @FXML
-    public void modificarMusica(ActionEvent actionEvent) {
-        ToggleButton botonMusica = (ToggleButton) actionEvent.getSource();
-
-        if (botonMusica.isSelected()) App.detenerCancion();
-        else App.reproducirCancion();
-    }
-
-    @FXML
-
-
     private void mostrarTabJugadores(){
         HBox caja = (HBox) scene.lookup("#tabJugadores");
         ArrayList<Node> sobrantes = new ArrayList<>();
@@ -177,14 +172,5 @@ public class ControladorPantallaJuego {
     }
 
     @FXML
-    public void switchVista(ActionEvent actionEvent) {
-        ToggleButton botonSwitch = (ToggleButton) actionEvent.getSource();
-
-        scene.getStylesheets().clear();
-        if (botonSwitch.isSelected()){
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
-        } else {
-            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
-        }
-    }
+    public void cambiarVista(ActionEvent actionEvent) { App.cambiarVista(scene, (ToggleButton) actionEvent.getSource()); }
 }

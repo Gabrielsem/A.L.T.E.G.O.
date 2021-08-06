@@ -5,7 +5,7 @@
 }
 
 .pais:hover > SVGPath, .pais:active > SVGPath, .pais:focus > SVGPath {
-    -fx-fill: #C9C9C9;
+    -fx-fill: #484747;
     -fx-stroke-width: 3;
     -fx-strokeType: CENTER;
 }
@@ -114,7 +114,7 @@ Accordion > * > * {
     -fx-border-radius: 10;
 }
 
-Button, .botonMusica {
+Button {
     -fx-text-fill: #000;
     -fx-background-color: #DDD;
     -fx-effect: dropshadow(gaussian, #999, 9, 0.3, 0, 0);
@@ -123,10 +123,6 @@ Button, .botonMusica {
 .button:hover{
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-text-fill: -fx-text-base-color;
-}
-
-.botonMusica:selected {
-    -fx-opacity: 0.5;
 }
 
 .toggle-button:hover {
@@ -179,4 +175,22 @@ Slider {
     -fx-background-position: center;
     -fx-background-size: cover;
     -fx-border-color: transparent;
+}
+
+.botonMusica {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../../imagenes/sound_on_clear_mode.png");
+    -fx-background-position: center;
+    -fx-background-size: 30 30;
+    -fx-border-color: transparent;
+    -fx-background-repeat: no-repeat no-repeat;
+}
+
+.botonMusica: selected {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../../../imagenes/sound_off_clear_mode.png");
+    -fx-background-position: center;
+    -fx-background-size: 30 30;
+    -fx-border-color: transparent;
+    -fx-background-repeat: no-repeat no-repeat;
 }

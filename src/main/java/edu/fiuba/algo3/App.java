@@ -1,17 +1,22 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.interfaz.pantallas.ControladorPantallaInicial;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -115,22 +120,34 @@ public class App extends Application {
     }
 
     public static void cancion(String cancion) {
-        MediaPlayer reproductor = sonido(cancion, 1);
+
+        //Fade out de cancion previa
+        if (App.reproductor != null) (new Timeline(new KeyFrame(Duration.seconds(5), new KeyValue(App.reproductor.volumeProperty(), 0)))).play();
+
+        MediaPlayer reproductor = sonido(cancion, 0.2);
 
         if (reproductor == null) return;
 
-        reproductor.setVolume(0.2);
         reproductor.setCycleCount(MediaPlayer.INDEFINITE);
-        reproductor.play();
-        App.reproductor = reproductor;
+        reproductor.pause();
 
+        App.reproductor = reproductor;
     }
 
-    public static void detenerCancion() { App.reproductor.setMute(true); }
+    public static void detenerCancion() { App.reproductor.pause(); }
 
-    public static void reproducirCancion() { App.reproductor.setMute(false); }
+    public static void reproducirCancion() { App.reproductor.play(); }
 
-    public static boolean hayMusica() { return !App.reproductor.isMute(); }
+    public static boolean hayMusica() { return App.reproductor.getStatus() == MediaPlayer.Status.PLAYING; }
+
+    public static void cambiarVista(Scene scene, ToggleButton botonCambiarVista) {
+        scene.getStylesheets().clear();
+        if (botonCambiarVista.isSelected()){
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-clear.css")).toExternalForm());
+        } else {
+            scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource("styles-dark.css")).toExternalForm());
+        }
+    }
 
     public static void loadFXML(String nombre, Object controlador) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(nombre));
