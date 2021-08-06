@@ -21,7 +21,7 @@
    <children>
       <VBox alignment="CENTER" spacing="10.0">
          <children>
-            <Label id="tituloPantalla" fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold; -fx-font-size: 18;" text="Felicitaciones, el ganador es:" textAlignment="CENTER" textFill="#d1d1d1">
+            <Label id="tituloPantalla" fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold; -fx-font-size: 18;" styleClass="labelPantallaFinal" text="Felicitaciones, el ganador es:" textAlignment="CENTER" textFill="#d1d1d1">
                <font>
                   <Font name="Times New Roman Bold Italic" size="13.0" />
                </font>
@@ -31,7 +31,7 @@
             </Label>
             <HBox alignment="CENTER">
                <children>
-                  <Label id="textoGanadores" style="-fx-font-size: 18;" text="Label" textFill="#d0d0d0" />
+                  <Label id="textoGanadores" style="-fx-font-size: 18;" styleClass="labelPantallaFinal" text="Label" textFill="#d0d0d0" />
                </children>
                <VBox.margin>
                   <Insets bottom="40.0" top="20.0" />
