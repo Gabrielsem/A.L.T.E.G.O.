@@ -26,22 +26,22 @@ public class FileLoader {
             uri = "URI ERROR";
             uri = App.class.getResource(url).toExternalForm();
             return new Media(uri);
-        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 1 : "+uri+" \u001B[0m"); }
+        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 1 : \u001B[34m"+uri+" \u001B[0m"); }
         try {
             uri = "URI ERROR";
             uri = App.class.getResource(url).toURI().toString();
             return new Media(uri);
-        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 2 : "+uri+" \u001B[0m"); }
+        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 2 : \u001B[34m"+uri+" \u001B[0m"); }
         try {
             uri = "URI ERROR";
             uri = App.class.getResource(url).toURI().toURL().toString();
             return new Media(uri);
-        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 3 : "+uri+" \u001B[0m"); }
+        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 3 : \u001B[34m"+uri+" \u001B[0m"); }
         try {
             uri = "URI ERROR";
             uri = App.class.getResource(url).toURI().toURL().toExternalForm();
             return new Media(uri);
-        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 4 : "+uri+" \u001B[0m"); }
+        } catch (Throwable ignored){ System.out.println("\n\u001B[36m FileLoader: FAILURE 4 : \u001B[34m"+uri+" \u001B[0m"); }
         throw new java.lang.UnsatisfiedLinkError("FileLoader.sound ERROR");
     }
 }
