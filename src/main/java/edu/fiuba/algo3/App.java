@@ -31,7 +31,7 @@ import java.util.Objects;
 public class App extends Application {
     
     private static MediaPlayer reproductor;
-    String version = "1.2.4";
+    String version = "1.2.5";
 
     private static Stage appStage;
     private static Popup popup;
@@ -120,6 +120,10 @@ public class App extends Application {
         } catch(java.lang.UnsatisfiedLinkError e)
         {
             System.out.println("\u001B[35m ERROR OBTENER SONIDO: "+ sonido+"\u001B[0m");
+        } catch (java.lang.NoClassDefFoundError e){
+            System.out.println("\u001B[31m ERROR OBTENER MEDIA \u001B[0m");
+        } catch( Throwable e ){
+            System.out.println("\u001B[31m ERROR DESCONOCIDO \u001B[0m");
         }
         return null;
     }

@@ -7,8 +7,6 @@ import edu.fiuba.algo3.errores.PaisNoExiste;
 import edu.fiuba.algo3.util.FileLoader;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -119,13 +117,23 @@ public class Mapa {
     }
 
     public void addObservers(HashMap<String, Observer> observers) {
+
+        HashSet<String> erroneos = new HashSet<>( paises.keySet() );
+
         for (String nombre : observers.keySet()) {
+            nombre.replace("▒","ñ");
             Pais pais = paises.get(nombre);
             if( Objects.isNull(pais) ){
                 System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ nombre +"\u001B[0m");
                 continue;
             }
             pais.addObserver(observers.get(nombre));
+            erroneos.remove(nombre);
         }
+
+        for( String nom : erroneos ){
+            System.out.print("\u001B[31m"+ nom +"\t\u001B[0m");
+        }
+        System.out.print("\n");
     }
 }
