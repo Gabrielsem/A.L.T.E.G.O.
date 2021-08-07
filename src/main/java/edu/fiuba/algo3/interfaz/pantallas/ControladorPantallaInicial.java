@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.interfaz.handlers.HandlerBotonMusica;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -20,7 +19,7 @@ public class ControladorPantallaInicial {
         App.cancion("cancionInicio");
         App.reproducirCancion();
 
-        ((ToggleButton) scene.lookup("#botonMusica")).setOnAction(new HandlerBotonMusica());
+        ((ToggleButton) scene.lookup("#botonMusica")).setOnAction(new ControladorBotonMusica());
     }
 
     @FXML

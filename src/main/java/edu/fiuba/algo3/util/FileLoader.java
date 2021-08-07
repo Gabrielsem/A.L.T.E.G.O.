@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.util;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.fiuba.algo3.App;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.Objects;
 
 public class FileLoader {
     public static InputStream resourceInputStream( String resource ) throws IOException {
@@ -22,9 +24,11 @@ public class FileLoader {
         return bf;
     }
 
-    public static Media sound( String soundFile) {
+    public static Media sound( String rutaLocal) {
+        return new Media(Objects.requireNonNull(Objects.requireNonNull(App.class.getResource("/sonidos/" + rutaLocal)).toExternalForm()));
+    }
 
-        String url = "src/main/resources/sonidos/"+soundFile;
-        return new Media(new File(url).toURI().toString());
+    public static ImageView imagen(String rutaLocal) {
+        return new ImageView(Objects.requireNonNull(Objects.requireNonNull(App.class.getResource("/imagenes/" + rutaLocal)).toExternalForm()));
     }
 }

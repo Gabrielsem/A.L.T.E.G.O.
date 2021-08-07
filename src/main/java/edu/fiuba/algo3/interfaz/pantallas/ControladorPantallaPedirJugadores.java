@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.interfaz.pantallas;
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.interfaz.handlers.HandlerBotonMusica;
 import edu.fiuba.algo3.interfaz.vistas.VistaBatalla;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
 import edu.fiuba.algo3.interfaz.vistas.VistaPais;
@@ -36,7 +35,7 @@ public class ControladorPantallaPedirJugadores {
         ToggleButton botonMusica = (ToggleButton) scene.lookup("#botonMusica");
 
         if (!App.hayMusica()) botonMusica.setSelected(true);
-        botonMusica.setOnAction(new HandlerBotonMusica());
+        botonMusica.setOnAction(new ControladorBotonMusica());
     }
 
     @FXML
