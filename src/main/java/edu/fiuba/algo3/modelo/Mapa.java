@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.errores.PaisNoExiste;
 import edu.fiuba.algo3.util.FileLoader;
+import edu.fiuba.algo3.util.Observable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -118,21 +119,39 @@ public class Mapa {
 
     public void addObservers(HashMap<String, Observer> observers) {
 
-        HashSet<String> erroneos = new HashSet<>( paises.keySet() );
+        HashSet<String> modeloSuelto = new HashSet<>( paises.keySet() );
+        HashSet<String> vistaSuelta = new HashSet<>( observers.keySet() );
 
         for (String nombre : observers.keySet()) {
-            nombre.replace("▒","ñ");
             Pais pais = paises.get(nombre);
             if( Objects.isNull(pais) ){
                 System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ nombre +"\u001B[0m");
                 continue;
             }
             pais.addObserver(observers.get(nombre));
-            erroneos.remove(nombre);
+
+            modeloSuelto.remove(nombre);
+            vistaSuelta.remove(nombre);
         }
 
-        for( String nom : erroneos ){
-            System.out.print("\u001B[31m"+ nom +"\t\u001B[0m");
+        if( modeloSuelto.isEmpty() || vistaSuelta.isEmpty() ) return;
+
+        // FIXME - Windows tiene problemas con las ñ
+        //Esto compara si difieren poco - Parche Horrible(?)
+        for( String pais : modeloSuelto ){
+            for( String obs : vistaSuelta){
+                if( obs.length() != pais.length()-1 ) continue;//ñ se vuelve 2 chars (?
+                int contador = 0;
+                for( int i=0; i<obs.length(); i++ )
+                    if( obs.charAt(i)==pais.charAt(i) ) contador++;
+
+                if( obs.length() - contador < 3 ){
+                    paises.get(pais).addObserver( observers.get(obs) );
+                }
+                else {
+                    System.out.println(obs.length()+" "+contador);
+                }
+            }
         }
         System.out.print("\n");
     }
