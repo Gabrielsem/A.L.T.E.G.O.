@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class VistaJugador implements Observer {
@@ -103,12 +104,12 @@ public class VistaJugador implements Observer {
             ImageView imagen = new ImageView();
             HBox pais = new HBox();
 
+            String url = "imagenes/"+t.obtenerSimbolo().nombre()+".png";
             try {
-                imagen = new ImageView(new Image(FileLoader.resourceInputStream("imagenes/"+t.obtenerSimbolo().nombre()+".png")));
-            } catch (FileNotFoundException e) {
-                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
-            } catch (IOException e) {
-                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
+                imagen = new ImageView(new Image(FileLoader.resourceInputStream((url))) );
+            } catch (Throwable e){
+                System.out.println("Didnt find "+url);
+                e.printStackTrace();
             }
             StackPane.setAlignment(imagen,Pos.CENTER_LEFT);
             imagen.setPreserveRatio(true);

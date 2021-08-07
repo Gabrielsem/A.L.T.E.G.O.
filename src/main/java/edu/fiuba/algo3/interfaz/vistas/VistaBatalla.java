@@ -34,11 +34,11 @@ public class VistaBatalla implements Observer {
 
         for (int j : dadosAtacante) {
             ImageView imagen = new ImageView();
-            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
+            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
             try {
-                imagen = new ImageView(new Image(new FileInputStream(url)));
-            } catch (FileNotFoundException e) {
-                System.out.println(url);
+                imagen = new ImageView(new Image(FileLoader.resourceInputStream((url))) );
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             cajaAtacante.getChildren().add( imagen );
             imagen.setPreserveRatio(true);
@@ -51,8 +51,6 @@ public class VistaBatalla implements Observer {
             String url = "imagenes/Dados/"+String.valueOf(j)+".png";
             try {
                 imagen = new ImageView(new Image(FileLoader.resourceInputStream((url))) );
-            } catch (FileNotFoundException e) {
-                System.out.println("Didnt find "+url);
             } catch (IOException e) {
                 System.out.println("Didnt find "+url);
             }
