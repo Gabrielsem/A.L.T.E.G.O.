@@ -1,14 +1,9 @@
 package edu.fiuba.algo3.util;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import edu.fiuba.algo3.App;
-import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 
 import java.io.*;
-import java.util.Objects;
 
 public class FileLoader {
     public static InputStream resourceInputStream( String resource ) throws IOException {
@@ -24,6 +19,19 @@ public class FileLoader {
     }
 
     public static Media sound( String rutaLocal) {
-        return new Media(Objects.requireNonNull(Objects.requireNonNull(App.class.getResource("/sonidos/" + rutaLocal)).toExternalForm()));
+        String url = "/sonidos/"+rutaLocal;
+        try {
+            return new Media(App.class.getResource(url).toExternalForm());
+        } catch (Throwable ignored){ System.out.println("\u001B[32m FileLoader: F1 \u001B[0m"); }
+        try {
+            return new Media(App.class.getResource(url).toURI().toString());
+        } catch (Throwable ignored){ System.out.print("\u001B[32m F2 \u001B[0m"); }
+        try {
+            return new Media(App.class.getResource(url).toURI().toURL().toString());
+        } catch (Throwable ignored){ System.out.print("\u001B[32m F3 \u001B[0m"); }
+        try {
+            return new Media(App.class.getResource(url).toURI().toURL().toExternalForm());
+        } catch (Throwable ignored){ System.out.print("\u001B[32m F4 \u001B[0m"); }
+        throw new RuntimeException("FileLoader.sound ERROR");
     }
 }

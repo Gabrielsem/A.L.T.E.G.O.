@@ -136,6 +136,9 @@ public class Mapa {
         // FIXME - Windows tiene problemas con las ñ
         //Esto compara si difieren poco - Parche Horrible(?)
         for( String pais : modeloSuelto ){
+
+            boolean assigned = false;
+
             for( String obs : vistaSuelta){
                 if( obs.length() != pais.length()-1 ) continue;//ñ se vuelve 2 chars (?
                 int contador = 0;
@@ -144,13 +147,11 @@ public class Mapa {
 
                 if( obs.length() - contador < 3 ){
                     paises.get(pais).addObserver( observers.get(obs) );
-                }
-                else {
-                    System.out.println(obs.length()+" "+contador);
+                    assigned = true;
+                    continue;
                 }
             }
-            System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ pais +"\u001B[0m");
+            if(!assigned)System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ pais +"\u001B[0m\n");
         }
-        System.out.print("\n");
     }
 }
