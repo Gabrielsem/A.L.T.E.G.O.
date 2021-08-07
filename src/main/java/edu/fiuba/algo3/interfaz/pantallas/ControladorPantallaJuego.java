@@ -2,7 +2,6 @@ package edu.fiuba.algo3.interfaz.pantallas;
 
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.interfaz.handlers.HandlerBotonMusica;
 import edu.fiuba.algo3.interfaz.fases.Fase;
 import edu.fiuba.algo3.interfaz.fases.colocacion.Inicial;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugador;
@@ -56,7 +55,7 @@ public class ControladorPantallaJuego {
         if (!hayMusica) botonMusica.setSelected(true);
         else App.reproducirCancion();
 
-        botonMusica.setOnAction(new HandlerBotonMusica());
+        botonMusica.setOnAction(new ControladorBotonMusica());
 
         Slider nodoSlider = (Slider) scene.lookup("#slider");
         nodoSlider.setUserData(new VistaSlider(nodoSlider, (Button) scene.lookup("#botonSiguiente")));

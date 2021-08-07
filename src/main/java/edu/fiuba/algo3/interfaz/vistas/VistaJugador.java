@@ -4,6 +4,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tarjeta;
+import edu.fiuba.algo3.util.FileLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -98,14 +99,9 @@ public class VistaJugador implements Observer {
 
             StackPane tarjeta = new StackPane();
             tarjeta.getStyleClass().add("tarjeta");
-            ImageView imagen = new ImageView();
+            ImageView imagen = FileLoader.imagen(t.obtenerSimbolo().nombre()+".png");
             HBox pais = new HBox();
 
-            try {
-                imagen = new ImageView(new Image(new FileInputStream("src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png")));
-            } catch (FileNotFoundException e) {
-                System.out.println("Didnt find src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png");
-            }
             StackPane.setAlignment(imagen,Pos.CENTER_LEFT);
             imagen.setPreserveRatio(true);
             imagen.setFitHeight(30);

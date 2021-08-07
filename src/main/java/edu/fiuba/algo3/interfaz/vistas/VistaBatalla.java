@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Batalla;
+import edu.fiuba.algo3.util.FileLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,13 +32,7 @@ public class VistaBatalla implements Observer {
         caja.getChildren().addAll(cajaTitulo,cajaAtacante,cajaDefensor);
 
         for (int j : dadosAtacante) {
-            ImageView imagen = new ImageView();
-            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
-            try {
-                imagen = new ImageView(new Image(new FileInputStream(url)));
-            } catch (FileNotFoundException e) {
-                System.out.println(url);
-            }
+            ImageView imagen = FileLoader.imagen("Dados/"+String.valueOf(j)+".png");
             cajaAtacante.getChildren().add( imagen );
             imagen.setPreserveRatio(true);
             imagen.setFitHeight(60);
@@ -45,13 +40,7 @@ public class VistaBatalla implements Observer {
         }
 
         for( int j : dadosDefensor ){
-            ImageView imagen = new ImageView();
-            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
-            try {
-                imagen = new ImageView(new Image(new FileInputStream(url)));
-            } catch (FileNotFoundException e) {
-                System.out.println(url);
-            }
+            ImageView imagen = FileLoader.imagen("Dados/"+String.valueOf(j)+".png");
             cajaDefensor.getChildren().add( imagen );
             imagen.setPreserveRatio(true);
             imagen.setFitHeight(60);
