@@ -124,10 +124,7 @@ public class Mapa {
 
         for (String nombre : observers.keySet()) {
             Pais pais = paises.get(nombre);
-            if( Objects.isNull(pais) ){
-                System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ nombre +"\u001B[0m");
-                continue;
-            }
+            if( Objects.isNull(pais) ){ continue; }
             pais.addObserver(observers.get(nombre));
 
             modeloSuelto.remove(nombre);
@@ -152,6 +149,7 @@ public class Mapa {
                     System.out.println(obs.length()+" "+contador);
                 }
             }
+            System.out.println("\u001B[31m ERROR AGREGAR OBSERVADOR: "+ pais +"\u001B[0m");
         }
         System.out.print("\n");
     }

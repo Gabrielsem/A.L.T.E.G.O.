@@ -115,8 +115,6 @@ public class App extends Application {
             mediaPlayer.play();
             mediaPlayer.setVolume(volumen);
             return mediaPlayer;
-        } catch (Exception e ) {
-            System.out.println("Cannot play: "+sonido);
         } catch(java.lang.UnsatisfiedLinkError e)
         {
             System.out.println("\u001B[35m ERROR OBTENER SONIDO: "+ sonido+"\u001B[0m");

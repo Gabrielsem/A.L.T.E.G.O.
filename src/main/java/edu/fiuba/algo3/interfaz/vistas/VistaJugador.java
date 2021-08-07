@@ -101,7 +101,7 @@ public class VistaJugador implements Observer {
 
             StackPane tarjeta = new StackPane();
             tarjeta.getStyleClass().add("tarjeta");
-            ImageView imagen = FileLoader.imagen(t.obtenerSimbolo().nombre()+".png");
+            ImageView imagen = new ImageView();
             HBox pais = new HBox();
 
             String url = "imagenes/"+t.obtenerSimbolo().nombre()+".png";

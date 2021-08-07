@@ -17,7 +17,6 @@ public class FileLoader {
     }
 
     public static BufferedReader resourceReader( String resource ) throws IOException {
-        //BufferedReader bReader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/"+ rutaArchivo)));
         InputStream is = App.class.getResourceAsStream("/"+ resource);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader bf = new BufferedReader(isr);
@@ -26,9 +25,5 @@ public class FileLoader {
 
     public static Media sound( String rutaLocal) {
         return new Media(Objects.requireNonNull(Objects.requireNonNull(App.class.getResource("/sonidos/" + rutaLocal)).toExternalForm()));
-    }
-
-    public static ImageView imagen(String rutaLocal) {
-        return new ImageView(Objects.requireNonNull(Objects.requireNonNull(App.class.getResource("/imagenes/" + rutaLocal)).toExternalForm()));
     }
 }
