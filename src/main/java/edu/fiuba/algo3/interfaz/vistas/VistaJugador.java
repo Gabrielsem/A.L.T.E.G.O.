@@ -4,6 +4,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Tarjeta;
+import edu.fiuba.algo3.util.FileLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 public class VistaJugador implements Observer {
@@ -102,9 +104,11 @@ public class VistaJugador implements Observer {
             HBox pais = new HBox();
 
             try {
-                imagen = new ImageView(new Image(new FileInputStream("src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png")));
+                imagen = new ImageView(new Image(FileLoader.resourceInputStream("imagenes/"+t.obtenerSimbolo().nombre()+".png")));
             } catch (FileNotFoundException e) {
-                System.out.println("Didnt find src/main/resources/imagenes/"+t.obtenerSimbolo().nombre()+".png");
+                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
+            } catch (IOException e) {
+                System.out.println("Didnt find imagenes/"+t.obtenerSimbolo().nombre()+".png");
             }
             StackPane.setAlignment(imagen,Pos.CENTER_LEFT);
             imagen.setPreserveRatio(true);

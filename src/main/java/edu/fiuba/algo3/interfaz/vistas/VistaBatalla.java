@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Batalla;
+import edu.fiuba.algo3.util.FileLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -46,11 +48,13 @@ public class VistaBatalla implements Observer {
 
         for( int j : dadosDefensor ){
             ImageView imagen = new ImageView();
-            String url = "src/main/resources/imagenes/Dados/"+String.valueOf(j)+".png";
+            String url = "imagenes/Dados/"+String.valueOf(j)+".png";
             try {
-                imagen = new ImageView(new Image(new FileInputStream(url)));
+                imagen = new ImageView(new Image(FileLoader.resourceInputStream((url))) );
             } catch (FileNotFoundException e) {
-                System.out.println(url);
+                System.out.println("Didnt find "+url);
+            } catch (IOException e) {
+                System.out.println("Didnt find "+url);
             }
             cajaDefensor.getChildren().add( imagen );
             imagen.setPreserveRatio(true);
