@@ -2,8 +2,8 @@
 
 # TP2 Algoritmos 3: A.L.T.E.G.O.
 
-Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
-
+Juego TEG como Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+ 
 ## Grupo 11
 
 * **Marcelo Ariel Rondán** - [MarceAriel99](https://github.com/MarceAriel99)
